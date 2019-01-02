@@ -1,8 +1,6 @@
 body { background: #000; color: #333 }
-header { background: #28d }
 nav { background: #ddd }
 section { background: #fff }
 aside, #wLogo { background: #34393c; color: #fff }
-
-summary:hover, details li:hover { background: #28d }
+header, summary:hover, details li:hover { background: #28d }
 details[open] { background: #5e6368 }
