@@ -8,7 +8,7 @@
 
 // q
 ((W) => {
-	// S String, E Element, A Any
+	// S String, E Element
 	const q = (S, E = document.body) => {
 		const p = (E) => {
 			E.C = E.textContent || "";
@@ -23,7 +23,7 @@
 		else if (S.startsWith("$")) E = document.getElementsByName(S.substr(1));
 		else if (S.startsWith("@")) E = E.getElementsByTagName(S.substr(1));
 		else if (S) E = document.getElementById(S);
-		l = E.length;
+		l = E.tagName === "SELECT" ? 0 : E.length;
 		if (l) for (const i of E) p(i);
 		else p(E);
 
@@ -32,6 +32,8 @@
 			else E.parentElement.removeChild(E);
 			return "";
 		};
+
+		// S String, A Any
 		E.add = (S = "", A = "") => {
 			const u = () => {
 				if (l) for (const i of E) i.insertAdjacentHTML(S, A);
@@ -47,8 +49,10 @@
 				else if (S === "ae") S = "afterEnd";
 				u();
 			}
-			return "";
+			return E;
 		};
+
+		// N keycode,F Function
 		return E;
 	};
 

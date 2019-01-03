@@ -1,0 +1,95 @@
+html { overflow: hidden; font-size: medium }
+body, header, footer, section, article, aside, main, nav, div {
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+	word-break: break-all;
+	white-space: normal;
+	text-overflow: ellipsis
+}
+
+footer, aside, nav, main, div { align-items: center; text-align: center }
+body, article, nav, main { flex-direction: column }
+nav, main { justify-content: flex-start }
+section, article, main { flex: 1 }
+
+header, footer { justify-content: space-between }
+nav div, main div { display: block; overflow: visible; width: 100% }
+aside { flex: none }
+body {
+	height: calc(100vh - 10px);
+	margin: 5px;
+	border-radius: 10px;
+	background: #000;
+	color: #333
+}
+main { padding: 1rem; overflow-y: scroll }
+
+table { width: 100%; border-collapse: collapse; border-spacing: .5rem }
+ol, ul, li { margin: .5rem 0; text-align: left }
+form { line-height: 2; text-align: left }
+a, a:visited { color: #333 }
+a:hover, a:active { color: #c03 }
+input, textarea, select { text-align: left; background: #eee; border: 1px solid #999; border-radius: 3px; outline: none }
+input, textarea { padding: 5px 1rem }
+input, select { margin: 0 1rem 0 .5rem }
+textarea { margin: 10px; width: 25rem; height: 4rem }
+select { padding: 4px }
+input:hover, select:hover, textarea:hover { color: #060; border-color: #666 }
+input[disabled] { background: #ccc }
+
+body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-serif }
+.fxs { font-weight: 100; font-size: .75rem }
+.fs { font-weight: 100; font-size: .9rem }
+.fl { font-weight: 500; font-size: 1.2rem }
+.fxl { font-weight: 500; font-size: 1.5rem }
+.fxxl { font-weight: 500; font-size: 2rem }
+
+.r { color: #c03 }
+.g { color: #060 }
+.c { color: #666 }
+
+.bl { display: block }
+.bc { background: #ddd }
+.br { border-right: 1px dotted #999 }
+.bt { border-top: 1px dotted #999 }
+
+.lf { text-align: left }
+.tp { align-items: flex-start; vertical-align: top }
+
+.hd { display: none }
+.hl { line-height: 1.5 }
+.hn { white-space: nowrap }
+
+.m10 { margin: 10px 0; padding: 10px 0 }
+.p10 { padding: 10px }
+
+/* M */
+#wqMC { margin: 10px; padding: 0; list-style-type: none }
+#wqMC li {margin: 0; border-bottom: #bbb 1px solid; text-align: center }
+#wqMC li a { padding: 8px; color: #003; text-decoration: none; display: block }
+#wqMC li a:hover { background: #c03; color: #ddd }
+.mb { color: #060 ;background: #eee; border: 1px dotted #999; border-radius: 5px 20px 0 0; padding: 5px 10px; margin: 0 5px; cursor: default }
+.mb:hover { color: #060; background: #f66 }
+.mr { margin: 0 10px }
+.mbd { text-align: left; border-bottom: 1px dotted #999; padding: 10px 10px 4px 10px }
+.mbv { text-align: left; padding: 10px }
+
+/* T */
+#wqBtt, #wqRtt, #wqBtc, #wqRtc, #wqBti, #wqRti { position: absolute; display: block }
+#wqBtt, #wqBtc, #wqBti { height: 100%; width: 100%; top: 0; left: 0; margin: 0; opacity: 0.5; background: #ccc }
+#wqRtt div, #wqRtc div, #wqRti div { display: block }
+#wqBtt { z-index: 1001 }
+#wqBtc { z-index: 2001 }
+#wqBti { z-index: 3001 }
+#wqRtt, #wqRtc, #wqRti { border: 1px solid #ccc; border-radius: 5px; box-shadow: 2px 5px 12px #666 }
+#wqRtt { z-index: 1002; background: #ffc }
+#wqRtc { z-index: 2002; background: #6cf; padding: 20px }
+#wqRti { z-index: 3002; padding: 20px }
+#wqHtt { margin: 5px; border: 1px dotted #999; border-radius: 5px; background: #fec }
+#wqAtca { padding-bottom: 15px; text-align: left }
+#wqAttb { color: #c03; border-top: 1px dotted #999 }
+#wqAttc { padding: 5px 20px }
+#wqTbt { padding: 5px 10px 10px 10px; text-align: center }
