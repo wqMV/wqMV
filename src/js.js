@@ -1,4 +1,6 @@
-var a = q("oI").key(13, (e) => { alert(e.V) })
-console.log(a.V);
+var a = q("oI").key((e) => { alert(e.v()) });
 a.v("bb");
-console.log(a.v());
+a = [1, 2, 3];
+a.p(4);
+a = q.ss("na", "cc");
+console.log(q.ss("na"));

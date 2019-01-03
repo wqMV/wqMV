@@ -10,10 +10,9 @@
 ((W) => {
 	// S String, E Element
 	const q = (S, E = document.body) => {
-		const p = (E) => {
+		const s = (E) => {
 			E.C = E.textContent || "";
 			E.H = E.innerHTML || "";
-			E.V = E.value || "";
 			E.g = (S) => E.getAttribute(S) || "";
 			E.h = (S = "") => { E.innerHTML = S };
 			E.v = (S = "") => {
@@ -32,8 +31,8 @@
 		if (!E || (E && E.length === 0)) return;
 
 		l = E.tagName === "SELECT" ? 0 : E.length;
-		if (l) for (const i of E) p(i);
-		else p(E);
+		if (l) for (const i of E) s(i);
+		else s(E);
 
 		E.del = () => {
 			if (l) for (let i = 0; i < l; i++) E[0].parentElement.removeChild(E[0]);
@@ -43,7 +42,7 @@
 
 		// S String, A Any
 		E.add = (S = "", A = "") => {
-			const u = () => {
+			const k = () => {
 				if (l) for (const i of E) i.insertAdjacentHTML(S, A);
 				else E.insertAdjacentHTML(S, A)
 			};
@@ -51,17 +50,17 @@
 				if (l) for (const i of E) i.addEventListener(S, A, false);
 				else E.addEventListener(S, A, false);
 			} else {
-				if (S === "bb") S = "beforeBegin";
+				if (S === "be") S = "beforeEnd";
 				else if (S === "ab") S = "afterBegin";
-				else if (S === "be") S = "beforeEnd";
+				else if (S === "bb") S = "beforeBegin";
 				else if (S === "ae") S = "afterEnd";
-				u();
+				k();
 			}
 			return E;
 		};
 
 		// N keycode,F Function
-		E.key = (N, F) => {
+		E.key = (F, N = 13) => {
 			const k = () => {
 				if (event.keyCode == N) {
 					event.returnValue = false;
@@ -75,5 +74,14 @@
 		return E;
 	};
 
+	// N Name, V Value 0 delete
+	q.ss = (N, V) => {
+		const s = sessionStorage;
+		if (V === 0) s.removeItem(N);
+		else if (V) s.setItem(N, V);
+		return s.getItem(N);
+	};
+
+	Array.prototype.p = Array.prototype.push;
 	W.q = q;
 })(window);
