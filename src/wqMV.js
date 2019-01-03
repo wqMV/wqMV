@@ -11,31 +11,38 @@
 	// S String, E Element
 	const q = (S, E = document.body) => {
 		const s = (E) => {
-			E.C = E.textContent || "";
-			E.H = E.innerHTML || "";
-			E.g = (S) => E.getAttribute(S) || "";
-			E.h = (S = "") => { E.innerHTML = S };
-			E.v = (S = "") => {
-				if (E.value) {
-					if (!S) return E.value;
-					E.value = S;
-				}
-			};
+			if (!E.a) {
+				E.a = (S = "", V = "") => {
+					if (S && V) E.setAttribute(S, V);
+					else return E.getAttribute(S) || "";
+				};
+				E.c = E.textContent || "";
+				Object.defineProperties(E, {
+					h: {
+						get: () => { return E.innerHTML || "" },
+						set: (S = "") => { E.innerHTML = S }
+					},
+					v: {
+						get: () => { return E.value || "" },
+						set: (S = "") => { if (E.value) E.value = S }
+					}
+				});
+			}
 		};
-		let l = 0;
 
 		if (S.startsWith(".")) E = E.getElementsByClassName(S.substr(1));
 		else if (S.startsWith("$")) E = document.getElementsByName(S.substr(1));
 		else if (S.startsWith("@")) E = E.getElementsByTagName(S.substr(1));
 		else if (S) E = document.getElementById(S);
 		if (!E || (E && E.length === 0)) return;
+		q.e = E;
+		//q.l = E.tagName === "SELECT" ? 0 : E.length;
+		//if (q.l) for (const i of E) s(i);
+		//else s(E);
 
-		l = E.tagName === "SELECT" ? 0 : E.length;
-		if (l) for (const i of E) s(i);
-		else s(E);
-
+		/*
 		E.del = () => {
-			if (l) for (let i = 0; i < l; i++) E[0].parentElement.removeChild(E[0]);
+			if (q.l) for (let i = 0; i < q.l; i++) E[0].parentElement.removeChild(E[0]);
 			else E.parentElement.removeChild(E);
 			return "";
 		};
@@ -71,8 +78,39 @@
 			else E.onkeydown = k;
 			return E;
 		};
+
+		*/
 		return E;
 	};
+
+	q.prototype = {
+		_name: "chen",
+		age: 21,
+		set h(name) { this._name = name; },
+		get h() { return this._name; }
+	};
+	console.log(q.prototype);
+	/*
+	Object.defineProperties(q.prototype, {
+		h: {
+			get: () => { alert(); return q.e.innerHTML || "" },
+			set: (S = "") => { q.e.innerHTML = S }
+		},
+		v: {
+			get: () => { return q.e.value || "" },
+			set: (S = "") => { if (q.e.value) q.e.value = S }
+		}
+	});
+	*/
+
+	var person = {
+		_name: "chen",
+		age: 21,
+		set name(name) { this._name = name; },
+		get name() { return this._name; }
+	}
+	console.log(person.name);
+
 
 	// N Name, V Value 0 delete
 	q.ss = (N, V) => {
