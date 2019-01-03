@@ -7,7 +7,7 @@
 	<meta content="all" name="robots">
 	<meta name="keywords" content="wqMV, wangqiang">
 	<meta name="author" content="WangQiang">
-	<link rel="stylesheet" type="text/css" href="src/wqMV.min.css">
+	<link rel="stylesheet" type="text/css" href="src/wqMV.css">
 	<link rel="stylesheet" type="text/css" href="src/css.css">
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 	<title>wqMV</title>
@@ -17,22 +17,30 @@
 	<header>
 		<div id="wLogo" class="fxxl">wLogo</div>
 		<div id="wTitle" class="fxxl">wTitle</div>
-		<div id="wNote" class="fxxl">wNote</div>
+		<div class="note fxxl">
+			<div id="wNote">wNote</div>
+		</div>
 		<div class="copy fxs">Ver<br>Copyright © 2018-2019</div>
 	</header>
-	<nav>nav</nav>
+	<nav>
+		<div id="wPort">wPort</div>
+		<div id="wUser">wUser</div>
+		<div id="wTime" class="fxs">wTime</div>
+		<div class="tag fs">导航</div>
+		<div id="wNav">wNav</div>
+	</nav>
 	<footer>
 		<aside>
 			<div id="wMenu" class="p5">
 				<details>
-					<summary>主菜单一</summary>
+					<summary class="p5" name="wq">主菜单一</summary>
 					<li>子菜单 1</li>
 					<li>子菜单 2</li>
 					<li>子菜单 3</li>
 					<li>子菜单 4</li>
 				</details>
 				<details>
-					<summary>主菜单二</summary>
+					<summary class="p5" name="wq">主菜单二</summary>
 					<li>子菜单 1</li>
 					<li>子菜单 2</li>
 					<li>子菜单 3</li>
@@ -50,16 +58,25 @@
 			</div>
 		</aside>
 		<section>
-			<article id="wInfo" class="fxl">article</article>
+			<article id="wInfo" class="fxl">wInfo</article>
 			<main>
-				<div id="wHome">wHome<input type="text"></div>
+				<div id="wHome">
+					wHome
+					<input type="text">
+					<select id="oS">
+						<option value=""></option>
+						<option value="a">a</option>
+						<option value="b">b</option>
+					</select>
+				</div>
 				<div id="wMain" class="hd">wMain</div>
 			</main>
 		</section>
 
 	</footer>
 	<div id="wTemp" class="hd"></div>
-	<script type="text/JavaScript" src="src/wqMV.min.js"></script>
+	<script type="text/JavaScript" src="src/wqMV.js"></script>
+	<script type="text/JavaScript" src="src/js.js"></script>
 </body>
 
 </html>

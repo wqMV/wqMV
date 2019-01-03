@@ -1,16 +1,15 @@
 html { overflow: hidden; padding: 5px; font-size: medium }
 body, header, nav, footer, aside, section, article, main { overflow: hidden; display: flex; margin: 0; padding: 0 }
 body, aside, section, main { flex-direction: column }
-nav, article { flex: none; margin: 1px 0; padding: 2px 1rem }
-footer, section, main, #wTitle { flex: 1 }
-article, header > div { display: flex; justify-content: center }
-aside, header > div { overflow: hidden; align-items: center; white-space: nowrap }
-header { justify-content: space-between }
+nav, article { flex: none; margin: 1px 0; padding: 2px 0 }
+article, header > div, nav > div { display: flex; justify-content: center }
+aside, header > div, nav > div { overflow: hidden; align-items: center; white-space: nowrap }
+header, nav { justify-content: space-between }
 main { padding: 0 1rem; overflow-y: scroll }
-#wNote, .copy { border-left: 1px solid #000 }
-
-aside, #wLogo, .copy { flex: 0 0 12rem }
-#wNote { flex: 0 1 24rem }
+footer, section, main, #wTitle, #wNav { flex: 1 }
+#wTime { border-radius: 10px; padding: 2px 1rem }
+#wNav { justify-content: flex-start }
+.tag { padding: 0 1rem }
 body {
 	width: calc(100vw - 10px);
 	height: calc(100vh - 10px);
@@ -20,13 +19,11 @@ body {
 	text-overflow: ellipsis
 }
 
-input, select, textarea, summary { outline: none }
+aside, #wLogo, .copy, #wPort, #wTime { flex: 0 0 12rem }
+#wUser { flex: 0 0 18rem }
+.note { flex: 0 1 24rem }
 
-::-webkit-details-marker { direction: ltr; color: #999; margin-left: 1rem }
-details, summary, details li { cursor: pointer; border-radius: 5px; transition: 1s ease-out }
-summary { direction: rtl; padding: 5px 2rem }
-details li { font-size: .96rem; list-style: none; text-align: center; padding: 5px }
-details, details[open] { margin: 5px }
+input, select, textarea, summary { outline: none }
 
 body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-serif }
 .fxs { font-weight: 100; font-size: .75rem }
@@ -41,5 +38,14 @@ body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-ser
 
 @media screen and (max-width: 798px) {
 	html { font-size: small }
-	#wTitle { display: none }
+	nav { flex-wrap: wrap }
+	.note, .copy, #wTime, .tag { display: none }
+	#wNav { flex: 100vw; padding: 0 1rem }
 }
+
+/* M */
+::-webkit-details-marker { direction: ltr; margin-left: 1rem }
+details, summary, details li { cursor: pointer; border-radius: 5px; transition: 1s ease-out }
+summary { direction: rtl; padding: 5px 2rem }
+details li { list-style: none; text-align: center; padding: 5px }
+details, details[open] { margin: 5px }

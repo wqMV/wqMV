@@ -1,6 +1,17 @@
 body { background: #000; color: #333 }
 nav { background: #ddd }
 section { background: #fff }
-aside, #wLogo { background: #34393c; color: #fff }
 header, summary:hover, details li:hover { background: #28d }
 details[open] { background: #5e6368 }
+aside, #wLogo { background: #34393c; color: #fff }
+#wTime { background: #fff; color: #030 }
+.note, .copy { border-left: 1px solid #000 }
+::-webkit-details-marker { color: #999 }
+
+a:hover, a:active { color: #c03 }
+
+#wNote { position: relative; animation: note 12s cubic-bezier(0, .6, 1, .4) infinite alternate }
+@keyframes note {
+	0% { left: 100% }
+	100% {left: -100% }
+}
