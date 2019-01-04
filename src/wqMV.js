@@ -9,11 +9,11 @@
 // q
 (() => {
 	// S String, E Element
-	const q = (S, E = document.body) => {
+	const q = (S, E) => {
 		let l = 0;
 		const s = (E) => {
 			if (!E.g) {
-				E.g = (S = "", V = "") => {
+				E.g = (S, V) => {
 					if (S && V) E.setAttribute(S, V);
 					return E.getAttribute(S) || "";
 				};
@@ -21,27 +21,32 @@
 				Object.defineProperties(E, {
 					h: {
 						get: () => { return E.innerHTML || "" },
-						set: (S = "") => { E.innerHTML = S }
+						set: (S) => { E.innerHTML = S }
 					},
 					v: {
 						get: () => { return E.value || "" },
-						set: (S = "") => { if (E.value !== "undefined") E.value = S }
+						set: (S) => { if (E.value !== "undefined") E.value = S }
 					}
 				});
 			}
 		};
 
+		E = E || document.body;
 		if (S.startsWith(".")) E = E.getElementsByClassName(S.substr(1));
 		else if (S.startsWith(":")) E = document.getElementsByName(S.substr(1));
 		else if (S.startsWith("@")) E = E.getElementsByTagName(S.substr(1));
 		else if (S) E = document.getElementById(S);
 		if (!E || (E && E.length === 0)) return;
 		l = E.tagName === "SELECT" ? 0 : E.length;
-		if (l) for (const i of E) s(i);
-		else s(E);
+		if (l) {
+			let k = [];
+			for (let i = 0; i < l; i++) k.push(E[i]);
+			E = k;
+			for (const i of E) s(i);
+		} else s(E);
 
 		// S String, A Any
-		E.add = (S = "", A = "") => {
+		E.add = (S, A) => {
 			const k = () => {
 				if (l) for (const i of E) i.insertAdjacentHTML(S, A);
 				else E.insertAdjacentHTML(S, A)
@@ -61,7 +66,7 @@
 
 
 		// J Json or String
-		E.css = (J = "") => {
+		E.css = (J) => {
 			if (typeof J === "object") {
 				if (l) for (const i of E) for (const j in J) i.style[j] = J[j];
 				else for (const j in J) E.style[j] = J[j];
@@ -82,8 +87,9 @@
 		};
 
 		// N keycode, C Callback
-		E.key = (C, N = 13) => {
+		E.key = (C, N) => {
 			const k = () => {
+				N = N || 13;
 				if (event.keyCode == N) {
 					event.returnValue = false;
 					if (typeof C === "function") C(event.target);
