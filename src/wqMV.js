@@ -103,6 +103,79 @@
 		return E;
 	};
 
+	// S String
+	q.a = (S) => {
+		if (typeof S === "string") {
+			let k = [];
+			S = S.split(";");
+			for (const i of S) {
+				const s = i.split(",");
+				k[i] = [];
+				for (const j of s) k[i].push(j);
+			}
+			S = k;
+		} else S = [];
+		return S;
+	};
+
+	// N Name, V Value, K Key 0 delete
+	q.c = (N, V, K) => {
+		let k = document.cookie;
+		if (N && V) {
+			let d = new Date();
+			d.setDate(d.getDate() + K);
+			document.cookie = escape(N) + "=" + escape(V) + (typeof K !== "number" ? "" : "; expires=" + d.toGMTString());
+		} else if (N) {
+			const r = new RegExp("(^| )" + N + "=([^;]*)(;|$)");
+			if (k = k.match(r)) V = k[2];
+			else V = "";
+		}
+		return (K === 0 ? "" : V);
+	};
+
+	// J Json
+	q.f = (J) => {
+		let k = new FormData();
+		for (const i in J) k.append(i, J[i]);
+		return k;
+	};
+
+	// S String
+	q.j = function (S) {
+		if (typeof N === "string") return JSON.parse(S);
+		return JSON.stringify(S);
+	};
+
+	//P tyPe,N Number,C Callback
+	q.js = function (P, N, C) {
+		var a;
+		if (P == U) return;
+		if (N == U) N = 0;
+		if (typeof N == "function") C = N;
+		a = D.getElementById("wqJS" + P);
+		if (!a) {
+			var a = D.createElement("script");
+			a.type = "text/JavaScript";
+			a.id = "wqJS" + P;
+			if ("onload" in a) {
+				a.onload = function () {
+					a.onload = null;
+					if (typeof C == "function") setTimeout(C, N);
+				}
+			} else {
+				a.onreadystatechange = function () {
+					if (/loaded|complete/.test(a.readyState)) {
+						a.onreadystatechange = null;
+						if (typeof C == "function") setTimeout(C, N);
+					}
+				}
+			}
+			a.src = "src/" + P + ".js";
+			D.body.insertAdjacentElement("beforeEnd", a);
+		} else if (typeof C == "function") setTimeout(C, N);
+		P = null;
+	};
+
 	// N Name, V Value 0 delete
 	q.ss = (N, V) => {
 		const s = sessionStorage;
@@ -110,7 +183,6 @@
 		else if (V) s.setItem(N, V);
 		return s.getItem(N);
 	};
-
 
 	Array.prototype.p = Array.prototype.push;
 	window.q = q;

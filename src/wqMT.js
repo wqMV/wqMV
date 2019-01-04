@@ -269,7 +269,7 @@
 		A.push(S);
 	};
 
-	//S String,N Number
+	// S String,N Number
 	q.j = function (S, N) {
 		if (N == 1) return JSON.stringify(S);
 		return JSON.parse(S);
