@@ -134,54 +134,39 @@
 	};
 
 	// J Json
-	q.f = (J) => {
+	q.d = (J) => {
 		let k = new FormData();
 		for (const i in J) k.append(i, J[i]);
 		return k;
 	};
 
 	// S String
-	q.j = function (S) {
-		if (typeof N === "string") return JSON.parse(S);
-		return JSON.stringify(S);
-	};
+	q.j = (S) => typeof S === "string" ? JSON.parse(`{${S}}`) : JSON.stringify(S);
 
-	//P tyPe,N Number,C Callback
-	q.js = function (P, N, C) {
-		var a;
-		if (P == U) return;
-		if (N == U) N = 0;
-		if (typeof N == "function") C = N;
-		a = D.getElementById("wqJS" + P);
-		if (!a) {
-			var a = D.createElement("script");
-			a.type = "text/JavaScript";
-			a.id = "wqJS" + P;
-			if ("onload" in a) {
-				a.onload = function () {
-					a.onload = null;
-					if (typeof C == "function") setTimeout(C, N);
-				}
-			} else {
-				a.onreadystatechange = function () {
-					if (/loaded|complete/.test(a.readyState)) {
-						a.onreadystatechange = null;
-						if (typeof C == "function") setTimeout(C, N);
-					}
-				}
-			}
-			a.src = "src/" + P + ".js";
-			D.body.insertAdjacentElement("beforeEnd", a);
-		} else if (typeof C == "function") setTimeout(C, N);
-		P = null;
+	// N fileName, C Callback, T Time
+	q.m = (N, C, T) => {
+		let k, s;
+		if (!N) return;
+		T = typeof C === "number" ? C : (T ? T : 127);
+		k = document.getElementById("_wqMV_" + N);
+		s = () => { if (typeof C == "function") setTimeout(C, T) };
+		if (!k) {
+			k = document.createElement("script");
+			k.type = "text/JavaScript";
+			k.id = "_wqMV_" + N;
+			if ("onload" in k) k.onload = () => { s() }
+			else k.onreadystatechange = () => { if (/loaded|complete/.test(k.readyState)) s() }
+			k.src = "src/" + N + ".js";
+			document.body.insertAdjacentElement("beforeEnd", k);
+		} else s();
 	};
 
 	// N Name, V Value 0 delete
-	q.ss = (N, V) => {
-		const s = sessionStorage;
-		if (V === 0) s.removeItem(N);
-		else if (V) s.setItem(N, V);
-		return s.getItem(N);
+	q.s = (N, V) => {
+		const k = sessionStorage;
+		if (V === 0) k.removeItem(N);
+		else if (V) k.setItem(N, V);
+		return k.getItem(N);
 	};
 
 	Array.prototype.p = Array.prototype.push;
