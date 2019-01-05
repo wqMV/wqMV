@@ -6,6 +6,109 @@
 
 "use strict";
 
+// w
+(() => {
+	// C Callback, D formData, N Name, T Time, M Mode
+	const w = (C, D, N, T, M) => {
+		let wI, wT = 0,
+			wF = window.location.origin + "/",
+
+			wPT = () => {
+				const k = new XMLHttpRequest();
+				k.onreadystatechange = () => { if (k.readyState === 4) wT = k.responseText };
+				k.open(M, wF, true);
+				if (M === "GET") k.send();
+				else k.send(D);
+			},
+
+			wOK = () => {
+				// wT is true
+				if (wT) {
+					clearInterval(wI);
+					if (C) C(wT);
+				}
+			},
+			wON = function () {
+				wPT();
+				wI = setInterval(wOK, 127);
+			},
+
+			wRD = (K) => Math.floor(Math.random() * K * 89) + (K + 1) * 127;
+
+		M = C === "GET" || D === "GET" || N === "GET" || T === "GET" ? "GET" : M;
+		M = M === "GET" ? M : "POST";
+		T = typeof C === "number" ? C : (typeof D === "number" ? D : (typeof N === "number" ? N : (typeof T === "number" ? T : 0)));
+		N = typeof C === "string" && C !== "GET" ? C : (typeof D === "string" && D !== "GET" ? D : (!N || typeof N !== "string" || N === "GET" ? "" : N));
+		D = typeof C === "object" ? C : (!D || typeof D !== "object" ? 0 : D);
+		C = !C || typeof C !== "function" ? 0 : C;
+
+		wF += N;
+		if (!N) wF += "ajax.aspx";
+		setTimeout(wON, wRD(T));
+	};
+
+	// D Json:id,ph,cn,t,p,uc,dc,h
+	w.up = function (D) {
+		var h = [],
+			del = function () {
+				t.c("您确定删除这个文件吗？", function () {
+					D.dc();
+				});
+			},
+			up = function () {
+				if (q("#Efs").V) {
+					t.c("您上传了新文件，这将覆盖原有的文件！<br>您确定继续吗？", function () {
+						q("#Ein").h("正在上传文件，请不要关闭当前窗口……");
+						D.uc();
+						return false;
+					});
+				} else {
+					D.uc();
+					return false;
+				}
+				return false;
+			},
+			cnch = function () {
+				this.value = m.sp(this.value);
+			},
+			fsch = function () {
+				var o = q("#Efs").E.files[0];
+				if (o) {
+					var fr = new FileReader();
+					fr.onload = function (e) {
+						if (o.size > 20479999) {
+							t.i("上传文件大小不能超过20M！", 1);
+							q("#Efs").E.value = "";
+						} else {
+							q("#Efl").E.value = "2";
+							q("#Ecn").E.value = m.sp(o.name);
+						}
+						o = fr = null;
+					};
+					fr.readAsDataURL(o);
+				}
+			};
+
+		q.p(h, "<input name=\"id\" type=\"hidden\" value=\"" + D.id + "\">");
+		q.p(h, "<input name=\"old\" type=\"hidden\" value=\"" + D.ph + "\">");
+		q.p(h, "<input id=\"Efl\" name=\"fl\" type=\"hidden\" value=\"1\">");
+		if (D.h) q.p(h, D.h + "<br>");
+		q.p(h, "<label>标题：<input id=\"Ecn\" name=\"cn\" type=\"text\" style=\"width:360px\" required value=\"" + D.cn + "\"></label>");
+		q.p(h, "<div style=\"padding:5px 0\"><label>文件：<input id=\"Efs\" name=\"fs\" type=\"file\" style=\"width:360px\" /></label></div>");
+		q.p(h, "<div id=\"Ein\" class=\"fs\" style=\"color:#060;text-align:center;\">　</div>");
+		t.t(D.t, D.p, h.join(""), (D.id === 0 ? 0 : 1));
+		q("#Ecn").E.onchange = cnch;
+		q("#Efs").E.onchange = fsch;
+		q("#wqEdel").E.onclick = del;
+		q("#wqEok").E.onsubmit = function () {
+			return up()
+		};
+		h = null;
+	};
+
+	window.w = w;
+})();
+
 // q
 (() => {
 	// S String, E Element
@@ -90,7 +193,7 @@
 		E.key = (C, N) => {
 			const k = () => {
 				N = N || 13;
-				if (event.keyCode == N) {
+				if (event.keyCode === N) {
 					event.returnValue = false;
 					if (typeof C === "function") C(event.target);
 				}
@@ -143,13 +246,13 @@
 	// S String
 	q.j = (S) => typeof S === "string" ? JSON.parse(`{${S}}`) : JSON.stringify(S);
 
-	// N fileName, C Callback, T Time
+	// N Name, C Callback, T Time
 	q.m = (N, C, T) => {
 		let k, s;
 		if (!N) return;
 		T = typeof C === "number" ? C : (T ? T : 127);
 		k = document.getElementById("_wqMV_" + N);
-		s = () => { if (typeof C == "function") setTimeout(C, T) };
+		s = () => { if (typeof C === "function") setTimeout(C, T) };
 		if (!k) {
 			k = document.createElement("script");
 			k.type = "text/JavaScript";
