@@ -23,7 +23,15 @@ aside, #wLogo, .copy, #wPort, #wTime { flex: 0 0 12rem }
 #wUser { flex: 0 0 18rem }
 .note { flex: 0 1 24rem }
 
-input, select, textarea, summary { outline: none }
+table { width: 100%; border-collapse: collapse; border-spacing: .5rem }
+ol, ul, li { margin: .5rem 0; text-align: left }
+form { line-height: 2; text-align: left }
+summary, input, select, textarea { text-align: left; border-radius: 3px; outline: none }
+input, textarea { padding: 5px 1rem }
+input, select { margin: 0 1rem 0 .5rem }
+textarea { margin: 10px; width: 25rem; height: 4rem }
+select { padding: 4px }
+[type=file] { padding-top: 2px; padding-bottom: 3px }
 
 body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-serif }
 .fxs { font-weight: 100; font-size: .75rem }
@@ -36,6 +44,10 @@ body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-ser
 
 .p5 { padding: 5px }
 
+@keyframes note {
+	0% { left: 100% }
+	100% {left: -100% }
+}
 @media screen and (max-width: 798px) {
 	html { font-size: small }
 	nav { flex-wrap: wrap }
@@ -45,7 +57,7 @@ body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-ser
 
 /* M */
 ::-webkit-details-marker { direction: ltr; margin-left: 1rem }
-details, summary, details li { cursor: pointer; border-radius: 5px; transition: 1s ease-out }
+details, summary, details li { margin: 0; cursor: pointer; border-radius: 5px; transition: 1s ease-out }
 summary { direction: rtl; padding: 5px 2rem }
 details li { list-style: none; text-align: center; padding: 5px }
 details, details[open] { margin: 5px }

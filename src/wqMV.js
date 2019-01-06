@@ -35,8 +35,7 @@
 
 			wRD = (K) => Math.floor(Math.random() * K * 89) + (K + 1) * 127;
 
-		M = C === "GET" || D === "GET" || N === "GET" || T === "GET" ? "GET" : M;
-		M = M === "GET" ? M : "POST";
+		M = C === "GET" || D === "GET" || N === "GET" || T === "GET" ? "GET" : (M === "GET" ? M : "POST");
 		T = typeof C === "number" ? C : (typeof D === "number" ? D : (typeof N === "number" ? N : (typeof T === "number" ? T : 0)));
 		N = typeof C === "string" && C !== "GET" ? C : (typeof D === "string" && D !== "GET" ? D : (!N || typeof N !== "string" || N === "GET" ? "" : N));
 		D = typeof C === "object" ? C : (!D || typeof D !== "object" ? 0 : D);
@@ -47,63 +46,59 @@
 		setTimeout(wON, wRD(T));
 	};
 
-	// D Json:id,ph,cn,t,p,uc,dc,h
-	w.up = function (D) {
-		var h = [],
-			del = function () {
-				t.c("您确定删除这个文件吗？", function () {
-					D.dc();
-				});
-			},
-			up = function () {
-				if (q("#Efs").V) {
-					t.c("您上传了新文件，这将覆盖原有的文件！<br>您确定继续吗？", function () {
-						q("#Ein").h("正在上传文件，请不要关闭当前窗口……");
-						D.uc();
-						return false;
-					});
-				} else {
-					D.uc();
+	// J Json: id, ph, cn, t, p, uc, dc, h
+	w.f = (J) => {
+		const del = () => {
+			t.c("您确定删除这个文件吗？", function () {
+				J.dc();
+			});
+		}, up = () => {
+			if (q("#Efs").V) {
+				t.c("您上传了新文件，这将覆盖原有的文件！<br>您确定继续吗？", function () {
+					q("#Ein").h("正在上传文件，请不要关闭当前窗口……");
+					J.uc();
 					return false;
-				}
+				});
+			} else {
+				J.uc();
 				return false;
-			},
-			cnch = function () {
-				this.value = m.sp(this.value);
-			},
-			fsch = function () {
-				var o = q("#Efs").E.files[0];
-				if (o) {
-					var fr = new FileReader();
-					fr.onload = function (e) {
-						if (o.size > 20479999) {
-							t.i("上传文件大小不能超过20M！", 1);
-							q("#Efs").E.value = "";
-						} else {
-							q("#Efl").E.value = "2";
-							q("#Ecn").E.value = m.sp(o.name);
-						}
-						o = fr = null;
-					};
-					fr.readAsDataURL(o);
-				}
-			};
-
-		q.p(h, "<input name=\"id\" type=\"hidden\" value=\"" + D.id + "\">");
-		q.p(h, "<input name=\"old\" type=\"hidden\" value=\"" + D.ph + "\">");
-		q.p(h, "<input id=\"Efl\" name=\"fl\" type=\"hidden\" value=\"1\">");
-		if (D.h) q.p(h, D.h + "<br>");
-		q.p(h, "<label>标题：<input id=\"Ecn\" name=\"cn\" type=\"text\" style=\"width:360px\" required value=\"" + D.cn + "\"></label>");
-		q.p(h, "<div style=\"padding:5px 0\"><label>文件：<input id=\"Efs\" name=\"fs\" type=\"file\" style=\"width:360px\" /></label></div>");
-		q.p(h, "<div id=\"Ein\" class=\"fs\" style=\"color:#060;text-align:center;\">　</div>");
-		t.t(D.t, D.p, h.join(""), (D.id === 0 ? 0 : 1));
-		q("#Ecn").E.onchange = cnch;
-		q("#Efs").E.onchange = fsch;
-		q("#wqEdel").E.onclick = del;
-		q("#wqEok").E.onsubmit = function () {
-			return up()
+			}
+			return false;
+		}, cnch = () => {
+			this.value = m.sp(this.value);
+		}, fsch = () => {
+			var o = q("#Efs").E.files[0];
+			if (o) {
+				var fr = new FileReader();
+				fr.onload = function (e) {
+					if (o.size > 20479999) {
+						t.i("上传文件大小不能超过20M！", 1);
+						q("#Efs").E.value = "";
+					} else {
+						q("#Efl").E.value = "2";
+						q("#Ecn").E.value = m.sp(o.name);
+					}
+					o = fr = null;
+				};
+				fr.readAsDataURL(o);
+			}
 		};
-		h = null;
+		let h = [];
+
+		h.p(`<input name="id" type="hidden" value="${J.id}">`);
+		h.p(`<input name="old" type="hidden" value="${J.ph}">`);
+		h.p(`<input id="Efl" name="fl" type="hidden" value="1">`);
+		//if (J.h) h.p(J.h + "<br>");
+		h.p(`<label>标题：<input id="Ecn" name="cn" type="text" style="width:360px" required value="${J.cn}"></label>`);
+		h.p(`<div style="padding:5px 0"><label>文件：<input id="Efs" name="fs" type="file" style="width:360px" /></label></div>`);
+		h.p(`<div id="Ein" class="fs" style="color:#060; text-align:center">　</div>`);
+		//t.t(J.t, J.p, h.join(""), (J.id === 0 ? 0 : 1));
+		//q("Ecn").onchange = cnch;
+		//q("Efs").onchange = fsch;
+		//q("#wqEdel").E.onclick = del;
+		//q("#wqEok").E.onsubmit = () => up();
+
+		return h.join("");
 	};
 
 	window.w = w;

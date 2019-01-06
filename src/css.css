@@ -9,9 +9,8 @@ aside, #wLogo { background: #34393c; color: #fff }
 ::-webkit-details-marker { color: #999 }
 
 a:hover, a:active { color: #c03 }
+input, select, textarea { background: #eee; border: 1px solid #999 }
+input:hover, select:hover, textarea:hover { color: #060; border-color: #28d }
+input[disabled] { background: #ccc }
 
 #wNote { position: relative; animation: note 12s cubic-bezier(0, .6, 1, .4) infinite alternate }
-@keyframes note {
-	0% { left: 100% }
-	100% {left: -100% }
-}
