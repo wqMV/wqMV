@@ -95,8 +95,8 @@
 		//t.t(J.t, J.p, h.join(""), (J.id === 0 ? 0 : 1));
 		//q("Ecn").onchange = cnch;
 		//q("Efs").onchange = fsch;
-		//q("#wqEdel").E.onclick = del;
-		//q("#wqEok").E.onsubmit = () => up();
+		//q("#_w_D").E.onclick = del;
+		//q("#_w_F").E.onsubmit = () => up();
 
 		return h.join("");
 	};
@@ -246,12 +246,12 @@
 		let k, s;
 		if (!N) return;
 		T = typeof C === "number" ? C : (T ? T : 127);
-		k = document.getElementById("_wqMV_" + N);
+		k = document.getElementById("_w_" + N);
 		s = () => { if (typeof C === "function") setTimeout(C, T) };
 		if (!k) {
 			k = document.createElement("script");
 			k.type = "text/JavaScript";
-			k.id = "_wqMV_" + N;
+			k.id = "_w_" + N;
 			if ("onload" in k) k.onload = () => { s() }
 			else k.onreadystatechange = () => { if (/loaded|complete/.test(k.readyState)) s() }
 			k.src = "src/" + N + ".js";
@@ -268,5 +268,159 @@
 	};
 
 	Array.prototype.p = Array.prototype.push;
+	Array.prototype.j = Array.prototype.join;
 	window.q = q;
+})();
+
+// V
+(() => {
+	// S String, T Text, P Prompt, H Html, N Number, C Callback
+	const v = {
+		// T Title, S Subheading, H Html, M Mode 0 default 1 del 2 close
+		t: (T, S, H, M) => {
+			let k = q("_w_tB");
+			if (k) v.del();
+			k = q("#_w_tB");
+			if (!k) {
+				// B Background, F Foreground, H Head, T Title, S Subheading, M main, U bUtton
+				k = [];
+				k.p(`<div id="_w_tB"></div>`);
+				k.p(`<div id="_w_tF">`);
+				k.p(`<div id="_w_tH" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
+				k.p(`<div id="_w_tT" class="fl"></div>`);
+				k.p(`<div id="_w_tS" class="fs"></div>`);
+				k.p(`</div>`);
+				k.p(`<form id="_w_F">`);
+				k.p(`<div id="_w_tM"></div>`);
+				k.p(`<div id="_w_tU">`);
+				if (M !== 2) {
+					k.p(`<input type="submit" value="确定" />`);
+					if (M === 1) k.p(`<input id="_w_D" type="button" value="删除" />`);
+					k.p(`<input type="reset" value="重置" />`);
+				}
+				k.p(`<input type="button" onclick="v.del()" value="关闭" />`);
+				k.p(`</div></form></div>`);
+				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
+				k = q("#_w_tB").E;
+				if (k) {
+					q("#_w_tT").h(T);
+					q("#_w_tS").h(S);
+					q("#_w_tM").h(H);
+					t.ad("t");
+				}
+			}
+		},
+
+		c: function (T, C) {
+			var a = q("#wqBtc").E;
+			if (a) t.del("i");
+			a = q("#wqBtc").E;
+			if (!a) {
+				a = [];
+				q.p(a, "<div id=\"wqBtc\"></div>");
+				q.p(a, "<div id=\"wqRtc\">");
+				q.p(a, "<div id=\"wqAtca\" class=\"hl\"></div>");
+				q.p(a, "<div id=\"wqCbt\">")
+				q.p(a, "<input id =\"wqCok\" type=\"button\" value=\"确定\" />");
+				q.p(a, "<input type=\"button\" onclick=\"t.del('c')\" value=\"关闭\" />");
+				q.p(a, "</div></div>");
+				document.body.insertAdjacentHTML("beforeEnd", a.join(""));
+				a = q("#wqCok").E;
+				if (a) {
+					a.onclick = function () {
+						t.del("c");
+						if (typeof C == "function") C();
+					};
+					a = q("#wqAtca").E;
+					a.innerHTML = T;
+					t.ad("c");
+				}
+			}
+			T = a = null;
+		},
+
+		i: function (T, N) {
+			var a = q("#wqBti").E;
+			if (a) t.del("i");
+			a = q("#wqBti").E;
+			if (!a) {
+				a = [];
+				q.p(a, "<div id=\"wqBti\"></div>");
+				q.p(a, "<div id=\"wqRti\" style=\"background:");
+				if (N == 1) q.p(a, "#f66");
+				else q.p(a, "#6f6");
+				q.p(a, "\">");
+				q.p(a, "<div id=\"wqAtia\" class=\"fs\"></div>");
+				q.p(a, "</div>");
+				document.body.insertAdjacentHTML("beforeEnd", a.join(""));
+				a = q("#wqAtia").E;
+				if (a) {
+					a.innerHTML = T;
+					if (N != 2) setTimeout(function () {
+						t.del("i")
+					}, 1200);
+					t.ad("i");
+				}
+			}
+			T = N = a = null;
+		},
+
+		del: function (S) {
+			var a, b;
+			if (S == U) S = "t";
+			a = q("#wqBt" + S).E, b = q("#wqRt" + S).E;
+			if (a) a.parentElement.removeChild(a);
+			if (b) b.parentElement.removeChild(b);
+			S = a = b = null;
+		},
+
+		ad: function (S) {
+			var a = b = 0,
+				c = q("#wqRt" + S).E;
+			if (c) {
+				a = (window.innerWidth - c.offsetWidth) / 2 - 20;
+				b = (window.innerHeight - c.offsetHeight) / 2 - 50;
+				if (a < 0) a = 0;
+				if (b < 0) b = 0;
+				c.style.left = a + "px";
+				c.style.top = b + "px";
+			}
+			S = a = b = c = null;
+		},
+
+		mv: {
+			o: 0, x: 0, y: 0, mx: 0, my: 0, f: 0,
+			m: function (e) {
+				this.o = q("#_w_tF").E;
+				this.tx = this.o.offsetLeft;
+				this.ty = this.o.offsetTop;
+				this.mx = e.clientX;
+				this.my = e.clientY;
+			},
+			d: function (e) {
+				this.m(e);
+				this.o.style.cursor = "move";
+				this.f = 1;
+			},
+			v: function (e) {
+				var x = e.clientX,
+					y = e.clientY;
+				if (this.f) {
+					this.o.style.left = parseInt(this.tx) + parseInt(x) - parseInt(this.mx) + "px";
+					this.o.style.top = parseInt(this.ty) + parseInt(y) - parseInt(this.my) + "px";
+				}
+			},
+			u: function (e) {
+				if (this.f) {
+					var x = e.clientX,
+						y = e.clientY;
+					this.o.style.left = parseInt(this.tx) + parseInt(x) - parseInt(this.mx) + "px";
+					this.o.style.top = parseInt(this.ty) + parseInt(y) - parseInt(this.my) + "px";
+					this.o.style.cursor = "default";
+					this.f = 0;
+				}
+			}
+		}
+	};
+	window.v = v;
 })();
