@@ -90,7 +90,7 @@
 		h.p(`<input id="Efl" name="fl" type="hidden" value="1">`);
 		//if (J.h) h.p(J.h + "<br>");
 		h.p(`<label>标题：<input id="Ecn" name="cn" type="text" style="width:360px" required value="${J.cn}"></label>`);
-		h.p(`<div style="padding:5px 0"><label>文件：<input id="Efs" name="fs" type="file" style="width:360px" /></label></div>`);
+		h.p(`<div style="padding:5px 0"><label>文件：<input id="Efs" name="fs" type="file" style="width:360px"></label></div>`);
 		h.p(`<div id="Ein" class="fs" style="color:#060; text-align:center">　</div>`);
 		//t.t(J.t, J.p, h.join(""), (J.id === 0 ? 0 : 1));
 		//q("Ecn").onchange = cnch;
@@ -278,36 +278,33 @@
 	const v = {
 		// T Title, S Subheading, H Html, M Mode 0 default 1 del 2 close
 		t: (T, S, H, M) => {
-			let k = q("_w_tB");
+			let k = q("_w_Bt");
 			if (k) v.del();
-			k = q("#_w_tB");
+			k = q("#_w_Bt");
 			if (!k) {
 				// B Background, F Foreground, H Head, T Title, S Subheading, M main, U bUtton
 				k = [];
-				k.p(`<div id="_w_tB"></div>`);
-				k.p(`<div id="_w_tF">`);
-				k.p(`<div id="_w_tH" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
-				k.p(`<div id="_w_tT" class="fl"></div>`);
-				k.p(`<div id="_w_tS" class="fs"></div>`);
+				k.p(`<div id="_w_Bt"></div>`);
+				k.p(`<div id="_w_Ft">`);
+				k.p(`<div id="_w_Ht" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
+				k.p(`<div id="_w_Tt"></div>`);
+				k.p(`<div id="_w_St" class="fxs"></div>`);
 				k.p(`</div>`);
 				k.p(`<form id="_w_F">`);
-				k.p(`<div id="_w_tM"></div>`);
-				k.p(`<div id="_w_tU">`);
+				k.p(`<div id="_w_Mt"></div>`);
+				k.p(`<div id="_w_Ut">`);
 				if (M !== 2) {
-					k.p(`<input type="submit" value="确定" />`);
-					if (M === 1) k.p(`<input id="_w_D" type="button" value="删除" />`);
-					k.p(`<input type="reset" value="重置" />`);
+					k.p(`<input type="submit" value="确定">`);
+					if (M === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
+					k.p(`<input type="reset" value="重置">`);
 				}
-				k.p(`<input type="button" onclick="v.del()" value="关闭" />`);
+				k.p(`<input type="button" onclick="v.del()" value="关闭">`);
 				k.p(`</div></form></div>`);
 				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
-				k = q("#_w_tB").E;
-				if (k) {
-					q("#_w_tT").h(T);
-					q("#_w_tS").h(S);
-					q("#_w_tM").h(H);
-					t.ad("t");
-				}
+				q("_w_Tt").h = T;
+				q("_w_St").h = S;
+				q("_w_Mt").h = H;
+				v.ad("t");
 			}
 		},
 
@@ -321,8 +318,8 @@
 				q.p(a, "<div id=\"wqRtc\">");
 				q.p(a, "<div id=\"wqAtca\" class=\"hl\"></div>");
 				q.p(a, "<div id=\"wqCbt\">")
-				q.p(a, "<input id =\"wqCok\" type=\"button\" value=\"确定\" />");
-				q.p(a, "<input type=\"button\" onclick=\"t.del('c')\" value=\"关闭\" />");
+				q.p(a, "<input id =\"wqCok\" type=\"button\" value=\"确定\">");
+				q.p(a, "<input type=\"button\" onclick=\"t.del('c')\" value=\"关闭\">");
 				q.p(a, "</div></div>");
 				document.body.insertAdjacentHTML("beforeEnd", a.join(""));
 				a = q("#wqCok").E;
@@ -365,33 +362,28 @@
 			T = N = a = null;
 		},
 
-		del: function (S) {
-			var a, b;
-			if (S == U) S = "t";
-			a = q("#wqBt" + S).E, b = q("#wqRt" + S).E;
-			if (a) a.parentElement.removeChild(a);
-			if (b) b.parentElement.removeChild(b);
-			S = a = b = null;
+		del: (S) => {
+			S = !S ? "t" : S;
+			q("_w_B" + S).del();
+			q("_w_F" + S).del();
 		},
 
-		ad: function (S) {
-			var a = b = 0,
-				c = q("#wqRt" + S).E;
-			if (c) {
-				a = (window.innerWidth - c.offsetWidth) / 2 - 20;
-				b = (window.innerHeight - c.offsetHeight) / 2 - 50;
-				if (a < 0) a = 0;
-				if (b < 0) b = 0;
-				c.style.left = a + "px";
-				c.style.top = b + "px";
+		ad: (S) => {
+			let x = 0, y = 0, s = q("_w_F" + S);
+			if (s) {
+				x = (window.innerWidth - s.offsetWidth) / 2 - 20;
+				y = (window.innerHeight - s.offsetHeight) / 2 - 50;
+				if (x < 0) x = 0;
+				if (y < 0) y = 0;
+				s.style.left = x + "px";
+				s.style.top = y + "px";
 			}
-			S = a = b = c = null;
 		},
 
 		mv: {
-			o: 0, x: 0, y: 0, mx: 0, my: 0, f: 0,
+			o: 0, tx: 0, ty: 0, mx: 0, my: 0, f: 0,
 			m: function (e) {
-				this.o = q("#_w_tF").E;
+				this.o = q("_w_Ft");
 				this.tx = this.o.offsetLeft;
 				this.ty = this.o.offsetTop;
 				this.mx = e.clientX;
@@ -403,8 +395,7 @@
 				this.f = 1;
 			},
 			v: function (e) {
-				var x = e.clientX,
-					y = e.clientY;
+				let x = e.clientX, y = e.clientY;
 				if (this.f) {
 					this.o.style.left = parseInt(this.tx) + parseInt(x) - parseInt(this.mx) + "px";
 					this.o.style.top = parseInt(this.ty) + parseInt(y) - parseInt(this.my) + "px";
@@ -412,8 +403,7 @@
 			},
 			u: function (e) {
 				if (this.f) {
-					var x = e.clientX,
-						y = e.clientY;
+					let x = e.clientX, y = e.clientY;
 					this.o.style.left = parseInt(this.tx) + parseInt(x) - parseInt(this.mx) + "px";
 					this.o.style.top = parseInt(this.ty) + parseInt(y) - parseInt(this.my) + "px";
 					this.o.style.cursor = "default";
@@ -422,5 +412,6 @@
 			}
 		}
 	};
+
 	window.v = v;
 })();
