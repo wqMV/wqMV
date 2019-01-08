@@ -1,16 +1,17 @@
 body { background: #000; color: #333 }
-nav { background: #ddd }
+nav { background: gainsboro }
 section { background: #fff }
-header, summary:hover, details li:hover { background: #28d }
+header, summary:hover, details li:hover { background: #08e }
 details[open] { background: #5e6368 }
 aside, #wLogo { background: #34393c; color: #fff }
-#wTime { background: #fff; color: #030 }
+#wTime { background: #fff; color: #08e }
 .note, .copy { border-left: 1px solid #000 }
-::-webkit-details-marker { color: #999 }
+::-webkit-details-marker { color: silver }
 
-a:hover, a:active { color: #c03 }
-input, select, textarea { background: #eee; border: 1px solid #999 }
-input:hover, select:hover, textarea:hover { color: #28d; border-color: #28d }
-input[disabled] { background: #ccc }
+a, a:visited { color: #333 }
+a:hover, a:active { color: #08e }
+input, select, textarea { background: snow; border: 1px solid silver }
+input:hover, select:hover, textarea:hover { color: #08e; background: ghostwhite; border-color: #08e }
+input[disabled] { background: gainsboro }
 
 #wNote { position: relative; animation: note 12s cubic-bezier(0, .6, 1, .4) infinite alternate }

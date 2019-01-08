@@ -66,17 +66,17 @@ details, details[open] { margin: 5px }
 
 /* V */
 #_w_Bt, #_w_Ft, #_w_Bc, #_w_Fc, #wqBti, #wqRti { position: absolute; display: block }
-#_w_Bt, #_w_Bc, #wqBti { height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; opacity: 0.5; background: #666 }
+#_w_Bt, #_w_Bc, #wqBti { height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; opacity: 0.5; background: gray }
 #_w_Ft div, #_w_Fc div, #wqRti div { display: block }
 #_w_Bt { z-index: 1001 }
 #_w_Bc { z-index: 2001 }
 #wqBti { z-index: 3001 }
-#_w_Ft, #_w_Fc, #wqRti { border: 1px solid #ccc; border-radius: 5px; box-shadow: 2px 5px 12px #666 }
-#_w_Ft { z-index: 1002; background: #fff }
-#_w_Fc { z-index: 2002; background: #ffc; padding: 1rem }
+#_w_Ft, #_w_Fc, #wqRti { border: 1px solid silver; border-radius: 5px; box-shadow: 2px 5px 12px gray }
+#_w_Ft { z-index: 1002; background: white }
+#_w_Fc { z-index: 2002; background: cornsilk; padding: 1rem }
 #wqRti { z-index: 3002; padding: 20px }
-#_w_Ht { margin: 5px; border: 1px dotted #999; border-radius: 5px; text-align: center }
+#_w_Ht { margin: 5px; border: 1px dotted silver; border-radius: 5px; text-align: center }
 #_w_Mc { padding-bottom: 1rem; text-align: left }
-#_w_St { color: #c03; border-top: 1px dotted #999 }
+#_w_St { color: crimson; border-top: 1px dotted silver }
 #_w_Mt { padding: 5px 1rem }
 #_w_Ut { padding: 5px .5rem 5px 1rem; text-align: center }

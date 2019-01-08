@@ -323,7 +323,7 @@
 				k = q("_w_OKc");
 				if (k) {
 					k.onclick = function () {
-						t.del("c");
+						v.del("c");
 						if (typeof C == "function") C();
 					};
 					q("_w_Mc").h = H;
