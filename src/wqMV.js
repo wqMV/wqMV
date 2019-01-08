@@ -274,14 +274,12 @@
 
 // V
 (() => {
-	// S String, T Text, P Prompt, H Html, N Number, C Callback
 	const v = {
 		// T Title, S Subheading, H Html, M Mode 0 default 1 del 2 close
 		t: (T, S, H, M) => {
 			let k = q("_w_Bt");
 			if (k) v.del();
-			k = q("#_w_Bt");
-			if (!k) {
+			else {
 				// B Background, F Foreground, H Head, T Title, S Subheading, M main, U bUtton
 				k = [];
 				k.p(`<div id="_w_Bt"></div>`);
@@ -308,32 +306,30 @@
 			}
 		},
 
-		c: function (T, C) {
-			var a = q("#wqBtc").E;
-			if (a) t.del("i");
-			a = q("#wqBtc").E;
-			if (!a) {
-				a = [];
-				q.p(a, "<div id=\"wqBtc\"></div>");
-				q.p(a, "<div id=\"wqRtc\">");
-				q.p(a, "<div id=\"wqAtca\" class=\"hl\"></div>");
-				q.p(a, "<div id=\"wqCbt\">")
-				q.p(a, "<input id =\"wqCok\" type=\"button\" value=\"确定\">");
-				q.p(a, "<input type=\"button\" onclick=\"t.del('c')\" value=\"关闭\">");
-				q.p(a, "</div></div>");
-				document.body.insertAdjacentHTML("beforeEnd", a.join(""));
-				a = q("#wqCok").E;
-				if (a) {
-					a.onclick = function () {
+		// H Html, C Callback
+		c: (H, C) => {
+			let k = q("_w_Bc");
+			if (k) v.del("c");
+			else {
+				k = [];
+				k.p(`<div id="_w_Bc"></div>`);
+				k.p(`<div id="_w_Fc">`);
+				k.p(`<div id="_w_Mc"></div>`);
+				k.p(`<div class="tc">`)
+				k.p(`<input id ="_w_OKc" type="button" value="确定">`);
+				k.p(`<input type="button" onclick="v.del('c')" value="关闭">`);
+				k.p(`</div></div>`);
+				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
+				k = q("_w_OKc");
+				if (k) {
+					k.onclick = function () {
 						t.del("c");
 						if (typeof C == "function") C();
 					};
-					a = q("#wqAtca").E;
-					a.innerHTML = T;
-					t.ad("c");
+					q("_w_Mc").h = H;
+					v.ad("c");
 				}
 			}
-			T = a = null;
 		},
 
 		i: function (T, N) {
