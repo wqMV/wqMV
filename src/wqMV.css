@@ -29,7 +29,7 @@ form { line-height: 2; text-align: left }
 summary, input, select, textarea { text-align: left; border-radius: 5px; outline: none }
 input, textarea { padding: 5px 1rem }
 input, select { margin: 0 1rem 0 .5rem }
-textarea { margin: 10px; width: 25rem; height: 4rem }
+textarea { margin: 10px; width: 24rem; height: 4rem }
 select { padding: 4px }
 [type=file] { padding-top: 2px; padding-bottom: 3px }
 
@@ -78,7 +78,7 @@ details, details[open] { margin: 5px }
 #_w_Ft { z-index: 1002; background: white }
 #_w_Fc { z-index: 2002; background: cornsilk; padding: 1rem }
 #_w_Fi { z-index: 3002; padding: 1rem }
-#_w_Ht { margin: 5px; border: 1px dotted silver; border-radius: 5px; text-align: center }
+#_w_Ht { margin: 5px; border: 1px dotted silver; border-radius: 5px; text-align: center; cursor: move }
 #_w_Mc { padding-bottom: 1rem; text-align: left }
 #_w_St { color: crimson; border-top: 1px dotted silver }
 #_w_Mt { padding: 5px 1rem }

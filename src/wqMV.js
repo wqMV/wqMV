@@ -33,7 +33,7 @@
 				wI = setInterval(wOK, 127);
 			},
 
-			wRD = (K) => Math.floor(Math.random() * K * 89) + (K + 1) * 127;
+			wRD = K => Math.floor(Math.random() * K * 89) + (K + 1) * 127;
 
 		M = C === "GET" || D === "GET" || N === "GET" || T === "GET" ? "GET" : (M === "GET" ? M : "POST");
 		T = typeof C === "number" ? C : (typeof D === "number" ? D : (typeof N === "number" ? N : (typeof T === "number" ? T : 0)));
@@ -46,12 +46,10 @@
 		setTimeout(wON, wRD(T));
 	};
 
-	// J Json: id, ph, cn, t, p, uc, dc, h
-	w.f = (J) => {
+	// J Json: id, cn, ph path, t title, s subheading, h html, uc up callback, dc del callback
+	w.f = J => {
 		const del = () => {
-			t.c("您确定删除这个文件吗？", function () {
-				J.dc();
-			});
+			v.c("您确定删除这个文件吗？", () => { J.dc() });
 		}, up = () => {
 			if (q("#Efs").V) {
 				t.c("您上传了新文件，这将覆盖原有的文件！<br>您确定继续吗？", function () {
@@ -67,38 +65,35 @@
 		}, cnch = () => {
 			this.value = m.sp(this.value);
 		}, fsch = () => {
-			var o = q("#Efs").E.files[0];
-			if (o) {
-				var fr = new FileReader();
-				fr.onload = function (e) {
-					if (o.size > 20479999) {
-						t.i("上传文件大小不能超过20M！", 1);
-						q("#Efs").E.value = "";
+			const k = q("Efs").files[0];
+			if (k) {
+				const fr = new FileReader();
+				fr.onload = () => {
+					if (k.size > 20479999) {
+						v.i("上传文件大小不能超过20M！", 1);
+						q("Efs").v = "";
 					} else {
-						q("#Efl").E.value = "2";
-						q("#Ecn").E.value = m.sp(o.name);
+						q("Efl").v = "2";
+						q("Ecn").v = m.sp(k.name);
 					}
-					o = fr = null;
 				};
-				fr.readAsDataURL(o);
+				fr.readAsDataURL(k);
 			}
 		};
-		let h = [];
 
+		let h = [];
 		h.p(`<input name="id" type="hidden" value="${J.id}">`);
 		h.p(`<input name="old" type="hidden" value="${J.ph}">`);
 		h.p(`<input id="Efl" name="fl" type="hidden" value="1">`);
-		//if (J.h) h.p(J.h + "<br>");
-		h.p(`<label>标题：<input id="Ecn" name="cn" type="text" style="width:360px" required value="${J.cn}"></label>`);
-		h.p(`<div style="padding:5px 0"><label>文件：<input id="Efs" name="fs" type="file" style="width:360px"></label></div>`);
+		if (J.h) h.p(J.h + "<br>");
+		h.p(`<label>标题：<input id="Ecn" name="cn" type="text" style="width:24rem" required value="${J.cn}"></label>`);
+		h.p(`<div style="padding:5px 0"><label>文件：<input id="Efs" name="fs" type="file" style="width:24rem"></label></div>`);
 		h.p(`<div id="Ein" class="fs" style="color:#060; text-align:center">　</div>`);
-		//t.t(J.t, J.p, h.join(""), (J.id === 0 ? 0 : 1));
-		//q("Ecn").onchange = cnch;
-		//q("Efs").onchange = fsch;
-		//q("#_w_D").E.onclick = del;
-		//q("#_w_F").E.onsubmit = () => up();
-
-		return h.join("");
+		v.t(J.t, J.s, h.j(""), (J.id === 0 ? 0 : 1));
+		q("Ecn").onchange = cnch;
+		q("Efs").onchange = fsch;
+		q("_w_D").onclick = del;
+		q("_w_F").onsubmit = () => up();
 	};
 
 	window.w = w;
@@ -109,7 +104,7 @@
 	// S String, E Element
 	const q = (S, E) => {
 		let l = 0;
-		const s = (E) => {
+		const s = E => {
 			if (!E.g) {
 				E.g = (S, V) => {
 					if (S && V) E.setAttribute(S, V);
@@ -119,11 +114,11 @@
 				Object.defineProperties(E, {
 					h: {
 						get: () => { return E.innerHTML || "" },
-						set: (S) => { E.innerHTML = S }
+						set: S => { E.innerHTML = S }
 					},
 					v: {
 						get: () => { return E.value || "" },
-						set: (S) => { if (E.value !== "undefined") E.value = S }
+						set: S => { if (E.value !== "undefined") E.value = S }
 					}
 				});
 			}
@@ -164,7 +159,7 @@
 
 
 		// J Json or String
-		E.css = (J) => {
+		E.css = J => {
 			if (typeof J === "object") {
 				if (l) for (const i of E) for (const j in J) i.style[j] = J[j];
 				else for (const j in J) E.style[j] = J[j];
@@ -178,13 +173,13 @@
 			return "";
 		};
 
-		// F Function
-		E.for = (C) => {
+		// C Callback
+		E.for = C => {
 			if (l) for (const i of E) C(i);
 			return E;
 		};
 
-		// N keycode, C Callback
+		// C Callback, N keycode
 		E.key = (C, N) => {
 			const k = () => {
 				N = N || 13;
@@ -202,7 +197,7 @@
 	};
 
 	// S String
-	q.a = (S) => {
+	q.a = S => {
 		if (typeof S === "string") {
 			let k = [];
 			S = S.split(";");
@@ -232,14 +227,14 @@
 	};
 
 	// J Json
-	q.d = (J) => {
+	q.d = J => {
 		let k = new FormData();
 		for (const i in J) k.append(i, J[i]);
 		return k;
 	};
 
 	// S String
-	q.j = (S) => typeof S === "string" ? JSON.parse(`{${S}}`) : JSON.stringify(S);
+	q.j = S => typeof S === "string" ? JSON.parse(`{${S}}`) : JSON.stringify(S);
 
 	// N Name, C Callback, T Time
 	q.m = (N, C, T) => {
@@ -296,7 +291,7 @@
 					if (M === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
 					k.p(`<input type="reset" value="重置">`);
 				}
-				k.p(`<input type="button" onclick="v.del()" value="关闭">`);
+				k.p(`<input type="button" onclick="window.v.del()" value="关闭">`);
 				k.p(`</div></form></div>`);
 				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 				q("_w_Tt").h = T;
@@ -317,7 +312,7 @@
 				k.p(`<div id="_w_Mc"></div>`);
 				k.p(`<div class="tc">`)
 				k.p(`<input id ="_w_OKc" type="button" value="确定">`);
-				k.p(`<input type="button" onclick="v.del('c')" value="关闭">`);
+				k.p(`<input type="button" onclick="window.v.del('c')" value="关闭">`);
 				k.p(`</div></div>`);
 				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 				k = q("_w_OKc");
@@ -355,13 +350,13 @@
 			}
 		},
 
-		del: (S) => {
+		del: S => {
 			S = !S ? "t" : S;
 			q("_w_B" + S).del();
 			q("_w_F" + S).del();
 		},
 
-		adi: (S) => {
+		adi: S => {
 			let x = 0, y = 0, s = q("_w_F" + S);
 			if (s) {
 				x = (window.innerWidth - s.offsetWidth) / 2;
@@ -376,7 +371,7 @@
 		mv: {
 			o: 0, tx: 0, ty: 0, mx: 0, my: 0, f: 0,
 			m: function (e) {
-				this.o = q("_w_Ft");
+				this.o = document.getElementById("_w_Ft");
 				this.tx = this.o.offsetLeft;
 				this.ty = this.o.offsetTop;
 				this.mx = e.clientX;
@@ -384,7 +379,6 @@
 			},
 			d: function (e) {
 				this.m(e);
-				this.o.style.cursor = "move";
 				this.f = 1;
 			},
 			v: function (e) {
