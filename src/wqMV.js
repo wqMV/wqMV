@@ -332,30 +332,27 @@
 			}
 		},
 
-		i: function (T, N) {
-			var a = q("#wqBti").E;
-			if (a) t.del("i");
-			a = q("#wqBti").E;
-			if (!a) {
-				a = [];
-				q.p(a, "<div id=\"wqBti\"></div>");
-				q.p(a, "<div id=\"wqRti\" style=\"background:");
-				if (N == 1) q.p(a, "#f66");
-				else q.p(a, "#6f6");
-				q.p(a, "\">");
-				q.p(a, "<div id=\"wqAtia\" class=\"fs\"></div>");
-				q.p(a, "</div>");
-				document.body.insertAdjacentHTML("beforeEnd", a.join(""));
-				a = q("#wqAtia").E;
-				if (a) {
-					a.innerHTML = T;
-					if (N != 2) setTimeout(function () {
-						t.del("i")
-					}, 1200);
-					t.ad("i");
+		// T Text, M Mode 0 green 1 Red 2 always
+		i: (T, M) => {
+			let k = q("_w_Bi");
+			if (k) v.del("i");
+			else {
+				k = [];
+				k.p(`<div id="_w_Bi"></div>`);
+				k.p(`<div id="_w_Fi" class="`);
+				if (M == 1) k.p(`lr`);
+				else k.p(`lg`);
+				k.p(`">`);
+				k.p(`<div id="_w_Mi" class="fs"></div>`);
+				k.p(`</div>`);
+				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
+				k = q("_w_Mi");
+				if (k) {
+					k.h = T;
+					if (M != 2) setTimeout(() => { v.del("i") }, 1200);
+					v.ad("i");
 				}
 			}
-			T = N = a = null;
 		},
 
 		del: (S) => {

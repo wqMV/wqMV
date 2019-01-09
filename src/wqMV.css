@@ -26,7 +26,7 @@ aside, #wLogo, .copy, #wPort, #wTime { flex: 0 0 12rem }
 table { width: 100%; border-collapse: collapse; border-spacing: .5rem }
 ol, ul, li { margin: .5rem 0; text-align: left }
 form { line-height: 2; text-align: left }
-summary, input, select, textarea { text-align: left; border-radius: 3px; outline: none }
+summary, input, select, textarea { text-align: left; border-radius: 5px; outline: none }
 input, textarea { padding: 5px 1rem }
 input, select { margin: 0 1rem 0 .5rem }
 textarea { margin: 10px; width: 25rem; height: 4rem }
@@ -39,6 +39,9 @@ body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-ser
 .fl { font-weight: 500; font-size: 1.2rem }
 .fxl { font-weight: 500; font-size: 1.5rem }
 .fxxl { font-weight: 500; font-size: 2rem }
+
+.lg { background: lightgreen }
+.lr { background: lightcoral }
 
 .tc { text-align: center }
 
@@ -65,16 +68,16 @@ details li { list-style: none; text-align: center; padding: 5px }
 details, details[open] { margin: 5px }
 
 /* V */
-#_w_Bt, #_w_Ft, #_w_Bc, #_w_Fc, #wqBti, #wqRti { position: absolute; display: block }
-#_w_Bt, #_w_Bc, #wqBti { height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; opacity: 0.5; background: gray }
-#_w_Ft div, #_w_Fc div, #wqRti div { display: block }
+#_w_Bt, #_w_Ft, #_w_Bc, #_w_Fc, #_w_Bi, #_w_Fi { position: absolute; display: block }
+#_w_Bt, #_w_Bc, #_w_Bi { height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; opacity: 0.5; background: gray }
+#_w_Ft div, #_w_Fc div, #_w_Fi div { display: block }
 #_w_Bt { z-index: 1001 }
 #_w_Bc { z-index: 2001 }
-#wqBti { z-index: 3001 }
-#_w_Ft, #_w_Fc, #wqRti { border: 1px solid silver; border-radius: 5px; box-shadow: 2px 5px 12px gray }
+#_w_Bi { z-index: 3001 }
+#_w_Ft, #_w_Fc, #_w_Fi { border: 1px solid silver; border-radius: 5px; box-shadow: 2px 5px 1rem gray }
 #_w_Ft { z-index: 1002; background: white }
 #_w_Fc { z-index: 2002; background: cornsilk; padding: 1rem }
-#wqRti { z-index: 3002; padding: 20px }
+#_w_Fi { z-index: 3002; padding: 1rem }
 #_w_Ht { margin: 5px; border: 1px dotted silver; border-radius: 5px; text-align: center }
 #_w_Mc { padding-bottom: 1rem; text-align: left }
 #_w_St { color: crimson; border-top: 1px dotted silver }
