@@ -302,7 +302,7 @@
 				q("_w_Tt").h = T;
 				q("_w_St").h = S;
 				q("_w_Mt").h = H;
-				v.ad("t");
+				v.adi("t");
 			}
 		},
 
@@ -327,7 +327,7 @@
 						if (typeof C == "function") C();
 					};
 					q("_w_Mc").h = H;
-					v.ad("c");
+					v.adi("c");
 				}
 			}
 		},
@@ -350,7 +350,7 @@
 				if (k) {
 					k.h = T;
 					if (M != 2) setTimeout(() => { v.del("i") }, 1200);
-					v.ad("i");
+					v.adi("i");
 				}
 			}
 		},
@@ -361,11 +361,11 @@
 			q("_w_F" + S).del();
 		},
 
-		ad: (S) => {
+		adi: (S) => {
 			let x = 0, y = 0, s = q("_w_F" + S);
 			if (s) {
-				x = (window.innerWidth - s.offsetWidth) / 2 - 20;
-				y = (window.innerHeight - s.offsetHeight) / 2 - 50;
+				x = (window.innerWidth - s.offsetWidth) / 2;
+				y = (window.innerHeight - s.offsetHeight) / 2 - 10;
 				if (x < 0) x = 0;
 				if (y < 0) y = 0;
 				s.style.left = x + "px";
