@@ -40,13 +40,18 @@ body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-ser
 .fxl { font-weight: 500; font-size: 1.5rem }
 .fxxl { font-weight: 500; font-size: 2rem }
 
-.r { color: seagreen }
+.g { color: seagreen }
+.r { color: crimson }
+.w { color: #fff }
 .lg { background: lightgreen }
 .lr { background: lightcoral }
 
 .tc { text-align: center }
+.tl { text-align: left }
 
-.hd { display: none }
+.db { display: block }
+.dh { display: none }
+.dl { line-height: 1.5 }
 
 .p5 { padding: 5px }
 
@@ -65,22 +70,22 @@ body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-ser
 ::-webkit-details-marker { direction: ltr; margin-left: 1rem }
 details, summary, details > li { margin: 0; cursor: pointer; border-radius: 5px; transition: 1s ease-out }
 summary { direction: rtl; padding: 5px 2rem }
-details > li, details > a { display: block; list-style: none; text-align: center; padding: 5px }
-details, details[open] { margin: 5px }
+details { margin: 5px }
+details li { list-style: none; padding: 5px }
+details li a { text-decoration: none }
 
 /* V */
-#_w_Bt, #_w_Ft, #_w_Bc, #_w_Fc, #_w_Bi, #_w_Fi { position: absolute; display: block }
-#_w_Bt, #_w_Bc, #_w_Bi { height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; opacity: 0.5; background: gray }
-#_w_Ft div, #_w_Fc div, #_w_Fi div { display: block }
 #_w_Bt { z-index: 1001 }
 #_w_Bc { z-index: 2001 }
 #_w_Bi { z-index: 3001 }
-#_w_Ft, #_w_Fc, #_w_Fi { border: 1px solid silver; border-radius: 5px; box-shadow: 2px 5px 1rem gray }
 #_w_Ft { z-index: 1002; background: ivory }
 #_w_Fc { z-index: 2002; background: cornsilk; padding: 1rem }
 #_w_Fi { z-index: 3002; padding: 1rem }
-#_w_Ht { margin: 5px; border: 1px dotted silver; border-radius: 5px; text-align: center; cursor: move }
-#_w_Mc { padding-bottom: 1rem; text-align: left }
-#_w_St { color: crimson; border-top: 1px dotted silver }
-#_w_Mt { padding: 5px 1rem }
-#_w_Ut { padding: 5px .5rem 5px 1rem; text-align: center }
+#_w_Ht { margin: 5px; border: 1px dotted silver; border-radius: 5px; cursor: move }
+._w_vp { position: absolute }
+._w_vb { height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; opacity: 0.5; background: gray }
+._w_vf { border: 1px solid silver; border-radius: 5px; box-shadow: 2px 5px 1rem gray }
+._w_vt { padding: 5px 1rem }
+._w_vc { padding-bottom: 1rem }
+._w_vs { color: crimson; border-top: 1px dotted silver }
+._w_vu { padding: 5px .5rem 5px 1rem }

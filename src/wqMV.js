@@ -63,8 +63,8 @@
 				return false;
 			}
 			return false;
-		}, cnch = () => {
-			this.value = m.sp(this.value);
+		}, cnch = function () {
+			this.v = m.sp(this.v);
 		}, fsch = () => {
 			const k = q("Efs").files[0];
 			if (k) {
@@ -90,7 +90,7 @@
 		if (J.h) h.p(J.h + "<br>");
 		h.p(`<label>标题：<input id="Ecn" name="cn" type="text" style="width:24rem" required value="${J.cn}"></label>`);
 		h.p(`<div style="padding:5px 0"><label>文件：<input id="Efs" name="fs" type="file" style="width:24rem"></label></div>`);
-		h.p(`<div id="Ein" class="fs r tc">　</div>`);
+		h.p(`<div id="Ein" class="fs tc g">　</div>`);
 		v.t(J.t, J.s, h.j(""), (J.id === 0 ? 0 : 1));
 		q("Ecn").onchange = cnch;
 		q("Efs").onchange = fsch;
@@ -330,7 +330,7 @@
 					for (var i = 0; i < a.length; i++) {
 						J = a[i].id.replace(/wqMBs/, "wqMBv");
 						a[i].style.background = "";
-						q("#" + J).E.className = "hd";
+						q("#" + J).E.className = "dh";
 						J = null;
 					}
 					O.style.background = "#f66";
@@ -351,22 +351,34 @@
 			O = J = a = null;
 		},
 
-		// O Dom, T Title, J Json
-		d: (O, T, J) => {
-			let k = [];
-			k.p(`<details>`);
-			k.p("<summary>" + T + "</summary>");
-			for (var i in J) k.p(`<li onclick="${J[i]}">${i}</li>`);
-			k.p(`</details>`);
+		// O Dom, J Json
+		d: (O, J) => {
+			let k = [], o = function (O) {
+				a = q("#wqMC").E;
+				a = q("A", a).E;
+				for (var i = 0; i < a.length; i++) {
+					a[i].style.color = "";
+					a[i].style.background = "";
+				}
+				O.style.color = "#ddd";
+				O.style.background = "#c03";
+				O = a = null;
+			};
+			for (let i in J) {
+				k.p(`<details>`);
+				k.p(`<summary>${i}</summary>`);
+				for (let j in J[i]) k.p(`<li class="tc"><a href="javascript:${J[i][j]}">${j}</a></li>`);
+				k.p(`</details>`);
+			}
 			O.innerHTML = k.j("");
 		},
 
 		// O Dom, T Title, J Json
 		u: (O, T, J) => {
 			let k = [];
-			k.p(`<details>`);
-			k.p("<summary>" + T + "</summary>");
-			for (var i in J) k.p(`<a href="${J[i]}" target="_blank">${i}</a>`);
+			k.p(`<details class="tc dl">`);
+			k.p(`<summary>${T}</summary>`);
+			for (var i in J) k.p(`<a href="${J[i]}" target="_blank">${i}</a><br>`);
 			k.p(`</details>`);
 			O.innerHTML = k.j("");
 		},
@@ -433,15 +445,15 @@
 			else {
 				// B Background, F Foreground, H Head, T Title, S Subheading, M main, U bUtton
 				k = [];
-				k.p(`<div id="_w_Bt"></div>`);
-				k.p(`<div id="_w_Ft">`);
-				k.p(`<div id="_w_Ht" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
-				k.p(`<div id="_w_Tt"></div>`);
-				k.p(`<div id="_w_St" class="fxs"></div>`);
+				k.p(`<div id="_w_Bt" class="_w_vp _w_vb db"></div>`);
+				k.p(`<div id="_w_Ft" class="_w_vp _w_vf db">`);
+				k.p(`<div id="_w_Ht" class="tc" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
+				k.p(`<div>${T}</div>`);
+				k.p(`<div class="_w_vs fxs">${S}</div>`);
 				k.p(`</div>`);
 				k.p(`<form id="_w_F">`);
-				k.p(`<div id="_w_Mt"></div>`);
-				k.p(`<div id="_w_Ut">`);
+				k.p(`<div class="_w_vt tl">${H}</div>`);
+				k.p(`<div class="_w_vu tc">`);
 				if (M !== 2) {
 					k.p(`<input type="submit" value="确定">`);
 					if (M === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
@@ -450,9 +462,6 @@
 				k.p(`<input type="button" onclick="window.v.del()" value="关闭">`);
 				k.p(`</div></form></div>`);
 				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
-				q("_w_Tt").h = T;
-				q("_w_St").h = S;
-				q("_w_Mt").h = H;
 				v.adi("t");
 			}
 		},
@@ -463,23 +472,19 @@
 			if (k) v.del("c");
 			else {
 				k = [];
-				k.p(`<div id="_w_Bc"></div>`);
-				k.p(`<div id="_w_Fc">`);
-				k.p(`<div id="_w_Mc"></div>`);
+				k.p(`<div id="_w_Bc" class="_w_vp _w_vb db"></div>`);
+				k.p(`<div id="_w_Fc" class="_w_vp _w_vf db">`);
+				k.p(`<div class="_w_vc">${H}</div>`);
 				k.p(`<div class="tc">`)
 				k.p(`<input id ="_w_OKc" type="button" value="确定">`);
-				k.p(`<input type="button" onclick="v.del('c')" value="关闭">`);
+				k.p(`<input type="button" onclick="window.v.del('c')" value="关闭">`);
 				k.p(`</div></div>`);
 				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
-				k = q("_w_OKc");
-				if (k) {
-					k.onclick = function () {
-						v.del("c");
-						if (typeof C == "function") C();
-					};
-					q("_w_Mc").h = H;
-					v.adi("c");
-				}
+				q("_w_OKc").onclick = () => {
+					v.del("c");
+					if (typeof C == "function") C();
+				};
+				v.adi("c");
 			}
 		},
 
@@ -489,20 +494,16 @@
 			if (k) v.del("i");
 			else {
 				k = [];
-				k.p(`<div id="_w_Bi"></div>`);
-				k.p(`<div id="_w_Fi" class="`);
+				k.p(`<div id="_w_Bi" class="_w_vp _w_vb db"></div>`);
+				k.p(`<div id="_w_Fi" class="_w_vp _w_vf db `);
 				if (M == 1) k.p(`lr`);
 				else k.p(`lg`);
 				k.p(`">`);
-				k.p(`<div id="_w_Mi" class="fs"></div>`);
+				k.p(`<div class="fs">${T}</div>`);
 				k.p(`</div>`);
 				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
-				k = q("_w_Mi");
-				if (k) {
-					k.h = T;
-					if (M != 2) setTimeout(() => { v.del("i") }, 1200);
-					v.adi("i");
-				}
+				v.adi("i");
+				if (M != 2) setTimeout(() => { v.del("i") }, 1200);
 			}
 		},
 

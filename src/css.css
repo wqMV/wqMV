@@ -10,6 +10,7 @@ aside, #wLogo { background: #34393c; color: #fff }
 
 a, a:visited { color: #333 }
 a:hover, a:active { color: #08e }
+details li a, details li a:hover { color: #fff }
 input, select, textarea { background: snow; border: 1px solid silver }
 input:hover, select:hover, textarea:hover { color: #08e; background: azure; border-color: #08e }
 input[disabled] { pointer-events: none; background: gainsboro }
