@@ -1,7 +1,7 @@
 body { background: #000; color: #333 }
 nav { background: gainsboro }
 section { background: #fff }
-header, summary:hover, details li:hover { background: #08e }
+header, summary:hover, details > li:hover { background: #08e }
 details[open] { background: #5e6368 }
 aside, #wLogo { background: #34393c; color: #fff }
 #wTime { background: #fff; color: #08e }
@@ -11,7 +11,7 @@ aside, #wLogo { background: #34393c; color: #fff }
 a, a:visited { color: #333 }
 a:hover, a:active { color: #08e }
 input, select, textarea { background: snow; border: 1px solid silver }
-input:hover, select:hover, textarea:hover { color: #08e; background: ghostwhite; border-color: #08e }
-input[disabled] { background: gainsboro }
+input:hover, select:hover, textarea:hover { color: #08e; background: azure; border-color: #08e }
+input[disabled] { pointer-events: none; background: gainsboro }
 
 #wNote { position: relative; animation: note 12s cubic-bezier(0, .6, 1, .4) infinite alternate }

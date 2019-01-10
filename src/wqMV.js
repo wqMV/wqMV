@@ -46,14 +46,15 @@
 		setTimeout(wON, wRD(T));
 	};
 
-	// J Json: id, cn, ph path, t title, s subheading, h html, uc up callback, dc del callback
+	// J Json: id, cn, ph path, t title, s subheading, h html, n number, uc up callback, dc del callback
 	w.f = J => {
 		const del = () => {
 			v.c("您确定删除这个文件吗？", () => { J.dc() });
 		}, up = () => {
-			if (q("#Efs").V) {
-				t.c("您上传了新文件，这将覆盖原有的文件！<br>您确定继续吗？", function () {
-					q("#Ein").h("正在上传文件，请不要关闭当前窗口……");
+			if (q("Efs").v) {
+				v.c("您上传了新文件，原有文件将被覆盖！<br>您确定继续吗？", function () {
+					q("Ein").h = "正在上传文件，请不要关闭当前窗口……";
+					q("@INPUT", q("_w_F")).for(e => { e.g("disabled", "disabled") });
 					J.uc();
 					return false;
 				});
@@ -68,9 +69,10 @@
 			const k = q("Efs").files[0];
 			if (k) {
 				const fr = new FileReader();
+				J.n = J.n ? parseInt(J.n * 1024000 - 1) : 20479999;
 				fr.onload = () => {
-					if (k.size > 20479999) {
-						v.i("上传文件大小不能超过20M！", 1);
+					if (k.size > J.n) {
+						v.i(`上传文件大小不能超过 ${parseInt((J.n + 1) / 1024000)} MB！`, 1);
 						q("Efs").v = "";
 					} else {
 						q("Efl").v = "2";
@@ -88,7 +90,7 @@
 		if (J.h) h.p(J.h + "<br>");
 		h.p(`<label>标题：<input id="Ecn" name="cn" type="text" style="width:24rem" required value="${J.cn}"></label>`);
 		h.p(`<div style="padding:5px 0"><label>文件：<input id="Efs" name="fs" type="file" style="width:24rem"></label></div>`);
-		h.p(`<div id="Ein" class="fs" style="color:#060; text-align:center">　</div>`);
+		h.p(`<div id="Ein" class="fs r tc">　</div>`);
 		v.t(J.t, J.s, h.j(""), (J.id === 0 ? 0 : 1));
 		q("Ecn").onchange = cnch;
 		q("Efs").onchange = fsch;
@@ -110,8 +112,12 @@
 					if (S && V) E.setAttribute(S, V);
 					return E.getAttribute(S) || "";
 				};
-				E.c = E.textContent || "";
+				E.t = E.textContent || "";
 				Object.defineProperties(E, {
+					c: {
+						get: () => { return E.className || "" },
+						set: S => { E.className = S }
+					},
 					h: {
 						get: () => { return E.innerHTML || "" },
 						set: S => { E.innerHTML = S }
@@ -130,7 +136,7 @@
 		else if (S.startsWith("@")) E = E.getElementsByTagName(S.substr(1));
 		else if (S) E = document.getElementById(S);
 		if (!E || (E && E.length === 0)) return;
-		l = E.tagName === "SELECT" ? 0 : E.length;
+		l = E.tagName === "SELECT" || E.tagName === "FORM" ? 0 : E.length;
 		if (l) {
 			let k = [];
 			for (let i = 0; i < l; i++) k.push(E[i]);
@@ -192,7 +198,6 @@
 			else E.onkeydown = k;
 			return E;
 		};
-
 		return E;
 	};
 
@@ -267,6 +272,157 @@
 	window.q = q;
 })();
 
+// M
+(() => {
+	// O Object, J Json, F Function
+	const m = {
+		c: function (O, J) {
+			var a = [],
+				o = function (O) {
+					a = q("#wqMC").E;
+					a = q("A", a).E;
+					for (var i = 0; i < a.length; i++) {
+						a[i].style.color = "";
+						a[i].style.background = "";
+					}
+					O.style.color = "#ddd";
+					O.style.background = "#c03";
+					O = a = null;
+				};
+			q.p(a, "<ul id=\"wqMC\">");
+			for (var i in J) q.p(a, "<li><a href=\"javascript:" + J[i] + "\">" + i + "</a></li>");
+			q.p(a, "</ul>");
+			O.innerHTML = a.j("");
+			a = q("#wqMC").E;
+			a = q("A", a).E;
+			J = 0;
+			for (var i = 0; i < a.length; i++) a[i].onclick = function () { o(this); };
+			o(a[0]);
+			O = J = a = null;
+		},
+
+		r: function (O, J) {
+			var a = [],
+				o = function (O) {
+					a = q("#wqMRi").E;
+					a = q("A", a).E;
+					for (var i = 0; i < a.length; i++) a[i].style.color = "";
+					O.style.color = "#c03";
+					O = a = null;
+				};
+			q.p(a, "<div id=\"wqMRi\" class=\"lf\">");
+			for (var i in J) q.p(a, "<a class=\"mr\" href=\"javascript:" + J[i] + "\">" + i + "</a>");
+			q.p(a, "</div>");
+			O.innerHTML = a.j("");
+			a = q("#wqMRi").E;
+			a = q("A", a).E;
+			J = 0;
+			for (var i = 0; i < a.length; i++) a[i].onclick = function () { o(this); };
+			o(a[0]);
+			O = J = a = null;
+		},
+
+		b: function (O, J, F) {
+			var a = [],
+				o = function (O) {
+					a = q("#wqMBi").E;
+					a = q("SPAN", a).E;
+					for (var i = 0; i < a.length; i++) {
+						J = a[i].id.replace(/wqMBs/, "wqMBv");
+						a[i].style.background = "";
+						q("#" + J).E.className = "hd";
+						J = null;
+					}
+					O.style.background = "#f66";
+					O = O.id.replace(/wqMBs/, "");
+					if (F != U) F(O);
+					O = a = null;
+				};
+			q.p(a, "<div id=\"wqMBi\" class=\"mbd\">");
+			for (var i in J) q.p(a, "<span id=\"wqMBs" + i + "\" class=\"mb\">" + J[i] + "</span>");
+			q.p(a, "</div><div id=\"wqMBd\" class=\"mbv\"></div>");
+			O.innerHTML = a.j("");
+			a = 0;
+			for (var i in J) {
+				if (!a) a = i;
+				q("#wqMBs" + i).E.onclick = function () { o(this); };
+			}
+			o(q("#wqMBs" + a).E);
+			O = J = a = null;
+		},
+
+		// O Dom, T Title, J Json
+		d: (O, T, J) => {
+			let k = [];
+			k.p(`<details>`);
+			k.p("<summary>" + T + "</summary>");
+			for (var i in J) k.p(`<li onclick="${J[i]}">${i}</li>`);
+			k.p(`</details>`);
+			O.innerHTML = k.j("");
+		},
+
+		// O Dom, T Title, J Json
+		u: (O, T, J) => {
+			let k = [];
+			k.p(`<details>`);
+			k.p("<summary>" + T + "</summary>");
+			for (var i in J) k.p(`<a href="${J[i]}" target="_blank">${i}</a>`);
+			k.p(`</details>`);
+			O.innerHTML = k.j("");
+		},
+
+		// T daTe
+		ut: function (T) {
+			let k = {}, s = new Date();
+			if (T) s = new Date(T);
+			k.y = s.getFullYear();
+			k.n = s.getMonth() + 1;
+			k.d = s.getDate();
+			k.h = s.getHours();
+			k.m = s.getMinutes();
+			k.s = s.getSeconds();
+			for (var i in k) if (k[i] < 10) k[i] = "0" + k[i];
+			k.w = s.getDay();
+			k.dt = k.y + "-" + k.n + "-" + k.d;
+			k.dn = k.y + "-" + k.n;
+			k.ut = k.dt + "T" + k.h + ":" + k.m;
+
+			s.setDate(k.d - 1);
+			k.yy = s.getFullYear();
+			k.yn = s.getMonth() + 1;
+			k.yd = s.getDate();
+
+			s = new Date(k.dt);
+			s.setDate(k.d + 1);
+			k.ty = s.getFullYear();
+			k.tn = s.getMonth() + 1;
+			k.td = s.getDate();
+
+			s = new Date(k.dt);
+			s.setDate(0);
+			k.yny = s.getFullYear();
+			k.ynn = s.getMonth() + 1;
+
+			s = new Date(k.dt);
+			s.setDate(32);
+			k.tny = s.getFullYear();
+			k.tnn = s.getMonth() + 1;
+
+			for (var i in k) if (String(k[i]).length === 1) k[i] = "0" + k[i];
+			k.ydt = k.yy + "-" + k.yn + "-" + k.yd;
+			k.tdt = k.ty + "-" + k.tn + "-" + k.td;
+			return k;
+		},
+
+		ss: S => S.replace(/,/g, "，").replace(/;/g, "；").replace(/\"/g, "＂").replace(/\'/g, "＇").replace(/(^\s*)|(\s*$)/g, "").replace(/\s+/g, " "),
+		sn: S => S.replace(/[^0-9]/g, ""),
+		sc: S => S.replace(/[^(a-z|A-Z|0-9)]/g, ""),
+		sp: S => m.ss(S).replace(/ |　|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}/g, "")
+	};
+
+	window.m = m;
+})();
+
 // V
 (() => {
 	const v = {
@@ -312,7 +468,7 @@
 				k.p(`<div id="_w_Mc"></div>`);
 				k.p(`<div class="tc">`)
 				k.p(`<input id ="_w_OKc" type="button" value="确定">`);
-				k.p(`<input type="button" onclick="window.v.del('c')" value="关闭">`);
+				k.p(`<input type="button" onclick="v.del('c')" value="关闭">`);
 				k.p(`</div></div>`);
 				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 				k = q("_w_OKc");
@@ -360,7 +516,7 @@
 			let x = 0, y = 0, s = q("_w_F" + S);
 			if (s) {
 				x = (window.innerWidth - s.offsetWidth) / 2;
-				y = (window.innerHeight - s.offsetHeight) / 2 - 10;
+				y = (window.innerHeight - s.offsetHeight) / 2 - 20;
 				if (x < 0) x = 0;
 				if (y < 0) y = 0;
 				s.style.left = x + "px";

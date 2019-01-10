@@ -31,31 +31,8 @@
 	</nav>
 	<footer>
 		<aside>
-			<div id="wMenu" class="p5">
-				<details>
-					<summary>主菜单一</summary>
-					<li>子菜单 1</li>
-					<li>子菜单 2</li>
-					<li>子菜单 3</li>
-					<li>子菜单 4</li>
-				</details>
-				<details>
-					<summary>主菜单二</summary>
-					<li>子菜单 1</li>
-					<li>子菜单 2</li>
-					<li>子菜单 3</li>
-					<li>子菜单 4</li>
-				</details>
-			</div>
-			<div id="wLink" class="p5">
-				<details>
-					<summary>友情链接</summary>
-					<li>子菜单 1</li>
-					<li>子菜单 2</li>
-					<li>子菜单 3</li>
-					<li>子菜单 4</li>
-				</details>
-			</div>
+			<div id="wMenu" class="p5"></div>
+			<div id="wLink" class="p5"></div>
 		</aside>
 		<section>
 			<article id="wInfo" class="fxl">wInfo</article>
@@ -74,11 +51,13 @@
 						<option value="a">a</option>
 						<option value="b">b</option>
 					</select>
-					<input type="button" value="弹窗" onclick="v.t('标题','副标题','aaa')">
-					<input type="button" value="提示" onclick="v.c('标题',()=>{alert('提示')})">
-					<input type="button" value="警告绿" onclick="v.i('警告绿')">
-					<input type="button" value="上传文件" onclick="w.f({id:1,ph:0,cn:0,h:1,t:1,s:2})">
-					<input type="button" value="弹窗" disabled>
+					<form id="_w_FO">
+						<input type="button" value="弹窗" onclick="v.t('标题','副标题','aaa')">
+						<input type="button" value="提示" onclick="v.c('标题',()=>{alert('提示')})">
+						<input type="button" value="警告" onclick="v.i('警告',1)">
+						<input type="button" value="上传文件" onclick="a()">
+						<input type="button" value="弹窗" disabled>
+					</form>
 				</div>
 				<div id="wMain" class="hd">wMain</div>
 			</main>
