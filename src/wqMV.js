@@ -276,54 +276,24 @@
 (() => {
 	// O Object, J Json, F Function
 	const m = {
-		c: function (O, J) {
-			var a = [],
-				o = function (O) {
-					a = q("#wqMC").E;
-					a = q("A", a).E;
-					for (var i = 0; i < a.length; i++) {
-						a[i].style.color = "";
-						a[i].style.background = "";
-					}
-					O.style.color = "#ddd";
-					O.style.background = "#c03";
-					O = a = null;
-				};
-			q.p(a, "<ul id=\"wqMC\">");
-			for (var i in J) q.p(a, "<li><a href=\"javascript:" + J[i] + "\">" + i + "</a></li>");
-			q.p(a, "</ul>");
-			O.innerHTML = a.j("");
-			a = q("#wqMC").E;
-			a = q("A", a).E;
-			J = 0;
-			for (var i = 0; i < a.length; i++) a[i].onclick = function () { o(this); };
-			o(a[0]);
-			O = J = a = null;
+		// O Dom, J Json
+		r: (O, J) => {
+			var k = [], o = O => {
+				q("@A", q("_M_r")).for(e => { e.c = "" });
+				O.c = "_M_r";
+			};
+			k.p(`<div id="_M_r">`);
+			for (var i in J) k.p(`<a href="javascript:${J[i]}">${i}</a>`);
+			k.p(`</div>`);
+			O.innerHTML = k.j("");
+			k = q("@A", q("_M_r")).for(e => { e.onclick = function () { o(this) } });
+			o(k[0]);
+			k[0].click();
 		},
 
-		r: function (O, J) {
-			var a = [],
-				o = function (O) {
-					a = q("#wqMRi").E;
-					a = q("A", a).E;
-					for (var i = 0; i < a.length; i++) a[i].style.color = "";
-					O.style.color = "#c03";
-					O = a = null;
-				};
-			q.p(a, "<div id=\"wqMRi\" class=\"lf\">");
-			for (var i in J) q.p(a, "<a class=\"mr\" href=\"javascript:" + J[i] + "\">" + i + "</a>");
-			q.p(a, "</div>");
-			O.innerHTML = a.j("");
-			a = q("#wqMRi").E;
-			a = q("A", a).E;
-			J = 0;
-			for (var i = 0; i < a.length; i++) a[i].onclick = function () { o(this); };
-			o(a[0]);
-			O = J = a = null;
-		},
-
+		// O Dom, J Json
 		b: (O, J) => {
-			let k = [], o = function (O) {
+			let k = [], o = O => {
 				q("@span", q("_M_b")).for(e => { e.c = "_M_b" });
 				O.children[0].c = "_M_b _M_f";
 			};
@@ -338,10 +308,9 @@
 
 		// O Dom, J Json
 		d: (O, J) => {
-			let k = [], o = function (O) {
-				const s = O.parentElement.parentElement;
+			let k = [], o = O => {
 				q("@LI", q("_M_d")).for(e => { e.c = "tc" });
-				O.children[0].c = "_M_l tc";
+				O.children[0].c = "_M_d tc";
 			};
 			k.p(`<div id="_M_d">`);
 			for (const i in J) {

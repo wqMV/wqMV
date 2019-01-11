@@ -32,6 +32,11 @@ m.d(q("wMenu"), {
 		"子菜单 4": "alert('4')"
 	}
 });
+m.r(q("wNav"), {
+	"菜单a": "alert('a')",
+	"菜单b": "alert('b')",
+	"菜单c": "alert('c')"
+});
 m.b(q("_w_Mb"), {
 	"菜单一": "alert('一')",
 	"菜单二": "alert('二')",
