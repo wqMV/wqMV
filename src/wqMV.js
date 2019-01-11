@@ -322,55 +322,40 @@
 			O = J = a = null;
 		},
 
-		b: function (O, J, F) {
-			var a = [],
-				o = function (O) {
-					a = q("#wqMBi").E;
-					a = q("SPAN", a).E;
-					for (var i = 0; i < a.length; i++) {
-						J = a[i].id.replace(/wqMBs/, "wqMBv");
-						a[i].style.background = "";
-						q("#" + J).E.className = "dh";
-						J = null;
-					}
-					O.style.background = "#f66";
-					O = O.id.replace(/wqMBs/, "");
-					if (F != U) F(O);
-					O = a = null;
-				};
-			q.p(a, "<div id=\"wqMBi\" class=\"mbd\">");
-			for (var i in J) q.p(a, "<span id=\"wqMBs" + i + "\" class=\"mb\">" + J[i] + "</span>");
-			q.p(a, "</div><div id=\"wqMBd\" class=\"mbv\"></div>");
-			O.innerHTML = a.j("");
-			a = 0;
-			for (var i in J) {
-				if (!a) a = i;
-				q("#wqMBs" + i).E.onclick = function () { o(this); };
-			}
-			o(q("#wqMBs" + a).E);
-			O = J = a = null;
+		b: (O, J) => {
+			let k = [], o = function (O) {
+				q("@span", q("_M_b")).for(e => { e.c = "_M_b" });
+				O.children[0].c = "_M_b _M_f";
+			};
+			k.p(`<div id="_M_b" class="g">`);
+			for (const i in J) k.p(`<label><span class="_M_b" onclick="${J[i]}">${i}</span></label>`);
+			k.p(`</div><div id="_w_M"></div>`);
+			O.innerHTML = k.j("");
+			k = q("@LABEL", q("_M_b")).for(e => { e.onclick = function () { o(this) } });
+			o(k[0]);
+			k[0].children[0].click();
 		},
 
 		// O Dom, J Json
 		d: (O, J) => {
 			let k = [], o = function (O) {
-				a = q("#wqMC").E;
-				a = q("A", a).E;
-				for (var i = 0; i < a.length; i++) {
-					a[i].style.color = "";
-					a[i].style.background = "";
-				}
-				O.style.color = "#ddd";
-				O.style.background = "#c03";
-				O = a = null;
+				const s = O.parentElement.parentElement;
+				q("@LI", q("_M_d")).for(e => { e.c = "tc" });
+				O.children[0].c = "_M_l tc";
 			};
-			for (let i in J) {
+			k.p(`<div id="_M_d">`);
+			for (const i in J) {
 				k.p(`<details>`);
 				k.p(`<summary>${i}</summary>`);
-				for (let j in J[i]) k.p(`<li class="tc"><a href="javascript:${J[i][j]}">${j}</a></li>`);
+				for (const j in J[i]) k.p(`<span><li class="tc" onclick="${J[i][j]}">${j}</li></span>`);
 				k.p(`</details>`);
 			}
+			k.p(`</div>`)
 			O.innerHTML = k.j("");
+			k = q("@SPAN", O).for(e => { e.onclick = function () { o(this) } });
+			o(k[0]);
+			k[0].parentElement.setAttribute("open", "open");
+			k[0].children[0].click();
 		},
 
 		// O Dom, T Title, J Json
@@ -378,7 +363,7 @@
 			let k = [];
 			k.p(`<details class="tc dl">`);
 			k.p(`<summary>${T}</summary>`);
-			for (var i in J) k.p(`<a href="${J[i]}" target="_blank">${i}</a><br>`);
+			for (const i in J) k.p(`<a href="${J[i]}" target="_blank">${i}</a><br>`);
 			k.p(`</details>`);
 			O.innerHTML = k.j("");
 		},
@@ -440,20 +425,20 @@
 	const v = {
 		// T Title, S Subheading, H Html, M Mode 0 default 1 del 2 close
 		t: (T, S, H, M) => {
-			let k = q("_w_Bt");
+			let k = q("_V_Bt");
 			if (k) v.del();
 			else {
 				// B Background, F Foreground, H Head, T Title, S Subheading, M main, U bUtton
 				k = [];
-				k.p(`<div id="_w_Bt" class="_w_vp _w_vb db"></div>`);
-				k.p(`<div id="_w_Ft" class="_w_vp _w_vf db">`);
-				k.p(`<div id="_w_Ht" class="tc" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
+				k.p(`<div id="_V_Bt" class="_V_p _V_b db"></div>`);
+				k.p(`<div id="_V_Ft" class="_V_p _V_f db">`);
+				k.p(`<div id="_V_Ht" class="tc" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
 				k.p(`<div>${T}</div>`);
-				k.p(`<div class="_w_vs fxs">${S}</div>`);
+				k.p(`<div class="_V_s fxs">${S}</div>`);
 				k.p(`</div>`);
 				k.p(`<form id="_w_F">`);
-				k.p(`<div class="_w_vt tl">${H}</div>`);
-				k.p(`<div class="_w_vu tc">`);
+				k.p(`<div class="_V_t tl">${H}</div>`);
+				k.p(`<div class="_V_u tc">`);
 				if (M !== 2) {
 					k.p(`<input type="submit" value="确定">`);
 					if (M === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
@@ -468,19 +453,19 @@
 
 		// H Html, C Callback
 		c: (H, C) => {
-			let k = q("_w_Bc");
+			let k = q("_V_Bc");
 			if (k) v.del("c");
 			else {
 				k = [];
-				k.p(`<div id="_w_Bc" class="_w_vp _w_vb db"></div>`);
-				k.p(`<div id="_w_Fc" class="_w_vp _w_vf db">`);
-				k.p(`<div class="_w_vc">${H}</div>`);
+				k.p(`<div id="_V_Bc" class="_V_p _V_b db"></div>`);
+				k.p(`<div id="_V_Fc" class="_V_p _V_f db">`);
+				k.p(`<div class="_V_c">${H}</div>`);
 				k.p(`<div class="tc">`)
-				k.p(`<input id ="_w_OKc" type="button" value="确定">`);
+				k.p(`<input id ="_w_OK" type="button" value="确定">`);
 				k.p(`<input type="button" onclick="window.v.del('c')" value="关闭">`);
 				k.p(`</div></div>`);
 				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
-				q("_w_OKc").onclick = () => {
+				q("_w_OK").onclick = () => {
 					v.del("c");
 					if (typeof C == "function") C();
 				};
@@ -490,12 +475,12 @@
 
 		// T Text, M Mode 0 green 1 Red 2 always
 		i: (T, M) => {
-			let k = q("_w_Bi");
+			let k = q("_V_Bi");
 			if (k) v.del("i");
 			else {
 				k = [];
-				k.p(`<div id="_w_Bi" class="_w_vp _w_vb db"></div>`);
-				k.p(`<div id="_w_Fi" class="_w_vp _w_vf db `);
+				k.p(`<div id="_V_Bi" class="_V_p _V_b db"></div>`);
+				k.p(`<div id="_V_Fi" class="_V_p _V_f db `);
 				if (M == 1) k.p(`lr`);
 				else k.p(`lg`);
 				k.p(`">`);
@@ -509,12 +494,12 @@
 
 		del: S => {
 			S = !S ? "t" : S;
-			q("_w_B" + S).del();
-			q("_w_F" + S).del();
+			q("_V_B" + S).del();
+			q("_V_F" + S).del();
 		},
 
 		adi: S => {
-			let x = 0, y = 0, s = q("_w_F" + S);
+			let x = 0, y = 0, s = q("_V_F" + S);
 			if (s) {
 				x = (window.innerWidth - s.offsetWidth) / 2;
 				y = (window.innerHeight - s.offsetHeight) / 2 - 20;
@@ -528,7 +513,7 @@
 		mv: {
 			o: 0, tx: 0, ty: 0, mx: 0, my: 0, f: 0,
 			m: function (e) {
-				this.o = document.getElementById("_w_Ft");
+				this.o = document.getElementById("_V_Ft");
 				this.tx = this.o.offsetLeft;
 				this.ty = this.o.offsetTop;
 				this.mx = e.clientX;
