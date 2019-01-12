@@ -203,17 +203,16 @@
 
 	// S String
 	q.a = S => {
+		let k = [];
 		if (typeof S === "string") {
-			let k = [];
 			S = S.split(";");
-			for (const i of S) {
-				const s = i.split(",");
+			for (let i = 0; i < S.length; i++) {
+				const s = S[i].split(",");
 				k[i] = [];
-				for (const j of s) k[i].push(j);
+				for (let j = 0; j < s.length; j++) k[i].push(s[j]);
 			}
-			S = k;
-		} else S = [];
-		return S;
+		}
+		return k;
 	};
 
 	// N Name, V Value, K Key 0 delete
@@ -377,6 +376,8 @@
 			for (var i in k) if (String(k[i]).length === 1) k[i] = "0" + k[i];
 			k.ydt = k.yy + "-" + k.yn + "-" + k.yd;
 			k.tdt = k.ty + "-" + k.tn + "-" + k.td;
+
+			k.w = 1 == k.w ? "一" : 2 == k.w ? "二" : 3 == k.w ? "三" : 4 == k.w ? "四" : 5 == k.w ? "五" : 6 == k.w ? "六" : "日";
 			return k;
 		},
 
