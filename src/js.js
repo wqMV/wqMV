@@ -12,6 +12,7 @@ const wq = {
 	},
 
 	box: () => {
+		/*
 		m.u(q("wLink"), "友情链接", {
 			"链接 1": "1.html",
 			"链接 2": "1.html",
@@ -41,11 +42,12 @@ const wq = {
 			"菜单二": "alert('二')",
 			"菜单三": "alert('三')"
 		});
+		*/
 
-		q("oD").h = "h oD";
-		q("oI", {
-			d: { a: "a" }
-		}).h = "h oI";
+		q("oD", {
+			d: { ta: "a" }
+		});
+
 	},
 	go: () => {
 		const ut = m.ut();

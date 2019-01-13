@@ -133,15 +133,40 @@
 		else if (S.startsWith("@")) E = E.getElementsByTagName(S.substr(1));
 		else if (S) E = document.getElementById(S);
 		if (!E || (E && E.length === 0)) return;
-		l = E.tagName === "SELECT" || E.tagName === "FORM" ? 0 : E.length;
+		l = E.nodeType === 1 ? 0 : E.length;
 		if (l) {
-			let k = [];
-			for (let i = 0; i < l; i++) k.push(E[i]);
-			E = k;
+			E = [].slice.call(E);
 			for (const i of E) s(i);
 		} else s(E);
 		if (J) {
-			console.log(J);
+			const p = O => {
+				const r = /\$\{(.*)\}/;
+				let s = O.textContent;
+				s = r.test(s) ? r.exec(s)[1] : "";
+				if (O.nodeType == 3 && J.d[s]) {
+					Object.defineProperty(O, s, {
+						get: () => { return O.textContent },
+						set: S => {
+							J.d[s] = S;
+							O.textContent = S;
+						}
+					});
+					O.ta = "b";
+					console.log(J.d[s]);
+				} else if (O.nodeType == 1) {
+					if (J.d[s]) {
+						console.log("1");
+					}
+				}
+			}, k = O => {
+				for (const i of [].slice.call(O.childNodes)) {
+					if (i.children && i.children.length) k(i);
+					else p(i);
+				}
+			};
+
+			if (l) for (const i of E) k(i);
+			else k(E);
 		}
 
 		// S String, A Any
