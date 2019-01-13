@@ -1,16 +1,16 @@
-let a = () => {
-	w.f({
-		id: 1, ph: 0, cn: 0, h: 1, t: 1, s: 2, dc: () => {
-			b = document.getElementById("_w_FO");
-			console.log(b);
-		}, uc: () => {
-			v.del();
-		}
-	});
-
-};
-
 const wq = {
+	f: () => {
+		w.f({
+			id: 1, ph: 0, cn: 0, h: 1, t: 1, s: 2, dc: () => {
+				b = document.getElementById("_w_FO");
+				console.log(b);
+			}, uc: () => {
+				v.del();
+			}
+		});
+
+	},
+
 	box: () => {
 		m.u(q("wLink"), "友情链接", {
 			"链接 1": "1.html",
@@ -41,6 +41,11 @@ const wq = {
 			"菜单二": "alert('二')",
 			"菜单三": "alert('三')"
 		});
+
+		q("oD").h = "h oD";
+		q("oI", {
+			d: { a: "a" }
+		}).h = "h oI";
 	},
 	go: () => {
 		const ut = m.ut();

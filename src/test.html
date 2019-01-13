@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cmn-Hans">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="Copyright" content="WangQiang" />
+	<meta name="keywords" content="Test,WangQiang" />
+	<meta name="robots" content="all" />
+	<title>Test</title>
+	<!--
+		<link rel="stylesheet" type="text/css" href="src/wqMVT.min.css">
+		<script type="text/JavaScript" src="src/wqMVT.min.js"></script>
+    -->
+	<link rel="stylesheet" type="text/css" href="src/wqMT.css">
+	<script type="text/JavaScript" src="src/wqMT.js"></script>
+	<script type="text/JavaScript" src="src/wqV.js"></script>
+	<script type="text/JavaScript" src="src/wqEDR.js"></script>
+</head>
+
+<body>
+	<div class="bc"><br /><br />
+		<div id="menubed"></div><br />
+		<div>
+			<table>
+				<tr>
+					<td width="800">
+						<div id="menurow"></div>
+						<div id="menucol"></div><br />
+						<div id="menuurl" class="lf"></div>
+						<div id="wqED"></div>
+					</td>
+					<td id="app" class="hl tp">
+						1,{{name}},1
+						<h2>{{name}}</h2>
+						<input vm="name" /><br />
+						<div>{{title}}</div>
+						按钮：<input vo:click="clickMe" type="button" value="click me!" /><br />
+						文本框：<textarea>{{name}}</textarea>
+						<li vf="li" vo:click="clickOn"></li>
+						<li>End</li>
+						<div>按钮居中：<input vo:click="clickSs" type="button" value="存储到sessionStorage" /></div>
+						<div><span>SPAN</span><label>按钮</label><label>INPUT<input type="button" value="元素测试" onclick="ob(this)" /></label></div>
+						<div><input type="button" value="文件上传" onclick="fu()" /></div>
+						SELECT：<select>
+							<option value=""></option>
+							<option value="1">一</option>
+							<option value="2">二</option>
+						</select>
+
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script type="text/javascript">
+			var mr = function (s) { alert(s); },
+				fu = function () {
+					w.up({
+						id: 1,
+						ph: "",
+						cn: "",
+						t: "上传文件",
+						p: "提示",
+						h: "其它表单",
+						uc: function () { t.del(); },
+						dc: function () { alert('dc'); }
+					});
+				},
+				ob = function (o) {
+					var g = function (O) {
+						[].slice.call(O.childNodes).forEach(function (K) {
+							if (K.children && K.children.length) g(K);
+							else alert(K.textContent);
+						});
+					};
+					g(o.parentElement.parentElement);
+				};
+
+			v({
+				e: "#app",
+				d: {
+					name: "hello",
+					title: "world",
+					li: ["1", "2", "3"],
+					mbed: { a: "菜单一", b: "菜单二", c: "菜单三" },
+					mrow: { "菜单一": "mr('A')", "菜单二": "mr('B')", "菜单三": "mr('C')" },
+					mcol: { "菜单一": "mr('1')", "菜单二": "mr('2')", "菜单三": "mr('3')" },
+					murl: { "连接一": "test.html", "连接二": "test.html" }
+				},
+				m: {
+					clickMe: function () {
+						this.title = this.title == "world" ? "hello world" : "world";
+					},
+					clickOn: function (o) { alert(this.name + "\n" + o.innerText); },
+					clickSs: function () {
+						q.ss("ssName", 'ssValue');
+						alert(q.ss("ssName"));
+						q.ss("ssName", 0);
+					}
+				},
+				t: function () {
+					var ut = m.ut();
+					this.name = "<b>测试</b>";
+					this.li = ["a", "b", "c", "d"];
+					t.t("标题", "提示", "正文：<input type=\"button\" value=\"按钮\" />");
+					t.c("提示", function () { alert("tc"); });
+					t.i("提示", 1);
+					m.b(document.getElementById("menubed"), this.mbed, function (o, s) { o.innerHTML = s; });
+					m.r(document.getElementById("menurow"), this.mrow);
+					m.c(document.getElementById("menucol"), this.mcol);
+					m.u(document.getElementById("menuurl"), this.murl);
+					console.log(q("#app").E);
+					console.log(JSON.parse('{"a":"tt","b":["a","b"]}'));
+					console.log(ut.ynn);
+				}
+			});
+
+			ed(document.getElementById("wqED"));
+
+		</script>
+	</div>
+	<div id="wqTemp" class="hd"></div>
+</body>
+
+</html>

@@ -103,8 +103,8 @@
 
 // q
 (() => {
-	// S String, E Element
-	const q = (S, E) => {
+	// S String, E Element, J Json
+	const q = (S, E, J) => {
 		let l = 0;
 		const s = E => {
 			if (!E.g) {
@@ -119,17 +119,14 @@
 						set: S => { E.className = S }
 					},
 					h: {
-						get: () => { return E.innerHTML || "" },
-						set: S => { E.innerHTML = S }
-					},
-					v: {
-						get: () => { return E.value || "" },
-						set: S => { if (E.value !== "undefined") E.value = S }
+						get: () => { return E.value ? E.value : E.innerHTML },
+						set: S => { E.value ? E.value = S : E.innerHTML = S }
 					}
 				});
 			}
 		};
 
+		if (typeof E === "object" && E.d) J = E, E = document.body;
 		E = E || document.body;
 		if (S.startsWith(".")) E = E.getElementsByClassName(S.substr(1));
 		else if (S.startsWith(":")) E = document.getElementsByName(S.substr(1));
@@ -143,6 +140,9 @@
 			E = k;
 			for (const i of E) s(i);
 		} else s(E);
+		if (J) {
+			console.log(J);
+		}
 
 		// S String, A Any
 		E.add = (S, A) => {
@@ -273,43 +273,42 @@
 
 // M
 (() => {
-	// O Object, J Json, F Function
 	const m = {
-		// O Dom, J Json
-		r: (O, J) => {
-			var k = [], o = O => {
+		// E Element, J Json
+		r: (E, J) => {
+			var k = [], o = E => {
 				q("@A", q("_M_r")).for(e => { e.c = "" });
-				O.c = "_M_r";
+				E.c = "_M_r";
 			};
 			k.p(`<div id="_M_r">`);
 			for (var i in J) k.p(`<a href="javascript:${J[i]}">${i}</a>`);
 			k.p(`</div>`);
-			O.innerHTML = k.j("");
+			E.innerHTML = k.j("");
 			k = q("@A", q("_M_r")).for(e => { e.onclick = function () { o(this) } });
 			o(k[0]);
 			k[0].click();
 		},
 
-		// O Dom, J Json
-		b: (O, J) => {
-			let k = [], o = O => {
+		// E Element, J Json
+		b: (E, J) => {
+			let k = [], o = E => {
 				q("@span", q("_M_b")).for(e => { e.c = "_M_b" });
-				O.children[0].c = "_M_b _M_f";
+				E.children[0].c = "_M_b _M_f";
 			};
 			k.p(`<div id="_M_b" class="g">`);
 			for (const i in J) k.p(`<label><span class="_M_b" onclick="${J[i]}">${i}</span></label>`);
 			k.p(`</div><div id="_w_M"></div>`);
-			O.innerHTML = k.j("");
+			E.innerHTML = k.j("");
 			k = q("@LABEL", q("_M_b")).for(e => { e.onclick = function () { o(this) } });
 			o(k[0]);
 			k[0].children[0].click();
 		},
 
-		// O Dom, J Json
-		d: (O, J) => {
-			let k = [], o = O => {
+		// E Element, J Json
+		d: (E, J) => {
+			let k = [], o = E => {
 				q("@LI", q("_M_d")).for(e => { e.c = "tc" });
-				O.children[0].c = "_M_d tc";
+				E.children[0].c = "_M_d tc";
 			};
 			k.p(`<div id="_M_d">`);
 			for (const i in J) {
@@ -319,21 +318,21 @@
 				k.p(`</details>`);
 			}
 			k.p(`</div>`)
-			O.innerHTML = k.j("");
-			k = q("@SPAN", O).for(e => { e.onclick = function () { o(this) } });
+			E.innerHTML = k.j("");
+			k = q("@SPAN", E).for(e => { e.onclick = function () { o(this) } });
 			o(k[0]);
 			k[0].parentElement.setAttribute("open", "open");
 			k[0].children[0].click();
 		},
 
-		// O Dom, T Title, J Json
-		u: (O, T, J) => {
+		// E Element, T Title, J Json
+		u: (E, T, J) => {
 			let k = [];
 			k.p(`<details class="tc dl">`);
 			k.p(`<summary>${T}</summary>`);
 			for (const i in J) k.p(`<a href="${J[i]}" target="_blank">${i}</a><br>`);
 			k.p(`</details>`);
-			O.innerHTML = k.j("");
+			E.innerHTML = k.j("");
 		},
 
 		// T daTe
@@ -381,6 +380,7 @@
 			return k;
 		},
 
+		// S String
 		ss: S => S.replace(/,/g, "，").replace(/;/g, "；").replace(/\"/g, "＂").replace(/\'/g, "＇").replace(/(^\s*)|(\s*$)/g, "").replace(/\s+/g, " "),
 		sn: S => S.replace(/[^0-9]/g, ""),
 		sc: S => S.replace(/[^(a-z|A-Z|0-9)]/g, ""),
@@ -414,7 +414,7 @@
 					if (M === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
 					k.p(`<input type="reset" value="重置">`);
 				}
-				k.p(`<input type="button" onclick="window.v.del()" value="关闭">`);
+				k.p(`<input type="button" onclick="v.del()" value="关闭">`);
 				k.p(`</div></form></div>`);
 				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 				v.adi("t");
@@ -432,7 +432,7 @@
 				k.p(`<div class="_V_c">${H}</div>`);
 				k.p(`<div class="tc">`)
 				k.p(`<input id ="_w_OK" type="button" value="确定">`);
-				k.p(`<input type="button" onclick="window.v.del('c')" value="关闭">`);
+				k.p(`<input type="button" onclick="v.del('c')" value="关闭">`);
 				k.p(`</div></div>`);
 				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 				q("_w_OK").onclick = () => {
