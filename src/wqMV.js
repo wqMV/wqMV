@@ -138,27 +138,25 @@
 			E = [].slice.call(E);
 			for (const i of E) s(i);
 		} else s(E);
+
 		if (J) {
 			const p = O => {
 				const r = /\$\{(.*)\}/;
 				let s = O.textContent;
 				s = r.test(s) ? r.exec(s)[1] : "";
 				if (O.nodeType == 3 && J.d[s]) {
-					Object.defineProperty(O, s, {
-						get: () => { return O.textContent },
-						set: S => {
-							J.d[s] = S;
-							O.textContent = S;
-						}
-					});
-					O.ta = "b";
-					console.log(J.d[s]);
+					if (J.q[s].indexOf(O) === -1) J.q[s].push(O);
+					console.log(J.q);
 				} else if (O.nodeType == 1) {
 					if (J.d[s]) {
 						console.log("1");
 					}
 				}
 			}, k = O => {
+				J.q = {};
+				Object.keys(J.d).forEach(K => {
+					J.q[K] = [];
+				});
 				for (const i of [].slice.call(O.childNodes)) {
 					if (i.children && i.children.length) k(i);
 					else p(i);
