@@ -45,7 +45,11 @@ const wq = {
 		*/
 
 		q("oD", {
-			d: { ta: "a" }
+			d: { ta: "a" },
+			c: function () {
+				console.log(this);
+				this.ta = "aaa";
+			}
 		});
 
 	},

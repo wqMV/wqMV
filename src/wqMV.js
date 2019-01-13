@@ -115,17 +115,18 @@
 				E.t = E.textContent || "";
 				Object.defineProperties(E, {
 					c: {
-						get: () => { return E.className || "" },
+						get: () => E.className || "",
 						set: S => { E.className = S }
 					},
 					h: {
-						get: () => { return E.value ? E.value : E.innerHTML },
+						get: () => E.value ? E.value : E.innerHTML,
 						set: S => { E.value ? E.value = S : E.innerHTML = S }
 					}
 				});
 			}
 		};
 
+		J = typeof J === "object" && J.d ? J : 0;
 		if (typeof E === "object" && E.d) J = E, E = document.body;
 		E = E || document.body;
 		if (S.startsWith(".")) E = E.getElementsByClassName(S.substr(1));
@@ -140,31 +141,48 @@
 		} else s(E);
 
 		if (J) {
-			const p = O => {
+			const pu = (S, O) => {
+				if (J.q[S].indexOf(O) === -1) J.q[S].push(O)
+			}, nt = O => {
 				const r = /\$\{(.*)\}/;
-				let s = O.textContent;
-				s = r.test(s) ? r.exec(s)[1] : "";
-				if (O.nodeType == 3 && J.d[s]) {
-					if (J.q[s].indexOf(O) === -1) J.q[s].push(O);
-					console.log(J.q);
+				let t = O.outerHTML || O.textContent;
+				console.log(t);
+				t = r.test(t) ? r.exec(t)[1] : "";
+				if (O.nodeType == 3 && J.d[t]) {
+					pu(t, O);
+					O.textContent = J.d[t];
 				} else if (O.nodeType == 1) {
-					if (J.d[s]) {
-						console.log("1");
+					if (J.d[t]) {
+						pu(t, O);
+						O.textContent = J.d[t];
+						console.log(O);
 					}
 				}
-			}, k = O => {
-				J.q = {};
-				Object.keys(J.d).forEach(K => {
-					J.q[K] = [];
-				});
-				for (const i of [].slice.call(O.childNodes)) {
-					if (i.children && i.children.length) k(i);
-					else p(i);
+			}, ke = O => {
+				if (O.childNodes.length === 0) nt(O);
+				else for (const i of [].slice.call(O.childNodes)) {
+					if (i.children && i.children.length) ke(i);
+					else nt(i);
 				}
+			}, df = (O, K, V) => {
+				Object.defineProperty(O, K, {
+					get: () => V,
+					set: S => {
+						if (S === V) return;
+						V = S;
+						for (const j of J.q[K]) j.textContent = S;
+					}
+				});
 			};
 
-			if (l) for (const i of E) k(i);
-			else k(E);
+			J.q = J.q ? J.q : {};
+			for (const i in J.d) {
+				J.q[i] = J.q[i] ? J.q[i] : [];
+				df(J.d, i, J.d[i]);
+			}
+			if (l) for (const i of E) ke(i);
+			else ke(E);
+			J.c.call(J.d);
 		}
 
 		// S String, A Any
