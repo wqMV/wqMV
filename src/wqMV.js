@@ -140,27 +140,32 @@
 			for (const i of E) s(i);
 		} else s(E);
 
+		// J Json: b background for :for, d data, m on mode, c callback
 		if (J) {
-			console.log(J);
 			const up = (N, O, S, V) => {
 				if (V === 3) O.textContent = S.replace(/\$\{(.*)\}/g, J.d[N]);
 				else if (V === 1) O.innerHTML = S.replace(/\$\{(.*)\}/g, J.d[N]);
 				else if (V === 11) O.value = J.d[N];
 				else if (V === 12) {
-					let r = O.nextElementSibling, n = 0;
-					O.innerHTML = J.d[N][0];
-					while (r && r.getAttribute("_v") === N) {
+					let r = O.nextElementSibling, k = 0;
+					if (O.value || O.value === "") O.value = J.d[N][0];
+					else O.innerHTML = J.d[N][0];
+					while (r && r.getAttribute("_q") === N) {
 						r.parentElement.removeChild(r);
 						r = O.nextElementSibling;
 					}
-					/*
-					for (var i = 1; i < S.length; i++) {
-						n = O.cloneNode(true);
+					if (Array.isArray(J.b[N])) {
+						O.style.background = J.b[N][0];
+						k = J.b[N].length;
+					}
+					for (let i = 1; i < J.d[N].length; i++) {
+						let n = O.cloneNode(true);
 						if (r) n = O.parentNode.insertBefore(n, r);
 						else n = O.parentNode.appendChild(n);
-						n.innerHTML = S[i];
+						if (n.value || n.value === "") n.value = J.d[N][i];
+						else n.innerHTML = J.d[N][i];
+						if (k) n.style.background = J.b[N][(i < k ? i : i % k)];
 					}
-					*/
 				}
 			}, pt = (N, O, S, V) => {
 				// N Name, O Object, S String, V tag 1 push
@@ -178,6 +183,7 @@
 					if (J.d[n] || J.d[n] === "") {
 						pt(n, O, S, V);
 						if (S.indexOf(":v") === 0) up(n, O, "", 11);
+						else if (S.indexOf(":for") === 0) up(n, O, "", 12);
 						else up(n, O, S, 1);
 					}
 					for (const i of [].slice.call(O.attributes)) {
@@ -191,30 +197,16 @@
 							O.removeAttribute(i.name);
 						} else if (r[0] === "on" && J.m[n]) {
 							// on:click onclick
-							if (O.getAttribute(":for")) O.parentNode.addEventListener(r[1], S => { if (S.getAttribute("_q")) J.m[i.value](J.d, S.target) }, false);
+							if (O.getAttribute(":for") || O.getAttribute("_q")) O.parentNode.addEventListener(r[1], S => { if (S.target.getAttribute("_q")) J.m[i.value](J.d, S.target) }, false);
 							else O.addEventListener(r[1], S => { J.m[i.value](J.d, S.target) }, false);
 							O.removeAttribute(i.name);
-						} else if (r[1] === "for" && J.d[n]) {
+						} else if (r[1] === "for" && Array.isArray(J.d[n])) {
 							// :for for
 							O.removeAttribute(i.name);
-							O.setAttribute("_v", n);
+							O.setAttribute("_q", n);
 							pt(n, O, ":for" + n, V);
-							if (Array.isArray(J.d[n])) up(n, O, "", 12);
+							up(n, O, "", 12);
 						}
-						/*
-						else if (n[0] == "_v" && J.d[i.value] != U) {
-							// _v for vf
-							n = J.d[i.value];
-							if (Array.isArray(n)) {
-								r = O.nextElementSibling;
-								while (r && r.getAttribute("_v") == i.value) {
-									O.parentNode.removeChild(r);
-									r = O.nextElementSibling;
-								}
-								v.upF(O, n);
-							}
-						}
-						*/
 					}
 				}
 			}, to = O => {

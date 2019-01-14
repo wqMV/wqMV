@@ -12,7 +12,24 @@ const wq = {
 	},
 
 	box: () => {
-		/*
+		q("wHome", {
+			b: {
+				tf: ["#f00", "#0f0", "#00f"]
+			},
+			d: {
+				ta: "a",
+				tf: ["fa", "fb", "fc"]
+			},
+			m: {
+				to: (d, e) => { alert(d.tf) },
+				fo: (d, e) => { console.log(e) }
+			},
+			c: d => {
+				d.ta = "ta";
+				d.tf = ["fa", "fb", "fc", "fd"];
+			}
+		});
+
 		m.u(q("wLink"), "友情链接", {
 			"链接 1": "1.html",
 			"链接 2": "1.html",
@@ -42,21 +59,6 @@ const wq = {
 			"菜单二": "alert('二')",
 			"菜单三": "alert('三')"
 		});
-		*/
-
-		q("wHome", {
-			d: {
-				ta: "a",
-				tf: ["fa", "fb", "fc"]
-			},
-			m: {
-				to: (d, e) => { console.log(d.tf) }
-			},
-			c: d => {
-				d.ta = "ta";
-			}
-		});
-
 	},
 	go: () => {
 		const ut = m.ut();

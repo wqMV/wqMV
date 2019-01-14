@@ -52,7 +52,7 @@
 						<option value="d">d</option>
 					</select>
 					<input id="oQ" type="button" on:click="to" value="on:click">
-					<li :for="tf"></li>
+					<li :for="tf" on:click="fo"></li>
 					<form id="oF">
 						<input type="button" value="弹窗" onclick="v.t('标题','副标题','aaa')">
 						<input type="button" value="提示" onclick="v.c('标题',()=>{alert('提示')})">
@@ -68,7 +68,7 @@
 
 	</footer>
 	<div id="wTemp" class="dh"></div>
-	<script type="text/JavaScript" src="src/wqMV.js"></script>
+	<script type="text/JavaScript" src="src/wqMV.min.js"></script>
 	<script type="text/JavaScript" src="src/js.js"></script>
 </body>
 
