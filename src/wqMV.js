@@ -141,28 +141,87 @@
 		} else s(E);
 
 		if (J) {
-			const pu = (S, O) => {
-				if (J.q[S].indexOf(O) === -1) J.q[S].push(O)
-			}, nt = O => {
-				const r = /\$\{(.*)\}/;
-				let t = O.outerHTML || O.textContent;
-				console.log(t);
-				t = r.test(t) ? r.exec(t)[1] : "";
-				if (O.nodeType == 3 && J.d[t]) {
-					pu(t, O);
-					O.textContent = J.d[t];
-				} else if (O.nodeType == 1) {
-					if (J.d[t]) {
-						pu(t, O);
-						O.textContent = J.d[t];
-						console.log(O);
+			console.log(J);
+			const up = (N, O, S, V) => {
+				if (V === 3) O.textContent = S.replace(/\$\{(.*)\}/g, J.d[N]);
+				else if (V === 1) O.innerHTML = S.replace(/\$\{(.*)\}/g, J.d[N]);
+				else if (V === 11) O.value = J.d[N];
+				else if (V === 12) {
+					let r = O.nextElementSibling, n = 0;
+					O.innerHTML = J.d[N][0];
+					while (r && r.getAttribute("_v") === N) {
+						r.parentElement.removeChild(r);
+						r = O.nextElementSibling;
+					}
+					/*
+					for (var i = 1; i < S.length; i++) {
+						n = O.cloneNode(true);
+						if (r) n = O.parentNode.insertBefore(n, r);
+						else n = O.parentNode.appendChild(n);
+						n.innerHTML = S[i];
+					}
+					*/
+				}
+			}, pt = (N, O, S, V) => {
+				// N Name, O Object, S String, V tag 1 push
+				if (V === 1 && J.q[N].indexOf(O) === -1) {
+					J.q[N].push(O);
+					J.q[N + "_v"].push(S);
+				}
+			}, go = (O, S, V) => {
+				let r = /\$\{(.*)\}/,
+					n = r.test(S) ? r.exec(S)[1] : (r = /\:v(.*)/).test(S) ? r.exec(S)[1] : (r = /\:for(.*)/).test(S) ? r.exec(S)[1] : "";
+				if (O.nodeType == 3 && (J.d[n] || J.d[n] === "")) {
+					pt(n, O, S, V);
+					up(n, O, S, 3);
+				} else if (O.nodeType === 1) {
+					if (J.d[n] || J.d[n] === "") {
+						pt(n, O, S, V);
+						if (S.indexOf(":v") === 0) up(n, O, "", 11);
+						else up(n, O, S, 1);
+					}
+					for (const i of [].slice.call(O.attributes)) {
+						r = i.name.split(':');
+						n = i.value;
+						if ((O.value || O.value === "") && r[1] === "v" && J.d[n]) {
+							// :v value
+							pt(n, O, ":v" + n, V);
+							up(n, O, "", 11);
+							O.addEventListener('input', S => { J.d[i.value] = S.target.value }, false);
+							O.removeAttribute(i.name);
+						} else if (r[0] === "on" && J.m[n]) {
+							// on:click onclick
+							if (O.getAttribute(":for")) O.parentNode.addEventListener(r[1], S => { if (S.getAttribute("_q")) J.m[i.value](J.d, S.target) }, false);
+							else O.addEventListener(r[1], S => { J.m[i.value](J.d, S.target) }, false);
+							O.removeAttribute(i.name);
+						} else if (r[1] === "for" && J.d[n]) {
+							// :for for
+							O.removeAttribute(i.name);
+							O.setAttribute("_v", n);
+							pt(n, O, ":for" + n, V);
+							if (Array.isArray(J.d[n])) up(n, O, "", 12);
+						}
+						/*
+						else if (n[0] == "_v" && J.d[i.value] != U) {
+							// _v for vf
+							n = J.d[i.value];
+							if (Array.isArray(n)) {
+								r = O.nextElementSibling;
+								while (r && r.getAttribute("_v") == i.value) {
+									O.parentNode.removeChild(r);
+									r = O.nextElementSibling;
+								}
+								v.upF(O, n);
+							}
+						}
+						*/
 					}
 				}
-			}, ke = O => {
-				if (O.childNodes.length === 0) nt(O);
+			}, to = O => {
+				if (O.childNodes.length === 0) go(O, O.textContent, 1);
 				else for (const i of [].slice.call(O.childNodes)) {
-					if (i.children && i.children.length) ke(i);
-					else nt(i);
+					if (i.children && i.children.length) to(i);
+					else go(i, i.textContent, 1);
 				}
 			}, df = (O, K, V) => {
 				Object.defineProperty(O, K, {
@@ -170,7 +229,7 @@
 					set: S => {
 						if (S === V) return;
 						V = S;
-						for (const j of J.q[K]) j.textContent = S;
+						for (let i = 0; i < J.q[K].length; i++) go(J.q[K][i], J.q[K + "_v"][i]);
 					}
 				});
 			};
@@ -178,11 +237,12 @@
 			J.q = J.q ? J.q : {};
 			for (const i in J.d) {
 				J.q[i] = J.q[i] ? J.q[i] : [];
+				J.q[i + "_v"] = J.q[i + "_v"] ? J.q[i + "_v"] : [];
 				df(J.d, i, J.d[i]);
 			}
-			if (l) for (const i of E) ke(i);
-			else ke(E);
-			J.c.call(J.d);
+			if (l) for (const i of E) to(i);
+			else to(E);
+			if (typeof J.c === "function") J.c(J.d);
 		}
 
 		// S String, A Any

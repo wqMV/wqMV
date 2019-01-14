@@ -44,11 +44,16 @@ const wq = {
 		});
 		*/
 
-		q("oD", {
-			d: { ta: "a" },
-			c: function () {
-				console.log(this);
-				this.ta = "aaa";
+		q("wHome", {
+			d: {
+				ta: "a",
+				tf: ["fa", "fb", "fc"]
+			},
+			m: {
+				to: (d, e) => { console.log(d.tf) }
+			},
+			c: d => {
+				d.ta = "ta";
 			}
 		});
 
