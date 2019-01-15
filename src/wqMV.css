@@ -61,6 +61,7 @@ body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-ser
 .tl { text-align: left }
 .vm { vertical-align: middle }
 
+.df { width: 100%; height: 100% }
 .db { display: block }
 .dh { display: none }
 .dl { line-height: 1.5 }
