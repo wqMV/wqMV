@@ -60,6 +60,7 @@ body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-ser
 .tc { text-align: center }
 .tl { text-align: left }
 .vm { vertical-align: middle }
+.vt { vertical-align: top }
 
 .df { width: 100%; height: 100% }
 .db { display: block }
