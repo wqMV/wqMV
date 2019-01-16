@@ -475,7 +475,11 @@
 		ss: S => S.replace(/,/g, "，").replace(/;/g, "；").replace(/\"/g, "＂").replace(/\'/g, "＇").replace(/(^\s*)|(\s*$)/g, "").replace(/\s+/g, " "),
 		sn: S => S.replace(/[^0-9]/g, ""),
 		sc: S => S.replace(/[^(a-z|A-Z|0-9)]/g, ""),
-		sp: S => m.ss(S).replace(/ |　|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}/g, "")
+		sp: S => m.ss(S).replace(/ |　|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}/g, ""),
+		ts: function () { this.value = m.ss(this.value) },
+		tn: function () { this.value = m.sn(this.value) },
+		tc: function () { this.value = m.sc(this.value) },
+		tp: function () { this.value = m.sp(this.value) }
 	};
 
 	window.m = m;
