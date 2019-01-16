@@ -379,7 +379,6 @@
 			E.innerHTML = k.j("");
 			k = q("@A", q("_M_r")).for(e => { e.onclick = function () { o(this) } });
 			o(k[0]);
-			k[0].click();
 		},
 
 		// E Element, J Json
@@ -394,7 +393,6 @@
 			E.innerHTML = k.j("");
 			k = q("@LABEL", q("_M_b")).for(e => { e.onclick = function () { o(this) } });
 			o(k[0]);
-			k[0].children[0].click();
 		},
 
 		// E Element, J Json
