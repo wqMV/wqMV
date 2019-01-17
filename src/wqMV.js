@@ -351,12 +351,13 @@
 		} else s();
 	};
 
-	// N Name, V Value 0 delete
+	// N Name 0 clear, V Value 0 delete
 	q.s = (N, V) => {
 		const k = sessionStorage;
 		if (V === 0) k.removeItem(N);
 		else if (V) k.setItem(N, V);
-		return k.getItem(N);
+		else if (N === 0) k.clear();
+		return k.getItem(N) || "";
 	};
 
 	Array.prototype.p = Array.prototype.push;
