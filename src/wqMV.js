@@ -405,7 +405,7 @@
 			k.p(`<div id="_M_d">`);
 			for (const i in J) {
 				k.p(`<details>`);
-				k.p(`<summary class="${J[i]['c']}">${i}</summary>`);
+				k.p(`<summary class="${J[i]['c'] ? J[i]['c'] : ''}">${i}</summary>`);
 				for (const j in J[i]) if (j !== "c") k.p(`<span><li class="tc" onclick="${J[i][j]}">${j}</li></span>`);
 				k.p(`</details>`);
 			}
@@ -417,12 +417,12 @@
 			k[0].children[0].click();
 		},
 
-		// E Element, T Title, C Class, J Json
-		u: (E, T, C, J) => {
+		// E Element, T Title, J Json
+		u: (E, T, J) => {
 			let k = [];
 			k.p(`<details class="tc dl">`);
-			k.p(`<summary class="${C}">${T}</summary>`);
-			for (const i in J) k.p(`<a href="${J[i]}" target="_blank">${i}</a><br>`);
+			k.p(`<summary class="${J['c'] ? J['c'] : ''}">${T}</summary>`);
+			for (const i in J) if (i !== "c") k.p(`<a href="${J[i]}" target="_blank">${i}</a><br>`);
 			k.p(`</details>`);
 			E.innerHTML = k.j("");
 		},
