@@ -62,6 +62,8 @@ const wq = {
 			"菜单二": "alert('二')",
 			"菜单三": "alert('三')"
 		});
+
+		ed(document.getElementById("_w_Edr"));
 	},
 	go: () => {
 		const ut = m.ut();
