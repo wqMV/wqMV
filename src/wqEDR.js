@@ -1,27 +1,33 @@
 (() => {
 	const ed = O => {
-		const be = ["sour", "clea", "move",
+		const be = ["sour", "draf",
+			"clea", "move",
 			"bold", "ital", "unde", "stri", "supe", "subs",
 			"unor", "orde",
-			"left", "cent", "righ", "just",
-			"full"
-		], bc = ["源代码", "清空文档", "清除格式",
+			"left", "cent", "righ",
+			"link", "imag", "vide",
+			"full",
+		], bc = ["源代码", "读草稿",
+			"清空文档", "清除格式",
 			"加粗", "斜体", "下划线", "删除线", "上标", "下标",
 			"无序列表", "有序列表",
-			"左对齐", "居中对齐", "右对齐", "两端对齐",
+			"左对齐", "居中对齐", "右对齐",
+			"链接", "图片", "视频",
 			"全屏"
-		], bx = ["sour", "clea", "removeformat",
+		], bx = ["_sour", "_draf",
+			"_clea", "removeformat",
 			"bold", "italic", "underline", "strikethrough", "superscript", "subscript",
 			"insertunorderedlist", "insertorderedlist",
-			"justifyleft", "justifycenter", "justifyright", "justifyfull",
-			"full"
+			"justifyleft", "justifycenter", "justifyright",
+			"_link", "_imag", "_vide",
+			"_full"
 		], cl = {
-			"#f00": "红色",
-			"#0f0": "绿色",
-			"#00f": "蓝色",
-			"#0ff": "青色",
-			"#f0f": "粉色",
-			"#ff0": "黄色"
+			"crimson": "红色",
+			"seagreen": "绿色",
+			"#28d": "蓝色",
+			"#aee": "青色",
+			"#eae": "粉色",
+			"#eea": "黄色"
 		}, c = (e, n, j) => {
 			let k = [];
 			k.p(`<select id="_wqE${e}" onchange="ed.s('${e}')">`);
@@ -35,20 +41,22 @@
 		let h = [];
 
 		h.p(`<style type="text/css">\n`);
-		h.p(`#_wqEt { padding: 5px 10px; border-top: 1px solid #999; border-left: 1px solid #999; border-right: 1px solid #999; border-radius: 5px 5px 0 0; box-shadow: 2px 2px 2px #666 }\n`);
-		h.p(`#_wqEr { padding: 10px; height: 12rem; overflow-y: scroll; outline: none; border: 1px solid #999; box-shadow: 2px 2px 2px #666 }\n`);
+		h.p(`#_wqEt { padding: 5px 10px; border-top: 1px solid silver; border-left: 1px solid silver; border-right: 1px solid silver; border-radius: 5px 5px 0 0; box-shadow: 2px 2px 2px gray }\n`);
+		h.p(`#_wqEr { padding: 10px; height: 12rem; overflow-y: scroll; outline: none; border: 1px solid silver; box-shadow: 2px 2px 2px gray }\n`);
 		h.p(`#_wqEt select { margin: 0 5px; padding: 2px; border-radius: 3px }\n`);
 		h.p(`#_wqEt > div { display:inline-block }\n`);
 		h.p(`.ed_ful { position: absolute; top: 0; left: 0; background: #000 }\n`);
 		h.p(`.ed_ful > div { background: snow }\n`);
 		h.p(`.ed_btn { display:inline-block; margin: 0 1px; padding: 1px; vertical-align: middle }\n`);
-		h.p(`.sept { width: 2px; height: 20px; background: url("img/ed.png") -400px 0 }\n`);
+		h.p(`.sept { width: 2px; height: 20px; background: url("img/ed.png") -380px 0 }\n`);
 		h.p(`.icon { width: 20px; height: 20px; border: 1px solid transparent; background-repeat: no-repeat; background:url("img/ed.png") }\n`);
 		h.p(`.icon:hover, .icon:active { border: 1px solid #28d; background-color: #cff }\n`);
 		for (var i = 0; i < be.length; i++) h.p(`.${be[i]} { background-position: -${i * 20}px 0 }\n`);
 		h.p(`</style>\n`);
 		h.p(`<div id="_wqEt" unselectable="on" ><div>`);
-		for (var i = 0; i < 3; i++) h.p(p(i));
+		for (var i = 0; i < 2; i++) h.p(p(i));
+		h.p(s());
+		for (var i = 2; i < 4; i++) h.p(p(i));
 		h.p(s());
 		h.p(c("forecolor", "前景", cl));
 		h.p(c("backcolor", "背景", cl));
@@ -69,14 +77,17 @@
 			"6": "特大",
 			"7": "最大"
 		}));
+		h.p(s());
 		h.p(`</div><div onmousedown="return false">`);
-		for (var i = 3; i < 9; i++) h.p(p(i));
+		for (var i = 4; i < 10; i++) h.p(p(i));
 		h.p(s());
-		for (var i = 9; i < 11; i++) h.p(p(i));
+		for (var i = 10; i < 12; i++) h.p(p(i));
 		h.p(s());
-		for (var i = 11; i < 15; i++) h.p(p(i));
+		for (var i = 12; i < 15; i++) h.p(p(i));
 		h.p(s());
-		h.p(p(15));
+		for (var i = 15; i < 18; i++) h.p(p(i));
+		h.p(s());
+		h.p(p(18));
 		h.p(`</div></div>`);
 		h.p(`<div id="_wqEr" contenteditable="true" tabindex="0"></div>`);
 		O.style["text-align"] = "left";
@@ -90,9 +101,7 @@
 	ed.o = 0;
 	ed.g = 0;
 	ed.e = c => {
-		if (c == "sour") ed.sour();
-		else if (c == "clea") ed.clea();
-		else if (c == "full") ed.full();
+		if (c.startsWith("_")) ed[c.replace("_", "")]();
 		else document.execCommand(c, false, null);
 	};
 	ed.s = o => {
@@ -114,6 +123,10 @@
 			document.getElementById("_wqEx").focus();
 		}
 	};
+	ed.draf = () => { alert("draf") };
+	ed.link = () => { alert("link") };
+	ed.imag = () => { alert("imag") };
+	ed.vide = () => { alert("vide") };
 	ed.clea = () => { ed.e("selectall"); ed.e("delete"); };
 	ed.full = () => {
 		if (ed.o.className) {

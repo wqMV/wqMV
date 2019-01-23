@@ -14,7 +14,7 @@ const wq = {
 	box: () => {
 		q("wHome", {
 			b: {
-				tf: ["#f00", "#0f0", "#00f"]
+				tf: ["crimson", "seagreen", "#28d"]
 			},
 			d: {
 				ta: "a",
