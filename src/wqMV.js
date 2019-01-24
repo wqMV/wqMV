@@ -532,7 +532,7 @@
 				k.p(`</div></div>`);
 				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 				q("_w_OK").onclick = () => {
-					v.del("c");
+					if (H.indexOf("input") === -1) v.del("c");
 					if (typeof C == "function") C();
 				};
 				v.adi("c");

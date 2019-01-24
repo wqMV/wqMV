@@ -124,7 +124,15 @@
 		}
 	};
 	ed.draf = () => { alert("draf") };
-	ed.link = () => { alert("link") };
+	ed.link = () => {
+		let k = document.getSelection();
+		console.log(k);
+		v.c(`链接地址：<input id="eElink" type="text">`, () => {
+			document.execCommand("insertHTML", false, `<a href="${document.getElementById("eElink").value}" target="_blank">${k}</a>`);
+			v.del("c");
+			ed.g.focus();
+		});
+	};
 	ed.imag = () => { alert("imag") };
 	ed.vide = () => { alert("vide") };
 	ed.clea = () => { ed.e("selectall"); ed.e("delete"); };
