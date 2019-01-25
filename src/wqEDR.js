@@ -125,12 +125,26 @@
 	};
 	ed.draf = () => { alert("draf") };
 	ed.link = () => {
-		let k = document.getSelection();
+		let k = document.getSelection(),
+			x = k.anchorOffset,
+			y = k.focusOffset;
 		console.log(k);
+		console.log(k.extentNode.parentNode.tagName);
 		v.c(`链接地址：<input id="eElink" type="text">`, () => {
-			document.execCommand("insertHTML", false, `<a href="${document.getElementById("eElink").value}" target="_blank">${k}</a>`);
+			let s = document.getElementById("eElink").value,
+				r = x > y ? x : y;
+			x = x > y ? y : x;
+			y = r;
 			v.del("c");
-			ed.g.focus();
+			r = document.createRange();
+			k = ed.g.firstChild;
+			r.selectNode(k);
+			r.setStart(k, x);
+			r.setEnd(k, y);
+			k = document.getSelection();
+			k.addRange(r);
+			document.execCommand("insertHTML", false, `<a href="${s}" target="_blank">${k}</a>`);
+
 		});
 	};
 	ed.imag = () => { alert("imag") };
