@@ -30,45 +30,47 @@
 			"#eea": "黄色"
 		}, c = (e, n, j) => {
 			let k = [];
-			k.p(`<select id="_wqE${e}" onchange="ed.s('${e}')">`);
-			k.p(`<option value="" selected>${n}</option>`);
-			for (const i in j) k.p(`<option value="${i}">${j[i]}</option>`);
-			k.p(`</select>`);
-			return k.j("");
+			k.push(`<select id="_wqE${e}" onchange="ed.s('${e}')">`);
+			k.push(`<option value="" selected>${n}</option>`);
+			for (const i in j) k.push(`<option value="${i}">${j[i]}</option>`);
+			k.push(`</select>`);
+			return k.join("");
 		},
 			p = n => `<div class="ed_btn ${be[n]}" onmousedown="return false" title="${bc[n]}"><div class="${be[n]} icon" onclick="ed.e('${bx[n]}')"></div></div>`,
 			s = () => `<div class="ed_btn sept"></div>`;
 		let h = [];
 
-		h.p(`<style type="text/css">\n`);
-		h.p(`#_wqEt { padding: 5px 10px; border-top: 1px solid silver; border-left: 1px solid silver; border-right: 1px solid silver; border-radius: 5px 5px 0 0; box-shadow: 2px 2px 2px gray }\n`);
-		h.p(`#_wqEr { padding: 10px; height: 12rem; overflow-y: scroll; outline: none; border: 1px solid silver; box-shadow: 2px 2px 2px gray }\n`);
-		h.p(`#_wqEt select { margin: 0 5px; padding: 2px; border-radius: 3px }\n`);
-		h.p(`#_wqEt > div { display:inline-block }\n`);
-		h.p(`.ed_ful { position: absolute; top: 0; left: 0; background: #000 }\n`);
-		h.p(`.ed_ful > div { background: snow }\n`);
-		h.p(`.ed_btn { display:inline-block; margin: 0 1px; padding: 1px; vertical-align: middle }\n`);
-		h.p(`.sept { width: 2px; height: 20px; background: url("img/ed.png") -380px 0 }\n`);
-		h.p(`.icon { width: 20px; height: 20px; border: 1px solid transparent; background-repeat: no-repeat; background:url("img/ed.png") }\n`);
-		h.p(`.icon:hover, .icon:active { border: 1px solid #28d; background-color: #cff }\n`);
-		for (var i = 0; i < be.length; i++) h.p(`.${be[i]} { background-position: -${i * 20}px 0 }\n`);
-		h.p(`</style>\n`);
-		h.p(`<div id="_wqEt" unselectable="on" ><div>`);
-		for (var i = 0; i < 2; i++) h.p(p(i));
-		h.p(s());
-		for (var i = 2; i < 4; i++) h.p(p(i));
-		h.p(s());
-		h.p(c("forecolor", "前景", cl));
-		h.p(c("backcolor", "背景", cl));
-		h.p(s());
-		h.p(c("formatblock", "段落", {
+		h.push(`<style type="text/css">\n`);
+		h.push(`#_wqEb { position: absolute; z-index: 4001; height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; opacity: 0.5; background: gray }`)
+		h.push(`#_wqEc { position: absolute; z-index: 4002; padding: 5px 1rem; text-align: center; background: ivory; border: 1px solid silver; border-radius: 5px; box-shadow: 2px 5px 1rem gray }`)
+		h.push(`#_wqEt { padding: 5px 10px; border-top: 1px solid silver; border-left: 1px solid silver; border-right: 1px solid silver; border-radius: 5px 5px 0 0; box-shadow: 2px 2px 2px gray }\n`);
+		h.push(`#_wqEr { padding: 10px; height: 12rem; overflow-y: scroll; outline: none; border: 1px solid silver; box-shadow: 2px 2px 2px gray }\n`);
+		h.push(`#_wqEt select { margin: 0 5px; padding: 2px; border-radius: 3px }\n`);
+		h.push(`#_wqEt > div { display:inline-block }\n`);
+		h.push(`.ed_ful { position: absolute; top: 0; left: 0; background: #000 }\n`);
+		h.push(`.ed_ful > div { background: snow }\n`);
+		h.push(`.ed_btn { display:inline-block; margin: 0 1px; padding: 1px; vertical-align: middle }\n`);
+		h.push(`.sept { width: 2px; height: 20px; background: url("img/ed.png") -380px 0 }\n`);
+		h.push(`.icon { width: 20px; height: 20px; border: 1px solid transparent; background-repeat: no-repeat; background:url("img/ed.png") }\n`);
+		h.push(`.icon:hover, .icon:active { border: 1px solid #28d; background-color: #cff }\n`);
+		for (var i = 0; i < be.length; i++) h.push(`.${be[i]} { background-position: -${i * 20}px 0 }\n`);
+		h.push(`</style>\n`);
+		h.push(`<div id="_wqEt" unselectable="on" ><div>`);
+		for (var i = 0; i < 2; i++) h.push(p(i));
+		h.push(s());
+		for (var i = 2; i < 4; i++) h.push(p(i));
+		h.push(s());
+		h.push(c("forecolor", "前景", cl));
+		h.push(c("backcolor", "背景", cl));
+		h.push(s());
+		h.push(c("formatblock", "段落", {
 			div: "正文",
 			p: "段落",
 			h1: "标题1",
 			h2: "标题2",
 			h3: "标题3"
 		}));
-		h.p(c("fontsize", "大小", {
+		h.push(c("fontsize", "大小", {
 			"1": "很小",
 			"2": "小",
 			"3": "正常",
@@ -77,19 +79,19 @@
 			"6": "特大",
 			"7": "最大"
 		}));
-		h.p(s());
-		h.p(`</div><div onmousedown="return false">`);
-		for (var i = 4; i < 10; i++) h.p(p(i));
-		h.p(s());
-		for (var i = 10; i < 12; i++) h.p(p(i));
-		h.p(s());
-		for (var i = 12; i < 15; i++) h.p(p(i));
-		h.p(s());
-		for (var i = 15; i < 18; i++) h.p(p(i));
-		h.p(s());
-		h.p(p(18));
-		h.p(`</div></div>`);
-		h.p(`<div id="_wqEr" contenteditable="true" tabindex="0"></div>`);
+		h.push(s());
+		h.push(`</div><div onmousedown="return false">`);
+		for (var i = 4; i < 10; i++) h.push(p(i));
+		h.push(s());
+		for (var i = 10; i < 12; i++) h.push(p(i));
+		h.push(s());
+		for (var i = 12; i < 15; i++) h.push(p(i));
+		h.push(s());
+		for (var i = 15; i < 18; i++) h.push(p(i));
+		h.push(s());
+		h.push(p(18));
+		h.push(`</div></div>`);
+		h.push(`<div id="_wqEr" contenteditable="true" tabindex="0"></div>`);
 		O.style["text-align"] = "left";
 		O.style["padding"] = "5px";
 		O.innerHTML = h.join("");
@@ -100,6 +102,37 @@
 
 	ed.o = 0;
 	ed.g = 0;
+	ed.d = () => {
+		let k = document.getElementById("_wqEb");
+		if (k) k.parentElement.removeChild(k);
+		k = document.getElementById("_wqEc");
+		if (k) k.parentElement.removeChild(k);
+	};
+	ed.c = (H, C) => {
+		let x = 0, y = 0, k = document.getElementById("_wqEb");
+		if (k) ed.d();
+		else {
+			k = [];
+			k.push(`<div id="_wqEb"></div>`);
+			k.push(`<div id="_wqEc">`);
+			k.push(`<div>${H}</div>`);
+			k.push(`<div style="padding: 5px 1rem 0 1rem">`);
+			k.push(`<input id ="_wqEok" type="button" value="确定">`);
+			k.push(`<input type="button" onclick="ed.d()" value="关闭">`);
+			k.push(`</div></div>`);
+			document.body.insertAdjacentHTML("beforeEnd", k.join(""));
+			document.getElementById("_wqEok").onclick = () => { if (typeof C == "function") C() };
+			k = document.getElementById("_wqEc");
+			if (k) {
+				x = (window.innerWidth - k.offsetWidth) / 2;
+				y = (window.innerHeight - k.offsetHeight) / 2 - 20;
+				if (x < 0) x = 0;
+				if (y < 0) y = 0;
+				k.style.left = x + "px";
+				k.style.top = y + "px";
+			}
+		}
+	};
 	ed.e = c => {
 		if (c.startsWith("_")) ed[c.replace("_", "")]();
 		else document.execCommand(c, false, null);
@@ -128,14 +161,12 @@
 		let k = document.getSelection(),
 			x = k.anchorOffset,
 			y = k.focusOffset;
-		console.log(k);
-		console.log(k.extentNode.parentNode.tagName);
-		v.c(`链接地址：<input id="eElink" type="text">`, () => {
+		ed.c(`链接地址：<input id="eElink" type="text">`, () => {
 			let s = document.getElementById("eElink").value,
 				r = x > y ? x : y;
 			x = x > y ? y : x;
 			y = r;
-			v.del("c");
+			ed.d();
 			r = document.createRange();
 			k = ed.g.firstChild;
 			r.selectNode(k);
@@ -143,8 +174,11 @@
 			r.setEnd(k, y);
 			k = document.getSelection();
 			k.addRange(r);
-			document.execCommand("insertHTML", false, `<a href="${s}" target="_blank">${k}</a>`);
-
+			r = document.createElement("a");
+			r.href = s;
+			r.target = "_blank";
+			k.getRangeAt(0).surroundContents(r);
+			//document.execCommand("insertHTML", false, `<a href="${s}" target="_blank">${k.toString()}</a>`);
 		});
 	};
 	ed.imag = () => { alert("imag") };
