@@ -7,12 +7,12 @@
 			"left", "cent", "righ",
 			"link", "imag", "vide",
 			"full",
-		], bc = ["源代码", "读草稿",
+		], bc = ["视图/源码", "读/写草稿",
 			"清空文档", "清除格式",
-			"加粗", "斜体", "下划线", "删除线", "上标", "下标",
+			"粗体", "斜体", "下划线", "删除线", "上标", "下标",
 			"无序列表", "有序列表",
 			"左对齐", "居中对齐", "右对齐",
-			"链接", "图片", "视频",
+			"增/删链接", "图片", "视频",
 			"全屏"
 		], bx = ["_sour", "_draf",
 			"_clea", "removeformat",
@@ -115,13 +115,16 @@
 			k = [];
 			k.push(`<div id="_wqEb"></div>`);
 			k.push(`<div id="_wqEc">`);
-			k.push(`<div>${H}</div>`);
+			k.push(`<div id="_wqEf">${H}</div>`);
 			k.push(`<div style="padding: 5px 1rem 0 1rem">`);
 			k.push(`<input id ="_wqEok" type="button" value="确定">`);
 			k.push(`<input type="button" onclick="ed.d()" value="关闭">`);
 			k.push(`</div></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.join(""));
 			document.getElementById("_wqEok").onclick = () => { if (typeof C == "function") C() };
+			k = document.getElementById("_wqEf").children[0];
+			k.focus();
+			k.select();
 			k = document.getElementById("_wqEc");
 			if (k) {
 				x = (window.innerWidth - k.offsetWidth) / 2;
@@ -132,6 +135,23 @@
 				k.style.top = y + "px";
 			}
 		}
+	};
+	ed.m = C => {
+		const fsch = () => {
+			const f = document.getElementById("Eimag").files[0];
+			if (f) {
+				const fr = new FileReader();
+				fr.onload = () => {
+					if (f.size > 5119999) {
+						alert(`上传文件大小不能超过 5 MB！`);
+						document.getElementById("Eimag").value = "";
+					}
+				};
+				fr.readAsDataURL(f);
+			}
+		};
+		ed.c(`上传图片：<input id="Eimag" type="file" accept="image/*">`, C);
+		document.getElementById("Eimag").onchange = fsch;
 	};
 	ed.e = c => {
 		if (c.startsWith("_")) ed[c.replace("_", "")]();
@@ -164,8 +184,8 @@
 		x = k.startOffset;
 		y = k.endOffset;
 		if (x === y) return;
-		ed.c(`链接地址：<input id="eElink" type="text">`, () => {
-			let s = document.getElementById("eElink").value,
+		ed.c(`链接地址：<input id="Elink" type="text">`, () => {
+			let s = document.getElementById("Elink").value,
 				r = x > y ? x : y;
 			x = x > y ? y : x;
 			y = r;
@@ -178,10 +198,28 @@
 			k = document.getSelection();
 			k.addRange(r);
 			r = k.toString();
-			document.execCommand("insertHTML", false, `<a href="${s}" target="_blank">${r}</a>`);
+			if (s) document.execCommand("insertHTML", false, `<a href="${s}" target="_blank">${r}</a>`);
+			else document.execCommand("unlink", false, null);
 		});
 	};
-	ed.imag = () => { alert("imag") };
+	ed.imag = () => {
+		let k = document.getSelection(), x = 0, y = 0;
+		if (k.type === "None") return;
+		k = k.getRangeAt(0);
+		x = k.startOffset;
+		y = k.endOffset;
+		x = x > y ? x : y;
+		ed.c(`上传图片：<input id="Eimag" type="file" accept="image/*">`, () => {
+			ed.d();
+			r = document.createRange();
+			k = k.commonAncestorContainer;
+			r.selectNode(k);
+			r.setStart(k, x);
+			r.setEnd(k, x);
+			k = document.getSelection();
+			k.addRange(r);
+		});
+	};
 	ed.vide = () => { alert("vide") };
 	ed.clea = () => { ed.e("selectall"); ed.e("delete"); };
 	ed.full = () => {
