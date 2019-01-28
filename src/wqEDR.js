@@ -1,3 +1,4 @@
+"use strict";
 (() => {
 	const ed = O => {
 		const be = ["sour", "draf",
@@ -146,6 +147,8 @@
 			k.width = x;
 			k.height = y;
 			k = k.getContext("2d");
+			k.fillStyle = "#fff";
+			k.fillRect(0, 0, x, y);
 			k.drawImage(f, 0, 0, x, y);
 			k.font = "20px microsoft yahei";
 			k.fillStyle = "rgba(255,255,255,0.5)";
@@ -227,10 +230,10 @@
 		y = k.endOffset;
 		x = x > y ? x : y;
 		ed.m(() => {
-			let s = document.getElementById("Ecanv");
+			let s = document.getElementById("Ecanv"),
+				r = document.createRange();
 			s = s.toDataURL('image/jpeg', 0.9);
 			ed.d();
-			r = document.createRange();
 			k = k.commonAncestorContainer;
 			r.selectNode(k);
 			r.setEnd(k, x);
