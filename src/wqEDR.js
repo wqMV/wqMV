@@ -137,20 +137,37 @@
 		}
 	};
 	ed.m = C => {
-		const fsch = () => {
-			const f = document.getElementById("Eimag").files[0];
+		const imch = e => {
+			let k = document.getElementById("Ecanv"),
+				f = e.target,
+				x = f.width, y = f.height;
+			e = x / y;
+			if (x > 576) x = 576, y = parseInt(576 / e);
+			k.width = x;
+			k.height = y;
+			k = k.getContext("2d");
+			k.drawImage(f, 0, 0, x, y);
+			k.font = "20px microsoft yahei";
+			k.fillStyle = "rgba(255,255,255,0.5)";
+			k.fillText(`@${location.host}`, x - 200, y - 50);
+		}, fsch = () => {
+			let f = document.getElementById("Eimag").files[0];
 			if (f) {
 				const fr = new FileReader();
-				fr.onload = () => {
+				fr.onload = e => {
 					if (f.size > 5119999) {
-						alert(`上传文件大小不能超过 5 MB！`);
+						alert(`上传图片大小不能超过 5 MB！`);
 						document.getElementById("Eimag").value = "";
+					} else {
+						f = new Image();
+						f.onload = imch;
+						f.src = e.target.result;
 					}
 				};
 				fr.readAsDataURL(f);
 			}
 		};
-		ed.c(`上传图片：<input id="Eimag" type="file" accept="image/*">`, C);
+		ed.c(`上传图片：<input id="Eimag" type="file" accept="image/*"><div style="padding: .5rem"><canvas id="Ecanv" style="width: 576px; height: 324px"></canvas></div>`, C);
 		document.getElementById("Eimag").onchange = fsch;
 	};
 	ed.e = c => {
@@ -209,15 +226,16 @@
 		x = k.startOffset;
 		y = k.endOffset;
 		x = x > y ? x : y;
-		ed.c(`上传图片：<input id="Eimag" type="file" accept="image/*">`, () => {
+		ed.m(() => {
+			let s = document.getElementById("Ecanv");
+			s = s.toDataURL('image/jpeg', 0.9);
 			ed.d();
 			r = document.createRange();
 			k = k.commonAncestorContainer;
 			r.selectNode(k);
-			r.setStart(k, x);
 			r.setEnd(k, x);
 			k = document.getSelection();
-			k.addRange(r);
+			if (s) document.execCommand("insertHTML", false, `<div><img src="${s}"></div>`);
 		});
 	};
 	ed.vide = () => { alert("vide") };
