@@ -124,8 +124,10 @@
 			document.body.insertAdjacentHTML("beforeEnd", k.join(""));
 			document.getElementById("_wqEok").onclick = () => { if (typeof C == "function") C() };
 			k = document.getElementById("_wqEf").children[0];
-			k.focus();
-			k.select();
+			if (k.tagName === "INPUT") {
+				k.focus();
+				k.select();
+			}
 			k = document.getElementById("_wqEc");
 			if (k) {
 				x = (window.innerWidth - k.offsetWidth) / 2;
@@ -196,7 +198,34 @@
 			document.getElementById("_wqEx").focus();
 		}
 	};
-	ed.draf = () => { alert("draf") };
+	ed.draf = () => {
+		let l = function () {
+			let k = this.id, r = k.startsWith("_wqDr") ? 0 : 1, n = k.replace(/_wqDr|_wqDw/g, "");
+			k = localStorage;
+			if (r) {
+				k.setItem("_wqEDn" + n, document.getElementById("_wqDn" + n).value);
+				k.setItem("_wqEDt" + n, document.getElementById("_wqEr").innerHTML);
+			} else {
+				document.getElementById("_wqEr").innerHTML = k.getItem("_wqEDt" + n);
+				document.getElementById("_wqEr").focus();
+			}
+			ed.d();
+		}, h = [];
+		for (let i = 1; i < 3; i++) {
+			let s = localStorage.getItem("_wqEDn" + i);
+			h.push(`<div style="">草稿为客户端存储，不能保证数据的完整性，请您提前做好相关文档的备份。</div>`)
+			h.push(`<li>草稿${i}，文章名：`);
+			h.push(`<input id="_wqDn${i}" style="width:12rem" type="text" value="${s ? s : ''}">`);
+			h.push(`<input id="_wqDr${i}" type="button" value="读取">`);
+			h.push(`<input id="_wqDw${i}" type="button" value="保存">`);
+			h.push(`</li>`);
+		}
+		ed.c(h.join(""), () => { ed.d() });
+		for (let i = 1; i < 3; i++) {
+			document.getElementById("_wqDr" + i).onclick = l;
+			document.getElementById("_wqDw" + i).onclick = l;
+		}
+	};
 	ed.link = () => {
 		let k = document.getSelection(), x = 0, y = 0;
 		if (k.type === "None") return;
