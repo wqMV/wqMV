@@ -211,9 +211,9 @@
 			}
 			ed.d();
 		}, h = [];
+		h.push(`<div style="font-size: small; color: crimson">提示：草稿为客户端存储，不能保证数据的完整性，请您提前做好相关文档的备份。</div>`);
 		for (let i = 1; i < 3; i++) {
 			let s = localStorage.getItem("_wqEDn" + i);
-			h.push(`<div style="">草稿为客户端存储，不能保证数据的完整性，请您提前做好相关文档的备份。</div>`)
 			h.push(`<li>草稿${i}，文章名：`);
 			h.push(`<input id="_wqDn${i}" style="width:12rem" type="text" value="${s ? s : ''}">`);
 			h.push(`<input id="_wqDr${i}" type="button" value="读取">`);
@@ -225,6 +225,7 @@
 			document.getElementById("_wqDr" + i).onclick = l;
 			document.getElementById("_wqDw" + i).onclick = l;
 		}
+		document.getElementById("_wqDn1").select();
 	};
 	ed.link = () => {
 		let k = document.getSelection(), x = 0, y = 0;
