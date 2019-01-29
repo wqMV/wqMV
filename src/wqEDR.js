@@ -6,21 +6,21 @@
 			"bold", "ital", "unde", "stri", "supe", "subs",
 			"unor", "orde",
 			"left", "cent", "righ",
-			"link", "imag", "vide",
+			"link", "imag",
 			"full",
 		], bc = ["视图/源码", "读/写草稿",
 			"清空文档", "清除格式",
 			"粗体", "斜体", "下划线", "删除线", "上标", "下标",
 			"无序列表", "有序列表",
 			"左对齐", "居中对齐", "右对齐",
-			"增/删链接", "图片", "视频",
+			"增/删链接", "图片",
 			"全屏"
 		], bx = ["_sour", "_draf",
 			"_clea", "removeformat",
 			"bold", "italic", "underline", "strikethrough", "superscript", "subscript",
 			"insertunorderedlist", "insertorderedlist",
 			"justifyleft", "justifycenter", "justifyright",
-			"_link", "_imag", "_vide",
+			"_link", "_imag",
 			"_full"
 		], cl = {
 			"crimson": "红色",
@@ -51,7 +51,7 @@
 		h.push(`.ed_ful { position: absolute; top: 0; left: 0; background: #000 }\n`);
 		h.push(`.ed_ful > div { background: snow }\n`);
 		h.push(`.ed_btn { display:inline-block; margin: 0 1px; padding: 1px; vertical-align: middle }\n`);
-		h.push(`.sept { width: 2px; height: 20px; background: url("img/ed.png") -380px 0 }\n`);
+		h.push(`.sept { width: 2px; height: 20px; background: url("img/ed.png") -360px 0 }\n`);
 		h.push(`.icon { width: 20px; height: 20px; border: 1px solid transparent; background-repeat: no-repeat; background:url("img/ed.png") }\n`);
 		h.push(`.icon:hover, .icon:active { border: 1px solid #28d; background-color: #cff }\n`);
 		for (var i = 0; i < be.length; i++) h.push(`.${be[i]} { background-position: -${i * 20}px 0 }\n`);
@@ -88,9 +88,9 @@
 		h.push(s());
 		for (var i = 12; i < 15; i++) h.push(p(i));
 		h.push(s());
-		for (var i = 15; i < 18; i++) h.push(p(i));
+		for (var i = 15; i < 17; i++) h.push(p(i));
 		h.push(s());
-		h.push(p(18));
+		h.push(p(17));
 		h.push(`</div></div>`);
 		h.push(`<div id="_wqEr" contenteditable="true" tabindex="0"></div>`);
 		O.style["text-align"] = "left";
@@ -241,7 +241,6 @@
 			if (s) document.execCommand("insertHTML", false, `<div><img src="${s}"></div>`);
 		});
 	};
-	ed.vide = () => { alert("vide") };
 	ed.clea = () => { ed.e("selectall"); ed.e("delete"); };
 	ed.full = () => {
 		if (ed.o.className) {
