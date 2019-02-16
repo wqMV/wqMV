@@ -331,7 +331,7 @@
 	};
 
 	// S String
-	q.j = S => typeof S === "string" ? JSON.parse(`{${S}}`) : JSON.stringify(S);
+	q.j = S => typeof S === "string" ? JSON.parse(S) : JSON.stringify(S);
 
 	// N Name, C Callback, T Time
 	q.m = (N, C, T) => {
