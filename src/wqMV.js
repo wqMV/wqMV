@@ -119,8 +119,8 @@
 						set: S => { E.className = S }
 					},
 					h: {
-						get: () => E.value ? E.value : E.innerHTML,
-						set: S => { E.value ? E.value = S : E.innerHTML = S }
+						get: () => E.type ? E.value : E.innerHTML,
+						set: S => { E.type ? E.value = S : E.innerHTML = S }
 					}
 				});
 			}
@@ -358,6 +358,12 @@
 		else if (V) k.setItem(N, V);
 		else if (N === 0) k.clear();
 		return k.getItem(N) || "";
+	};
+
+	q.w = (N, J, C) => {
+		const k = new Worker("src/" + N + ".js");
+		k.postMessage(J);
+		k.onmessage = J => { if (typeof C === "function") C(J) }
 	};
 
 	Array.prototype.p = Array.prototype.push;
