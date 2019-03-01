@@ -360,8 +360,28 @@
 		return k.getItem(N) || "";
 	};
 
+	q.w = (N, J, C) => {
+		const k = new Worker("src/" + N + ".js");
+		k.postMessage(J);
+		k.onmessage = J => { if (typeof C === "function") C(J) }
+	};
+
+	// H Html
+	q.he = H => {
+		let k = document.createElement("div");
+		k.textContent = H;
+		return k.innerHTML;
+	};
+
+	// T Text
+	q.hd = T => {
+		let k = document.createElement("div");
+		k.innerHTML = T;
+		return k.textContent;
+	};
+
 	// get sessionStorage
-	qq.sg = () => {
+	q.sg = () => {
 		if (!sessionStorage.length) localStorage.setItem('w_sg', Date.now());
 		window.addEventListener('storage', function (event) {
 			if (event.key == 'w_sg') {
@@ -373,12 +393,6 @@
 				for (let key in data) sessionStorage.setItem(key, data[key]);
 			}
 		});
-	};
-
-	q.w = (N, J, C) => {
-		const k = new Worker("src/" + N + ".js");
-		k.postMessage(J);
-		k.onmessage = J => { if (typeof C === "function") C(J) }
 	};
 
 	Array.prototype.p = Array.prototype.push;
