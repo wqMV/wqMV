@@ -360,6 +360,21 @@
 		return k.getItem(N) || "";
 	};
 
+	// get sessionStorage
+	qq.sg = () => {
+		if (!sessionStorage.length) localStorage.setItem('w_sg', Date.now());
+		window.addEventListener('storage', function (event) {
+			if (event.key == 'w_sg') {
+				localStorage.setItem('w_ss', JSON.stringify(sessionStorage));
+				localStorage.removeItem('w_ss');
+			}
+			else if (event.key == 'w_ss' && !sessionStorage.length) {
+				let data = JSON.parse(event.newValue);
+				for (let key in data) sessionStorage.setItem(key, data[key]);
+			}
+		});
+	};
+
 	q.w = (N, J, C) => {
 		const k = new Worker("src/" + N + ".js");
 		k.postMessage(J);
