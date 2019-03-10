@@ -524,46 +524,48 @@
 // V
 (() => {
 	const v = {
-		// T Title, S Subheading, H Html, M Mode 0 default 1 del 2 close
-		t: (T, S, H, M) => {
+		// T Title, S Subheading, H Html, M Mode 0 default 1 del 2 close, B Background
+		t: (T, S, H, M, B) => {
 			let k = q("_V_Bt");
 			if (k) v.del();
 			else {
-				// B Background, F Foreground, H Head, T Title, S Subheading, M main, U bUtton
+				B = typeof M === "string" ? M : (typeof B === "string" ? B : 0);
 				k = [];
 				k.p(`<div id="_V_Bt" class="_V_p _V_b db"></div>`);
-				k.p(`<div id="_V_Ft" class="_V_p _V_f db">`);
-				k.p(`<div id="_V_Ht" class="tc" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
-				k.p(`<div>${T}</div>`);
-				k.p(`<div class="_V_s fxs">${S}</div>`);
+				k.p(`<div id="_V_Ft" class="_V_p _V_f db"`);
+				if (B) k.p(` style="background: ${B}"`);
+				k.p(`>`);
+				k.p(`<div id="_V_Ht" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
+				k.p(`<div class="p01 df vc ts"><span>${T} </span>`);
+				k.p(`<span class="_V_e fxl" onclick="v.del()">×</span></div>`);
+				k.p(`<div class="_V_s p01 fxs">${S}</div>`);
 				k.p(`</div>`);
 				k.p(`<form id="_w_F">`);
 				k.p(`<div class="_V_t tl">${H}</div>`);
-				k.p(`<div class="_V_u tc">`);
-				if (M !== 2) {
-					k.p(`<input type="submit" value="确定">`);
-					if (M === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
-					k.p(`<input type="reset" value="重置">`);
-				}
-				k.p(`<input type="button" onclick="v.del()" value="关闭">`);
+				k.p(`<div class="_V_u tr">`);
+				k.p(`<input class="lb" type="submit" value="确定">`);
+				if (M === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
+				k.p(`<input type="reset" value="重置">`);
 				k.p(`</div></form></div>`);
 				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 				v.adi("t");
 			}
 		},
 
-		// H Html, C Callback
-		c: (H, C) => {
+		// H Html, C Callback, B Background
+		c: (H, C, B) => {
 			let k = q("_V_Bc");
 			if (k) v.del("c");
 			else {
 				k = [];
 				k.p(`<div id="_V_Bc" class="_V_p _V_b db"></div>`);
-				k.p(`<div id="_V_Fc" class="_V_p _V_f db">`);
+				k.p(`<div id="_V_Fc" class="_V_p _V_f db"`);
+				if (B) k.p(` style="background: ${B}"`);
+				k.p(`>`);
 				k.p(`<div class="_V_c">${H}</div>`);
-				k.p(`<div class="tc">`)
+				k.p(`<div class="tr">`)
 				k.p(`<input id ="_w_OK" type="button" value="确定">`);
-				k.p(`<input type="button" onclick="v.del('c')" value="关闭">`);
+				k.p(`<input type="button" onclick="v.del('c')" value="取消">`);
 				k.p(`</div></div>`);
 				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 				q("_w_OK").onclick = () => {
@@ -580,7 +582,6 @@
 			if (k) v.del("i");
 			else {
 				k = [];
-				k.p(`<div id="_V_Bi" class="_V_p _V_b db"></div>`);
 				k.p(`<div id="_V_Fi" class="_V_p _V_f db `);
 				if (M == 1) k.p(`lr`);
 				else k.p(`lg`);
@@ -594,8 +595,10 @@
 		},
 
 		del: S => {
+			let k = 0;
 			S = !S ? "t" : S;
-			q("_V_B" + S).del();
+			k = q("_V_B" + S);
+			if (k) k.del();
 			q("_V_F" + S).del();
 		},
 
@@ -612,20 +615,25 @@
 		},
 
 		mv: {
-			o: 0, tx: 0, ty: 0, mx: 0, my: 0, f: 0,
+			o: 0, b: 0, tx: 0, ty: 0, mx: 0, my: 0, f: 0,
 			m: function (e) {
 				this.o = document.getElementById("_V_Ft");
+				this.b = document.getElementById("_V_Bt");
+				this.b.onmousemove = this.o.onmousemove = () => { v.mv.v(event) };
+				this.b.onmouseup = this.o.onmouseup = () => { v.mv.u(event) };
 				this.tx = this.o.offsetLeft;
 				this.ty = this.o.offsetTop;
 				this.mx = e.clientX;
 				this.my = e.clientY;
 			},
 			d: function (e) {
+				e.preventDefault();
 				this.m(e);
 				this.f = 1;
 			},
 			v: function (e) {
 				let x = e.clientX, y = e.clientY;
+				e.preventDefault();
 				if (this.f) {
 					this.o.style.left = parseInt(this.tx) + parseInt(x) - parseInt(this.mx) + "px";
 					this.o.style.top = parseInt(this.ty) + parseInt(y) - parseInt(this.my) + "px";
@@ -637,6 +645,8 @@
 					this.o.style.left = parseInt(this.tx) + parseInt(x) - parseInt(this.mx) + "px";
 					this.o.style.top = parseInt(this.ty) + parseInt(y) - parseInt(this.my) + "px";
 					this.o.style.cursor = "default";
+					this.b.onmousemove = this.o.onmousemove = null;
+					this.b.onmouseup = this.o.onmouseup = null;
 					this.f = 0;
 				}
 			}

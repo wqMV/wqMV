@@ -57,18 +57,24 @@ body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-ser
 .r { color: crimson }
 .lg { background: lightgreen }
 .lr { background: lightcoral }
+.lb { background: #def }
 
 .tc { text-align: center }
 .tl { text-align: left }
+.tr { text-align: right }
+.ts { justify-content: space-between }
 .vm { vertical-align: middle }
 .vt { vertical-align: top }
+.vc { align-items: center }
 
-.df { width: 100%; height: 100% }
+.da { width: 100%; height: 100% }
 .db { display: block }
+.df { display: flex }
 .dh { display: none }
 .dl { line-height: 1.5 }
 
 .p5 { padding: 5px }
+.p01 { padding: 0 1rem }
 
 @keyframes note {
 	0% { left: 100% }
@@ -100,14 +106,26 @@ details[open] { background: dimgray }
 #_V_Bt { z-index: 1001 }
 #_V_Bc { z-index: 2001 }
 #_V_Bi { z-index: 3001 }
-#_V_Ft { z-index: 1002; background: ivory }
-#_V_Fc { z-index: 2002; background: cornsilk; padding: 1rem }
-#_V_Fi { z-index: 3002; padding: 1rem }
-#_V_Ht { margin: 5px; border: 1px dotted silver; border-radius: 5px; cursor: move }
+#_V_Ft { z-index: 1002; background: ivory; animation: pop .2s }
+#_V_Fc { z-index: 2002; background: cornsilk; padding: 1rem; animation: pop .2s }
+#_V_Fi { z-index: 3002; padding: 1rem; animation: shake .2s }
+#_V_Ht { border-radius: 5px 5px 0 0; background: rgba(99, 99, 99, 0.1); cursor: move }
+._V_e { display: block; padding: 0 0 0 1rem; cursor: pointer }
+._V_e:hover { color: crimson }
 ._V_p { position: absolute }
-._V_b { height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; opacity: 0.5; background: gray }
-._V_f { border: 1px solid silver; border-radius: 5px; box-shadow: 2px 5px 1rem gray }
+._V_b { height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; opacity: 0.3; background: gray }
+._V_f { border: 1px solid silver; border-radius: 5px; box-shadow: 1px 1px 3rem gray }
 ._V_t { padding: 5px 1rem }
 ._V_c { padding-bottom: 1rem }
-._V_s { color: crimson; border-top: 1px dotted silver }
+._V_s { border-bottom: 1px dotted gainsboro; color: crimson }
 ._V_u { padding: 5px .5rem 5px 1rem }
+@keyframes pop {
+	0% { opacity: 0; transform: scale(.5); top: 0 }
+	100% { opacity: 1; ransform: scale(1) }
+}
+
+@keyframes shake {
+	0%, 100% { transform: translateX(0) }
+	20%, 60% { transform: translateX(-10px) }
+	40%, 80% { transform: translateX(10px) }
+}
