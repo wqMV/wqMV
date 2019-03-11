@@ -434,7 +434,9 @@
 		// E Element, J Json
 		d: (E, J) => {
 			let k = [], o = E => {
-				q("@LI", q("_M_d")).for(e => { e.c = "tc" });
+				let l = q("_M_d");
+				q("@LI", l).for(e => { e.c = "tc" });
+				q("@DETAILS", l).for(e => { e === E.parentElement ? l = null : e.open = false });
 				E.children[0].c = "_M_d tc";
 			};
 			k.p(`<div id="_M_d">`);
