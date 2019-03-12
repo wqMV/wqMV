@@ -133,7 +133,7 @@
 		else if (S.startsWith(":")) E = document.getElementsByName(S.substr(1));
 		else if (S.startsWith("@")) E = E.getElementsByTagName(S.substr(1));
 		else if (S) E = document.getElementById(S);
-		if (!E || (E && E.length === 0)) return;
+		if (!E || (E && E.length === 0 && E.tagName !== "FORM")) return;
 		l = E.nodeType === 1 ? 0 : E.length;
 		if (l) {
 			E = [].slice.call(E);
