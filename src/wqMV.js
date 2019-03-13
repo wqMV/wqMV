@@ -442,7 +442,7 @@
 			k.p(`<div id="_M_d">`);
 			for (const i in J) {
 				k.p(`<details>`);
-				k.p(`<summary><b class="if fxl vm">&#xeb8f;</b><time class="vm">${i}</time></summary>`);
+				k.p(`<summary><b class="if fl vm">${J[i].c}</b><time class="vm">${i}</time></summary>`);
 				for (const j in J[i]) if (j !== "c") k.p(`<span><li class="tc" onclick="${J[i][j]}">${j}</li></span>`);
 				k.p(`</details>`);
 			}
@@ -458,7 +458,7 @@
 		u: (E, T, J) => {
 			let k = [];
 			k.p(`<details class="tc dl">`);
-			k.p(`<summary class="${J['c'] ? J['c'] : ''}">${T}</summary>`);
+			k.p(`<summary><b class="if fl vm">${J.c}</b><time class="vm">${T}</time></summary>`);
 			for (const i in J) if (i !== "c") k.p(`<a href="${J[i]}" target="_blank">${i}</a><br>`);
 			k.p(`</details>`);
 			E.innerHTML = k.j("");
