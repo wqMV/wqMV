@@ -442,7 +442,7 @@
 			k.p(`<div id="_M_d">`);
 			for (const i in J) {
 				k.p(`<details>`);
-				k.p(`<summary class="${J[i]['c'] ? J[i]['c'] : ''}">${i}</summary>`);
+				k.p(`<summary><b class="if fxl vm">&#xeb8f;</b><time class="vm">${i}</time></summary>`);
 				for (const j in J[i]) if (j !== "c") k.p(`<span><li class="tc" onclick="${J[i][j]}">${j}</li></span>`);
 				k.p(`</details>`);
 			}

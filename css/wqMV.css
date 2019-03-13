@@ -1,3 +1,5 @@
+@font-face { font-family: "ifont"; src: url("ifont.ttf") }
+
 html { overflow: hidden; padding: 5px; font-size: medium }
 body, header, nav, footer, aside, section, article, main { overflow: hidden; display: flex; margin: 0; padding: 0 }
 body, aside, section, main { flex-direction: column }
@@ -47,6 +49,8 @@ input[disabled] { pointer-events: none; background: gainsboro }
 [type=file] { padding-top: 2px; padding-bottom: 3px }
 
 body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-serif }
+.if { font-family: "ifont" !important; padding-right: 1rem }
+
 .fxs { font-weight: 100; font-size: .6rem }
 .fs { font-weight: 100; font-size: .8rem }
 .fl { font-weight: 500; font-size: 1.2rem }
@@ -93,8 +97,8 @@ body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-ser
 #_M_b { border-bottom: 1px dotted gray; padding: 1rem 1rem 4px 1rem }
 #_M_r a { margin: 0 .5rem }
 ::-webkit-details-marker { direction: ltr; margin-left: 1rem; color: gainsboro }
-details, summary, details li { margin: 0; cursor: pointer; border-radius: 5px }
-summary { direction: rtl; padding: 5px 1rem 5px 3rem; background: url("../img/mu.png") no-repeat 0 0 }
+details, summary, details li { margin: 0; cursor: pointer; border-radius: 5px; transition: .2s }
+summary { direction: rtl; padding: 5px 1rem }
 details { margin: 5px }
 details li { list-style: none; padding: 5px }
 summary:hover, details li:hover, ._M_d { background: #28d }
@@ -121,7 +125,7 @@ details[open] { background: dimgray }
 ._V_u { padding: 5px .5rem 5px 1rem }
 @keyframes pop {
 	0% { opacity: 0; transform: scale(.5); top: 0 }
-	100% { opacity: 1; ransform: scale(1) }
+	100% { opacity: 1; transform: scale(1) }
 }
 
 @keyframes shake {
