@@ -15,6 +15,25 @@ f66
 .focus();
 .select();
 
+<textarea id="" class="" style=""></textarea>
+h.p(`：<input id="E" name="" type="" step="0.5" maxlength="20" min="0" style="width:60px" placeholder autofocus required readonly disabled value="${ta[0]}">`);
+text
+date
+month
+week
+time
+datetime-local
+number
+hidden
+button
+checkbox
+radio
+password
+color
+search
+submit
+reset
+
 
 header
 footer

@@ -1,11 +1,24 @@
-html, body { margin: 0; padding: 0; overflow: hidden; font-size: medium }
-body { display: flex }
+html, body { margin: 0; padding: 0; overflow: hidden; font-size: medium; color: #333 }
+body, header { display: flex }
 
-.nav, .main { padding: 0 .5rem; display: flex; flex-direction: column; height:100vh }
-.nav { flex: 0 0 12rem; align-items: center }
+header, .logo { height: 50px; align-items: center }
+.nav, .main { height:100vh }
+.nav { flex: 0 0 12rem }
 .main { flex: 1 }
 
 @font-face { font-family: "ifont"; src: url("ifont.ttf") }
 
+.g { color: seagreen }
+.r { color: crimson }
+.b { background: #333 }
+.l { background: #08e }
+.lg { background: lightgreen }
+.lr { background: lightcoral }
+.lb { background: #def }
+
+.dg { height: .5rem; border-top: 1px solid #444 }
+.ds { height: .5rem; border-top: 1px solid silver }
 .df { display: flex }
 .dh { display: none }
+
+.tc { text-align: center }
