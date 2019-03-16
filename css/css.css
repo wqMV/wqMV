@@ -1,18 +1,24 @@
 html, body { margin: 0; padding: 0; overflow: hidden; font-size: medium; color: #333 }
-body, header, .logo, .note { display: flex }
+body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-serif }
 
-header, .logo { height: 50px; justify-content: space-between }
-.nav, .main { height:100vh }
+body, header, .nav, .main, .logo, header>div { display: flex }
+.user, .logo { height: 50px }
+.nav, .main { flex-direction: column; height:100vh }
 .main, .title { flex: 1 }
-.nav { flex: 0 0 12rem }
-.note { flex: 0 0 24rem; justify-content: center }
-.user { flex: 0 0 24rem }
+.nav { flex-direction: column; flex: 0 0 12rem }
 
-@font-face { font-family: "ifont"; src: url("ifont.ttf") }
+.logo, .title, .note, .user { overflow: hidden; border-top: 2px solid transparent; transition: .3s }
+.logo:hover { border-top: 2px solid #08e }
+.title:hover, .note:hover, .user:hover { border-top: 2px solid #333 }
+.note, .user { flex: 0 0 16rem }
 
-.bs { padding: .5rem 1rem; border-top: 1px solid silver; border-bottom: 1px solid silver }
-.bb { padding: .5rem 1rem; border-top: 1px solid #444; border-bottom: 1px solid #444 }
-.rs { padding: 0 1rem; border-left: 1px solid silver; border-right: 1px solid silver }
+nav { padding: .5rem 1rem; border-top: 1px dotted silver; border-bottom: 1px dotted silver; background: gainsboro }
+aside, main { flex: 1; padding: 1rem; overflow-y: scroll }
+aside::-webkit-scrollbar { width: 5px }
+aside::-webkit-scrollbar-thumb { background: #444 }
+
+.btb { padding: .5rem 1rem; border-top: 1px dotted #444; border-bottom: 1px dotted #444 }
+.blr { padding: 0 1rem; border-left: 1px dotted gray; border-right: 1px dotted gray }
 
 .g { color: silver }
 .s { color: seagreen }
@@ -30,3 +36,6 @@ header, .logo { height: 50px; justify-content: space-between }
 .tc { text-align: center }
 .tj { justify-content: center }
 .vc { align-items: center }
+
+@font-face { font-family: "ifont"; src: url("ifont.ttf") }
+.if { font-family: "ifont" !important }
