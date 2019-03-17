@@ -38,4 +38,6 @@ aside::-webkit-scrollbar-thumb { background: #444 }
 .vc { align-items: center }
 
 @font-face { font-family: "ifont"; src: url("ifont.ttf") }
-.if { font-family: "ifont" !important }
+#wIcon, .if { font-family: "ifont" !important }
+#wIcon { cursor: pointer }
+#wIcon:hover { color: #08e }
