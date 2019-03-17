@@ -1,5 +1,22 @@
 html, body { margin: 0; padding: 0; overflow: hidden; font-size: medium; color: #333 }
 body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-serif }
+a, a:visited { color: #333 }
+a:hover, a:active { color: #08e }
+table { width: 100%; border-collapse: collapse; border-spacing: .5rem }
+ol, ul, li { margin: .5rem 0; text-align: left }
+form { line-height: 2; text-align: left }
+summary, input, select, textarea { text-align: left; border-radius: 5px; box-sizing: border-box }
+input, select, textarea { background: snow; border: 1px solid silver }
+input:hover, select:hover, textarea:hover { color: #08e; background: azure; border-color: #08e }
+input, textarea { padding: 7px 2rem }
+input, select { margin: 0 1rem 0 .5rem }
+textarea { margin: 10px; width: 24rem; height: 4rem }
+select { padding: 6px 1rem }
+input[disabled] { pointer-events: none; background: gainsboro }
+[type=file] { padding-top: 2px; padding-bottom: 3px }
+
+.in { display: inline-block }
+.in b { position: absolute; padding: .5rem 1rem }
 
 body, header, .nav, .main, .logo, header>div { display: flex }
 .user, .logo { height: 50px }
