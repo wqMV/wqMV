@@ -36,30 +36,34 @@
 		<nav>Nav</nav>
 		<main>
 			<style>
-				.search {
+				.box {
+					display: inline-block;
 					position: relative;
 				}
 
-				.search::before {
-					content: "☌";
-					transform: rotate(180deg);
-					float: left;
-					font-size: 25px;
+				.box i {
 					position: absolute;
-					line-height: 30px;
+					float: left;
 					left: 5px;
+					font-size: 25px;
+					line-height: 30px;
 				}
 
-				.search input {
-					display: block;
+				.box input {
 					padding-left: 25px;
 					height: 30px;
 					box-sizing: border-box;
 				}
 			</style>
-			<div class="search">
+			<div class="box">
+				<i>☌</i>
 				<input placeholder="请输入搜索词">
 			</div>
+			<div class="box">
+				<i>☌</i>
+				<input placeholder="请输入搜索词">
+			</div>
+			<br>
 			Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br>
 			Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br>
 			Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br>
