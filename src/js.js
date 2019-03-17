@@ -12,6 +12,7 @@ const wq = {
 	},
 
 	box: () => {
+		/*
 		q("wHome", {
 			b: {
 				tf: ["crimson", "seagreen", "#28d"]
@@ -29,6 +30,7 @@ const wq = {
 				d.tf = ["fa", "fb", "fc", "fd"];
 			}
 		});
+		*/
 
 		m.u(q("wLink"), "友情链接", {
 			c: "&#xe6f7;",
@@ -64,11 +66,13 @@ const wq = {
 				"子菜单 4": "alert('4')"
 			}
 		});
+		/*
 		m.r(q("wNav"), {
 			"菜单a": "alert('a')",
 			"菜单b": "alert('b')",
 			"菜单c": "alert('c')"
 		});
+		*/
 		m.b(q("_w_Mb"), {
 			"菜单一": "alert('一')",
 			"菜单二": "alert('二')",
@@ -78,8 +82,8 @@ const wq = {
 		ed(document.getElementById("_w_Edr"));
 	},
 	go: () => {
-		const ut = m.ut();
-		q("wTime").h = ut.y + "年 " + ut.n + "月 " + ut.d + "日 星期" + ut.w;
+		//const ut = m.ut();
+		//q("wTime").h = ut.y + "年 " + ut.n + "月 " + ut.d + "日 星期" + ut.w;
 		setTimeout(wq.box, 200);
 	}
 };

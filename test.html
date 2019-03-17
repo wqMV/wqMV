@@ -17,12 +17,8 @@
 		<div class="logo tj vc">Logo</div>
 		<div class="btb"><b id="wIcon">&#xeb9f;</b></div>
 		<aside>
-			Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br>
-			Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br>
-			Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br>
-			Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br>
-			Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br>
-			Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br> Aside<br>
+			<div id="wMenu">aa</div><br>
+			<div id="wLink">bb</div>
 		</aside>
 	</div>
 	<div class="main">
@@ -35,34 +31,44 @@
 		</header>
 		<nav>Nav</nav>
 		<main>
+			wMain
 			<div class="in">
 				<b class="if">&#xeb9f;</b>
 				<input placeholder="Please input">
 			</div>
-			<div class="in">
-				<b class="if">&#xeb9f;</b>
-				<input placeholder="Please input">
-			</div>
+			<input type="text">
 			<br><br>
-			<input id="oI" type="text">
+			<div id="oD">oD${ta}oD</div>
+			<a href="javascript:void(0)">链接链接</a>
+			<input id="oI" type="text" :v="ta">
+			<select id="oS" name="oN">
+				<option value=""></option>
+				<option value="a">oS${ta}oS</option>
+				<option value="b">b</option>
+			</select>
 			<select name="oN">
 				<option value=""></option>
 				<option value="c">c</option>
 				<option value="d">d</option>
 			</select>
-			<input id="oQ" type="button" value="on:click">
-			<br><br>
-			Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br>
-			Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br>
-			Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br>
-			Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br>
-			Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br>
-			Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br> Main<br>
+			<input id="oQ" type="button" on:click="to" value="on:click">
+			<li :for="tf" on:click="fo"></li>
+			<form id="oF">
+				<input type="button" value="弹窗" onclick="v.t('标题','副标题','aaa')">
+				<input type="button" value="提示" onclick="v.c('标题',()=>{alert('提示')})">
+				<input type="button" value="警告" onclick="v.i('警告',1)">
+				<input type="button" value="上传文件" onclick="wq.f()">
+				<input type="button" value="失效" disabled>
+			</form>
+			<div id="_w_Mb"></div>
+			<div id="_w_Edr"></div>
 		</main>
 	</div>
 
 	<div id="wTemp" class="dh"></div>
 	<script type="text/JavaScript" src="src/wqMV.js"></script>
+	<script type="text/JavaScript" src="src/wqEDR.js"></script>
+	<script type="text/JavaScript" src="src/js.js"></script>
 </body>
 
 </html>
