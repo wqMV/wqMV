@@ -436,7 +436,15 @@
 			let k = [], o = E => {
 				let l = q("_M_d");
 				q("@LI", l).for(e => { e.c = "tc" });
-				q("@DETAILS", l).for(e => { e === E.parentElement ? l = null : e.open = false });
+				q("@DETAILS", l).for(e => {
+					if (e === E.parentElement) l = null;
+					else {
+						e.open = false;
+						e.c = "";
+					}
+				});
+				console.log(E);
+				E.parentElement.className = "_M_dl";
 				E.children[0].c = "_M_d tc";
 			};
 			k.p(`<div id="_M_d">`);
@@ -543,7 +551,7 @@
 				k.p(`<div class="_V_s p01 fxs">${S}</div>`);
 				k.p(`</div>`);
 				k.p(`<form id="_w_F">`);
-				k.p(`<div class="_V_t tl">${H}</div>`);
+				k.p(`<div class="_V_t">${H}</div>`);
 				k.p(`<div class="_V_u tr">`);
 				k.p(`<input class="lb" type="submit" value="确定">`);
 				if (M === 1) k.p(`<input id="_w_D" type="button" value="删除">`);

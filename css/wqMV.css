@@ -64,7 +64,6 @@ body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-ser
 .lb { background: #def }
 
 .tc { text-align: center }
-.tl { text-align: left }
 .tr { text-align: right }
 .ts { justify-content: space-between }
 .vm { vertical-align: middle }
