@@ -80,7 +80,6 @@ aside::-webkit-scrollbar-thumb { background: #444 }
 #_M_b { border-bottom: 1px dotted gray; padding: 1rem 1rem 5px 1rem }
 #_M_r a { margin: 0 .5rem }
 ::-webkit-details-marker { direction: ltr; margin-left: 1rem }
-._M_dh details summary::-webkit-details-marker { display: none }
 details, summary, details li { margin: 0; cursor: pointer; transition: .3s }
 summary { direction: rtl; padding: 5px 5px 5px 1rem; outline: none }
 summary>b { padding-right: 1rem }
@@ -91,6 +90,7 @@ details li:hover, ._M_d { background: #08e }
 details[open] { background: #444 }
 ._M_b { background: snow; border: 1px dotted gray; border-radius: 5px 1rem 0 0; padding: 5px 1rem; margin: 0 5px; cursor: pointer }
 ._M_f, ._M_b:hover { color: #08e; background: azure; border-color: #08e }
+._M_dh details summary::-webkit-details-marker, ._M_dh time, ._M_dh span, ._M_dh a { display: none }
 
 /* V */
 #_V_Bt { z-index: 1001 }

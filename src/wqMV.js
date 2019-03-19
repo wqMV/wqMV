@@ -109,7 +109,7 @@
 		const s = E => {
 			if (!E.g) {
 				E.g = (S, V) => {
-					if (S && V) E.setAttribute(S, V);
+					if (S && (V || V === "")) E.setAttribute(S, V);
 					return E.getAttribute(S) || "";
 				};
 				E.t = E.textContent || "";

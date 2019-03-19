@@ -82,16 +82,16 @@ const wq = {
 		ed(document.getElementById("_w_Edr"));
 	},
 
-	to: () => {
-		q("wIcon").onclick = () => {
-			let h = q("wMenu");
-			h.c = "_M_dh";
-			q("@TIME", h).for(e => { e.c = "dh" });
-			q("@SPAN", h).for(e => { e.c = "dh" });
-			h = q("wLink");
-			h.c = "_M_dh";
-			q("@TIME", h).for(e => { e.c = "dh" });
-			q("@A", h).for(e => { e.c = "dh" });
+	mu: () => {
+		let h = q("wIcon");
+		if (h.g("dh") === "dh") {
+			h.g("dh", "");
+			q("wMenu").c = "";
+			q("wLink").c = "bt m10";
+		} else {
+			h.g("dh", "dh");
+			q("wMenu").c = "_M_dh";
+			q("wLink").c = "_M_dh";
 		};
 		wq.box();
 	},
@@ -99,7 +99,8 @@ const wq = {
 	go: () => {
 		//const ut = m.ut();
 		//q("wTime").h = ut.y + "年 " + ut.n + "月 " + ut.d + "日 星期" + ut.w;
-		setTimeout(wq.to, 127);
+		q("wIcon").onclick = wq.mu;
+		setTimeout(wq.box, 127);
 	}
 };
 try { window.onload = wq.go } catch (e) { }
