@@ -23,7 +23,7 @@ body, header, .nav, .main, .logo, header>div { display: flex }
 .user, .logo { height: 50px }
 .nav, .main { flex-direction: column; height:100vh }
 .main, .title { flex: 1 }
-.nav { flex-direction: column; flex: 0 0 12rem }
+.nav { flex-direction: column; flex: 0 0 auto }
 
 .logo, .title, .note, .user { overflow: hidden; border-top: 2px solid transparent; transition: .3s }
 .logo:hover { border-top: 2px solid #08e }
@@ -43,7 +43,7 @@ aside::-webkit-scrollbar-thumb { background: #444 }
 
 .p01 { padding: 0 1rem }
 .p51 { padding: .5rem 1rem }
-.mt { margin: 1rem 0 }
+.m10 { margin: 1rem 0 }
 
 .g { color: silver }
 .s { color: seagreen }
@@ -79,7 +79,8 @@ aside::-webkit-scrollbar-thumb { background: #444 }
 /* M */
 #_M_b { border-bottom: 1px dotted gray; padding: 1rem 1rem 5px 1rem }
 #_M_r a { margin: 0 .5rem }
-::-webkit-details-marker { direction: ltr; margin-left: 2rem }
+::-webkit-details-marker { direction: ltr; margin-left: 1rem }
+._M_dh details summary::-webkit-details-marker { display: none }
 details, summary, details li { margin: 0; cursor: pointer; transition: .3s }
 summary { direction: rtl; padding: 5px 5px 5px 1rem; outline: none }
 summary>b { padding-right: 1rem }

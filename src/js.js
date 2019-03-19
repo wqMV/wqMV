@@ -81,10 +81,25 @@ const wq = {
 
 		ed(document.getElementById("_w_Edr"));
 	},
+
+	to: () => {
+		q("wIcon").onclick = () => {
+			let h = q("wMenu");
+			h.c = "_M_dh";
+			q("@TIME", h).for(e => { e.c = "dh" });
+			q("@SPAN", h).for(e => { e.c = "dh" });
+			h = q("wLink");
+			h.c = "_M_dh";
+			q("@TIME", h).for(e => { e.c = "dh" });
+			q("@A", h).for(e => { e.c = "dh" });
+		};
+		wq.box();
+	},
+
 	go: () => {
 		//const ut = m.ut();
 		//q("wTime").h = ut.y + "年 " + ut.n + "月 " + ut.d + "日 星期" + ut.w;
-		setTimeout(wq.box, 200);
+		setTimeout(wq.to, 127);
 	}
 };
 try { window.onload = wq.go } catch (e) { }
