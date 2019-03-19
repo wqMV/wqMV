@@ -552,11 +552,14 @@
 				k.p(`</div>`);
 				k.p(`<form id="_w_F">`);
 				k.p(`<div class="_V_t">${H}</div>`);
-				k.p(`<div class="_V_u tr">`);
-				k.p(`<input class="lb" type="submit" value="确定">`);
-				if (M === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
-				k.p(`<input type="reset" value="重置">`);
-				k.p(`</div></form></div>`);
+				if (M !== 2) {
+					k.p(`<div class="_V_u tr">`);
+					k.p(`<input class="lb" type="submit" value="确定">`);
+					if (M === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
+					k.p(`<input type="reset" value="重置">`);
+					k.p(`</div>`);
+				}
+				k.p(`</form></div>`);
 				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 				v.adi("t");
 			}
@@ -616,7 +619,7 @@
 			let x = 0, y = 0, s = q("_V_F" + S);
 			if (s) {
 				x = (window.innerWidth - s.offsetWidth) / 2;
-				y = (window.innerHeight - s.offsetHeight) / 2 - 20;
+				y = (window.innerHeight - s.offsetHeight) / 2 - 60;
 				if (x < 0) x = 0;
 				if (y < 0) y = 0;
 				s.style.left = x + "px";
