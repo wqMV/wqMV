@@ -297,7 +297,7 @@
 	// S String
 	q.a = S => {
 		let k = [];
-		if (typeof S === "string") {
+		if (typeof S === "string" && S && S != 0) {
 			S = S.split(";");
 			for (let i = 0; i < S.length; i++) {
 				const s = S[i].split(",");
@@ -405,7 +405,7 @@
 	const m = {
 		// E Element, J Json
 		r: (E, J) => {
-			var k = [], o = E => {
+			let k = [], o = E => {
 				q("@A", q("_M_r")).for(e => { e.c = "" });
 				E.c = "_M_r";
 			};
@@ -420,7 +420,7 @@
 		// E Element, J Json
 		b: (E, J) => {
 			let k = [], o = E => {
-				q("@span", q("_M_b")).for(e => { e.c = "_M_b" });
+				q("@SPAN", q("_M_b")).for(e => { e.c = "_M_b" });
 				E.children[0].c = "_M_b _M_f";
 			};
 			k.p(`<div id="_M_b" class="g">`);
@@ -514,6 +514,7 @@
 			k.tdt = k.ty + "-" + k.tn + "-" + k.td;
 
 			k.w = 1 == k.w ? "一" : 2 == k.w ? "二" : 3 == k.w ? "三" : 4 == k.w ? "四" : 5 == k.w ? "五" : 6 == k.w ? "六" : "日";
+			k.cn = k.y + "年" + k.n + "月" + k.d + "日 星期" + k.w;
 			return k;
 		},
 

@@ -5,7 +5,7 @@ a:hover, a:active { color: #08e }
 table { width: 100%; border-collapse: collapse; border-spacing: .5rem }
 ol, ul, li { margin: .5rem 0; text-align: left }
 form { line-height: 2; text-align: left }
-summary, input, select, textarea { text-align: left; border-radius: 5px; box-sizing: border-box }
+input, select, textarea { text-align: left; border-radius: 5px; box-sizing: border-box }
 input, select, textarea { background: snow; border: 1px solid silver }
 input:hover, select:hover, textarea:hover { color: #08e; background: azure; border-color: #08e }
 input, textarea { padding: 7px 1rem }
@@ -19,11 +19,9 @@ input[disabled] { pointer-events: none; background: gainsboro }
 .in b { position: absolute; padding: .5rem 1rem }
 .in input { padding-left: 2rem }
 
-body, header, .nav, .main, .logo, header>div { display: flex }
+body, header, nav, .nav, .main, .logo, header>div { display: flex }
 .user, .logo { height: 50px }
-.nav, .main { flex-direction: column; height:100vh }
-.main, .title { flex: 1 }
-.nav { flex-direction: column; flex: 0 0 auto }
+.nav, .main { height:100vh }
 
 .logo, .title, .note, .user { overflow: hidden; border-top: 2px solid transparent; transition: .3s }
 .logo:hover { border-top: 2px solid #08e }
@@ -57,6 +55,9 @@ aside::-webkit-scrollbar-thumb { background: #444 }
 
 .df { display: flex }
 .dh { display: none }
+.d0 { flex: none }
+.d1 { flex: auto }
+.dc { flex-direction: column }
 
 .tl { text-align: left }
 .tr { text-align: right }
@@ -72,14 +73,12 @@ aside::-webkit-scrollbar-thumb { background: #444 }
 .fxl { font-weight: 500; font-size: x-large }
 .fxxl { font-weight: 500; font-size: xx-large }
 @font-face { font-family: "ifont"; src: url("ifont.ttf") }
-#wIcon, .if { font-family: "ifont" !important }
+.if { font-family: "ifont" !important }
+
 #wIcon { cursor: pointer }
 #wIcon:hover { color: #08e }
 
 /* M */
-#_M_b { border-bottom: 1px dotted gray; padding: 1rem 1rem 4px 1rem }
-#_M_r a { margin: 0 .5rem }
-::-webkit-details-marker { direction: ltr; margin-left: 1rem }
 details, summary, details li { margin: 0; cursor: pointer; transition: .3s }
 summary { direction: rtl; padding: 5px 5px 5px 1rem; outline: none }
 summary>b { padding-right: 1rem }
@@ -88,10 +87,15 @@ details li { list-style: none; padding: 5px; border-radius: 0 5px 5px 0 }
 details:hover, ._M_dl { border-left: 5px solid #08e; background: #444 }
 details li:hover, ._M_d { background: #08e }
 details[open] { background: #444 }
+::-webkit-details-marker { direction: ltr; margin-left: 1rem }
+._M_dh details summary::-webkit-details-marker, ._M_dh time, ._M_dh span, ._M_dh a { display: none }
+._M_f, ._M_b:hover { color: #08e; background: azure; border-color: #08e }
+#_M_b { border-bottom: 1px dotted gray; padding: 1rem 1rem 4px 1rem }
 ._M_b { border: 1px dotted gray; border-radius: 5px 1rem 0 0; padding: 5px 1rem; margin: 0 5px; cursor: pointer }
 ._M_b { border-bottom: none }
-._M_f, ._M_b:hover { color: #08e; background: azure; border-color: #08e }
-._M_dh details summary::-webkit-details-marker, ._M_dh time, ._M_dh span, ._M_dh a { display: none }
+#_M_r a { display: inline-block; margin: 0 .5rem; padding: 5px 0 7px 0; border-top: 2px solid transparent; text-decoration: none; transition: .3s }
+#_M_r a:hover, ._M_r { color: #08e; border-top: 2px solid #333 !important }
+#_M_r a::before{ content: "/"; padding-right: 5px }
 
 /* V */
 #_V_Bt { z-index: 1001 }

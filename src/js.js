@@ -66,13 +66,13 @@ const wq = {
 				"子菜单 4": "alert('4')"
 			}
 		});
-		/*
+
 		m.r(q("wNav"), {
 			"菜单a": "alert('a')",
 			"菜单b": "alert('b')",
 			"菜单c": "alert('c')"
 		});
-		*/
+
 		m.b(q("_w_Mb"), {
 			"菜单一": "alert('一')",
 			"菜单二": "alert('二')",
@@ -97,8 +97,8 @@ const wq = {
 	},
 
 	go: () => {
-		//const ut = m.ut();
-		//q("wTime").h = ut.y + "年 " + ut.n + "月 " + ut.d + "日 星期" + ut.w;
+		const ut = m.ut();
+		q("wTime").h = ut.cn;
 		q("wIcon").onclick = wq.mu;
 		setTimeout(wq.box, 127);
 	}
