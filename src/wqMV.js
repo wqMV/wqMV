@@ -423,7 +423,7 @@
 				q("@SPAN", q("_M_b")).for(e => { e.c = "_M_b" });
 				E.children[0].c = "_M_b _M_f";
 			};
-			k.p(`<div id="_M_b" class="g">`);
+			k.p(`<div id="_M_b" class="bm g">`);
 			for (const i in J) k.p(`<label><span class="_M_b" onclick="${J[i]}">${i}</span></label>`);
 			k.p(`</div><div id="_w_M"></div>`);
 			E.innerHTML = k.j("");
@@ -443,7 +443,6 @@
 						e.c = "";
 					}
 				});
-				console.log(E);
 				E.parentElement.className = "_M_dl";
 				E.children[0].c = "_M_d tc";
 			};

@@ -93,7 +93,6 @@ const wq = {
 			q("wMenu").c = "_M_dh";
 			q("wLink").c = "_M_dh";
 		};
-		wq.box();
 	},
 
 	go: () => {
