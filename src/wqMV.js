@@ -403,6 +403,16 @@
 // M
 (() => {
 	const m = {
+		// Json: e element, id, t title, c classname
+		m: J => {
+			let k = [];
+			k.p(`<div class="_M_m m5 ${J.c ? J.c : ""}">`);
+			k.p(`<div class="bm p51"><b class="bl p05"></b><b>${J.t}</b></div>`);
+			k.p(`<div id="${J.id}" class="p51"></div>`);
+			k.p(`</div>`);
+			J.e.add("be", k.j(""));
+		},
+
 		// E Element, J Json
 		r: (E, J) => {
 			let k = [], o = E => {
@@ -548,7 +558,7 @@
 				k.p(`<div id="_V_Ht" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
 				k.p(`<div class="p01 df vc ts"><span>${T} </span>`);
 				k.p(`<span class="_V_e fxl" onclick="v.del()">×</span></div>`);
-				k.p(`<div class="_V_s p01 fxs">${S}</div>`);
+				k.p(`<div class="_V_s bm p01 fxs">${S}</div>`);
 				k.p(`</div>`);
 				k.p(`<form id="_w_F">`);
 				k.p(`<div class="_V_t">${H}</div>`);

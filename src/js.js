@@ -79,7 +79,9 @@ const wq = {
 			"菜单三": "alert('三')"
 		});
 
-		ed(document.getElementById("_w_Edr"));
+		m.m({ e: q("wMain"), id: "Rmode", t: "模块一", c: "d1" });
+
+		//ed(document.getElementById("_w_Edr"));
 	},
 
 	mu: () => {

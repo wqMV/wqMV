@@ -1,4 +1,4 @@
-html, body { margin: 0; padding: 0; overflow: hidden; box-sizing: border-box; font-size: medium; color: #333 }
+html, body { margin: 0; padding: 0; overflow: hidden; box-sizing: border-box; font-size: medium; color: #333; background: white }
 body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-serif }
 a, a:visited { color: #333 }
 a:hover, a:active { color: #08e }
@@ -12,14 +12,14 @@ input, textarea { padding: 7px 1rem }
 input, select { margin: 0 1rem 0 .5rem }
 textarea { margin: 10px; width: 24rem; height: 4rem }
 select { padding: 6px 1rem }
-input[disabled] { pointer-events: none; background: gainsboro }
+input[disabled] { pointer-events: none; background: whitesmoke }
 [type=file] { padding-top: 2px; padding-bottom: 3px }
 
 .in { position: relative; display: inline-block }
 .in b { position: absolute; padding: .5rem 1rem; color: gray }
 .in input { padding-left: 2rem }
 
-body, header, nav, .nav, .main, .logo, header>div { display: flex }
+body, header, nav, main, .nav, .main, .logo, header>div { display: flex }
 .user, .logo { height: 50px }
 .nav, .main { height:100vh }
 
@@ -28,9 +28,8 @@ body, header, nav, .nav, .main, .logo, header>div { display: flex }
 .title:hover, .note:hover, .user:hover { border-top: 2px solid #333 }
 .note, .user { flex: 0 0 16rem }
 
-nav { background: gainsboro }
-aside, main { flex: 1; padding: 1rem; overflow-y: scroll }
-aside { padding: 0 }
+main { flex-wrap: wrap; background: whitesmoke }
+aside, main { flex: 1; overflow-y: scroll }
 aside::-webkit-scrollbar { width: 5px }
 aside::-webkit-scrollbar-thumb { background: #444 }
 
@@ -41,8 +40,11 @@ aside::-webkit-scrollbar-thumb { background: #444 }
 .b4 { border-color: #444 }
 
 .p01 { padding: 0 1rem }
+.p05 { padding: 0 .5rem }
+.p5 { padding: .5rem }
 .p51 { padding: .5rem 1rem }
 .m10 { margin: 1rem 0 }
+.m5 { margin: .5rem }
 
 .g { color: silver }
 .s { color: seagreen }
@@ -58,6 +60,7 @@ aside::-webkit-scrollbar-thumb { background: #444 }
 .dh { display: none }
 .d0 { flex: none }
 .d1 { flex: auto }
+.d100 { width: 100% }
 .dc { flex-direction: column }
 
 .tl { text-align: left }
@@ -95,7 +98,8 @@ details li:hover, ._M_d { background: #08e }
 ._M_b { border-bottom: none }
 #_M_r a { display: inline-block; margin: 0 .5rem; padding: 5px 0 7px 0; border-top: 2px solid transparent; text-decoration: none; transition: .3s }
 #_M_r a:hover, ._M_r { color: #08e; border-top: 2px solid #333 !important }
-#_M_r a::before{ content: ""; padding-right: .5rem; border-left: 1px dotted silver }
+#_M_r a::before { content: ""; padding-right: .5rem; border-left: 1px dotted silver }
+._M_m { background: white; border-radius: 5px; border: 1px solid silver }
 
 /* V */
 #_V_Bt { z-index: 1001 }
@@ -106,13 +110,12 @@ details li:hover, ._M_d { background: #08e }
 #_V_Fi { z-index: 3002; padding: 1rem; animation: shake .2s }
 #_V_Ht { border-radius: 5px 5px 0 0; background: rgba(99, 99, 99, 0.1); cursor: move }
 ._V_e { display: block; padding: 0 0 0 1rem; cursor: pointer }
-._V_e:hover { color: crimson }
+._V_e:hover, ._V_s { color: crimson }
 ._V_p { position: absolute }
 ._V_b { height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; opacity: 0.3; background: gray }
 ._V_f { border: 1px solid silver; border-radius: 5px; box-shadow: 1px 1px 1rem gray }
 ._V_t { padding: 5px 1rem }
 ._V_c { padding-bottom: 1rem }
-._V_s { border-bottom: 1px dotted gainsboro; color: crimson }
 ._V_u { padding: 5px .5rem 5px 1rem }
 @keyframes pop {
 	0% { opacity: 0; transform: scale(.5); top: 0 }
