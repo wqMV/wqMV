@@ -1,11 +1,11 @@
-html, body { margin: 0; padding: 0; overflow: hidden; font-size: medium; color: #333 }
+html, body { margin: 0; padding: 0; overflow: hidden; box-sizing: border-box; font-size: medium; color: #333 }
 body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-serif }
 a, a:visited { color: #333 }
 a:hover, a:active { color: #08e }
 table { width: 100%; border-collapse: collapse; border-spacing: .5rem }
 ol, ul, li { margin: .5rem 0; text-align: left }
 form { line-height: 2; text-align: left }
-input, select, textarea { text-align: left; border-radius: 5px; box-sizing: border-box }
+input, select, textarea { text-align: left; border-radius: 5px }
 input, select, textarea { background: white; border: 1px solid silver }
 input:hover, select:hover, textarea:hover { color: #08e; background: azure; border-color: #08e }
 input, textarea { padding: 7px 1rem }
