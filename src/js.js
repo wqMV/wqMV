@@ -73,13 +73,13 @@ const wq = {
 			"菜单c": "alert('c')"
 		});
 
-		m.b(q("_w_Mb"), {
+		m.l(q("_w_Mb"), {
 			"菜单一": "alert('一')",
 			"菜单二": "alert('二')",
 			"菜单三": "alert('三')"
 		});
 
-		m.m({ e: q("wMain"), id: "Rmode", t: "模块一", c: "d1" });
+		m.m({ e: q("wMain"), id: "Rmode", t: "模块一", c: "d1", m: 1 });
 
 		//ed(document.getElementById("_w_Edr"));
 	},

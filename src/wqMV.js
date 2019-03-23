@@ -403,14 +403,15 @@
 // M
 (() => {
 	const m = {
-		// Json: e element, id, t title, c classname
+		// Json: e element, id, t title, c classname, l label, m mode: 1 add
 		m: J => {
 			let k = [];
 			k.p(`<div class="_M_m m5 ${J.c ? J.c : ""}">`);
-			k.p(`<div class="bm p51"><b class="bl p05"></b><b>${J.t}</b></div>`);
-			k.p(`<div id="${J.id}" class="p51"></div>`);
-			k.p(`</div>`);
-			J.e.add("be", k.j(""));
+			k.p(`<div class="bm p51"><b class="bl p05"></b><span>${J.t}</span></div>`);
+			k.p(`<div id="${J.id}" class="p51">`);
+			if (J.l) { ; }
+			k.p(`</div></div>`);
+			J.m === 1 ? J.e.add("be", k.j("")) : J.e.h = k.j("");
 		},
 
 		// E Element, J Json
@@ -428,7 +429,7 @@
 		},
 
 		// E Element, J Json
-		b: (E, J) => {
+		l: (E, J) => {
 			let k = [], o = E => {
 				q("@SPAN", q("_M_b")).for(e => { e.c = "_M_b" });
 				E.children[0].c = "_M_b _M_f";
