@@ -99,7 +99,7 @@ details li:hover, ._M_d { background: #08e }
 #_M_r a { display: inline-block; margin: 0 .5rem; padding: 5px 0 7px 0; border-top: 2px solid transparent; text-decoration: none; transition: .3s }
 #_M_r a:hover, ._M_r { color: #08e; border-top: 2px solid #333 !important }
 #_M_r a::before { content: ""; padding-right: .5rem; border-left: 1px dotted silver }
-._M_m { background: white; border-radius: 5px; border: 1px solid silver }
+._M_m { background: white; border-radius: 5px; box-shadow: 0 0 1px gray }
 
 /* V */
 #_V_Bt { z-index: 1001 }
