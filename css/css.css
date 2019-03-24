@@ -56,6 +56,7 @@ aside::-webkit-scrollbar-thumb { background: #444 }
 .lr { background: lightcoral }
 .lb { background: #def }
 
+.dl { display: inline-block }
 .df { display: flex }
 .dh { display: none }
 .d0 { flex: none }
@@ -92,14 +93,15 @@ details:hover, ._M_dl { border-left: 5px solid #08e; background: #444 }
 details li:hover, ._M_d { background: #08e }
 ::-webkit-details-marker { direction: ltr; margin-left: 1rem }
 ._M_dh details summary::-webkit-details-marker, ._M_dh time, ._M_dh span, ._M_dh a { display: none }
-._M_f, ._M_b:hover { color: #08e; background: azure; border-color: #08e }
-#_M_b { padding: 1rem 1rem 4px 1rem }
-._M_b { border: 1px dotted silver; border-radius: 5px 1rem 0 0; padding: 5px 1rem; margin: 0 5px; cursor: pointer }
-._M_b { border-bottom: none }
+._M_f, ._M_l:hover { color: #08e; background: azure; border-color: #08e }
+#_M_l { padding: 1rem 1rem 4px 1rem }
+._M_l { border: 1px dotted silver; border-radius: 5px 1rem 0 0; padding: 5px 1rem; margin: 0 5px; cursor: pointer }
+._M_l { border-bottom: none }
 #_M_r a { display: inline-block; margin: 0 .5rem; padding: 5px 0 7px 0; border-top: 2px solid transparent; text-decoration: none; transition: .3s }
 #_M_r a:hover, ._M_r { color: #08e; border-top: 2px solid #333 !important }
 #_M_r a::before { content: ""; padding-right: .5rem; border-left: 1px dotted silver }
-._M_m { background: white; border-radius: 5px; box-shadow: 0 0 1px gray }
+._M_m { background: white; border-radius: 3px; box-shadow: 0 0 1px gray }
+._M_ml { padding: .5rem 1rem 4px 1rem }
 
 /* V */
 #_V_Bt { z-index: 1001 }

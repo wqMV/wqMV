@@ -405,13 +405,24 @@
 	const m = {
 		// Json: e element, id, t title, c classname, l label, m mode: 1 add
 		m: J => {
-			let k = [];
+			let k = [], o = E => {
+				q("@SPAN", q("_M_m")).for(e => { e.c = "_M_l" });
+				E.children[0].c = "_M_l _M_f";
+			};
 			k.p(`<div class="_M_m m5 ${J.c ? J.c : ""}">`);
-			k.p(`<div class="bm p51"><b class="bl p05"></b><span>${J.t}</span></div>`);
-			k.p(`<div id="${J.id}" class="p51">`);
-			if (J.l) { ; }
-			k.p(`</div></div>`);
+			k.p(`<div class="bm ${J.l ? "_M_ml" : "p51"}"><b class="bl p05"></b><span>${J.t}</span>`);
+			if (J.l) {
+				k.p(`<div id="_M_m" class="dl p01">`);
+				for (const i in J.l) k.p(`<label><span class="_M_l" onclick="${J.l[i]}">${i}</span></label>`);
+				k.p(`</div>`);
+			}
+			k.p(`</div>`);
+			k.p(`<div id="${J.id}" class="p51"></div></div>`);
 			J.m === 1 ? J.e.add("be", k.j("")) : J.e.h = k.j("");
+			if (J.l) {
+				k = q("@LABEL", q("_M_m")).for(e => { e.onclick = function () { o(this) } });
+				o(k[0]);
+			}
 		},
 
 		// E Element, J Json
@@ -431,14 +442,14 @@
 		// E Element, J Json
 		l: (E, J) => {
 			let k = [], o = E => {
-				q("@SPAN", q("_M_b")).for(e => { e.c = "_M_b" });
-				E.children[0].c = "_M_b _M_f";
+				q("@SPAN", q("_M_l")).for(e => { e.c = "_M_l" });
+				E.children[0].c = "_M_l _M_f";
 			};
-			k.p(`<div id="_M_b" class="bm g">`);
-			for (const i in J) k.p(`<label><span class="_M_b" onclick="${J[i]}">${i}</span></label>`);
+			k.p(`<div id="_M_l" class="bm g">`);
+			for (const i in J) k.p(`<label><span class="_M_l" onclick="${J[i]}">${i}</span></label>`);
 			k.p(`</div><div id="_w_M"></div>`);
 			E.innerHTML = k.j("");
-			k = q("@LABEL", q("_M_b")).for(e => { e.onclick = function () { o(this) } });
+			k = q("@LABEL", q("_M_l")).for(e => { e.onclick = function () { o(this) } });
 			o(k[0]);
 		},
 
