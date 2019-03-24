@@ -403,24 +403,24 @@
 // M
 (() => {
 	const m = {
-		// Json: e element, id, t title, c classname, l label, m mode: 1 add
+		// Json: e element, id, t title, c classname, l label Json, m mode: 1 add
 		m: J => {
 			let k = [], o = E => {
-				q("@SPAN", q("_M_m")).for(e => { e.c = "_M_l" });
-				E.children[0].c = "_M_l _M_f";
+				q("@A", q(`_M_m_${J.id}`)).for(e => { e.c = "" });
+				E.c = "_M_mu";
 			};
 			k.p(`<div class="_M_m m5 ${J.c ? J.c : ""}">`);
-			k.p(`<div class="bm ${J.l ? "_M_ml" : "p51"}"><b class="bl p05"></b><span>${J.t}</span>`);
+			k.p(`<div class="bm p51"><b class="bl p05"></b><span>${J.t}</span>`);
 			if (J.l) {
-				k.p(`<div id="_M_m" class="dl p01">`);
-				for (const i in J.l) k.p(`<label><span class="_M_l" onclick="${J.l[i]}">${i}</span></label>`);
+				k.p(`<div id="_M_m_${J.id}" class="_M_ml dl p01 fs">`);
+				for (var i in J.l) k.p(`<a href="javascript:${J.l[i]}">${i}</a>`);
 				k.p(`</div>`);
 			}
 			k.p(`</div>`);
 			k.p(`<div id="${J.id}" class="p51"></div></div>`);
 			J.m === 1 ? J.e.add("be", k.j("")) : J.e.h = k.j("");
 			if (J.l) {
-				k = q("@LABEL", q("_M_m")).for(e => { e.onclick = function () { o(this) } });
+				k = q("@A", q(`_M_m_${J.id}`)).for(e => { e.onclick = function () { o(this) } });
 				o(k[0]);
 			}
 		},
