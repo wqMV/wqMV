@@ -73,7 +73,7 @@ const wq = {
 			"菜单c": "alert('c')"
 		});
 
-		m.l(q("_w_Mb"), {
+		m.l(q("_w_Mb"), "_w_M", {
 			"菜单一": "alert('一')",
 			"菜单二": "alert('二')",
 			"菜单三": "alert('三')"

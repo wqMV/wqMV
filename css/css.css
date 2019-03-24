@@ -94,9 +94,8 @@ details li:hover, ._M_d { background: #08e }
 ::-webkit-details-marker { direction: ltr; margin-left: 1rem }
 ._M_dh details summary::-webkit-details-marker, ._M_dh time, ._M_dh span, ._M_dh a { display: none }
 ._M_f, ._M_l:hover { color: #08e; background: azure; border-color: #08e }
-#_M_l { padding: 1rem 1rem 4px 1rem }
-._M_l { border: 1px dotted silver; border-radius: 5px 1rem 0 0; padding: 5px 1rem; margin: 0 5px; cursor: pointer }
-._M_l { border-bottom: none }
+._M_lu { padding: 1rem 1rem 4px 1rem }
+._M_l { border: 1px dotted silver; border-bottom: none; border-radius: 5px 1rem 0 0; padding: 5px 1rem; margin: 0 5px; cursor: pointer }
 #_M_r a { display: inline-block; margin: 0 .5rem; padding: 5px 0 7px 0; border-top: 2px solid transparent; text-decoration: none; transition: .3s }
 #_M_r a:hover, ._M_r { color: #08e; border-top: 2px solid #333 !important }
 #_M_r a::before, ._M_ml a::before { content: ""; padding-right: .5rem; border-left: 1px dotted silver }

@@ -406,7 +406,7 @@
 		// Json: e element, id, t title, c classname, l label Json, m mode: 1 add
 		m: J => {
 			let k = [], o = E => {
-				q("@A", q(`_M_m_${J.id}`)).for(e => { e.c = "" });
+				q("@A", E.parentElement).for(e => { e.c = "" });
 				E.c = "_M_mu";
 			};
 			k.p(`<div class="_M_m m5 ${J.c ? J.c : ""}">`);
@@ -428,7 +428,7 @@
 		// E Element, J Json
 		r: (E, J) => {
 			let k = [], o = E => {
-				q("@A", q("_M_r")).for(e => { e.c = "" });
+				q("@A", E.parentElement).for(e => { e.c = "" });
 				E.c = "_M_r";
 			};
 			k.p(`<div id="_M_r">`);
@@ -439,17 +439,17 @@
 			o(k[0]);
 		},
 
-		// E Element, J Json
-		l: (E, J) => {
+		// E Element, id, J Json
+		l: (E, id, J) => {
 			let k = [], o = E => {
-				q("@SPAN", q("_M_l")).for(e => { e.c = "_M_l" });
+				q("@SPAN", E.parentElement).for(e => { e.c = "_M_l" });
 				E.children[0].c = "_M_l _M_f";
 			};
-			k.p(`<div id="_M_l" class="bm g">`);
+			k.p(`<div id="_M_l_${id}" class="_M_lu bm g">`);
 			for (const i in J) k.p(`<label><span class="_M_l" onclick="${J[i]}">${i}</span></label>`);
-			k.p(`</div><div id="_w_M"></div>`);
+			k.p(`</div><div id="${id}" class="p51"></div>`);
 			E.innerHTML = k.j("");
-			k = q("@LABEL", q("_M_l")).for(e => { e.onclick = function () { o(this) } });
+			k = q("@LABEL", q(`_M_l_${id}`)).for(e => { e.onclick = function () { o(this) } });
 			o(k[0]);
 		},
 
