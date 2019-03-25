@@ -95,7 +95,7 @@ const wq = {
 		if (h.g("dh") === "dh") {
 			h.g("dh", "");
 			q("wMenu").c = "";
-			q("wLink").c = "bt m10";
+			q("wLink").c = "bt b4 m10";
 		} else {
 			h.g("dh", "dh");
 			q("wMenu").c = "_M_dh";

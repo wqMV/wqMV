@@ -133,12 +133,13 @@
 		else if (S.startsWith(":")) E = document.getElementsByName(S.substr(1));
 		else if (S.startsWith("@")) E = E.getElementsByTagName(S.substr(1));
 		else if (S) E = document.getElementById(S);
-		if (!E || (E && E.length === 0 && E.tagName !== "FORM")) return;
-		l = E.nodeType === 1 ? 0 : E.length;
-		if (l) {
-			E = [].slice.call(E);
-			for (const i of E) s(i);
-		} else s(E);
+		if (E) {
+			l = E.nodeType === 1 ? 0 : E.length;
+			if (l) {
+				E = [].slice.call(E);
+				for (const i of E) s(i);
+			} else s(E);
+		} else return;
 
 		// J Json: b background for :for, d data, m on mode, c callback
 		if (J) {
@@ -151,7 +152,7 @@
 					if (O.value || O.value === "") O.value = J.d[N][0];
 					else O.innerHTML = J.d[N][0];
 					while (r && r.getAttribute("_q") === N) {
-						r.parentElement.removeChild(r);
+						r.parentNode.removeChild(r);
 						r = O.nextElementSibling;
 					}
 					if (Array.isArray(J.b[N])) {
@@ -256,7 +257,6 @@
 			return E;
 		};
 
-
 		// J Json or String
 		E.css = J => {
 			if (typeof J === "object") {
@@ -267,8 +267,8 @@
 		};
 
 		E.del = () => {
-			if (l) for (let i = 0; i < l; i++) E[0].parentElement.removeChild(E[0]);
-			else E.parentElement.removeChild(E);
+			if (l) for (let i = 0; i < l; i++) E[0].parentNode.removeChild(E[0]);
+			else E.parentNode.removeChild(E);
 			return "";
 		};
 
@@ -406,7 +406,7 @@
 		// Json: e element, id, t title, c classname, l label Json, m mode: 1 add
 		m: J => {
 			let k = [], o = E => {
-				q("@A", E.parentElement).for(e => { e.c = "" });
+				q("@A", E.parentNode).for(e => { e.c = "" });
 				E.c = "_M_mu";
 			};
 			k.p(`<div class="_M_m m5 ${J.c ? J.c : ""}">`);
@@ -428,7 +428,7 @@
 		// E Element, J Json
 		r: (E, J) => {
 			let k = [], o = E => {
-				q("@A", E.parentElement).for(e => { e.c = "" });
+				q("@A", E.parentNode).for(e => { e.c = "" });
 				E.c = "_M_r";
 			};
 			k.p(`<div id="_M_r">`);
@@ -442,7 +442,7 @@
 		// E Element, id, J Json
 		l: (E, id, J) => {
 			let k = [], o = E => {
-				q("@SPAN", E.parentElement).for(e => { e.c = "_M_l" });
+				q("@SPAN", E.parentNode).for(e => { e.c = "_M_l" });
 				E.children[0].c = "_M_l _M_f";
 			};
 			k.p(`<div id="_M_l_${id}" class="_M_lu bm g">`);
@@ -459,13 +459,13 @@
 				let l = q("_M_d");
 				q("@LI", l).for(e => { e.c = "tc" });
 				q("@DETAILS", l).for(e => {
-					if (e === E.parentElement) l = null;
+					if (e === E.parentNode) l = null;
 					else {
 						e.open = false;
 						e.c = "";
 					}
 				});
-				E.parentElement.className = "_M_dl";
+				E.parentNode.className = "_M_dl";
 				E.children[0].c = "_M_d tc";
 			};
 			k.p(`<div id="_M_d">`);
@@ -479,7 +479,7 @@
 			E.innerHTML = k.j("");
 			k = q("@SPAN", E).for(e => { e.onclick = function () { o(this) } });
 			o(k[0]);
-			k[0].parentElement.setAttribute("open", "open");
+			k[0].parentNode.setAttribute("open", "open");
 			k[0].children[0].click();
 		},
 
@@ -613,7 +613,7 @@
 
 		// T Text, M Mode 0 green 1 Red 2 always
 		i: (T, M) => {
-			let k = q("_V_Bi");
+			let k = q("_V_Fi");
 			if (k) v.del("i");
 			else {
 				k = [];

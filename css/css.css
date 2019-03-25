@@ -24,9 +24,11 @@ body, header, nav, main, .nav, .main, .logo, header>div { display: flex }
 .nav, .main { height:100vh }
 
 .logo, .title, .note, .user { overflow: hidden; border-top: 2px solid transparent; transition: .3s }
+.title { padding: 0 2em; color: whitesmoke }
+.user { flex: 0 0 16rem }
 .logo:hover { border-top: 2px solid #08e }
 .title:hover, .note:hover, .user:hover { border-top: 2px solid #333 }
-.note, .user { flex: 0 0 16rem }
+.title:hover { flex: auto }
 
 main { flex-wrap: wrap; background: whitesmoke }
 aside, main { flex: 1; overflow-y: scroll }
@@ -76,7 +78,6 @@ aside::-webkit-scrollbar-thumb { background: #444 }
 .fs { font-weight: 100; font-size: small }
 .fl { font-weight: 500; font-size: large }
 .fxl { font-weight: 500; font-size: x-large }
-.fxxl { font-weight: 500; font-size: xx-large }
 @font-face { font-family: "ifont"; src: url("ifont.ttf") }
 .if { font-family: "ifont" !important }
 
