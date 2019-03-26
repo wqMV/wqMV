@@ -5,8 +5,8 @@ a:hover, a:active { color: #08e }
 table { width: 100%; border-collapse: collapse; border-spacing: .5rem }
 ol, ul, li { margin: .5rem 0; text-align: left }
 form { line-height: 2; text-align: left }
-input, select, textarea { text-align: left; border-radius: 5px }
-input, select, textarea { background: white; border: 1px solid silver }
+input, select, textarea { text-align: left; border-radius: 5px ; color: #333 }
+input, select, textarea { background: white; border: 1px solid rgba(99, 99, 99, .4) }
 input:hover, select:hover, textarea:hover { color: #08e; background: azure; border-color: #08e }
 input, textarea { padding: 7px 1rem }
 input, select { margin: 0 1rem 0 .5rem }
@@ -16,7 +16,7 @@ input[disabled] { pointer-events: none; background: whitesmoke }
 [type=file] { padding-top: 2px; padding-bottom: 3px }
 
 .in { position: relative; display: inline-block }
-.in b { position: absolute; padding: .5rem 1rem; color: gray }
+.in b { position: absolute; padding: .5rem 1rem; color: rgba(99, 99, 99, .4) }
 .in input { padding-left: 2rem }
 
 body, header, nav, main, .nav, .main, .logo, header>div { display: flex }
@@ -24,7 +24,7 @@ body, header, nav, main, .nav, .main, .logo, header>div { display: flex }
 .nav, .main { height:100vh }
 
 .logo, .title, .note, .user { overflow: hidden; border-top: 2px solid transparent; transition: .3s }
-.title { padding: 0 2em; color: whitesmoke }
+.title { padding: 0 2em }
 .user { flex: 0 0 16rem }
 .logo:hover { border-top: 2px solid #08e }
 .title:hover, .note:hover, .user:hover { border-top: 2px solid #333 }
@@ -33,13 +33,12 @@ body, header, nav, main, .nav, .main, .logo, header>div { display: flex }
 main { flex-wrap: wrap; background: whitesmoke }
 aside, main { flex: 1; overflow-y: scroll }
 aside::-webkit-scrollbar { width: 5px }
-aside::-webkit-scrollbar-thumb { background: #444 }
+aside::-webkit-scrollbar-thumb { background: rgba(99, 99, 99, .4) }
 
-.bt { border-top: 1px dotted silver }
-.bm { border-bottom: 1px dotted silver }
-.bl { border-left: 1px dotted gray }
-.br { border-right: 1px dotted gray }
-.b4 { border-color: #444 }
+.bt { border-top: 1px dotted rgba(99, 99, 99, .4) }
+.bm { border-bottom: 1px dotted rgba(99, 99, 99, .4) }
+.bl { border-left: 1px dotted rgba(99, 99, 99, .4) }
+.br { border-right: 1px dotted rgba(99, 99, 99, .4) }
 
 .p01 { padding: 0 1rem }
 .p05 { padding: 0 .5rem }
@@ -48,7 +47,9 @@ aside::-webkit-scrollbar-thumb { background: #444 }
 .m10 { margin: 1rem 0 }
 .m5 { margin: .5rem }
 
-.g { color: silver }
+.e { color: rgba(255, 255, 255, .5) }
+.w { color: rgba(255, 255, 255, .8) }
+.g { color: rgba(99, 99, 99, .7) }
 .s { color: seagreen }
 .r { color: crimson }
 
@@ -90,17 +91,17 @@ summary { direction: rtl; padding: 5px 5px 5px 1rem; outline: none }
 summary>b { padding-right: 1rem }
 details { margin: 5px 0; border-left: 5px solid transparent }
 details li { list-style: none; padding: 5px; border-radius: 0 5px 5px 0 }
-details:hover, ._M_dl { border-left: 5px solid #08e; background: #444 }
+details:hover, ._M_dl { border-left: 5px solid #08e; background: rgba(99, 99, 99, .4) }
 details li:hover, ._M_d { background: #08e }
 ::-webkit-details-marker { direction: ltr; margin-left: 1rem }
 ._M_dh details summary::-webkit-details-marker, ._M_dh time, ._M_dh span, ._M_dh a { display: none }
 ._M_f, ._M_l:hover { color: #08e; background: azure; border-color: #08e }
 ._M_lu { padding: 1rem 1rem 4px 1rem }
-._M_l { border: 1px dotted silver; border-bottom: none; border-radius: 5px 1rem 0 0; padding: 5px 1rem; margin: 0 5px; cursor: pointer }
+._M_l { border: 1px dotted rgba(99, 99, 99, .4); border-bottom: none; border-radius: 5px 1rem 0 0; padding: 5px 1rem; margin: 0 5px; cursor: pointer }
 #_M_r a { display: inline-block; margin: 0 .5rem; padding: 5px 0 7px 0; border-top: 2px solid transparent; text-decoration: none; transition: .3s }
 #_M_r a:hover, ._M_r { color: #08e; border-top: 2px solid #333 !important }
-#_M_r a::before, ._M_ml a::before { content: ""; padding-right: .5rem; border-left: 1px dotted silver }
-._M_m { background: white; border-radius: 3px; box-shadow: 0 0 1px gray }
+#_M_r a::before, ._M_ml a::before { content: ""; padding-right: .5rem; border-left: 1px dotted rgba(99, 99, 99, .4) }
+._M_m { background: white; border-radius: 3px; box-shadow: 0 0 1px rgba(99, 99, 99, .4) }
 ._M_ml a { display: inline-block; margin: 0 .5rem; text-decoration: none }
 ._M_ml a:hover, ._M_mu { color: #08e; text-decoration: underline !important }
 
@@ -111,12 +112,12 @@ details li:hover, ._M_d { background: #08e }
 #_V_Ft { z-index: 1002; background: ivory; animation: pop .3s }
 #_V_Fc { z-index: 2002; background: cornsilk; padding: 1rem; animation: pop .3s }
 #_V_Fi { z-index: 3002; padding: 1rem; animation: shake .2s }
-#_V_Ht { border-radius: 5px 5px 0 0; background: rgba(99, 99, 99, 0.1); cursor: move }
+#_V_Ht { border-radius: 5px 5px 0 0; background: rgba(99, 99, 99, .1); cursor: move }
 ._V_e { display: block; padding: 0 0 0 1rem; cursor: pointer }
 ._V_e:hover, ._V_s { color: crimson }
 ._V_p { position: absolute }
-._V_b { height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; opacity: 0.3; background: gray }
-._V_f { border: 1px solid silver; border-radius: 5px; box-shadow: 1px 1px 1rem gray }
+._V_b { height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; background: rgba(99, 99, 99, .4) }
+._V_f { border: 1px solid rgba(99, 99, 99, .4); border-radius: 5px; box-shadow: 1px 1px 1rem rgba(99, 99, 99, .4) }
 ._V_t { padding: 5px 1rem }
 ._V_c { padding-bottom: 1rem }
 ._V_u { padding: 5px .5rem 5px 1rem }
