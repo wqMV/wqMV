@@ -1,101 +1,58 @@
 /*!
- * wqMV.js v 1.0
+ * wqMV.js v 2.0
  * (c) 2019 WangQiang
  * date: 2019-1-1
+ * date: 2019-3-27
  */
 
 "use strict";
 
 // w
 (() => {
-	// C Callback, D formData, N Name, T Time, M Mode
-	const w = (C, D, N, T, M) => {
-		let wI, wT = 0,
-			wF = window.location.origin + "/",
-
-			wPT = () => {
-				const k = new XMLHttpRequest();
-				k.onreadystatechange = () => { if (k.readyState === 4) wT = k.responseText };
-				k.open(M, wF, true);
-				if (M === "GET") k.send();
-				else k.send(D);
-			},
-
-			wOK = () => {
-				// wT is true
-				if (wT) {
-					clearInterval(wI);
-					if (C) C(wT);
-				}
-			},
-			wON = function () {
-				wPT();
-				wI = setInterval(wOK, 127);
-			},
-
-			wRD = K => Math.floor(Math.random() * K * 89) + (K + 1) * 127;
-
-		M = C === "GET" || D === "GET" || N === "GET" || T === "GET" ? "GET" : (M === "GET" ? M : "POST");
-		T = typeof C === "number" ? C : (typeof D === "number" ? D : (typeof N === "number" ? N : (typeof T === "number" ? T : 0)));
-		N = typeof C === "string" && C !== "GET" ? C : (typeof D === "string" && D !== "GET" ? D : (!N || typeof N !== "string" || N === "GET" ? "" : N));
-		D = typeof C === "object" ? C : (!D || typeof D !== "object" ? 0 : D);
-		C = !C || typeof C !== "function" ? 0 : C;
-
-		wF += N;
-		if (!N) wF += "ajax.aspx";
-		setTimeout(wON, wRD(T));
+	//J Json: c Callback, d formData, u Url, t waitTime, m Mode, o timeOut
+	const w = J => {
+		J.m = J.m === "GET" ? "GET" : "POST";
+		J.u = window.location.origin + "/" + (J.u ? J.u : "ajax.aspx");
+		if (J.d) {
+			let k = new FormData();
+			for (const i in J.d) k.append(i, J.d[i]);
+			J.d = k;
+		}
+		w.p.J = J;
+		w.p.wT = 0;
+		setTimeout(w.p.wON, w.p.wRD(J.t ? J.t : 0));
+		setTimeout(w.p.wED, (J.o ? J.o * 1000 : 120000));
 	};
 
-	// J Json: id, cn, ph path, t title, s subheading, h html, n number, uc up callback, dc del callback
-	w.f = J => {
-		const del = () => {
-			v.c("您确定删除这个文件吗？", () => { J.dc() });
-		}, up = () => {
-			if (q("Efs").v) {
-				v.c("您上传了新文件，原有文件将被覆盖！<br>您确定继续吗？", function () {
-					q("Ein").h = "正在上传文件，请不要关闭当前窗口……";
-					q("@INPUT", q("_w_F")).for(e => { e.g("disabled", "disabled") });
-					J.uc();
-					return false;
-				});
-			} else {
-				J.uc();
-				return false;
+	w.p = {
+		J: {},
+		wI: 0,
+		wT: 0,
+		wPT: () => {
+			const k = new XMLHttpRequest();
+			k.onreadystatechange = () => { if (k.readyState === 4) w.p.wT = k.responseText };
+			k.open(w.p.J.m, w.p.J.u, true);
+			if (w.p.J.m === "GET") k.send();
+			else k.send(w.p.J.d);
+		},
+		wOK: () => {
+			// wT is true
+			if (w.p.wT) {
+				clearInterval(w.p.wI);
+				if (w.p.J.c) w.p.J.c(w.p.wT);
+				w.p.wT = 1;
 			}
-			return false;
-		}, cnch = function () {
-			this.v = m.sp(this.v);
-		}, fsch = () => {
-			const k = q("Efs").files[0];
-			if (k) {
-				const fr = new FileReader();
-				J.n = J.n ? parseInt(J.n * 1024000 - 1) : 20479999;
-				fr.onload = () => {
-					if (k.size > J.n) {
-						v.i(`上传文件大小不能超过 ${parseInt((J.n + 1) / 1024000)} MB！`, 1);
-						q("Efs").v = "";
-					} else {
-						q("Efl").v = "2";
-						q("Ecn").v = m.sp(k.name);
-					}
-				};
-				fr.readAsDataURL(k);
-			}
-		};
-
-		let h = [];
-		h.p(`<input name="id" type="hidden" value="${J.id}">`);
-		h.p(`<input name="old" type="hidden" value="${J.ph}">`);
-		h.p(`<input id="Efl" name="fl" type="hidden" value="1">`);
-		if (J.h) h.p(J.h + "<br>");
-		h.p(`<label>标题：<input id="Ecn" name="cn" type="text" style="width:24rem" required value="${J.cn}"></label>`);
-		h.p(`<div style="padding:5px 0"><label>文件：<input id="Efs" name="fs" type="file" style="width:24rem"></label></div>`);
-		h.p(`<div id="Ein" class="fs tc g">　</div>`);
-		v.t(J.t, J.s, h.j(""), (J.id === 0 ? 0 : 1));
-		q("Ecn").onchange = cnch;
-		q("Efs").onchange = fsch;
-		q("_w_D").onclick = del;
-		q("_w_F").onsubmit = () => up();
+		},
+		wON: () => {
+			w.p.wPT();
+			w.p.wI = setInterval(w.p.wOK, 127);
+		},
+		wED: () => {
+			if (w.p.wT === 1) return;
+			clearInterval(w.p.wI);
+			if (w.p.J.c) w.p.J.c("0");
+		},
+		wRD: K => Math.floor(Math.random() * K * 89) + (K + 1) * 127
 	};
 
 	window.w = w;
@@ -321,13 +278,6 @@
 			else V = "";
 		}
 		return (K === 0 ? "" : V);
-	};
-
-	// J Json
-	q.d = J => {
-		let k = new FormData();
-		for (const i in J) k.append(i, J[i]);
-		return k;
 	};
 
 	// S String
@@ -556,77 +506,131 @@
 // V
 (() => {
 	const v = {
-		// T Title, S Subheading, H Html, M Mode 0 default 1 del 2 close, B Background
-		t: (T, S, H, M, B) => {
+		// J Json: t Title, s Subheading, h Html, m Mode 0 default 1 del 2 onlyClose, b Background
+		t: J => {
 			let k = q("_V_Bt");
 			if (k) v.del();
-			else {
-				B = typeof M === "string" ? M : (typeof B === "string" ? B : 0);
-				k = [];
-				k.p(`<div id="_V_Bt" class="_V_p _V_b db"></div>`);
-				k.p(`<div id="_V_Ft" class="_V_p _V_f db"`);
-				if (B) k.p(` style="background: ${B}"`);
-				k.p(`>`);
-				k.p(`<div id="_V_Ht" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
-				k.p(`<div class="p01 df vc ts"><span>${T} </span>`);
-				k.p(`<span class="_V_e fxl" onclick="v.del()">×</span></div>`);
-				k.p(`<div class="_V_s bm p01 fxs">${S}</div>`);
+			k = [];
+			k.p(`<div id="_V_Bt" class="_V_p _V_b db"></div>`);
+			k.p(`<div id="_V_Ft" class="_V_p _V_f db"`);
+			if (J.b) k.p(` style="background: ${J.b}"`);
+			k.p(`>`);
+			k.p(`<div id="_V_Ht" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
+			k.p(`<div class="p01 df vc ts"><span>${J.t} </span>`);
+			k.p(`<span id="_V_Hd" class="_V_e fxl" onclick="v.del()">×</span></div>`);
+			k.p(`<div class="_V_s bm p01 fxs">${J.s}</div>`);
+			k.p(`</div>`);
+			k.p(`<form id="_w_F">`);
+			k.p(`<div class="_V_t">${J.h}</div>`);
+			if (J.m !== 2) {
+				k.p(`<div class="_V_u tr">`);
+				k.p(`<input class="lb" type="submit" value="确定">`);
+				if (J.m === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
+				k.p(`<input type="reset" value="重置">`);
 				k.p(`</div>`);
-				k.p(`<form id="_w_F">`);
-				k.p(`<div class="_V_t">${H}</div>`);
-				if (M !== 2) {
-					k.p(`<div class="_V_u tr">`);
-					k.p(`<input class="lb" type="submit" value="确定">`);
-					if (M === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
-					k.p(`<input type="reset" value="重置">`);
-					k.p(`</div>`);
-				}
-				k.p(`</form></div>`);
-				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
-				v.adi("t");
 			}
+			k.p(`</form></div>`);
+			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
+			v.adi("t");
 		},
 
-		// H Html, C Callback, B Background
-		c: (H, C, B) => {
+		// J Json: h Html, c Callback, b Background
+		c: J => {
 			let k = q("_V_Bc");
 			if (k) v.del("c");
 			else {
 				k = [];
 				k.p(`<div id="_V_Bc" class="_V_p _V_b db"></div>`);
 				k.p(`<div id="_V_Fc" class="_V_p _V_f db"`);
-				if (B) k.p(` style="background: ${B}"`);
+				if (J.b) k.p(` style="background: ${J.b}"`);
 				k.p(`>`);
-				k.p(`<div class="_V_c">${H}</div>`);
+				k.p(`<div class="_V_c">${J.h}</div>`);
 				k.p(`<div class="tr">`)
 				k.p(`<input id ="_w_OK" type="button" value="确定">`);
 				k.p(`<input type="button" onclick="v.del('c')" value="取消">`);
 				k.p(`</div></div>`);
 				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 				q("_w_OK").onclick = () => {
-					if (H.indexOf("input") === -1) v.del("c");
-					if (typeof C == "function") C();
+					if (J.h.indexOf("input") === -1) v.del("c");
+					if (typeof J.c == "function") J.c();
 				};
 				v.adi("c");
 			}
 		},
 
-		// T Text, M Mode 0 green 1 Red 2 always
-		i: (T, M) => {
+		// J Json: t Text, m Mode 0 green 1 Red
+		i: J => {
 			let k = q("_V_Fi");
 			if (k) v.del("i");
 			else {
 				k = [];
 				k.p(`<div id="_V_Fi" class="_V_p _V_f db `);
-				if (M == 1) k.p(`lr`);
+				if (J.m == 1) k.p(`lr`);
 				else k.p(`lg`);
 				k.p(`">`);
-				k.p(`<div class="fs">${T}</div>`);
+				k.p(`<div class="fs">${J.t}</div>`);
 				k.p(`</div>`);
 				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 				v.adi("i");
-				if (M != 2) setTimeout(() => { v.del("i") }, 1200);
+				setTimeout(() => { v.del("i") }, 1200);
 			}
+		},
+
+		// J Json: id, cn, ph path, t title, s subheading, h html, n number, uc up callback, dc del callback
+		f: J => {
+			const del = () => {
+				v.c("您确定删除这个文件吗？", () => { J.dc() });
+			}, up = () => {
+				if (q("Efs").h) {
+					v.c("您上传了新文件，原有文件将被覆盖！<br>您确定继续吗？", () => {
+						q("@INPUT", q("_w_F")).for(e => { e.g("disabled", "disabled") });
+						q("_V_Hd").style["pointer-events"] = "none";
+						q("Ein").h = "正在上传文件，请不要关闭当前窗口……";
+						J.uc();
+						return false;
+					});
+				} else {
+					J.uc();
+					return false;
+				}
+				return false;
+			}, fsch = () => {
+				const k = q("Efs").files[0];
+				if (k) {
+					const fr = new FileReader();
+					J.n = J.n ? parseInt(J.n * 1024000 - 1) : 20479999;
+					fr.onload = () => {
+						if (k.size > J.n) {
+							v.i(`上传文件大小不能超过 ${parseInt((J.n + 1) / 1024000)} MB！`, 1);
+							q("Efs").h = "";
+						} else {
+							q("Efl").h = "2";
+							q("Ecn").h = cnch(k.name);
+						}
+					};
+					fr.readAsDataURL(k);
+				}
+			}, cnch = k => k.replace(/ |　|,|;|\"|\'|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}/g, "");
+
+			let k = [];
+			k.p(`<input name="id" type="hidden" value="${J.id}">`);
+			k.p(`<input name="old" type="hidden" value="${J.ph}">`);
+			k.p(`<input id="Efl" name="fl" type="hidden" value="1">`);
+			if (J.h) k.p(J.h + "<br>");
+			k.p(`<label>标题：<input id="Ecn" name="cn" type="text" style="width:24rem" required value="${J.cn}"></label>`);
+			k.p(`<div style="padding:5px 0"><label>文件：<input id="Efs" name="fs" type="file" style="width:24rem"></label></div>`);
+			k.p(`<div id="Ein" class="fs tc s">　</div>`);
+			v.t({
+				t: J.t,
+				s: J.s,
+				h: k.j(""),
+				m: J.id === 0 ? 0 : 1
+			});
+			q("Ecn").onchange = function () { this.h = cnch(this.h) };
+			q("Efs").onchange = fsch;
+			k = q("_w_D");
+			if (k) k.onclick = del;
+			q("_w_F").onsubmit = () => up();
 		},
 
 		del: S => {

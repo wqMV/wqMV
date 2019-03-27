@@ -1,22 +1,22 @@
-html, body { margin: 0; padding: 0; overflow: hidden; box-sizing: border-box; font-size: medium; color: #333; background: white }
-body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-serif }
-a, a:visited { color: #333 }
+html, body { margin: 0; padding: 0; overflow: hidden; box-sizing: border-box; font-size: medium; color: rgba(0, 0, 0, .8); background: white }
+body, input, textarea, select { -webkit-font-smoothing: antialiased; font-family: Tahoma, 'Microsoft YaHei', sans-serif }
+a, a:visited { color: rgba(0, 0, 0, .8) }
 a:hover, a:active { color: #08e }
 table { width: 100%; border-collapse: collapse; border-spacing: .5rem }
 ol, ul, li { margin: .5rem 0; text-align: left }
 form { line-height: 2; text-align: left }
-input, select, textarea { text-align: left; border-radius: 5px ; color: #333 }
+input, select, textarea { text-align: left; border-radius: 5px ; color: rgba(0, 0, 0, .8) }
 input, select, textarea { background: white; border: 1px solid rgba(99, 99, 99, .4) }
 input:hover, select:hover, textarea:hover { color: #08e; background: azure; border-color: #08e }
-input, textarea { padding: 7px 1rem }
+input, textarea { padding: 5px 1rem }
 input, select { margin: 0 1rem 0 .5rem }
 textarea { margin: 10px; width: 24rem; height: 4rem }
-select { padding: 6px 1rem }
+select { padding: 4px 1rem }
 input[disabled] { pointer-events: none; background: whitesmoke }
 [type=file] { padding-top: 2px; padding-bottom: 3px }
 
 .in { position: relative; display: inline-block }
-.in b { position: absolute; padding: .5rem 1rem; color: rgba(99, 99, 99, .4) }
+.in b { position: absolute; padding: 6px 1rem; color: rgba(99, 99, 99, .4) }
 .in input { padding-left: 2rem }
 
 body, header, nav, main, .nav, .main, .logo, header>div { display: flex }
@@ -27,7 +27,7 @@ body, header, nav, main, .nav, .main, .logo, header>div { display: flex }
 .title { padding: 0 2em }
 .user { flex: 0 0 16rem }
 .logo:hover { border-top: 2px solid #08e }
-.title:hover, .note:hover, .user:hover { border-top: 2px solid #333 }
+.title:hover, .note:hover, .user:hover { border-top: 2px solid rgba(0, 0, 0, .8) }
 .title:hover { flex: auto }
 
 main { flex-wrap: wrap; background: whitesmoke }
@@ -53,7 +53,7 @@ aside::-webkit-scrollbar-thumb { background: rgba(99, 99, 99, .4) }
 .s { color: seagreen }
 .r { color: crimson }
 
-.b { background: #333 }
+.b { background: rgba(0, 0, 0, .8) }
 .l { background: #08e }
 .lg { background: lightgreen }
 .lr { background: lightcoral }
@@ -96,10 +96,10 @@ details li:hover, ._M_d { background: #08e }
 ::-webkit-details-marker { direction: ltr; margin-left: 1rem }
 ._M_dh details summary::-webkit-details-marker, ._M_dh time, ._M_dh span, ._M_dh a { display: none }
 ._M_f, ._M_l:hover { color: #08e; background: azure; border-color: #08e }
-._M_lu { padding: 1rem 1rem 4px 1rem }
-._M_l { border: 1px dotted rgba(99, 99, 99, .4); border-bottom: none; border-radius: 5px 1rem 0 0; padding: 5px 1rem; margin: 0 5px; cursor: pointer }
+._M_lu { padding: 1rem 1rem 3px 1rem }
+._M_l { border: 1px dotted rgba(99, 99, 99, .4); border-bottom: none; border-radius: 5px 1rem 0 0; padding: 3px 1rem; margin: 0 5px; cursor: pointer }
 #_M_r a { display: inline-block; margin: 0 .5rem; padding: 5px 0 7px 0; border-top: 2px solid transparent; text-decoration: none; transition: .3s }
-#_M_r a:hover, ._M_r { color: #08e; border-top: 2px solid #333 !important }
+#_M_r a:hover, ._M_r { color: #08e; border-top: 2px solid rgba(0, 0, 0, .8) !important }
 #_M_r a::before, ._M_ml a::before { content: ""; padding-right: .5rem; border-left: 1px dotted rgba(99, 99, 99, .4) }
 ._M_m { background: white; border-radius: 3px; box-shadow: 0 0 1px rgba(99, 99, 99, .4) }
 ._M_ml a { display: inline-block; margin: 0 .5rem; text-decoration: none }

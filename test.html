@@ -61,9 +61,10 @@
 				<input id="oQ" type="button" on:click="to" value="on:click">
 				<li :for="tf" on:click="fo"></li>
 				<form id="oF">
-					<input type="button" value="弹窗" onclick="v.t('标题','副标题','aaa',2)">
-					<input type="button" value="提示" onclick="v.c('标题',()=>{alert('提示')})">
-					<input type="button" value="警告" onclick="v.i('警告',1)">
+					<input type="button" value="弹窗" onclick="wq.t()">
+					<input type="button" value="提示" onclick="wq.c()">
+					<input type="button" value="警告" onclick="wq.i()">
+					<input type="button" value="加载" onclick="wq.l()">
 					<input type="button" value="上传文件" onclick="wq.f()">
 					<input type="button" value="失效" disabled>
 				</form>

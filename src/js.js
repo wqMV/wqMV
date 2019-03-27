@@ -1,10 +1,38 @@
+"use strict";
 const wq = {
+	t: () => {
+		v.t({
+			t: "标题",
+			s: "副标题",
+			h: "HTML文本",
+			m: 2
+		});
+	},
+
+	i: () => { v.i({ t: "警告", m: 1 }) },
+
+	c: () => {
+		v.c({
+			h: "HTML文本",
+			c: () => { alert('提示') }
+		});
+	},
+
+	l: () => { },
+
 	f: () => {
-		w.f({
-			id: 1, ph: 0, cn: 0, h: 1, t: 1, s: 2, dc: () => {
-				b = document.getElementById("_w_FO");
+		v.f({
+			id: 1,
+			ph: "",
+			cn: "",
+			h: "HTML文本",
+			t: "上传文件",
+			s: "副标题",
+			dc: () => {
+				let b = document.getElementById("_w_FO");
 				console.log(b);
-			}, uc: () => {
+			},
+			uc: () => {
 				v.del();
 			}
 		});
@@ -87,7 +115,17 @@ const wq = {
 			}
 		});
 
+		/*
+		w({
+			d: { typ: "test" },
+			c: e => {
+				alert(e);
+			}
+		});
+		*/
+
 		//ed(document.getElementById("_w_Edr"));
+
 	},
 
 	mu: () => {
@@ -95,11 +133,11 @@ const wq = {
 		if (h.g("dh") === "dh") {
 			h.g("dh", "");
 			q("wMenu").c = "";
-			q("wLink").c = "bt b4 m10";
+			q("wLink").c = "bt m10";
 		} else {
 			h.g("dh", "dh");
 			q("wMenu").c = "_M_dh";
-			q("wLink").c = "_M_dh";
+			q("wLink").c = "_M_dh bt m10";
 		};
 	},
 
