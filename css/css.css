@@ -106,13 +106,22 @@ details li:hover, ._M_d { background: #08e }
 ._M_ml a:hover, ._M_mu { color: #08e; text-decoration: underline !important }
 
 /* V */
+#_V_Ht { border-radius: 5px 5px 0 0; background: rgba(99, 99, 99, .1); cursor: move }
 #_V_Bt { z-index: 1001 }
 #_V_Bc { z-index: 2001 }
 #_V_Bi { z-index: 3001 }
 #_V_Ft { z-index: 1002; background: ivory; animation: pop .3s }
 #_V_Fc { z-index: 2002; background: cornsilk; padding: 1rem; animation: pop .3s }
 #_V_Fi { z-index: 3002; padding: 1rem; animation: shake .2s }
-#_V_Ht { border-radius: 5px 5px 0 0; background: rgba(99, 99, 99, .1); cursor: move }
+#_V_Fi .ir { border-right-color: lightcoral }
+#_V_Fi .ig { border-right-color: lightgreen }
+#_V_Fi b {
+	display:block;
+	position:absolute;
+	top: 1rem;
+	left: -1rem;
+	border: .5rem dashed transparent
+}
 ._V_e { display: block; padding: 0 0 0 1rem; cursor: pointer }
 ._V_e:hover, ._V_s { color: crimson }
 ._V_p { position: absolute }

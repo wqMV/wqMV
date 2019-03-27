@@ -538,42 +538,40 @@
 		c: J => {
 			let k = q("_V_Bc");
 			if (k) v.del("c");
-			else {
-				k = [];
-				k.p(`<div id="_V_Bc" class="_V_p _V_b db"></div>`);
-				k.p(`<div id="_V_Fc" class="_V_p _V_f db"`);
-				if (J.b) k.p(` style="background: ${J.b}"`);
-				k.p(`>`);
-				k.p(`<div class="_V_c">${J.h}</div>`);
-				k.p(`<div class="tr">`)
-				k.p(`<input id ="_w_OK" type="button" value="确定">`);
-				k.p(`<input type="button" onclick="v.del('c')" value="取消">`);
-				k.p(`</div></div>`);
-				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
-				q("_w_OK").onclick = () => {
-					if (J.h.indexOf("input") === -1) v.del("c");
-					if (typeof J.c == "function") J.c();
-				};
-				v.adi("c");
-			}
+			k = [];
+			k.p(`<div id="_V_Bc" class="_V_p _V_b db"></div>`);
+			k.p(`<div id="_V_Fc" class="_V_p _V_f db"`);
+			if (J.b) k.p(` style="background: ${J.b}"`);
+			k.p(`>`);
+			k.p(`<div class="_V_c">${J.h}</div>`);
+			k.p(`<div class="tr">`)
+			k.p(`<input id ="_w_OK" type="button" value="确定">`);
+			k.p(`<input type="button" onclick="v.del('c')" value="取消">`);
+			k.p(`</div></div>`);
+			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
+			q("_w_OK").onclick = () => {
+				if (J.h.indexOf("input") === -1) v.del("c");
+				if (typeof J.c == "function") J.c();
+			};
+			v.adi("c");
 		},
 
 		// J Json: t Text, m Mode 0 green 1 Red
 		i: J => {
 			let k = q("_V_Fi");
 			if (k) v.del("i");
-			else {
-				k = [];
-				k.p(`<div id="_V_Fi" class="_V_p _V_f db `);
-				if (J.m == 1) k.p(`lr`);
-				else k.p(`lg`);
-				k.p(`">`);
-				k.p(`<div class="fs">${J.t}</div>`);
-				k.p(`</div>`);
-				document.body.insertAdjacentHTML("beforeEnd", k.j(""));
-				v.adi("i");
-				setTimeout(() => { v.del("i") }, 1200);
-			}
+			k = [];
+			k.p(`<div id="_V_Fi" class="_V_p _V_f db `);
+			if (J.m == 1) k.p(`lr`);
+			else k.p(`lg`);
+			k.p(`"><b class="`);
+			if (J.m == 1) k.p(`ir`);
+			else k.p(`ig`);
+			k.p(`"></b><div class="fs">${J.t}</div>`);
+			k.p(`</div>`);
+			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
+			v.adi("i");
+			setTimeout(() => { v.del("i") }, 1200);
 		},
 
 		// J Json: id, cn, ph path, t title, s subheading, h html, n number, uc up callback, dc del callback
@@ -612,7 +610,9 @@
 				}
 			}, cnch = k => k.replace(/ |　|,|;|\"|\'|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}/g, "");
 
-			let k = [];
+			let k = q("_V_Bt");
+			if (k) v.del();
+			k = [];
 			k.p(`<input name="id" type="hidden" value="${J.id}">`);
 			k.p(`<input name="old" type="hidden" value="${J.ph}">`);
 			k.p(`<input id="Efl" name="fl" type="hidden" value="1">`);
