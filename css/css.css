@@ -30,10 +30,11 @@ body, header, nav, main, .nav, .main, .logo, header>div { display: flex }
 .title:hover, .note:hover, .user:hover { border-top: 2px solid rgba(0, 0, 0, .8) }
 .title:hover { flex: auto }
 
-main { flex-wrap: wrap; height: min-content; background: whitesmoke }
-aside, main { flex: 1; overflow-y: scroll }
+section { background: whitesmoke }
+aside, section { flex: 1; overflow-y: scroll }
 aside::-webkit-scrollbar { width: 5px }
 aside::-webkit-scrollbar-thumb { background: rgba(99, 99, 99, .4) }
+main { flex-wrap: wrap }
 
 .bt { border-top: 1px dotted rgba(99, 99, 99, .4) }
 .bm { border-bottom: 1px dotted rgba(99, 99, 99, .4) }
@@ -45,6 +46,7 @@ aside::-webkit-scrollbar-thumb { background: rgba(99, 99, 99, .4) }
 .p0100 { padding: 0 1rem 0 0 }
 .p1 { padding: 1rem }
 .p5 { padding: .5rem }
+.p50 { padding: .5rem 0 0 0 }
 .p51 { padding: .5rem 1rem }
 .m10 { margin: 1rem 0 }
 .m5 { margin: .5rem }
@@ -115,7 +117,7 @@ details li:hover, ._M_d { background: #08e }
 #_V_Ht { border-radius: 5px 5px 0 0; background: rgba(99, 99, 99, .1); cursor: move }
 #_V_Bt { z-index: 1001 }
 #_V_Bc { z-index: 2001 }
-#_V_Bi { z-index: 3001 }
+#_V_Bl { z-index: 3001 }
 #_V_Ft { z-index: 1002; animation: pop .3s }
 #_V_Fc { z-index: 2002; animation: pop .3s }
 #_V_Fi { z-index: 3002; animation: sha .3s }
@@ -133,9 +135,6 @@ details li:hover, ._M_d { background: #08e }
 ._V_p { position: absolute }
 ._V_b { height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; background: rgba(99, 99, 99, .4) }
 ._V_f { border: 1px solid rgba(99, 99, 99, .4); border-radius: 5px; box-shadow: 1px 1px 1rem rgba(99, 99, 99, .4) }
-._V_t { padding: 5px 1rem }
-._V_c { padding-bottom: 1rem }
-._V_u { padding: 5px .5rem 5px 1rem }
 ._V_r { animation: rot .8s infinite }
 @keyframes pop {
 	0% { opacity: 0; transform: scale(.5); top: 0 }

@@ -9,7 +9,7 @@ const wq = {
 		});
 	},
 
-	i: () => { v.i({ t: "警告<br>警告警告", m: 1 }) },
+	i: () => { v.i({ t: "警告警告警告", m: 1 }) },
 
 	c: () => {
 		v.c({
@@ -36,6 +36,7 @@ const wq = {
 			},
 			uc: () => {
 				v.del();
+				v.del("l");
 			}
 		});
 
@@ -110,14 +111,18 @@ const wq = {
 		});
 
 		m.m({
-			e: q("wMain"), id: "Rmode", t: "模块一", c: "d1", m: 1, l: {
+			e: q("wMain"), id: "Rmode1", t: "模块一", c: "d1", m: 1, l: {
 				"菜单一": "alert('一')",
 				"菜单二": "alert('二')",
 				"菜单三": "alert('三')"
 			}
 		});
 
-		q("_w_M").h = "aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>";
+		m.m({ e: q("wMain"), id: "Rmode2", c: "d100", m: 1 });
+
+		q("_w_M").h = "HTML文本";
+		ed(document.getElementById("_w_Edr"));
+
 		/*
 		w({
 			d: { typ: "test" },
@@ -126,9 +131,6 @@ const wq = {
 			}
 		});
 		*/
-
-		//ed(document.getElementById("_w_Edr"));
-
 	},
 
 	mu: () => {

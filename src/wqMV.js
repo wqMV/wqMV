@@ -360,13 +360,15 @@
 				E.c = "_M_mu";
 			};
 			k.p(`<div class="_M_m m5 ${J.c ? J.c : ""}">`);
-			k.p(`<div class="bm p51"><b class="bl p05"></b><span>${J.t}</span>`);
-			if (J.l) {
-				k.p(`<div id="_M_m_${J.id}" class="_M_ml dl p01 fs">`);
-				for (var i in J.l) k.p(`<a href="javascript:${J.l[i]}">${i}</a>`);
+			if (J.t) {
+				k.p(`<div class="bm p51"><b class="bl p05"></b><span>${J.t}</span>`);
+				if (J.l) {
+					k.p(`<div id="_M_m_${J.id}" class="_M_ml dl p01 fs">`);
+					for (var i in J.l) k.p(`<a href="javascript:${J.l[i]}">${i}</a>`);
+					k.p(`</div>`);
+				}
 				k.p(`</div>`);
 			}
-			k.p(`</div>`);
 			k.p(`<div id="${J.id}" class="p51"></div></div>`);
 			J.m === 1 ? J.e.add("be", k.j("")) : J.e.h = k.j("");
 			if (J.l) {
@@ -517,16 +519,16 @@
 			k.p(`>`);
 			k.p(`<div id="_V_Ht" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
 			k.p(`<div class="p01 df vc ts"><span>${J.t} </span>`);
-			k.p(`<span id="_V_Hd" class="_V_e fxl" onclick="v.del()">×</span></div>`);
+			k.p(`<span id="_V_Hd" class="_V_e fxl" onclick="v.del()">\u00d7</span></div>`);
 			k.p(`<div class="_V_s bm p01 fxs">${J.s}</div>`);
 			k.p(`</div>`);
 			k.p(`<form id="_w_F">`);
-			k.p(`<div class="_V_t">${J.h}</div>`);
+			k.p(`<div class="p51">${J.h}</div>`);
 			if (J.m !== 2) {
-				k.p(`<div class="_V_u tr">`);
-				k.p(`<input class="lb" type="submit" value="确定">`);
-				if (J.m === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
-				k.p(`<input type="reset" value="重置">`);
+				k.p(`<div class="p51 tr">`);
+				k.p(`<input class="lb" type="submit" value="\u786e\u5b9a">`);
+				if (J.m === 1) k.p(`<input id="_w_D" type="button" value="\u5220\u9664">`);
+				k.p(`<input type="reset" value="\u91cd\u7f6e">`);
 				k.p(`</div>`);
 			}
 			k.p(`</form></div>`);
@@ -543,10 +545,10 @@
 			k.p(`<div id="_V_Fc" class="_V_p _V_f db p5 ly"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`>`);
-			k.p(`<b class="p0100 if fxl vt">&#xe6a4;</b><div class="_V_c dl">${J.h}</div>`);
-			k.p(`<div class="tr">`)
-			k.p(`<input id ="_w_OK" type="button" value="确定">`);
-			k.p(`<input type="button" onclick="v.del('c')" value="取消">`);
+			k.p(`<b class="vt p0100 if fxl">&#xe6a4;</b><div class="dl">${J.h}</div>`);
+			k.p(`<div class="p50 tr">`)
+			k.p(`<input id ="_w_OK" type="button" value="\u786e\u5b9a">`);
+			k.p(`<input type="button" onclick="v.del('c')" value="\u53d6\u6d88">`);
 			k.p(`</div></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 			q("_w_OK").onclick = () => {
@@ -567,7 +569,7 @@
 			k.p(`"><i class="`);
 			if (J.m == 1) k.p(`ir`);
 			else k.p(`ig`);
-			k.p(`"></i><div class="fs"><b class="if fl">&#xe6b6; </b>${J.t}</div>`);
+			k.p(`"></i><b class="vt p0100 if fxl">&#xe6b6;</b><div class="dl fs">${J.t}</div>`);
 			k.p(`</div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 			v.adi("i");
@@ -578,9 +580,9 @@
 			let k = q("_V_Bl");
 			if (k) v.del("l");
 			k = [];
-			k.p(`<div id="_V_Bc" class="_V_p _V_b df tj vc">`);
+			k.p(`<div id="_V_Bl" class="_V_p _V_b df tj vc">`);
 			k.p(`<div class="_V_f p1 lw"><b class="_V_r dl if fxl vm">&#xe6c6;</b>`);
-			k.p(`<span class="fs p01">正在加载…请稍后…</span></div>`);
+			k.p(`<span class="fs p01">\u6b63\u5728\u52a0\u8f7d...\u8bf7\u7a0d\u540e...</span></div>`);
 			k.p(`</div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 		},
@@ -588,15 +590,23 @@
 		// J Json: id, cn, ph path, t title, s subheading, h html, n number, uc up callback, dc del callback
 		f: J => {
 			const del = () => {
-				v.c("您确定删除这个文件吗？", () => { J.dc() });
+				v.c({
+					h: "\u60a8\u786e\u5b9a\u5220\u9664\u8fd9\u4e2a\u6587\u4ef6\u5417\uff1f",
+					c: () => { J.dc() }
+				});
 			}, up = () => {
 				if (q("Efs").h) {
-					v.c("您上传了新文件，原有文件将被覆盖！<br>您确定继续吗？", () => {
-						q("@INPUT", q("_w_F")).for(e => { e.g("disabled", "disabled") });
-						q("_V_Hd").style["pointer-events"] = "none";
-						q("Ein").h = "正在上传文件，请不要关闭当前窗口……";
-						J.uc();
-						return false;
+					v.c({
+						h: `\u5982\u679c\u60a8\u4e0a\u4f20\u4e86\u65b0\u6587\u4ef6\uff0c\u539f\u6709\u6587\u4ef6\u5c06\u88ab\u8986\u76d6\uff01
+						<br>
+						\u60a8\u786e\u5b9a\u7ee7\u7eed\u5417\uff1f`,
+						c: () => {
+							q("@INPUT", q("_w_F")).for(e => { e.g("disabled", "disabled") });
+							q("_V_Hd").style["pointer-events"] = "none";
+							v.l();
+							J.uc();
+							return false;
+						}
 					});
 				} else {
 					J.uc();
@@ -610,7 +620,7 @@
 					J.n = J.n ? parseInt(J.n * 1024000 - 1) : 20479999;
 					fr.onload = () => {
 						if (k.size > J.n) {
-							v.i(`上传文件大小不能超过 ${parseInt((J.n + 1) / 1024000)} MB！`, 1);
+							v.i(`\u6587\u4ef6\u5927\u5c0f\u4e0d\u80fd\u8d85\u8fc7 ${parseInt((J.n + 1) / 1024000)} MB！`, 1);
 							q("Efs").h = "";
 						} else {
 							q("Efl").h = "2";
@@ -628,9 +638,8 @@
 			k.p(`<input name="old" type="hidden" value="${J.ph}">`);
 			k.p(`<input id="Efl" name="fl" type="hidden" value="1">`);
 			if (J.h) k.p(J.h + "<br>");
-			k.p(`<label>标题：<input id="Ecn" name="cn" type="text" style="width:24rem" required value="${J.cn}"></label>`);
-			k.p(`<div style="padding:5px 0"><label>文件：<input id="Efs" name="fs" type="file" style="width:24rem"></label></div>`);
-			k.p(`<div id="Ein" class="fs tc s">　</div>`);
+			k.p(`<label>\u6807\u9898\uff1a<input id="Ecn" name="cn" type="text" style="width:24rem" required value="${J.cn}"></label>`);
+			k.p(`<div style="padding:5px 0"><label>\u6587\u4ef6\uff1a<input id="Efs" name="fs" type="file" style="width:24rem"></label></div>`);
 			v.t({
 				t: J.t,
 				s: J.s,
