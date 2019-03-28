@@ -395,7 +395,7 @@
 				q("@SPAN", E.parentNode).for(e => { e.c = "_M_l" });
 				E.children[0].c = "_M_l _M_f";
 			};
-			k.p(`<div id="_M_l_${id}" class="_M_lu bm g">`);
+			k.p(`<div class="_M_lu bm g">`);
 			for (const i in J) k.p(`<label><span class="_M_l" onclick="${J[i]}">${i}</span></label>`);
 			k.p(`</div><div id="${id}" class="p51"></div>`);
 			E.innerHTML = k.j("");
@@ -512,7 +512,7 @@
 			if (k) v.del();
 			k = [];
 			k.p(`<div id="_V_Bt" class="_V_p _V_b db"></div>`);
-			k.p(`<div id="_V_Ft" class="_V_p _V_f db"`);
+			k.p(`<div id="_V_Ft" class="_V_p _V_f db lw"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`>`);
 			k.p(`<div id="_V_Ht" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
@@ -540,10 +540,10 @@
 			if (k) v.del("c");
 			k = [];
 			k.p(`<div id="_V_Bc" class="_V_p _V_b db"></div>`);
-			k.p(`<div id="_V_Fc" class="_V_p _V_f db"`);
+			k.p(`<div id="_V_Fc" class="_V_p _V_f db p5 ly"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`>`);
-			k.p(`<div class="_V_c">${J.h}</div>`);
+			k.p(`<b class="p0100 if fxl vt">&#xe6a4;</b><div class="_V_c dl">${J.h}</div>`);
 			k.p(`<div class="tr">`)
 			k.p(`<input id ="_w_OK" type="button" value="确定">`);
 			k.p(`<input type="button" onclick="v.del('c')" value="取消">`);
@@ -561,17 +561,28 @@
 			let k = q("_V_Fi");
 			if (k) v.del("i");
 			k = [];
-			k.p(`<div id="_V_Fi" class="_V_p _V_f db `);
+			k.p(`<div id="_V_Fi" class="_V_p _V_f db p1 `);
 			if (J.m == 1) k.p(`lr`);
 			else k.p(`lg`);
-			k.p(`"><b class="`);
+			k.p(`"><i class="`);
 			if (J.m == 1) k.p(`ir`);
 			else k.p(`ig`);
-			k.p(`"></b><div class="fs">${J.t}</div>`);
+			k.p(`"></i><div class="fs"><b class="if fl">&#xe6b6; </b>${J.t}</div>`);
 			k.p(`</div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 			v.adi("i");
 			setTimeout(() => { v.del("i") }, 1200);
+		},
+
+		l: () => {
+			let k = q("_V_Bl");
+			if (k) v.del("l");
+			k = [];
+			k.p(`<div id="_V_Bc" class="_V_p _V_b df tj vc">`);
+			k.p(`<div class="_V_f p1 lw"><b class="_V_r dl if fxl vm">&#xe6c6;</b>`);
+			k.p(`<span class="fs p01">正在加载…请稍后…</span></div>`);
+			k.p(`</div>`);
+			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 		},
 
 		// J Json: id, cn, ph path, t title, s subheading, h html, n number, uc up callback, dc del callback
@@ -638,7 +649,8 @@
 			S = !S ? "t" : S;
 			k = q("_V_B" + S);
 			if (k) k.del();
-			q("_V_F" + S).del();
+			k = q("_V_F" + S);
+			if (k) k.del();
 		},
 
 		adi: S => {

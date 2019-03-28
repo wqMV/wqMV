@@ -9,16 +9,18 @@ const wq = {
 		});
 	},
 
-	i: () => { v.i({ t: "警告", m: 1 }) },
+	i: () => { v.i({ t: "警告<br>警告警告", m: 1 }) },
 
 	c: () => {
 		v.c({
-			h: "HTML文本",
+			h: "HTML文本<br>您确定吗？",
 			c: () => { alert('提示') }
 		});
 	},
 
-	l: () => { },
+	l: () => {
+		v.l();
+	},
 
 	f: () => {
 		v.f({
@@ -61,7 +63,7 @@ const wq = {
 		*/
 
 		m.u(q("wLink"), "友情链接", {
-			c: "&#xeb99;",
+			c: "&#xeb98;",
 			"链接 1": "1.html",
 			"链接 2": "1.html",
 			"链接 3": "1.html",
@@ -87,7 +89,7 @@ const wq = {
 				"子菜单 3": "alert('3')",
 				"子菜单 4": "alert('4')"
 			}, "主菜单四": {
-				c: "&#xeb9c;",
+				c: "&#xe6b2;",
 				"子菜单 1": "alert('1')",
 				"子菜单 2": "alert('2')",
 				"子菜单 3": "alert('3')",
@@ -115,6 +117,7 @@ const wq = {
 			}
 		});
 
+		q("_w_M").h = "aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>aa<br>";
 		/*
 		w({
 			d: { typ: "test" },

@@ -30,7 +30,7 @@ body, header, nav, main, .nav, .main, .logo, header>div { display: flex }
 .title:hover, .note:hover, .user:hover { border-top: 2px solid rgba(0, 0, 0, .8) }
 .title:hover { flex: auto }
 
-main { flex-wrap: wrap; background: whitesmoke }
+main { flex-wrap: wrap; height: min-content; background: whitesmoke }
 aside, main { flex: 1; overflow-y: scroll }
 aside::-webkit-scrollbar { width: 5px }
 aside::-webkit-scrollbar-thumb { background: rgba(99, 99, 99, .4) }
@@ -42,6 +42,8 @@ aside::-webkit-scrollbar-thumb { background: rgba(99, 99, 99, .4) }
 
 .p01 { padding: 0 1rem }
 .p05 { padding: 0 .5rem }
+.p0100 { padding: 0 1rem 0 0 }
+.p1 { padding: 1rem }
 .p5 { padding: .5rem }
 .p51 { padding: .5rem 1rem }
 .m10 { margin: 1rem 0 }
@@ -55,13 +57,16 @@ aside::-webkit-scrollbar-thumb { background: rgba(99, 99, 99, .4) }
 
 .b { background: rgba(0, 0, 0, .8) }
 .l { background: #08e }
+.lw { background: ivory }
+.ly { background: cornsilk }
 .lg { background: lightgreen }
 .lr { background: lightcoral }
 .lb { background: #def }
 
-.dl { display: inline-block }
+.db { display: block }
 .df { display: flex }
 .dh { display: none }
+.dl { display: inline-block }
 .d0 { flex: none }
 .d1 { flex: auto }
 .d100 { width: 100% }
@@ -72,6 +77,7 @@ aside::-webkit-scrollbar-thumb { background: rgba(99, 99, 99, .4) }
 .tc { text-align: center }
 .tj { justify-content: center }
 .ts { justify-content: space-between }
+.vt { vertical-align: top }
 .vc { align-items: center }
 .vm { vertical-align: middle }
 
@@ -110,12 +116,12 @@ details li:hover, ._M_d { background: #08e }
 #_V_Bt { z-index: 1001 }
 #_V_Bc { z-index: 2001 }
 #_V_Bi { z-index: 3001 }
-#_V_Ft { z-index: 1002; background: ivory; animation: pop .3s }
-#_V_Fc { z-index: 2002; background: cornsilk; padding: 1rem; animation: pop .3s }
-#_V_Fi { z-index: 3002; padding: 1rem; animation: shake .2s }
+#_V_Ft { z-index: 1002; animation: pop .3s }
+#_V_Fc { z-index: 2002; animation: pop .3s }
+#_V_Fi { z-index: 3002; animation: sha .3s }
 #_V_Fi .ir { border-right-color: lightcoral }
 #_V_Fi .ig { border-right-color: lightgreen }
-#_V_Fi b {
+#_V_Fi i {
 	display:block;
 	position:absolute;
 	top: 1rem;
@@ -130,12 +136,17 @@ details li:hover, ._M_d { background: #08e }
 ._V_t { padding: 5px 1rem }
 ._V_c { padding-bottom: 1rem }
 ._V_u { padding: 5px .5rem 5px 1rem }
+._V_r { animation: rot .8s infinite }
 @keyframes pop {
 	0% { opacity: 0; transform: scale(.5); top: 0 }
 	100% { opacity: 1; transform: scale(1) }
 }
-@keyframes shake {
+@keyframes sha {
 	0%, 100% { transform: translateX(0) }
 	20%, 60% { transform: translateX(-10px) }
 	40%, 80% { transform: translateX(10px) }
+}
+@keyframes rot{
+	0% { transform: rotate(0deg) }
+	100% { transform: rotate(360deg) }
 }
