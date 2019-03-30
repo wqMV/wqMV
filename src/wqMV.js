@@ -2,7 +2,7 @@
  * wqMV.js v 2.0
  * (c) 2019 WangQiang
  * date: 2019-1-1
- * date: 2019-3-27
+ * date: 2019-3-1
  */
 
 "use strict";
@@ -11,6 +11,30 @@
 (() => {
 	//J Json: c Callback, d formData, u Url, t waitTime, m Mode, o timeOut
 	const w = J => {
+		let wI = 0, wT = 0;
+		const wPT = () => {
+			const k = new XMLHttpRequest();
+			k.onreadystatechange = () => { if (k.readyState === 4) wT = k.responseText };
+			k.open(J.m, J.u, true);
+			if (J.m === "GET") k.send();
+			else k.send(J.d);
+		}, wOK = () => {
+			// wT is true
+			if (wT) {
+				clearInterval(wI);
+				if (J.c) J.c(wT);
+				wT = 1;
+			}
+		}, wON = () => {
+			wPT();
+			wI = setInterval(wOK, 127);
+		}, wED = () => {
+			if (wT !== 1) {
+				clearInterval(wI);
+				if (J.c) J.c("0");
+			}
+		}, wRD = K => Math.floor(Math.random() * K * 89) + (K + 1) * 127;
+
 		J.m = J.m === "GET" ? "GET" : "POST";
 		J.u = window.location.origin + "/" + (J.u ? J.u : "ajax.aspx");
 		if (J.d) {
@@ -18,41 +42,8 @@
 			for (const i in J.d) k.append(i, J.d[i]);
 			J.d = k;
 		}
-		w.p.J = J;
-		w.p.wT = 0;
-		setTimeout(w.p.wON, w.p.wRD(J.t ? J.t : 0));
-		setTimeout(w.p.wED, (J.o ? J.o * 1000 : 120000));
-	};
-
-	w.p = {
-		J: {},
-		wI: 0,
-		wT: 0,
-		wPT: () => {
-			const k = new XMLHttpRequest();
-			k.onreadystatechange = () => { if (k.readyState === 4) w.p.wT = k.responseText };
-			k.open(w.p.J.m, w.p.J.u, true);
-			if (w.p.J.m === "GET") k.send();
-			else k.send(w.p.J.d);
-		},
-		wOK: () => {
-			// wT is true
-			if (w.p.wT) {
-				clearInterval(w.p.wI);
-				if (w.p.J.c) w.p.J.c(w.p.wT);
-				w.p.wT = 1;
-			}
-		},
-		wON: () => {
-			w.p.wPT();
-			w.p.wI = setInterval(w.p.wOK, 127);
-		},
-		wED: () => {
-			if (w.p.wT === 1) return;
-			clearInterval(w.p.wI);
-			if (w.p.J.c) w.p.J.c("0");
-		},
-		wRD: K => Math.floor(Math.random() * K * 89) + (K + 1) * 127
+		setTimeout(wON, wRD(J.t ? J.t : 0));
+		setTimeout(wED, (J.o ? J.o * 1000 : 120000));
 	};
 
 	window.w = w;
@@ -310,6 +301,7 @@
 		return k.getItem(N) || "";
 	};
 
+	// N Name, J Json, C Callback
 	q.w = (N, J, C) => {
 		const k = new Worker("src/" + N + ".js");
 		k.postMessage(J);
@@ -350,16 +342,18 @@
 	window.q = q;
 })();
 
-// M
+// m
 (() => {
 	const m = {
-		// Json: e element, id, t title, c classname, l label Json, m mode: 1 add
+		// Json: e element, id, t title, c classname, w width, l label Json, m mode: 1 add
 		m: J => {
 			let k = [], o = E => {
 				q("@A", E.parentNode).for(e => { e.c = "" });
 				E.c = "_M_mu";
 			};
-			k.p(`<div class="_M_m m5 ${J.c ? J.c : ""}">`);
+			k.p(`<div class="_M_m m5 ${J.c ? J.c : ""}"`);
+			if (J.w) k.p(` style="max-width: ${J.w}"`);
+			k.p(`>`);
 			if (J.t) {
 				k.p(`<div class="bm p51"><b class="bl p05"></b><span>${J.t}</span>`);
 				if (J.l) {
@@ -377,38 +371,38 @@
 			}
 		},
 
-		// E Element, J Json
-		r: (E, J) => {
+		// Json: e element, l label Json
+		r: J => {
 			let k = [], o = E => {
 				q("@A", E.parentNode).for(e => { e.c = "" });
-				E.c = "_M_r";
+				E.c = "_M_rl";
 			};
-			k.p(`<div id="_M_r">`);
-			for (var i in J) k.p(`<a href="javascript:${J[i]}">${i}</a>`);
+			k.p(`<div class="_M_r">`);
+			for (var i in J.l) k.p(`<a href="javascript:${J.l[i]}">${i}</a>`);
 			k.p(`</div>`);
-			E.innerHTML = k.j("");
-			k = q("@A", q("_M_r")).for(e => { e.onclick = function () { o(this) } });
+			J.e.innerHTML = k.j("");
+			k = q("@A", J.e).for(e => { e.onclick = function () { o(this) } });
 			o(k[0]);
 		},
 
-		// E Element, id, J Json
-		l: (E, id, J) => {
+		// Json: e element, id, l label Json
+		l: J => {
 			let k = [], o = E => {
 				q("@SPAN", E.parentNode).for(e => { e.c = "_M_l" });
-				E.children[0].c = "_M_l _M_f";
+				E.children[0].c = "_M_l _M_ll";
 			};
 			k.p(`<div class="_M_lu bm g">`);
-			for (const i in J) k.p(`<label><span class="_M_l" onclick="${J[i]}">${i}</span></label>`);
-			k.p(`</div><div id="${id}" class="p51"></div>`);
-			E.innerHTML = k.j("");
-			k = q("@LABEL", q(`_M_l_${id}`)).for(e => { e.onclick = function () { o(this) } });
+			for (const i in J.l) k.p(`<label><span class="_M_l" onclick="${J.l[i]}">${i}</span></label>`);
+			k.p(`</div><div id="${J.id}" class="p51"></div>`);
+			J.e.innerHTML = k.j("");
+			k = q("@LABEL", J.e).for(e => { e.onclick = function () { o(this) } });
 			o(k[0]);
 		},
 
-		// E Element, J Json
-		d: (E, J) => {
+		// Json: e element, l label Json: i icon
+		d: J => {
 			let k = [], o = E => {
-				let l = q("_M_d");
+				let l = E.parentNode.parentNode;
 				q("@LI", l).for(e => { e.c = "tc" });
 				q("@DETAILS", l).for(e => {
 					if (e === E.parentNode) l = null;
@@ -417,32 +411,33 @@
 						e.c = "";
 					}
 				});
-				E.parentNode.className = "_M_dl";
-				E.children[0].c = "_M_d tc";
+				E.parentNode.className = "_M_du";
+				E.children[0].c = "_M_dl tc";
 			};
-			k.p(`<div id="_M_d">`);
-			for (const i in J) {
+			k.p(`<div class="_M_d">`);
+			for (const i in J.l) {
 				k.p(`<details>`);
-				k.p(`<summary><b class="if fl vm">${J[i].c}</b><time class="vm">${i}</time></summary>`);
-				for (const j in J[i]) if (j !== "c") k.p(`<span><li class="tc" onclick="${J[i][j]}">${j}</li></span>`);
+				k.p(`<summary><b class="if fl vm">${J.l[i].i}</b><time class="vm">${i}</time></summary>`);
+				for (const j in J.l[i]) if (j !== "i") k.p(`<span><li class="tc" onclick="${J.l[i][j]}">${j}</li></span>`);
 				k.p(`</details>`);
 			}
 			k.p(`</div>`)
-			E.innerHTML = k.j("");
-			k = q("@SPAN", E).for(e => { e.onclick = function () { o(this) } });
+			J.e.innerHTML = k.j("");
+			k = q("@SPAN", J.e).for(e => { e.onclick = function () { o(this) } });
 			o(k[0]);
 			k[0].parentNode.setAttribute("open", "open");
 			k[0].children[0].click();
 		},
 
-		// E Element, T Title, J Json
-		u: (E, T, J) => {
+		// Json: e element, t title, l label Json: i icon
+		u: J => {
 			let k = [];
+			k.p(`<div class="_M_d">`);
 			k.p(`<details class="tc dl">`);
-			k.p(`<summary><b class="if fl vm">${J.c}</b><time class="vm">${T}</time></summary>`);
-			for (const i in J) if (i !== "c") k.p(`<a href="${J[i]}" target="_blank">${i}</a><br>`);
-			k.p(`</details>`);
-			E.innerHTML = k.j("");
+			k.p(`<summary><b class="if fl vm">${J.l.i}</b><time class="vm">${J.t}</time></summary>`);
+			for (const i in J.l) if (i !== "i") k.p(`<a href="${J.l[i]}" target="_blank">${i}</a><br>`);
+			k.p(`</details></div>`);
+			J.e.innerHTML = k.j("");
 		},
 
 		// T daTe
@@ -505,10 +500,10 @@
 	window.m = m;
 })();
 
-// V
+// v
 (() => {
 	const v = {
-		// J Json: t Title, s Subheading, h Html, m Mode 0 default 1 del 2 onlyClose, b Background
+		// J Json: t Title, s Subheading, h Html, m Mode 1 del 2 nobutton, b Background
 		t: J => {
 			let k = q("_V_Bt");
 			if (k) v.del();
@@ -516,20 +511,17 @@
 			k.p(`<div id="_V_Bt" class="_V_p _V_b db"></div>`);
 			k.p(`<div id="_V_Ft" class="_V_p _V_f db lw"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
-			k.p(`>`);
-			k.p(`<div id="_V_Ht" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
+			k.p(`><div id="_V_Ht" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
 			k.p(`<div class="p01 df vc ts"><span>${J.t} </span>`);
-			k.p(`<span id="_V_Hd" class="_V_e fxl" onclick="v.del()">\u00d7</span></div>`);
-			k.p(`<div class="_V_s bm p01 fxs">${J.s}</div>`);
-			k.p(`</div>`);
+			k.p(`<span id="_V_Hd" class="_V_e fxl" onclick="v.del()">×</span></div>`);
+			k.p(`<div class="_V_s bm p01 fxs">${J.s}</div></div>`);
 			k.p(`<form id="_w_F">`);
 			k.p(`<div class="p51">${J.h}</div>`);
 			if (J.m !== 2) {
 				k.p(`<div class="p51 tr">`);
-				k.p(`<input class="lb" type="submit" value="\u786e\u5b9a">`);
-				if (J.m === 1) k.p(`<input id="_w_D" type="button" value="\u5220\u9664">`);
-				k.p(`<input type="reset" value="\u91cd\u7f6e">`);
-				k.p(`</div>`);
+				k.p(`<input class="lb" type="submit" value="确定">`);
+				if (J.m === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
+				k.p(`<input type="reset" value="重置"></div>`);
 			}
 			k.p(`</form></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
@@ -542,13 +534,13 @@
 			if (k) v.del("c");
 			k = [];
 			k.p(`<div id="_V_Bc" class="_V_p _V_b db"></div>`);
-			k.p(`<div id="_V_Fc" class="_V_p _V_f db p5 ly"`);
+			k.p(`<div id="_V_Fc" class="_V_p _V_f db p5 lw"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`>`);
-			k.p(`<b class="vt p0100 if fxl">&#xe6a4;</b><div class="dl">${J.h}</div>`);
+			k.p(`<b class="vt p0100 if fxl">&#xe782;</b><div class="dl">${J.h}</div>`);
 			k.p(`<div class="p50 tr">`)
-			k.p(`<input id ="_w_OK" type="button" value="\u786e\u5b9a">`);
-			k.p(`<input type="button" onclick="v.del('c')" value="\u53d6\u6d88">`);
+			k.p(`<input id ="_w_OK" type="button" value="确定">`);
+			k.p(`<input type="button" onclick="v.del('c')" value="取消">`);
 			k.p(`</div></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 			q("_w_OK").onclick = () => {
@@ -558,19 +550,15 @@
 			v.adi("c");
 		},
 
-		// J Json: t Text, m Mode 0 green 1 Red
+		// J Json: t Text, m Mode 1 Red
 		i: J => {
 			let k = q("_V_Fi");
 			if (k) v.del("i");
 			k = [];
 			k.p(`<div id="_V_Fi" class="_V_p _V_f db p1 `);
-			if (J.m == 1) k.p(`lr`);
-			else k.p(`lg`);
-			k.p(`"><i class="`);
-			if (J.m == 1) k.p(`ir`);
-			else k.p(`ig`);
-			k.p(`"></i><b class="vt p0100 if fxl">&#xe6b6;</b><div class="dl fs">${J.t}</div>`);
-			k.p(`</div>`);
+			if (J.m == 1) k.p(`lr"><i class="ir"></i><b class="vm p0100 if fxl">&#xe785;`);
+			else k.p(`ly"><i class="iy"></i><b class="vm p0100 if fxl">&#xe77e;`);
+			k.p(`</b><div class="dl fs">${J.t}</div></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 			v.adi("i");
 			setTimeout(() => { v.del("i") }, 1200);
@@ -582,8 +570,7 @@
 			k = [];
 			k.p(`<div id="_V_Bl" class="_V_p _V_b df tj vc">`);
 			k.p(`<div class="_V_f p1 lw"><b class="_V_r dl if fxl vm">&#xe6c6;</b>`);
-			k.p(`<span class="fs p01">\u6b63\u5728\u52a0\u8f7d...\u8bf7\u7a0d\u540e...</span></div>`);
-			k.p(`</div>`);
+			k.p(`<span class="fs p01">正在加载…请稍后…</span></div></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 		},
 
@@ -591,15 +578,13 @@
 		f: J => {
 			const del = () => {
 				v.c({
-					h: "\u60a8\u786e\u5b9a\u5220\u9664\u8fd9\u4e2a\u6587\u4ef6\u5417\uff1f",
+					h: "您确定删除这个文件吗？",
 					c: () => { J.dc() }
 				});
 			}, up = () => {
 				if (q("Efs").h) {
 					v.c({
-						h: `\u5982\u679c\u60a8\u4e0a\u4f20\u4e86\u65b0\u6587\u4ef6\uff0c\u539f\u6709\u6587\u4ef6\u5c06\u88ab\u8986\u76d6\uff01
-						<br>
-						\u60a8\u786e\u5b9a\u7ee7\u7eed\u5417\uff1f`,
+						h: "如果您上传了新文件，原文件将被覆盖！<br>您确定继续吗？",
 						c: () => {
 							q("@INPUT", q("_w_F")).for(e => { e.g("disabled", "disabled") });
 							q("_V_Hd").style["pointer-events"] = "none";
@@ -620,7 +605,10 @@
 					J.n = J.n ? parseInt(J.n * 1024000 - 1) : 20479999;
 					fr.onload = () => {
 						if (k.size > J.n) {
-							v.i(`\u6587\u4ef6\u5927\u5c0f\u4e0d\u80fd\u8d85\u8fc7 ${parseInt((J.n + 1) / 1024000)} MB！`, 1);
+							v.i({
+								t: `文件大小不能超过 ${parseInt((J.n + 1) / 1024000)} MB！`,
+								m: 1
+							});
 							q("Efs").h = "";
 						} else {
 							q("Efl").h = "2";
@@ -638,8 +626,8 @@
 			k.p(`<input name="old" type="hidden" value="${J.ph}">`);
 			k.p(`<input id="Efl" name="fl" type="hidden" value="1">`);
 			if (J.h) k.p(J.h + "<br>");
-			k.p(`<label>\u6807\u9898\uff1a<input id="Ecn" name="cn" type="text" style="width:24rem" required value="${J.cn}"></label>`);
-			k.p(`<div style="padding:5px 0"><label>\u6587\u4ef6\uff1a<input id="Efs" name="fs" type="file" style="width:24rem"></label></div>`);
+			k.p(`<label>标题：<input id="Ecn" name="cn" type="text" style="width:24rem" required value="${J.cn}"></label>`);
+			k.p(`<div style="padding:5px 0"><label>文件：<input id="Efs" name="fs" type="file" style="width:24rem"></label></div>`);
 			v.t({
 				t: J.t,
 				s: J.s,

@@ -8,37 +8,42 @@
 	<meta name="keywords" content="wqMV, wangqiang">
 	<meta name="author" content="WangQiang">
 	<link rel="stylesheet" type="text/css" href="css/wqMV.css">
+	<link rel="stylesheet" type="text/css" href="css/css.css">
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 	<title>wqMV</title>
 </head>
 
 <body>
-	<header>
-		<div id="wLogo" class="fxxl">wLogo</div>
-		<div id="wTitle" class="fxxl">wTitle</div>
-		<div class="sel"></div>
-		<div class="note fxxl">
-			<div id="wNote">wNote</div>
-		</div>
-		<div class="ser"></div>
-		<div class="copy fxs">Ver<br>Copyright © 2018-2019</div>
-	</header>
-	<nav>
-		<div id="wUser">wUser</div>
-		<div id="wTime" class="fxs g"></div>
-		<div class="tag fs">导航 &gt;</div>
-		<div id="wNav"></div>
-	</nav>
-	<footer>
+	<div class="nav d0 dc tc b e">
+		<div class="logo tj vc">Logo</div>
+		<div class="bt bm p51"><b id="wIcon" class="if fl">&#xe7f4;</b></div>
 		<aside>
-			<div id="wMenu" class="p5"></div>
-			<div id="wLink" class="p5"></div>
+			<div id="wMenu"></div>
+			<div id="wLink" class="bt m10"></div>
 		</aside>
-		<section>
-			<article id="wInfo" class="fxl">wInfo</article>
-			<main>
-				<div id="wHome">
-					wHome
+	</div>
+	<div class="main dc d1">
+		<header class="l w">
+			<div class="title tj vc fxl">叶柏寿站运营管理平台</div>
+			<div class="note d1 tj vc bl br p01">
+				<div id="wNote">Note</div>
+			</div>
+			<div class="user tj vc">User</div>
+		</header>
+		<nav class="vc bt bm p01">
+			<div id="wTime" class="fs"></div>
+			<div id="wNav" class="d1 p01"></div>
+		</nav>
+		<section class="p5">
+			<main id="wMain">
+				<div class="_M_m d1 m5" style="max-width: 48rem">
+					wMain
+					<div class="in">
+						<b class="if g">&#xe7ae;</b>
+						<input placeholder="Please input">
+					</div>
+					<input type="text">
+					<br><br>
 					<div id="oD">oD${ta}oD</div>
 					<a href="javascript:void(0)">链接链接</a>
 					<input id="oI" type="text" :v="ta">
@@ -55,20 +60,21 @@
 					<input id="oQ" type="button" on:click="to" value="on:click">
 					<li :for="tf" on:click="fo"></li>
 					<form id="oF">
-						<input type="button" value="弹窗" onclick="v.t('标题','副标题','aaa')">
-						<input type="button" value="提示" onclick="v.c('标题',()=>{alert('提示')})">
-						<input type="button" value="警告" onclick="v.i('警告',1)">
+						<input type="button" value="弹窗" onclick="wq.t()">
+						<input type="button" value="提示" onclick="wq.c()">
+						<input type="button" value="警告" onclick="wq.i()">
+						<input type="button" value="tips" onclick="wq.it()">
+						<input type="button" value="加载" onclick="wq.l()">
 						<input type="button" value="上传文件" onclick="wq.f()">
-						<input type="button" value="弹窗" disabled>
+						<input type="button" value="失效" disabled>
 					</form>
 					<div id="_w_Mb"></div>
 					<div id="_w_Edr"></div>
 				</div>
-				<div id="wMain" class="dh">wMain</div>
 			</main>
 		</section>
+	</div>
 
-	</footer>
 	<div id="wTemp" class="dh"></div>
 	<script type="text/JavaScript" src="src/wqMV.js"></script>
 	<script type="text/JavaScript" src="src/wqEDR.js"></script>
