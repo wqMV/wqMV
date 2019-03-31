@@ -425,7 +425,7 @@
 			J.e.innerHTML = k.j("");
 			k = q("@SPAN", J.e).for(e => { e.onclick = function () { o(this) } });
 			o(k[0]);
-			k[0].parentNode.setAttribute("open", "open");
+			k[0].parentNode.open = true;
 			k[0].children[0].click();
 		},
 
@@ -509,7 +509,7 @@
 			if (k) v.del();
 			k = [];
 			k.p(`<div id="_V_Bt" class="_V_p _V_b db"></div>`);
-			k.p(`<div id="_V_Ft" class="_V_p _V_f db lw"`);
+			k.p(`<div id="_V_Ft" class="_V_p _V_f db lw bd"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`><div id="_V_Ht" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
 			k.p(`<div class="p01 df vc ts"><span>${J.t} </span>`);
@@ -528,13 +528,34 @@
 			v.adi("t");
 		},
 
+		// J Json: e element, t Title, h Html, b Background
+		p: J => {
+			let o = () => {
+				J.e.open = false;
+				v.del("p");
+			}, k = q("_V_Bp"), x = J.e.offsetWidth, y = J.e.offsetHeight;
+			if (k) v.del("p");
+			k = [];
+			k.p(`<div id="_V_Bp" class="_V_p _V_b db" style="background: transparent"></div>`);
+			k.p(`<div id="_V_Fp" class="_V_p _V_f db bd p1 lw">`);
+			k.p(`<div><b class="vm bl p05 if fl">&#xeba2;</b>${J.t}</div>`);
+			k.p(`<div class="m5000">${J.h}</div></div>`)
+			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
+			k = q("_V_Fp");
+			x = J.e.offsetLeft + x - k.offsetWidth;
+			y = J.e.offsetTop + y;
+			k.style.left = x + "px";
+			k.style.top = `calc(${y + "px"} + .5rem)`;
+			q("_V_Bp").onclick = o;
+		},
+
 		// J Json: h Html, c Callback, b Background
 		c: J => {
 			let k = q("_V_Bc");
 			if (k) v.del("c");
 			k = [];
 			k.p(`<div id="_V_Bc" class="_V_p _V_b db"></div>`);
-			k.p(`<div id="_V_Fc" class="_V_p _V_f db p5 lw"`);
+			k.p(`<div id="_V_Fc" class="_V_p _V_f db p5 lw bd"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`>`);
 			k.p(`<b class="vt p0100 if fxl">&#xe782;</b><div class="dl">${J.h}</div>`);
@@ -555,7 +576,7 @@
 			let k = q("_V_Fi");
 			if (k) v.del("i");
 			k = [];
-			k.p(`<div id="_V_Fi" class="_V_p _V_f db p1 `);
+			k.p(`<div id="_V_Fi" class="_V_p _V_f db bd p1 `);
 			if (J.m == 1) k.p(`lr"><i class="ir"></i><b class="vm p0100 if fxl">&#xe785;`);
 			else k.p(`ly"><i class="iy"></i><b class="vm p0100 if fxl">&#xe77e;`);
 			k.p(`</b><div class="dl fs">${J.t}</div></div>`);
@@ -569,7 +590,7 @@
 			if (k) v.del("l");
 			k = [];
 			k.p(`<div id="_V_Bl" class="_V_p _V_b df tj vc">`);
-			k.p(`<div class="_V_f p1 lw"><b class="_V_r dl if fxl vm">&#xe6c6;</b>`);
+			k.p(`<div class="_V_f p1 lw bd"><b class="_V_r dl if fxl vm">&#xe6c6;</b>`);
 			k.p(`<span class="fs p01">正在加载…请稍后…</span></div></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 		},

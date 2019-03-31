@@ -16,7 +16,7 @@
 <body>
 	<div class="nav d0 dc tc b e">
 		<div class="logo tj vc">Logo</div>
-		<div class="bt bm p51"><b id="wIcon" class="if fl">&#xe7f4;</b></div>
+		<div class="bt bm p51"><b id="wIcon" class="pp if fl">&#xe7f4;</b></div>
 		<aside>
 			<div id="wMenu"></div>
 			<div id="wLink" class="bt m10"></div>
@@ -28,7 +28,17 @@
 			<div class="note d1 tj vc bl br p01">
 				<div id="wNote">Note</div>
 			</div>
-			<div class="user tj vc">User</div>
+			<div class="user tj vc">
+				<div class="pw" onclick="wq.rm(this)">
+					<b class="vm if fxl">&#xe712;</b>
+					<b class="fs bd lr">99</b>
+				</div>
+				<div id="wUser" class="p05">
+					<details onclick="wq.lg(this)">
+						<summary><b class="vm if fl p05">&#xe7ae;</b>用户</summary>
+					</details>
+				</div>
+			</div>
 		</header>
 		<nav class="vc bt bm p01">
 			<div id="wTime" class="fs"></div>
@@ -36,7 +46,7 @@
 		</nav>
 		<section class="p5">
 			<main id="wMain">
-				<div class="_M_m d1 m5" style="max-width: 48rem">
+				<div class="_M_m d1 m5" style="max-width: 52rem">
 					wMain
 					<div class="in">
 						<b class="if g">&#xe7ae;</b>

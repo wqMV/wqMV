@@ -38,6 +38,25 @@ const wq = {
 
 	},
 
+
+	lg: e => {
+		let h = [];
+		h.p(`<div class="in">`);
+		h.p(`<b class="if g">&#xe7ae;</b>`);
+		h.p(`<input placeholder="用户">`);
+		h.p(`</div><br>`);
+		h.p(`<div class="in m50">`);
+		h.p(`<b class="if g">&#xe7c9;</b>`);
+		h.p(`<input type="password" placeholder="密码">`);
+		h.p(`</div><br>`);
+		h.p(`<div class="tc"><input class="fl l" type="button" value="登录">`)
+		h.p(`<input type="button" value="注册新用户"></div>`)
+		v.p({ e: e, t: "用户登录：", h: h.j("") });
+	},
+	rm: e => {
+		v.p({ e: e, t: "消息通知：", h: "aaaaa" });
+	},
+
 	box: () => {
 		/*
 		q("wHome", {
