@@ -19,7 +19,7 @@ input, select, textarea { text-align: left; border-radius: 5px; color: rgba(0, 0
 input, select, textarea { background: white; border: 1px solid rgba(99, 99, 99, .4) }
 input:hover, select:hover, textarea:hover { color: #08e; background: azure; border-color: #08e }
 input, textarea { padding: 5px 1rem }
-input, select { margin: 0 1rem 0 .5rem }
+input, select { margin: 0 .5rem }
 textarea { margin: 10px; width: 24rem; height: 4rem }
 select { padding: 4px 1rem }
 input[disabled] { pointer-events: none; background: whitesmoke }
@@ -55,17 +55,17 @@ main { flex-wrap: wrap }
 .br { border-right: 1px dotted rgba(99, 99, 99, .4) }
 .bd { border: 1px solid rgba(99, 99, 99, .4); border-radius: 5px }
 
-.p01 { padding: 0 1rem }
-.p05 { padding: 0 .5rem }
-.p0100 { padding: 0 1rem 0 0 }
 .p1 { padding: 1rem }
+.p01 { padding: 0 1rem }
+.p0100 { padding: 0 1rem 0 0 }
 .p5 { padding: .5rem }
-.p50 { padding: .5rem 0 0 0 }
+.p05 { padding: 0 .5rem }
+.p5000 { padding: .5rem 0 0 0 }
+.p50 { padding: .5rem 0 }
 .p51 { padding: .5rem 1rem }
 .m10 { margin: 1rem 0 }
 .m5 { margin: .5rem }
 .m50 { margin: .5rem 0 }
-.m5000 { margin: .5rem 0 0 0 }
 
 .e { color: rgba(255, 255, 255, .5) }
 .w { color: rgba(255, 255, 255, .8) }

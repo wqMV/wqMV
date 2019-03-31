@@ -537,9 +537,9 @@
 			if (k) v.del("p");
 			k = [];
 			k.p(`<div id="_V_Bp" class="_V_p _V_b db" style="background: transparent"></div>`);
-			k.p(`<div id="_V_Fp" class="_V_p _V_f db bd p1 lw">`);
-			k.p(`<div><b class="vm bl p05 if fl">&#xeba2;</b>${J.t}</div>`);
-			k.p(`<div class="m5000">${J.h}</div></div>`)
+			k.p(`<div id="_V_Fp" class="_V_p _V_f db bd lw">`);
+			k.p(`<div class="bm p51"><b class="vm bl p05 if fl">&#xeba2;</b>${J.t}</div>`);
+			k.p(`<div class="p51">${J.h}</div></div>`)
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 			k = q("_V_Fp");
 			x = J.e.offsetLeft + x - k.offsetWidth;
@@ -558,8 +558,8 @@
 			k.p(`<div id="_V_Fc" class="_V_p _V_f db p5 lw bd"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`>`);
-			k.p(`<b class="vt p0100 if fxl">&#xe782;</b><div class="dl">${J.h}</div>`);
-			k.p(`<div class="p50 tr">`)
+			k.p(`<b class="vt p05 if fxl">&#xe782;</b><div class="dl">${J.h}</div>`);
+			k.p(`<div class="p5000 tr">`)
 			k.p(`<input id ="_w_OK" type="button" value="确定">`);
 			k.p(`<input type="button" onclick="v.del('c')" value="取消">`);
 			k.p(`</div></div>`);
