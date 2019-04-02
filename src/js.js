@@ -160,7 +160,7 @@ const wq = {
 		m.m({ e: q("wMain"), id: "Rmode3", c: "d100", m: 1 });
 
 		q("_w_M").h = "HTML文本";
-		ed(document.getElementById("_w_Edr"));
+		//ed(document.getElementById("_w_Edr"));
 
 		/*
 		w({

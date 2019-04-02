@@ -355,7 +355,7 @@
 			if (J.w) k.p(` style="max-width: ${J.w}"`);
 			k.p(`>`);
 			if (J.t) {
-				k.p(`<div class="bm p51"><b class="bl p05"></b><span>${J.t}</span>`);
+				k.p(`<div class="bb p51"><b class="bl p05"></b><span>${J.t}</span>`);
 				if (J.l) {
 					k.p(`<div id="_M_m_${J.id}" class="_M_ml dl p01 fs">`);
 					for (var i in J.l) k.p(`<a href="javascript:${J.l[i]}">${i}</a>`);
@@ -391,7 +391,7 @@
 				q("@SPAN", E.parentNode).for(e => { e.c = "_M_l" });
 				E.children[0].c = "_M_l _M_ll";
 			};
-			k.p(`<div class="_M_lu bm g">`);
+			k.p(`<div class="_M_lu bb g">`);
 			for (const i in J.l) k.p(`<label><span class="_M_l" onclick="${J.l[i]}">${i}</span></label>`);
 			k.p(`</div><div id="${J.id}" class="p51"></div>`);
 			J.e.innerHTML = k.j("");
@@ -514,11 +514,11 @@
 			k.p(`><div id="_V_Ht" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
 			k.p(`<div class="p01 df vc ts"><span>${J.t} </span>`);
 			k.p(`<span id="_V_Hd" class="_V_e fxl" onclick="v.del()">×</span></div>`);
-			k.p(`<div class="_V_s bm p01 fxs">${J.s}</div></div>`);
-			k.p(`<form id="_w_F">`);
-			k.p(`<div class="p51">${J.h}</div>`);
+			k.p(`<div class="_V_s bb p01 fxs">${J.s}</div></div>`);
+			k.p(`<form id="_w_F" class="p5">`);
+			k.p(`<div class="p05">${J.h}</div>`);
 			if (J.m !== 2) {
-				k.p(`<div class="p51 tr">`);
+				k.p(`<div class="p05 p5t tr">`);
 				k.p(`<input class="lb" type="submit" value="确定">`);
 				if (J.m === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
 				k.p(`<input type="reset" value="重置"></div>`);
@@ -538,7 +538,7 @@
 			k = [];
 			k.p(`<div id="_V_Bp" class="_V_p _V_b db" style="background: transparent"></div>`);
 			k.p(`<div id="_V_Fp" class="_V_p _V_f db bd lw">`);
-			k.p(`<div class="bm p51"><b class="vm bl p05 if fl">&#xeba2;</b>${J.t}</div>`);
+			k.p(`<div class="bb p51"><b class="vm bl p05 if fl">&#xeba2;</b>${J.t}</div>`);
 			k.p(`<div class="p51">${J.h}</div></div>`)
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 			k = q("_V_Fp");
@@ -559,7 +559,7 @@
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`>`);
 			k.p(`<b class="vt p05 if fxl">&#xe782;</b><div class="dl">${J.h}</div>`);
-			k.p(`<div class="p5000 tr">`)
+			k.p(`<div class="p5t tr">`)
 			k.p(`<input id ="_w_OK" type="button" value="确定">`);
 			k.p(`<input type="button" onclick="v.del('c')" value="取消">`);
 			k.p(`</div></div>`);
@@ -576,10 +576,10 @@
 			let k = q("_V_Fi");
 			if (k) v.del("i");
 			k = [];
-			k.p(`<div id="_V_Fi" class="_V_p _V_f db bd p1 `);
-			if (J.m == 1) k.p(`lr"><i class="ir"></i><b class="vm p0100 if fxl">&#xe785;`);
-			else k.p(`ly"><i class="iy"></i><b class="vm p0100 if fxl">&#xe77e;`);
-			k.p(`</b><div class="dl fs">${J.t}</div></div>`);
+			k.p(`<div id="_V_Fi" class="_V_p _V_f db bd p5 `);
+			if (J.m == 1) k.p(`lr"><i class="ir"></i><b class="vm p5 if fxl">&#xe785;`);
+			else k.p(`ly"><i class="iy"></i><b class="vm p5 if fxl">&#xe77e;`);
+			k.p(`</b><div class="dl p5 fs">${J.t}</div></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 			v.adi("i");
 			setTimeout(() => { v.del("i") }, 1200);
@@ -589,10 +589,12 @@
 			let k = q("_V_Bl");
 			if (k) v.del("l");
 			k = [];
-			k.p(`<div id="_V_Bl" class="_V_p _V_b df tj vc">`);
-			k.p(`<div class="_V_f p1 lw bd"><b class="_V_r dl if fxl vm">&#xe6c6;</b>`);
-			k.p(`<span class="fs p01">正在加载…请稍后…</span></div></div>`);
+			k.p(`<div id="_V_Bl" class="_V_p _V_b db"></div>`);
+			k.p(`<div id="_V_Fl" class="_V_p _V_f db p5 lw bd">`);
+			k.p(`<b class="_V_r dl p5 if fxl vm">&#xe6c6;</b>`);
+			k.p(`<span class="fs p01">正在加载…</span></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
+			v.adi("l");
 		},
 
 		// J Json: id, cn, ph path, t title, s subheading, h html, n number, uc up callback, dc del callback
@@ -605,7 +607,7 @@
 			}, up = () => {
 				if (q("Efs").h) {
 					v.c({
-						h: "如果您上传了新文件，原文件将被覆盖！<br>您确定继续吗？",
+						h: "上传的新文件将覆盖原文件，<br>您确定继续吗？",
 						c: () => {
 							q("@INPUT", q("_w_F")).for(e => { e.g("disabled", "disabled") });
 							q("_V_Hd").style["pointer-events"] = "none";
@@ -646,9 +648,9 @@
 			k.p(`<input name="id" type="hidden" value="${J.id}">`);
 			k.p(`<input name="old" type="hidden" value="${J.ph}">`);
 			k.p(`<input id="Efl" name="fl" type="hidden" value="1">`);
-			if (J.h) k.p(J.h + "<br>");
-			k.p(`<label>标题：<input id="Ecn" name="cn" type="text" style="width:24rem" required value="${J.cn}"></label>`);
-			k.p(`<div style="padding:5px 0"><label>文件：<input id="Efs" name="fs" type="file" style="width:24rem"></label></div>`);
+			if (J.h) k.p(`<div>${J.h}</div>`);
+			k.p(`<div class="m50"><label>标题：<input id="Ecn" name="cn" type="text" style="width:24rem" required value="${J.cn}"></label></div>`);
+			k.p(`<label>文件：<input id="Efs" name="fs" type="file" style="width:24rem"></label>`);
 			v.t({
 				t: J.t,
 				s: J.s,
