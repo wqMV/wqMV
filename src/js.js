@@ -156,8 +156,8 @@ const wq = {
 			}
 		});
 
-		m.m({ e: q("wMain"), id: "Rmode2", t: "模块二", c: "d100", w: "20rem", m: 1 });
-		m.m({ e: q("wMain"), id: "Rmode3", c: "d100", m: 1 });
+		m.m({ e: q("wMain"), id: "Rmode2", t: "模块二", c: "dw", w: "20rem", m: 1 });
+		m.m({ e: q("wMain"), id: "Rmode3", c: "dw", m: 1 });
 
 		q("_w_M").h = "HTML文本";
 		//ed(document.getElementById("_w_Edr"));

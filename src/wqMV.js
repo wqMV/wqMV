@@ -347,95 +347,91 @@
 	const m = {
 		// Json: e element, id, t title, c classname, w width, l label Json, m mode: 1 add
 		m: J => {
-			let k = [], o = E => {
-				q("@A", E.parentNode).for(e => { e.c = "" });
-				E.c = "_M_mu";
-			};
+			let k = [], o = 0;
 			k.p(`<div class="_M_m m5 ${J.c ? J.c : ""}"`);
 			if (J.w) k.p(` style="max-width: ${J.w}"`);
 			k.p(`>`);
 			if (J.t) {
 				k.p(`<div class="bb p51"><b class="bl p05"></b><span>${J.t}</span>`);
 				if (J.l) {
-					k.p(`<div id="_M_m_${J.id}" class="_M_ml dl p01 fs">`);
-					for (var i in J.l) k.p(`<a href="javascript:${J.l[i]}">${i}</a>`);
+					k.p(`<div class="_M_mr di p01 fs">`);
+					for (const i in J.l) {
+						k.p(`<label><input class="dh" name="_M_m_${J.id}" type="radio"${o ? "" : " checked"}>`);
+						k.p(`<li onclick="${J.l[i]}">${i}</li></label>`);
+						o = 1;
+					}
 					k.p(`</div>`);
 				}
 				k.p(`</div>`);
 			}
 			k.p(`<div id="${J.id}" class="p51"></div></div>`);
 			J.m === 1 ? J.e.add("be", k.j("")) : J.e.h = k.j("");
-			if (J.l) {
-				k = q("@A", q(`_M_m_${J.id}`)).for(e => { e.onclick = function () { o(this) } });
-				o(k[0]);
-			}
 		},
 
 		// Json: e element, l label Json
 		r: J => {
-			let k = [], o = E => {
-				q("@A", E.parentNode).for(e => { e.c = "" });
-				E.c = "_M_rl";
-			};
+			let k = [], o = 0;
 			k.p(`<div class="_M_r">`);
-			for (var i in J.l) k.p(`<a href="javascript:${J.l[i]}">${i}</a>`);
+			for (const i in J.l) {
+				k.p(`<label><input class="dh" name="_M_r_${J.e.id}" type="radio"${o ? "" : " checked"}>`);
+				k.p(`<li onclick="${J.l[i]}">${i}</li></label>`);
+				o = 1;
+			}
 			k.p(`</div>`);
 			J.e.innerHTML = k.j("");
-			k = q("@A", J.e).for(e => { e.onclick = function () { o(this) } });
-			o(k[0]);
 		},
 
 		// Json: e element, id, l label Json
 		l: J => {
-			let k = [], o = E => {
-				q("@SPAN", E.parentNode).for(e => { e.c = "_M_l" });
-				E.children[0].c = "_M_l _M_ll";
-			};
-			k.p(`<div class="_M_lu bb g">`);
-			for (const i in J.l) k.p(`<label><span class="_M_l" onclick="${J.l[i]}">${i}</span></label>`);
+			let k = [], o = 0;
+			k.p(`<div class="_M_l p01 bb g">`);
+			for (const i in J.l) {
+				k.p(`<label><input class="dh" name="_M_l_${J.id}" type="radio"${o ? "" : " checked"}>`);
+				k.p(`<li onclick="${J.l[i]}">${i}</li></label>`);
+				o = 1;
+			}
 			k.p(`</div><div id="${J.id}" class="p51"></div>`);
 			J.e.innerHTML = k.j("");
-			k = q("@LABEL", J.e).for(e => { e.onclick = function () { o(this) } });
-			o(k[0]);
 		},
 
 		// Json: e element, l label Json: i icon
 		d: J => {
-			let k = [], o = E => {
-				let l = E.parentNode.parentNode;
-				q("@LI", l).for(e => { e.c = "tc" });
-				q("@DETAILS", l).for(e => {
-					if (e === E.parentNode) l = null;
+			let k = [], o = 0, s = E => {
+				o = E.parentNode.parentNode;
+				q("@DETAILS", o).for(e => {
+					if (e === E.parentNode) o = null;
 					else {
 						e.open = false;
 						e.c = "";
 					}
 				});
-				E.parentNode.className = "_M_du";
-				E.children[0].c = "_M_dl tc";
+				E.parentNode.c = "_M_du";
 			};
 			k.p(`<div class="_M_d">`);
 			for (const i in J.l) {
-				k.p(`<details>`);
-				k.p(`<summary><b class="if fl vm">${J.l[i].i}</b><time class="vm">${i}</time></summary>`);
-				for (const j in J.l[i]) if (j !== "i") k.p(`<span><li class="tc" onclick="${J.l[i][j]}">${j}</li></span>`);
+				k.p(`<details${o ? "" : " open"}>`);
+				k.p(`<summary><b class="if fl">${J.l[i].i}</b><span>${i}</span></summary>`);
+				o = o ? o : 1;
+				for (const j in J.l[i]) if (j !== "i") {
+					k.p(`<label><input class="dh" name="_M_d_${J.e.id}" type="radio"${o === 1 ? " checked" : ""}>`);
+					k.p(`<li class="tc" onclick="${J.l[i][j]}">${j}</li></label>`);
+					o = 2;
+				}
 				k.p(`</details>`);
 			}
 			k.p(`</div>`)
 			J.e.innerHTML = k.j("");
-			k = q("@SPAN", J.e).for(e => { e.onclick = function () { o(this) } });
-			o(k[0]);
-			k[0].parentNode.open = true;
-			k[0].children[0].click();
+			k = q("@LABEL", J.e).for(e => { e.onclick = () => { s(e) } });
+			if (k) k[0].parentNode.className = "_M_du";
 		},
 
 		// Json: e element, t title, l label Json: i icon
 		u: J => {
 			let k = [];
 			k.p(`<div class="_M_d">`);
-			k.p(`<details class="tc dl">`);
-			k.p(`<summary><b class="if fl vm">${J.l.i}</b><time class="vm">${J.t}</time></summary>`);
-			for (const i in J.l) if (i !== "i") k.p(`<a href="${J.l[i]}" target="_blank">${i}</a><br>`);
+			k.p(`<details class="tc di">`);
+			k.p(`<summary><b class="if fl">${J.l.i}</b><span>${J.t}</span></summary>`);
+			for (const i in J.l) if (i !== "i") k.p(`<a class="db" href="${J.l[i]}" target="_blank">${i}</a>`);
 			k.p(`</details></div>`);
 			J.e.innerHTML = k.j("");
 		},
@@ -450,7 +446,7 @@
 			k.h = s.getHours();
 			k.m = s.getMinutes();
 			k.s = s.getSeconds();
-			for (var i in k) if (k[i] < 10) k[i] = "0" + k[i];
+			for (const i in k) if (k[i] < 10) k[i] = "0" + k[i];
 			k.w = s.getDay();
 			k.dt = k.y + "-" + k.n + "-" + k.d;
 			k.dn = k.y + "-" + k.n;
@@ -477,7 +473,7 @@
 			k.tny = s.getFullYear();
 			k.tnn = s.getMonth() + 1;
 
-			for (var i in k) if (String(k[i]).length === 1) k[i] = "0" + k[i];
+			for (const i in k) if (String(k[i]).length === 1) k[i] = "0" + k[i];
 			k.ydt = k.yy + "-" + k.yn + "-" + k.yd;
 			k.tdt = k.ty + "-" + k.tn + "-" + k.td;
 
@@ -558,7 +554,7 @@
 			k.p(`<div id="_V_Fc" class="_V_p _V_f db p5 lw bd"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`>`);
-			k.p(`<b class="vt p05 if fxl">&#xe782;</b><div class="dl">${J.h}</div>`);
+			k.p(`<b class="vt p05 if fxl">&#xe782;</b><div class="di">${J.h}</div>`);
 			k.p(`<div class="p5t tr">`)
 			k.p(`<input id ="_w_OK" type="button" value="确定">`);
 			k.p(`<input type="button" onclick="v.del('c')" value="取消">`);
@@ -579,7 +575,7 @@
 			k.p(`<div id="_V_Fi" class="_V_p _V_f db bd p5 `);
 			if (J.m == 1) k.p(`lr"><i class="ir"></i><b class="vm p5 if fxl">&#xe785;`);
 			else k.p(`ly"><i class="iy"></i><b class="vm p5 if fxl">&#xe77e;`);
-			k.p(`</b><div class="dl p5 fs">${J.t}</div></div>`);
+			k.p(`</b><div class="di p5 fs">${J.t}</div></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 			v.adi("i");
 			setTimeout(() => { v.del("i") }, 1200);
@@ -591,7 +587,7 @@
 			k = [];
 			k.p(`<div id="_V_Bl" class="_V_p _V_b db"></div>`);
 			k.p(`<div id="_V_Fl" class="_V_p _V_f db p5 lw bd">`);
-			k.p(`<b class="_V_r dl p5 if fxl vm">&#xe6c6;</b>`);
+			k.p(`<b class="_V_r di p5 if fxl vm">&#xe6c6;</b>`);
 			k.p(`<span class="fs p01">正在加载…</span></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 			v.adi("l");

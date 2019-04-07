@@ -25,7 +25,7 @@ input[disabled] { pointer-events: none; background: whitesmoke }
 [type=file] { padding-top: 2px; padding-bottom: 3px }
 ::-webkit-details-marker { direction: ltr; margin-left: 1rem }
 summary { direction: rtl; padding: 5px 5px 5px 1rem; outline: none }
-details, summary, .cp, .cpn { cursor: pointer }
+summary, .cp, .cpn { cursor: pointer }
 .cp:hover { color: #08e }
 .in { position: relative; display: inline-block }
 .in b { position: absolute; padding: 6px 1rem }
@@ -53,6 +53,7 @@ main { flex-wrap: wrap }
 .bl { border-left: 1px dotted rgba(99, 99, 99, .4) }
 .bd { border: 1px solid rgba(99, 99, 99, .4); border-radius: 5px }
 
+.m0 { margin: auto }
 .m5 { margin: .5rem }
 .m10 { margin: 1rem 0 }
 .m50 { margin: .5rem 0 }
@@ -75,15 +76,15 @@ main { flex-wrap: wrap }
 .lr { background: lightcoral }
 .lb { background: azure }
 
-.db { display: block }
-.df { display: flex }
-.dh { display: none }
-.dl { display: inline-block }
 .d0 { flex: none }
 .d1 { flex: auto }
-.d100 { width: 100% }
+.df { display: flex }
 .dc { flex-direction: column }
-.dt { line-height: 2 }
+.db { display: block }
+.di { display: inline-block }
+.dh { display: none }
+.dw { width: 100% }
+.da { width: 100%; height: 100%; object-fit: fill }
 
 .tl { text-align: left }
 .tr { text-align: right }
@@ -102,22 +103,21 @@ main { flex-wrap: wrap }
 .if { font-family: "ifont" !important }
 
 /* M */
-._M_d details li { margin: 0; cursor: pointer; transition: .3s }
+._M_d li, ._M_mr li, ._M_r li, ._M_l li { display: inline-block; cursor: pointer; list-style: none; transition: .3s }
 ._M_d summary>b { padding-right: 1rem }
 ._M_d details { margin: 5px 0; border-left: 5px solid transparent }
-._M_d details li { list-style: none; padding: 5px; border-radius: 0 5px 5px 0 }
+._M_d li { display: block; margin: 0; padding: 5px; border-radius: 0 5px 5px 0 }
 ._M_d details:hover, ._M_du { border-left: 5px solid #08e !important; background: rgba(99, 99, 99, .4) }
-._M_d details li:hover, ._M_dl { background: #08e }
-._M_dh details summary::-webkit-details-marker, ._M_dh time, ._M_dh span, ._M_dh a { display: none }
-._M_r a { display: inline-block; margin: 0 .5rem; padding: 5px 0 7px 0; border-top: 2px solid transparent; transition: .3s }
-._M_r a:hover, ._M_rl { color: #08e; border-top: 2px solid rgba(0, 0, 0, .8) !important }
-._M_r a::before, ._M_ml a::before { content: ""; padding-right: .5rem; border-left: 1px dotted rgba(99, 99, 99, .4) }
-._M_l { border: 1px dotted rgba(99, 99, 99, .4); border-bottom: none; border-radius: 5px 1rem 0 0; padding: 3px 1rem; margin: 0 5px; cursor: pointer }
-._M_ll, ._M_l:hover { color: #08e; background: azure; border-color: #08e }
-._M_lu { padding: 1rem 1rem 3px 1rem }
+._M_d li:hover, ._M_d input:checked+li { background: #08e }
+._M_dh summary::-webkit-details-marker, ._M_dh li, ._M_dh span, ._M_dh a { display: none }
 ._M_m { background: white; border-radius: 3px; box-shadow: 0 0 1px rgba(99, 99, 99, .4) }
-._M_ml a { display: inline-block; margin: 0 .5rem }
-._M_ml a:hover, ._M_mu { color: #08e; text-decoration: underline !important }
+._M_mr li { margin: 0 .5rem }
+._M_mr li:hover, ._M_mr input:checked+li { color: #08e; text-decoration: underline !important }
+._M_r li { margin: 0 .5rem; padding: 5px 0 7px 0; border-top: 2px solid transparent }
+._M_r li:hover, ._M_r input:checked+li { color: #08e; border-top: 2px solid rgba(0, 0, 0, .8) !important }
+._M_r li::before, ._M_mr li::before { content: ""; padding-right: .5rem; border-left: 1px dotted rgba(99, 99, 99, .4) }
+._M_l li { margin: 0 5px; padding: 3px 1rem; border: 1px dotted rgba(99, 99, 99, .4); border-bottom: none; border-radius: 5px 1rem 0 0 }
+._M_l li:hover, ._M_l input:checked+li { color: #08e; background: azure; border-color: #08e }
 
 /* V */
 #_V_Ht { border-radius: 5px 5px 0 0; background: rgba(99, 99, 99, .1); cursor: move }
