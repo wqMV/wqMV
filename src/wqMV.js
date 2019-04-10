@@ -352,12 +352,12 @@
 			if (J.w) k.p(` style="max-width: ${J.w}"`);
 			k.p(`>`);
 			if (J.t) {
-				k.p(`<div class="bb p51"><b class="bl p05"></b><span>${J.t}</span>`);
+				k.p(`<div class="bb p51"><span>${J.t}</span>`);
 				if (J.l) {
 					k.p(`<div class="_M_mr di p01 fs">`);
 					for (const i in J.l) {
 						k.p(`<label><input class="dh" name="_M_m_${J.id}" type="radio"${o ? "" : " checked"}>`);
-						k.p(`<li onclick="${J.l[i]}">${i}</li></label>`);
+						k.p(`<li class="mu tp p05" onclick="${J.l[i]}">${i}</li></label>`);
 						o = 1;
 					}
 					k.p(`</div>`);
@@ -374,7 +374,7 @@
 			k.p(`<div class="_M_r">`);
 			for (const i in J.l) {
 				k.p(`<label><input class="dh" name="_M_r_${J.e.id}" type="radio"${o ? "" : " checked"}>`);
-				k.p(`<li onclick="${J.l[i]}">${i}</li></label>`);
+				k.p(`<li class="mu tp p5" onclick="${J.l[i]}">${i}</li></label>`);
 				o = 1;
 			}
 			k.p(`</div>`);
@@ -402,14 +402,14 @@
 					if (e === E.parentNode) o = null;
 					else {
 						e.open = false;
-						e.c = "lf";
+						e.c = "m50 lf";
 					}
 				});
-				E.parentNode.c = "lfn _M_du";
+				E.parentNode.c = "_M_du m50 lfn";
 			};
 			k.p(`<div class="_M_d">`);
 			for (const i in J.l) {
-				k.p(`<details class="lf"${o ? "" : " open"}>`);
+				k.p(`<details class="m50 lf"${o ? "" : " open"}>`);
 				k.p(`<summary><b class="if fl">${J.l[i].i}</b><span>${i}</span></summary>`);
 				o = o ? o : 1;
 				for (const j in J.l[i]) if (j !== "i") {
@@ -422,14 +422,14 @@
 			k.p(`</div>`)
 			J.e.innerHTML = k.j("");
 			k = q("@LABEL", J.e).for(e => { e.onclick = () => { s(e) } });
-			if (k) k[0].parentNode.className = "lfn _M_du";
+			if (k) k[0].parentNode.className = "_M_du m50 lfn";
 		},
 
 		// Json: e element, t title, l label Json: i icon
 		u: J => {
 			let k = [];
 			k.p(`<div class="_M_d">`);
-			k.p(`<details class="tc di">`);
+			k.p(`<details class="di lf tc">`);
 			k.p(`<summary><b class="if fl">${J.l.i}</b><span>${J.t}</span></summary>`);
 			for (const i in J.l) if (i !== "i") k.p(`<a class="db" href="${J.l[i]}" target="_blank">${i}</a>`);
 			k.p(`</details></div>`);
@@ -529,17 +529,25 @@
 			let o = () => {
 				J.e.open = false;
 				v.del("p");
-			}, k = q("_V_Bp"), x = J.e.offsetWidth, y = J.e.offsetHeight;
+			}, lf = () => {
+				let tp = J.e.offsetLeft;
+				let vl = J.e.offsetParent;
+				while (vl) {
+					tp += vl.offsetLeft;
+					vl = vl.offsetParent;
+				}
+				return tp;
+			}, k = q("_V_Bp"), x = lf(), y = J.e.offsetHeight;
 			if (k) v.del("p");
 			k = [];
 			k.p(`<div id="_V_Bp" class="_V_p _V_b db" style="background: transparent"></div>`);
 			k.p(`<div id="_V_Fp" class="_V_p _V_f db bd lw">`);
-			k.p(`<div class="bb p51"><b class="vm bl p05 if fl">&#xeba2;</b>${J.t}</div>`);
+			k.p(`<div class="bb p51"><b class="vm p05 if h">&#xe87a;</b>${J.t}</div>`);
 			k.p(`<div class="p51">${J.h}</div></div>`)
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 			k = q("_V_Fp");
-			x = J.e.offsetLeft + x - k.offsetWidth;
-			y = J.e.offsetTop + y;
+			x += J.e.offsetWidth - k.offsetWidth;
+			y += J.e.offsetTop;
 			k.style.left = x + "px";
 			k.style.top = `calc(${y + "px"} + .5rem)`;
 			q("_V_Bp").onclick = o;

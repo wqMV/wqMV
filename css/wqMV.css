@@ -31,19 +31,21 @@ summary, .cp, .cpn { cursor: pointer }
 .in { position: relative; display: inline-block }
 .in b { position: absolute; padding: 6px 1rem }
 .in input { padding-left: 2rem }
-.lf, .lfn { position: relative }
+.lf, .lfn, .tp { position: relative }
 .lf::before, .lfn::before { content: ""; position: absolute; top: 50%; left: 0; width: 5px; height: 0; background: #08e; transition: .3s }
 .lf:hover::before, .lfn::before { top: 0 !important; height: 100% !important }
+.tp::after { content: ""; position: absolute; top: 0; left: 50%; width: 0; height: 2px; background: rgba(0, 0, 0, .7); transition: .3s }
+.tp:hover::after { left: 0 !important; width: 100% !important }
+.mu::before { content: ""; padding-right: .5rem; border-left: 1px dotted rgba(99, 99, 99, .4) }
 
 body, header, nav, main, .nav, .main, .logo, header>div { display: flex }
 .user, .logo { height: 50px }
 .nav, .main { height:100vh }
 
-.logo, .title, .note, .user { overflow: hidden; border-top: 2px solid transparent; transition: .3s }
+.logo, .title, .note, .user { overflow: hidden; transition: .3s }
+.logo::after { background: #08e }
 .title { padding: 0 2em }
-.user { flex: 0 0 16rem }
-.logo:hover { border-top: 2px solid #08e }
-.title:hover, .note:hover, .user:hover { border-top: 2px solid rgba(0, 0, 0, .8) }
+.user { flex: 0 0 9rem }
 .title:hover { flex: auto }
 
 section { background: whitesmoke }
@@ -55,9 +57,11 @@ main { flex-wrap: wrap }
 .bt { border-top: 1px dotted rgba(99, 99, 99, .4) }
 .bb { border-bottom: 1px dotted rgba(99, 99, 99, .4) }
 .bl { border-left: 1px dotted rgba(99, 99, 99, .4) }
+.br { border-right: 1px dotted rgba(99, 99, 99, .4) }
 .bd { border: 1px solid rgba(99, 99, 99, .4); border-radius: 5px }
 
 .m0 { margin: auto }
+.m05 { margin: 0 .5rem }
 .m5 { margin: .5rem }
 .m10 { margin: 1rem 0 }
 .m50 { margin: .5rem 0 }
@@ -70,6 +74,7 @@ main { flex-wrap: wrap }
 .e { color: rgba(255, 255, 255, .5) }
 .w { color: rgba(255, 255, 255, .8) }
 .g { color: rgba(99, 99, 99, .7) }
+.h { color: rgba(99, 99, 99, .2) }
 .s { color: seagreen }
 .r { color: crimson }
 
@@ -103,23 +108,21 @@ main { flex-wrap: wrap }
 .fs { font-weight: 100; font-size: small }
 .fl { font-weight: 500; font-size: large }
 .fxl { font-weight: 500; font-size: x-large }
+.fxxl { font-weight: 500; font-size: xx-large }
 @font-face { font-family: "ifont"; src: url("ifont.ttf") }
 .if { font-family: "ifont" !important }
 
 /* M */
-._M_d li, ._M_mr li, ._M_r li, ._M_l li { display: inline-block; cursor: pointer; list-style: none; transition: .3s }
+._M_d li, ._M_mr li, ._M_r li, ._M_l li { display: inline-block; margin: 0; cursor: pointer; list-style: none; transition: .3s }
 ._M_d summary>b { padding-right: 1rem }
-._M_d details { margin: 5px 0 }
 ._M_d details:hover, ._M_du { background: rgba(99, 99, 99, .4) }
-._M_d li { display: block; margin: 0; padding: 5px; border-radius: 0 5px 5px 0 }
+._M_d li { display: block; padding: 5px; border-radius: 0 5px 5px 0 }
 ._M_d li:hover, ._M_d input:checked+li { background: #08e }
 ._M_dh summary::-webkit-details-marker, ._M_dh li, ._M_dh span, ._M_dh a { display: none }
 ._M_m { background: white; border-radius: 3px; box-shadow: 0 0 1px rgba(99, 99, 99, .4) }
-._M_mr li { margin: 0 .5rem }
-._M_mr li:hover, ._M_mr input:checked+li { color: #08e; text-decoration: underline !important }
-._M_r li { margin: 0 .5rem; padding: 5px 0 7px 0; border-top: 2px solid transparent }
-._M_r li:hover, ._M_r input:checked+li { color: #08e; border-top: 2px solid rgba(0, 0, 0, .8) !important }
-._M_r li::before, ._M_mr li::before { content: ""; padding-right: .5rem; border-left: 1px dotted rgba(99, 99, 99, .4) }
+._M_mr li { padding-top: 4px }
+._M_r li { margin: -1px 0 }
+._M_mr li:hover, ._M_mr input:checked+li, ._M_r li:hover, ._M_r input:checked+li { color: #08e }
 ._M_l li { margin: 0 5px; padding: 3px 1rem; border: 1px dotted rgba(99, 99, 99, .4); border-bottom: none; border-radius: 5px 1rem 0 0 }
 ._M_l li:hover, ._M_l input:checked+li { color: #08e; background: azure; border-color: #08e }
 
