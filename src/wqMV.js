@@ -402,14 +402,14 @@
 					if (e === E.parentNode) o = null;
 					else {
 						e.open = false;
-						e.c = "";
+						e.c = "lf";
 					}
 				});
-				E.parentNode.c = "_M_du";
+				E.parentNode.c = "lfn _M_du";
 			};
 			k.p(`<div class="_M_d">`);
 			for (const i in J.l) {
-				k.p(`<details${o ? "" : " open"}>`);
+				k.p(`<details class="lf"${o ? "" : " open"}>`);
 				k.p(`<summary><b class="if fl">${J.l[i].i}</b><span>${i}</span></summary>`);
 				o = o ? o : 1;
 				for (const j in J.l[i]) if (j !== "i") {
@@ -422,7 +422,7 @@
 			k.p(`</div>`)
 			J.e.innerHTML = k.j("");
 			k = q("@LABEL", J.e).for(e => { e.onclick = () => { s(e) } });
-			if (k) k[0].parentNode.className = "_M_du";
+			if (k) k[0].parentNode.className = "lfn _M_du";
 		},
 
 		// Json: e element, t title, l label Json: i icon
