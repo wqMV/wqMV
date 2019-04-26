@@ -505,7 +505,7 @@
 			if (k) v.del();
 			k = [];
 			k.p(`<div id="_V_Bt" class="_V_p _V_b db"></div>`);
-			k.p(`<div id="_V_Ft" class="_V_p _V_f db lw bd"`);
+			k.p(`<div id="_V_Ft" class="_V_p _V_f db gw bd"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`><div id="_V_Ht" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
 			k.p(`<div class="p01 df vc ts"><span>${J.t} </span>`);
@@ -515,7 +515,7 @@
 			k.p(`<div class="p05">${J.h}</div>`);
 			if (J.m !== 2) {
 				k.p(`<div class="p05 p5t tr">`);
-				k.p(`<input class="lb" type="submit" value="确定">`);
+				k.p(`<input class="ga" type="submit" value="确定">`);
 				if (J.m === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
 				k.p(`<input type="reset" value="重置"></div>`);
 			}
@@ -541,8 +541,8 @@
 			if (k) v.del("p");
 			k = [];
 			k.p(`<div id="_V_Bp" class="_V_p _V_b db" style="background: transparent"></div>`);
-			k.p(`<div id="_V_Fp" class="_V_p _V_f db bd lw">`);
-			k.p(`<div class="bb p51"><b class="vm p05 if h">&#xe87a;</b>${J.t}</div>`);
+			k.p(`<div id="_V_Fp" class="_V_p _V_f db bd gw">`);
+			k.p(`<div class="bb p51">${J.t}</div>`);
 			k.p(`<div class="p51">${J.h}</div></div>`)
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 			k = q("_V_Fp");
@@ -559,7 +559,7 @@
 			if (k) v.del("c");
 			k = [];
 			k.p(`<div id="_V_Bc" class="_V_p _V_b db"></div>`);
-			k.p(`<div id="_V_Fc" class="_V_p _V_f db p5 lw bd"`);
+			k.p(`<div id="_V_Fc" class="_V_p _V_f db p5 gw bd"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`>`);
 			k.p(`<b class="vt p05 if fxl">&#xe782;</b><div class="di">${J.h}</div>`);
@@ -581,8 +581,8 @@
 			if (k) v.del("i");
 			k = [];
 			k.p(`<div id="_V_Fi" class="_V_p _V_f db bd p5 `);
-			if (J.m == 1) k.p(`lr"><i class="ir"></i><b class="vm p5 if fxl">&#xe785;`);
-			else k.p(`ly"><i class="iy"></i><b class="vm p5 if fxl">&#xe77e;`);
+			if (J.m == 1) k.p(`gr"><i class="ir"></i><b class="vm p5 if fxl">&#xe785;`);
+			else k.p(`gy"><i class="iy"></i><b class="vm p5 if fxl">&#xe77e;`);
 			k.p(`</b><div class="di p5 fs">${J.t}</div></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 			v.adi("i");
@@ -594,7 +594,7 @@
 			if (k) v.del("l");
 			k = [];
 			k.p(`<div id="_V_Bl" class="_V_p _V_b db"></div>`);
-			k.p(`<div id="_V_Fl" class="_V_p _V_f db p5 lw bd">`);
+			k.p(`<div id="_V_Fl" class="_V_p _V_f db p5 gw bd">`);
 			k.p(`<b class="_V_r di p5 if fxl vm">&#xe6c6;</b>`);
 			k.p(`<span class="fs p01">正在加载…</span></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));

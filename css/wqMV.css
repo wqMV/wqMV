@@ -1,32 +1,40 @@
-html, body {
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	box-sizing: border-box;
-	font-size: medium;
-	text-overflow: ellipsis;
-	word-break: break-all;
-	color: rgba(0, 0, 0, .8);
-	background: white
+body {
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  font-size: medium;
+  word-break: break-all;
+  text-overflow: ellipsis
 }
-body, input, textarea, select { font-family: Tahoma, 'Microsoft YaHei', sans-serif; -webkit-font-smoothing: antialiased }
-a, a:visited { text-decoration: none; color: rgba(0, 0, 0, .8) }
-a:hover, a:active { color: #08e }
-table { width: 100%; border-collapse: collapse; border-spacing: .5rem }
-ol, ul, li { margin: .5rem 0; text-align: left }
-input, select, textarea { text-align: left; border-radius: 5px; color: rgba(0, 0, 0, .8) }
-input, select, textarea { background: white; border: 1px solid rgba(99, 99, 99, .4) }
-input:hover, select:hover, textarea:hover { color: #08e; background: azure; border-color: #08e }
+body, input, textarea, select {
+  background: white;
+  font-family: Tahoma, 'Microsoft YaHei', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: rgba(0, 0, 0, .8);
+  box-sizing: border-box
+}
+input, select, textarea {
+  border: 1px solid rgba(99, 99, 99, .3);
+  text-align: left;
+  border-radius: 5px
+}
+input:hover, select:hover, textarea:hover { border-color: #08e; background: azure; color: #08e }
 input, textarea { padding: 5px 1rem }
 input, select { margin: 0 .5rem }
-textarea { margin: 10px; width: 24rem; height: 4rem }
 select { padding: 4px 1rem }
-input[disabled] { pointer-events: none; background: whitesmoke }
-[type=file] { padding-top: 2px; padding-bottom: 3px }
-::-webkit-details-marker { direction: ltr; margin-left: 1rem }
-summary { direction: rtl; padding: 5px 5px 5px 1rem; outline: none }
-summary, .cp, .cpn { cursor: pointer }
-.cp:hover { color: #08e }
+textarea { width: 24rem; height: 4rem; margin: 10px }
+[disabled] { background: whitesmoke; pointer-events: none }
+[type='file'] { padding-top: 2px; padding-bottom: 3px }
+
+a, a:visited { color: rgba(0, 0, 0, .8); text-decoration: none }
+a:hover, a:active { color: #08e }
+ol, ul, li { margin: .5rem 0; text-align: left }
+table { width: 100%; border-collapse: collapse; border-spacing: .5rem }
+
+::-webkit-details-marker { margin-left: 1rem; direction: ltr }
+summary { padding: 5px 5px 5px 1rem; outline: none; direction: rtl }
+summary, .cp { cursor: pointer }
+.cp:hover { color: rgba(0, 0, 0, .6) }
 
 .in { position: relative; display: inline-block }
 .in b { position: absolute; padding: 6px 1rem }
@@ -34,66 +42,68 @@ summary, .cp, .cpn { cursor: pointer }
 .lf, .lfn, .tp { position: relative }
 .lf::before, .lfn::before { content: ""; position: absolute; top: 50%; left: 0; width: 5px; height: 0; background: #08e; transition: .3s }
 .lf:hover::before, .lfn::before { top: 0 !important; height: 100% !important }
-.tp::after { content: ""; position: absolute; top: 0; left: 50%; width: 0; height: 2px; background: rgba(0, 0, 0, .7); transition: .3s }
+.tp::after { content: ""; position: absolute; top: 0; left: 50%; width: 0; height: 2px; background: rgba(0, 0, 0, .6); transition: .3s }
 .tp:hover::after { left: 0 !important; width: 100% !important }
-.mu::before { content: ""; padding-right: .5rem; border-left: 1px dotted rgba(99, 99, 99, .4) }
+.mu::before { content: ""; padding-right: .5rem; border-left: 1px dotted rgba(99, 99, 99, .3) }
 
-body, header, nav, main, .nav, .main, .logo, header>div { display: flex }
-.user, .logo { height: 50px }
-.nav, .main { height:100vh }
+.pa { position: absolute }
+.pr { position: relative }
 
-.logo, .title, .note, .user { overflow: hidden; transition: .3s }
-.logo::after { background: #08e }
-.title { padding: 0 2em }
-.user { flex: 0 0 9rem }
-.title:hover { flex: auto }
+.df { display: flex }
+.db { display: block }
+.di { display: inline-block }
+.dh { display: none }
+.d0 { flex: none }
+.d1 { flex: auto }
+.dc { flex-direction: column }
+.dw { flex-wrap: wrap }
 
-section { background: whitesmoke }
-aside, section { flex: 1; overflow-y: scroll }
-aside::-webkit-scrollbar { width: 5px }
-aside::-webkit-scrollbar-thumb { background: rgba(99, 99, 99, .4) }
-main { flex-wrap: wrap }
+.z11 { z-index: 11 }
+.z12 { z-index: 12 }
+.z13 { z-index: 13 }
 
-.bt { border-top: 1px dotted rgba(99, 99, 99, .4) }
-.bb { border-bottom: 1px dotted rgba(99, 99, 99, .4) }
-.bl { border-left: 1px dotted rgba(99, 99, 99, .4) }
-.br { border-right: 1px dotted rgba(99, 99, 99, .4) }
-.bd { border: 1px solid rgba(99, 99, 99, .4); border-radius: 5px }
+.wt { width: 100% }
+.wh { width: 100%; height: 100%; object-fit: fill }
 
-.m0 { margin: auto }
-.m05 { margin: 0 .5rem }
-.m5 { margin: .5rem }
-.m10 { margin: 1rem 0 }
-.m50 { margin: .5rem 0 }
 .p5 { padding: .5rem }
 .p05 { padding: 0 .5rem }
 .p01 { padding: 0 1rem }
 .p51 { padding: .5rem 1rem }
 .p5t { padding-top: .5rem }
 
-.e { color: rgba(255, 255, 255, .5) }
-.w { color: rgba(255, 255, 255, .8) }
-.g { color: rgba(99, 99, 99, .7) }
-.h { color: rgba(99, 99, 99, .2) }
-.s { color: seagreen }
-.r { color: crimson }
+.bt { border-top: 1px dotted rgba(99, 99, 99, .3) }
+.bb { border-bottom: 1px dotted rgba(99, 99, 99, .3) }
+.bl { border-left: 1px dotted rgba(99, 99, 99, .3) }
+.br { border-right: 1px dotted rgba(99, 99, 99, .3) }
+.bd { border: 1px solid rgba(99, 99, 99, .3); border-radius: 5px }
 
-.b { background: rgba(0, 0, 0, .8) }
-.l { background: #08e }
-.lw { background: ivory }
-.ly { background: cornsilk }
-.lr { background: lightcoral }
-.lb { background: azure }
+.ma { margin: auto }
+.m5 { margin: .5rem }
+.m05 { margin: 0 .5rem }
+.m10 { margin: 1rem 0 }
+.m50 { margin: .5rem 0 }
 
-.d0 { flex: none }
-.d1 { flex: auto }
-.df { display: flex }
-.dc { flex-direction: column }
-.db { display: block }
-.di { display: inline-block }
-.dh { display: none }
-.dw { width: 100% }
-.da { width: 100%; height: 100%; object-fit: fill }
+.g0 { background: rgba(0, 0, 0, .8) }
+.gb { background: #08e }
+.gw { background: ivory }
+.gy { background: cornsilk }
+.gr { background: lightcoral }
+.ga { background: azure }
+
+.fxs { font-weight: 100; font-size: x-small }
+.fs { font-weight: 100; font-size: small }
+.fl { font-weight: 500; font-size: large }
+.fxl { font-weight: 500; font-size: x-large }
+.fxxl { font-weight: 500; font-size: xx-large }
+@font-face { font-family: "ifont"; src: url("ifont.ttf") }
+.if { font-family: "ifont" !important; -webkit-font-smoothing: antialiased }
+
+.ce { color: rgba(255, 255, 255, .5) }
+.cw { color: rgba(255, 255, 255, .8) }
+.cg { color: rgba(99, 99, 99, .7) }
+.ch { color: rgba(99, 99, 99, .3) }
+.cs { color: seagreen }
+.cr { color: crimson }
 
 .tl { text-align: left }
 .tr { text-align: right }
@@ -104,26 +114,18 @@ main { flex-wrap: wrap }
 .vc { align-items: center }
 .vm { vertical-align: middle }
 
-.fxs { font-weight: 100; font-size: x-small }
-.fs { font-weight: 100; font-size: small }
-.fl { font-weight: 500; font-size: large }
-.fxl { font-weight: 500; font-size: x-large }
-.fxxl { font-weight: 500; font-size: xx-large }
-@font-face { font-family: "ifont"; src: url("ifont.ttf") }
-.if { font-family: "ifont" !important; -webkit-font-smoothing: antialiased }
-
 /* M */
 ._M_d li, ._M_mr li, ._M_r li, ._M_l li { display: inline-block; margin: 0; cursor: pointer; list-style: none; transition: .3s }
 ._M_d summary>b { padding-right: 1rem }
-._M_d details:hover, ._M_du { background: rgba(99, 99, 99, .4) }
+._M_d details:hover, ._M_du { background: rgba(99, 99, 99, .3) }
 ._M_d li { display: block; padding: 5px; border-radius: 0 5px 5px 0 }
 ._M_d li:hover, ._M_d input:checked+li { background: #08e }
 ._M_dh summary::-webkit-details-marker, ._M_dh li, ._M_dh span, ._M_dh a { display: none }
-._M_m { background: white; border-radius: 3px; box-shadow: 0 0 1px rgba(99, 99, 99, .4) }
+._M_m { background: white; border-radius: 3px; box-shadow: 0 0 1px rgba(99, 99, 99, .3) }
 ._M_mr li { padding-top: 4px }
 ._M_r li { margin: -1px 0 }
 ._M_mr li:hover, ._M_mr input:checked+li, ._M_r li:hover, ._M_r input:checked+li { color: #08e }
-._M_l li { margin: 0 5px; padding: 3px 1rem; border: 1px dotted rgba(99, 99, 99, .4); border-bottom: none; border-radius: 5px 1rem 0 0 }
+._M_l li { margin: 0 5px; padding: 3px 1rem; border: 1px dotted rgba(99, 99, 99, .3); border-bottom: none; border-radius: 5px 1rem 0 0 }
 ._M_l li:hover, ._M_l input:checked+li { color: #08e; background: azure; border-color: #08e }
 
 /* V */
@@ -138,34 +140,34 @@ main { flex-wrap: wrap }
 #_V_Fi .ir { border-right-color: lightcoral }
 #_V_Fi .iy { border-right-color: cornsilk }
 #_V_Fi i {
-	display:block;
-	position:absolute;
-	top: 1rem;
-	left: -1rem;
-	border: .5rem dashed transparent
+  display:block;
+  position:absolute;
+  top: 1rem;
+  left: -1rem;
+  border: .5rem dashed transparent
 }
 ._V_e { display: block; padding: 0 0 0 1rem; cursor: pointer }
 ._V_e:hover, ._V_s { color: crimson }
 ._V_p { position: absolute }
-._V_b { height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; background: rgba(99, 99, 99, .4) }
-._V_f { box-shadow: 1px 1px 1rem rgba(99, 99, 99, .4) }
+._V_b { height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; background: rgba(99, 99, 99, .3) }
+._V_f { box-shadow: 1px 1px 1rem rgba(99, 99, 99, .3) }
 ._V_r { animation: rot .8s infinite }
 
 @keyframes pop {
-	0% { opacity: 0; transform: scale(.5); top: 0 }
-	100% { opacity: 1; transform: scale(1) }
+  0% { opacity: 0; transform: scale(.5); top: 0 }
+  100% { opacity: 1; transform: scale(1) }
 }
 @keyframes sha {
-	0%, 100% { transform: translateX(0) }
-	20%, 60% { transform: translateX(-10px) }
-	40%, 80% { transform: translateX(10px) }
+  0%, 100% { transform: translateX(0) }
+  20%, 60% { transform: translateX(-10px) }
+  40%, 80% { transform: translateX(10px) }
 }
 @keyframes rot{
-	0% { transform: rotate(0deg) }
-	100% { transform: rotate(360deg) }
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
 }
 @media screen and (max-width: 798px) {
-	body { font-size: small }
-	.title, .note { display: none }
-	.user { flex: auto }
+  body { font-size: small }
+  .title, .note { display: none }
+  .user { flex: auto }
 }

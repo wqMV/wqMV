@@ -1,0 +1,15 @@
+body, header, nav, main, .nav, .main, .logo, header>div { display: flex }
+.user, .logo { height: 50px }
+.nav, .main { height:100vh }
+
+.logo, .title, .note, .user { overflow: hidden; transition: .3s }
+.logo::after { background: #08e }
+.title { padding: 0 2em }
+.user { flex: 0 0 9rem }
+.title:hover { flex: auto }
+
+section { background: whitesmoke }
+aside, section { flex: 1; overflow-y: scroll }
+aside::-webkit-scrollbar { width: 5px }
+aside::-webkit-scrollbar-thumb { background: rgba(99, 99, 99, .3) }
+main { flex-wrap: wrap }

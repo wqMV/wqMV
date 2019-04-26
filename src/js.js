@@ -42,14 +42,14 @@ const wq = {
 	lg: e => {
 		let h = [];
 		h.p(`<div class="in">`);
-		h.p(`<b class="if g">&#xe7ae;</b>`);
+		h.p(`<b class="if cg">&#xe7ae;</b>`);
 		h.p(`<input placeholder="用户">`);
 		h.p(`</div><br>`);
 		h.p(`<div class="in m50">`);
-		h.p(`<b class="if g">&#xe7c9;</b>`);
+		h.p(`<b class="if cg">&#xe7c9;</b>`);
 		h.p(`<input type="password" placeholder="密码">`);
 		h.p(`</div>`);
-		h.p(`<div class="tr"><input class="l" type="button" value="登录">`)
+		h.p(`<div class="tr"><input class="ga" type="button" value="登录">`)
 		h.p(`<input type="button" value="注册新用户"></div>`)
 		v.p({ e: e, t: "用户登录：", h: h.j("") });
 	},
@@ -156,8 +156,8 @@ const wq = {
 			}
 		});
 
-		m.m({ e: q("wMain"), id: "Rmode2", t: "模块二", c: "dw", w: "20rem", m: 1 });
-		m.m({ e: q("wMain"), id: "Rmode3", c: "dw", m: 1 });
+		m.m({ e: q("wMain"), id: "Rmode3", c: "wt", m: 1 });
+		m.m({ e: q("wMain"), id: "Rmode2", t: "模块二", c: "wt", w: "20rem", m: 1 });
 
 		q("_w_M").h = "HTML文本";
 		//ed(document.getElementById("_w_Edr"));
