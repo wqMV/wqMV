@@ -348,15 +348,15 @@
 		// Json: e element, id, t title, c classname, w width, l label Json, m mode: 1 add
 		m: J => {
 			let k = [], o = 0;
-			k.p(`<div class="_M_m m5 ${J.c ? J.c : ""}"`);
+			k.p(`<div class="Mm m5 ${J.c ? J.c : ""}"`);
 			if (J.w) k.p(` style="max-width: ${J.w}"`);
 			k.p(`>`);
 			if (J.t) {
 				k.p(`<div class="bb p51"><span>${J.t}</span>`);
 				if (J.l) {
-					k.p(`<div class="_M_mr di p01 fs">`);
+					k.p(`<div class="Mmr di p01 fs">`);
 					for (const i in J.l) {
-						k.p(`<label><input class="dh" name="_M_m_${J.id}" type="radio"${o ? "" : " checked"}>`);
+						k.p(`<label><input class="dh" name="Mm_${J.id}" type="radio"${o ? "" : " checked"}>`);
 						k.p(`<li class="mu tp p05" onclick="${J.l[i]}">${i}</li></label>`);
 						o = 1;
 					}
@@ -371,9 +371,9 @@
 		// Json: e element, l label Json
 		r: J => {
 			let k = [], o = 0;
-			k.p(`<div class="_M_r">`);
+			k.p(`<div class="Mr">`);
 			for (const i in J.l) {
-				k.p(`<label><input class="dh" name="_M_r_${J.e.id}" type="radio"${o ? "" : " checked"}>`);
+				k.p(`<label><input class="dh" name="Mr_${J.e.id}" type="radio"${o ? "" : " checked"}>`);
 				k.p(`<li class="mu tp p5" onclick="${J.l[i]}">${i}</li></label>`);
 				o = 1;
 			}
@@ -384,9 +384,9 @@
 		// Json: e element, id, l label Json
 		l: J => {
 			let k = [], o = 0;
-			k.p(`<div class="_M_l p01 bb g">`);
+			k.p(`<div class="Ml p01 bb g">`);
 			for (const i in J.l) {
-				k.p(`<label><input class="dh" name="_M_l_${J.id}" type="radio"${o ? "" : " checked"}>`);
+				k.p(`<label><input class="dh" name="Ml_${J.id}" type="radio"${o ? "" : " checked"}>`);
 				k.p(`<li onclick="${J.l[i]}">${i}</li></label>`);
 				o = 1;
 			}
@@ -405,15 +405,15 @@
 						e.c = "m50 lf";
 					}
 				});
-				E.parentNode.c = "_M_du m50 lfn";
+				E.parentNode.c = "Mdu m50 lfn";
 			};
-			k.p(`<div class="_M_d">`);
+			k.p(`<div class="Md">`);
 			for (const i in J.l) {
 				k.p(`<details class="m50 lf"${o ? "" : " open"}>`);
 				k.p(`<summary><b class="if fl">${J.l[i].i}</b><span>${i}</span></summary>`);
 				o = o ? o : 1;
 				for (const j in J.l[i]) if (j !== "i") {
-					k.p(`<label><input class="dh" name="_M_d_${J.e.id}" type="radio"${o === 1 ? " checked" : ""}>`);
+					k.p(`<label><input class="dh" name="Md_${J.e.id}" type="radio"${o === 1 ? " checked" : ""}>`);
 					k.p(`<li class="tc" onclick="${J.l[i][j]}">${j}</li></label>`);
 					o = 2;
 				}
@@ -422,13 +422,13 @@
 			k.p(`</div>`)
 			J.e.innerHTML = k.j("");
 			k = q("@LABEL", J.e).for(e => { e.onclick = () => { s(e) } });
-			if (k) k[0].parentNode.className = "_M_du m50 lfn";
+			if (k) k[0].parentNode.className = "Mdu m50 lfn";
 		},
 
 		// Json: e element, t title, l label Json: i icon
 		u: J => {
 			let k = [];
-			k.p(`<div class="_M_d">`);
+			k.p(`<div class="Md">`);
 			k.p(`<details class="di lf tc">`);
 			k.p(`<summary><b class="if fl">${J.l.i}</b><span>${J.t}</span></summary>`);
 			for (const i in J.l) if (i !== "i") k.p(`<a class="db" href="${J.l[i]}" target="_blank">${i}</a>`);
@@ -501,16 +501,16 @@
 	const v = {
 		// J Json: t Title, s Subheading, h Html, m Mode 1 del 2 nobutton, b Background
 		t: J => {
-			let k = q("_V_Bt");
+			let k = q("VBt");
 			if (k) v.del();
 			k = [];
-			k.p(`<div id="_V_Bt" class="_V_p _V_b db"></div>`);
-			k.p(`<div id="_V_Ft" class="_V_p _V_f db gw bd"`);
+			k.p(`<div id="VBt" class="pa Vb db"></div>`);
+			k.p(`<div id="VFt" class="pa Vf db gw bd"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
-			k.p(`><div id="_V_Ht" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
-			k.p(`<div class="p01 df vc ts"><span>${J.t} </span>`);
-			k.p(`<span id="_V_Hd" class="_V_e fxl" onclick="v.del()">×</span></div>`);
-			k.p(`<div class="_V_s bb p01 fxs">${J.s}</div></div>`);
+			k.p(`><div id="VHt" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
+			k.p(`<div class="p51 df vc ts"><span>${J.t} </span>`);
+			k.p(`<span id="VHd" class="Ve fxl" onclick="v.del()">×</span></div>`);
+			k.p(`<div class="Vs bb p01 fxs">${J.s ? J.s : ""}</div></div>`);
 			k.p(`<form id="_w_F" class="p5">`);
 			k.p(`<div class="p05">${J.h}</div>`);
 			if (J.m !== 2) {
@@ -530,36 +530,38 @@
 				J.e.open = false;
 				v.del("p");
 			}, lf = () => {
-				let tp = J.e.offsetLeft;
+				let tp = { x: J.e.offsetLeft, y: J.e.offsetTop };
 				let vl = J.e.offsetParent;
 				while (vl) {
-					tp += vl.offsetLeft;
+					tp.x += vl.offsetLeft;
+					tp.y += vl.offsetTop;
 					vl = vl.offsetParent;
 				}
+				tp.x += J.e.offsetWidth - 8;
+				tp.y += J.e.offsetHeight + 8;
 				return tp;
-			}, k = q("_V_Bp"), x = lf(), y = J.e.offsetHeight;
+			}, k = q("VBp"), x = lf();
 			if (k) v.del("p");
 			k = [];
-			k.p(`<div id="_V_Bp" class="_V_p _V_b db" style="background: transparent"></div>`);
-			k.p(`<div id="_V_Fp" class="_V_p _V_f db bd gw">`);
+			k.p(`<div id="VBp" class="pa Vb db" style="background: transparent"></div>`);
+			k.p(`<div id="VFp" class="pa Vf db bd gw">`);
 			k.p(`<div class="bb p51">${J.t}</div>`);
 			k.p(`<div class="p51">${J.h}</div></div>`)
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
-			k = q("_V_Fp");
-			x += J.e.offsetWidth - k.offsetWidth;
-			y += J.e.offsetTop;
-			k.style.left = x + "px";
-			k.style.top = `calc(${y + "px"} + .5rem)`;
-			q("_V_Bp").onclick = o;
+			k = q("VFp");
+			x.x = x.x - k.offsetWidth;
+			k.style.left = x.x + "px";
+			k.style.top = x.y + "px";
+			q("VBp").onclick = o;
 		},
 
 		// J Json: h Html, c Callback, b Background
 		c: J => {
-			let k = q("_V_Bc");
+			let k = q("VBc");
 			if (k) v.del("c");
 			k = [];
-			k.p(`<div id="_V_Bc" class="_V_p _V_b db"></div>`);
-			k.p(`<div id="_V_Fc" class="_V_p _V_f db p5 gw bd"`);
+			k.p(`<div id="VBc" class="pa Vb db"></div>`);
+			k.p(`<div id="VFc" class="pa Vf db p5 gw bd"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`>`);
 			k.p(`<b class="vt p05 if fxl">&#xe782;</b><div class="di">${J.h}</div>`);
@@ -577,10 +579,10 @@
 
 		// J Json: t Text, m Mode 1 Red
 		i: J => {
-			let k = q("_V_Fi");
+			let k = q("VFi");
 			if (k) v.del("i");
 			k = [];
-			k.p(`<div id="_V_Fi" class="_V_p _V_f db bd p5 `);
+			k.p(`<div id="VFi" class="pa Vf db bd p5 `);
 			if (J.m == 1) k.p(`gr"><i class="ir"></i><b class="vm p5 if fxl">&#xe785;`);
 			else k.p(`gy"><i class="iy"></i><b class="vm p5 if fxl">&#xe77e;`);
 			k.p(`</b><div class="di p5 fs">${J.t}</div></div>`);
@@ -590,12 +592,12 @@
 		},
 
 		l: () => {
-			let k = q("_V_Bl");
+			let k = q("VBl");
 			if (k) v.del("l");
 			k = [];
-			k.p(`<div id="_V_Bl" class="_V_p _V_b db"></div>`);
-			k.p(`<div id="_V_Fl" class="_V_p _V_f db p5 gw bd">`);
-			k.p(`<b class="_V_r di p5 if fxl vm">&#xe6c6;</b>`);
+			k.p(`<div id="VBl" class="pa Vb db"></div>`);
+			k.p(`<div id="VFl" class="pa Vf db p5 gw bd">`);
+			k.p(`<b class="Vr di p5 if fxl vm">&#xe6c6;</b>`);
 			k.p(`<span class="fs p01">正在加载…</span></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 			v.adi("l");
@@ -614,7 +616,7 @@
 						h: "上传的新文件将覆盖原文件，<br>您确定继续吗？",
 						c: () => {
 							q("@INPUT", q("_w_F")).for(e => { e.g("disabled", "disabled") });
-							q("_V_Hd").style["pointer-events"] = "none";
+							q("VHd").style["pointer-events"] = "none";
 							v.l();
 							J.uc();
 							return false;
@@ -646,7 +648,7 @@
 				}
 			}, cnch = k => k.replace(/ |　|,|;|\"|\'|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}/g, "");
 
-			let k = q("_V_Bt");
+			let k = q("VBt");
 			if (k) v.del();
 			k = [];
 			k.p(`<input name="id" type="hidden" value="${J.id}">`);
@@ -671,14 +673,14 @@
 		del: S => {
 			let k = 0;
 			S = !S ? "t" : S;
-			k = q("_V_B" + S);
+			k = q("VB" + S);
 			if (k) k.del();
-			k = q("_V_F" + S);
+			k = q("VF" + S);
 			if (k) k.del();
 		},
 
 		adi: S => {
-			let x = 0, y = 0, s = q("_V_F" + S);
+			let x = 0, y = 0, s = q("VF" + S);
 			if (s) {
 				x = (window.innerWidth - s.offsetWidth) / 2;
 				y = (window.innerHeight - s.offsetHeight) / 2 - 60;
@@ -692,8 +694,8 @@
 		mv: {
 			o: 0, b: 0, tx: 0, ty: 0, mx: 0, my: 0, f: 0,
 			m: function (e) {
-				this.o = document.getElementById("_V_Ft");
-				this.b = document.getElementById("_V_Bt");
+				this.o = document.getElementById("VFt");
+				this.b = document.getElementById("VBt");
 				this.b.onmousemove = this.o.onmousemove = () => { v.mv.v(event) };
 				this.b.onmouseup = this.o.onmouseup = () => { v.mv.u(event) };
 				this.tx = this.o.offsetLeft;

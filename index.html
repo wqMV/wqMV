@@ -9,6 +9,7 @@
 	<meta name="author" content="WangQiang">
 	<link rel="stylesheet" type="text/css" href="css/wqMV.css">
 	<link rel="stylesheet" type="text/css" href="css/css.css">
+	<link rel="stylesheet" type="text/css" href="css/poll.css">
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 	<title>wqMV</title>
 </head>
@@ -48,29 +49,29 @@
 		</nav>
 		<section class="p5">
 			<main id="wMain">
-				<div class="_M_m d1 m5 p51" style="max-width: 52rem">
+				<div class="Mm d1 m5 p51" style="max-width: 52rem">
 					wMain
-					<div class="in">
-						<b class="if cg">&#xe7ae;</b>
-						<input placeholder="Please input">
-					</div>
-					<input type="text">
-					<br><br>
 					<div id="oD">oD${ta}oD</div>
-					<a href="javascript:void(0)">链接链接</a>
+					<a href="javascript:;">链接链接</a>
 					<input id="oI" type="text" :v="ta">
 					<select id="oS" name="oN">
 						<option value=""></option>
 						<option value="a">oS${ta}oS</option>
 						<option value="b">b</option>
 					</select>
-					<select name="oN">
-						<option value=""></option>
-						<option value="c">c</option>
-						<option value="d">d</option>
-					</select>
 					<input id="oQ" type="button" on:click="to" value="on:click">
 					<li :for="tf" on:click="fo"></li>
+					<div class="in">
+						<b class="if cg">&#xe7ae;</b>
+						<input placeholder="Please input">
+					</div>
+					<input type="color">
+					<input type="datetime-local">
+					<br><br>
+					<input type="file">
+					<input type="number">
+					<br><br>
+
 					<form id="oF">
 						<input type="button" value="弹窗" onclick="wq.t()">
 						<input type="button" value="提示" onclick="wq.c()">
@@ -80,6 +81,7 @@
 						<input type="button" value="上传文件" onclick="wq.f()">
 						<input type="button" value="失效" disabled>
 					</form><br>
+					<textarea></textarea>
 					<div id="_w_Mb"></div>
 					<div id="_w_Edr"></div>
 				</div>

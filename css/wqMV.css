@@ -16,15 +16,18 @@ body, input, textarea, select {
 input, select, textarea {
   border: 1px solid rgba(99, 99, 99, .3);
   text-align: left;
-  border-radius: 5px
+  border-radius: 3px
 }
 input:hover, select:hover, textarea:hover { border-color: #08e; background: azure; color: #08e }
-input, textarea { padding: 5px 1rem }
+input, textarea { padding: 7px 1rem }
+select { padding: 6px 1rem }
 input, select { margin: 0 .5rem }
-select { padding: 4px 1rem }
-textarea { width: 24rem; height: 4rem; margin: 10px }
-[disabled] { background: whitesmoke; pointer-events: none }
-[type='file'] { padding-top: 2px; padding-bottom: 3px }
+textarea { width: 100%; height: 6rem; margin: .5rem }
+[disabled] { background: whitesmoke; color: rgba(99, 99, 99, .6); pointer-events: none }
+[type="color"] { padding-top: 3px; padding-bottom: 4px; box-sizing: content-box }
+[type*='date'] { padding-top: 5px; padding-bottom: 5px }
+[type='file'] { padding-top: 1px; padding-bottom: 1px }
+::-webkit-file-upload-button { border: 1px solid rgba(99, 99, 99, .3); width: 5rem; height: 28px; background: white; border-radius: 3px }
 
 a, a:visited { color: rgba(0, 0, 0, .8); text-decoration: none }
 a:hover, a:active { color: #08e }
@@ -37,7 +40,7 @@ summary, .cp { cursor: pointer }
 .cp:hover { color: rgba(0, 0, 0, .6) }
 
 .in { position: relative; display: inline-block }
-.in b { position: absolute; padding: 6px 1rem }
+.in b { position: absolute; padding-top: 7px; padding-left: 1rem; font-size: large; color: rgba(99, 99, 99, .6) }
 .in input { padding-left: 2rem }
 .lf, .lfn, .tp { position: relative }
 .lf::before, .lfn::before { content: ""; position: absolute; top: 50%; left: 0; width: 5px; height: 0; background: #08e; transition: .3s }
@@ -75,7 +78,7 @@ summary, .cp { cursor: pointer }
 .bb { border-bottom: 1px dotted rgba(99, 99, 99, .3) }
 .bl { border-left: 1px dotted rgba(99, 99, 99, .3) }
 .br { border-right: 1px dotted rgba(99, 99, 99, .3) }
-.bd { border: 1px solid rgba(99, 99, 99, .3); border-radius: 5px }
+.bd { border: 1px solid rgba(99, 99, 99, .3); border-radius: 3px }
 
 .ma { margin: auto }
 .m5 { margin: .5rem }
@@ -100,7 +103,7 @@ summary, .cp { cursor: pointer }
 
 .ce { color: rgba(255, 255, 255, .5) }
 .cw { color: rgba(255, 255, 255, .8) }
-.cg { color: rgba(99, 99, 99, .7) }
+.cg { color: rgba(99, 99, 99, .6) }
 .ch { color: rgba(99, 99, 99, .3) }
 .cs { color: seagreen }
 .cr { color: crimson }
@@ -115,43 +118,42 @@ summary, .cp { cursor: pointer }
 .vm { vertical-align: middle }
 
 /* M */
-._M_d li, ._M_mr li, ._M_r li, ._M_l li { display: inline-block; margin: 0; cursor: pointer; list-style: none; transition: .3s }
-._M_d summary>b { padding-right: 1rem }
-._M_d details:hover, ._M_du { background: rgba(99, 99, 99, .3) }
-._M_d li { display: block; padding: 5px; border-radius: 0 5px 5px 0 }
-._M_d li:hover, ._M_d input:checked+li { background: #08e }
-._M_dh summary::-webkit-details-marker, ._M_dh li, ._M_dh span, ._M_dh a { display: none }
-._M_m { background: white; border-radius: 3px; box-shadow: 0 0 1px rgba(99, 99, 99, .3) }
-._M_mr li { padding-top: 4px }
-._M_r li { margin: -1px 0 }
-._M_mr li:hover, ._M_mr input:checked+li, ._M_r li:hover, ._M_r input:checked+li { color: #08e }
-._M_l li { margin: 0 5px; padding: 3px 1rem; border: 1px dotted rgba(99, 99, 99, .3); border-bottom: none; border-radius: 5px 1rem 0 0 }
-._M_l li:hover, ._M_l input:checked+li { color: #08e; background: azure; border-color: #08e }
+.Md li, .Mmr li, .Mr li, .Ml li { display: inline-block; margin: 0; list-style: none; cursor: pointer; transition: .3s }
+.Md summary>b { padding-right: 1rem }
+.Md details:hover, .Mdu { background: rgba(99, 99, 99, .3) }
+.Md li { display: block; padding: 5px; border-radius: 0 3px 3px 0 }
+.Md li:hover, .Md input:checked+li { background: #08e }
+.Mdh summary::-webkit-details-marker, .Mdh li, .Mdh span, .Mdh a { display: none }
+.Mm { background: white; box-shadow: 0 0 1px rgba(99, 99, 99, .3); border-radius: 3px }
+.Mmr li { padding-top: 4px }
+.Mr li { margin: -1px 0 }
+.Mmr li:hover, .Mmr input:checked+li, .Mr li:hover, .Mr input:checked+li { color: #08e }
+.Ml li { padding: 3px 1rem; border: 1px dotted rgba(99, 99, 99, .3); border-bottom: none; margin: 0 5px; border-radius: 3px 1rem 0 0 }
+.Ml li:hover, .Ml input:checked+li { border-color: #08e; background: azure; color: #08e }
 
 /* V */
-#_V_Ht { border-radius: 5px 5px 0 0; background: rgba(99, 99, 99, .1); cursor: move }
-#_V_Bt, #_V_Bp { z-index: 1001 }
-#_V_Bc { z-index: 2001 }
-#_V_Bl { z-index: 3001 }
-#_V_Ft, #_V_Fp { z-index: 1002; animation: pop .3s }
-#_V_Fc { z-index: 2002; animation: pop .3s }
-#_V_Fi { z-index: 3002; animation: sha .3s }
-#_V_Fl { z-index: 3002 }
-#_V_Fi .ir { border-right-color: lightcoral }
-#_V_Fi .iy { border-right-color: cornsilk }
-#_V_Fi i {
-  display:block;
+#VHt { border-radius: 3px 3px 0 0; background: rgba(99, 99, 99, .1); cursor: move }
+#VBt, #VBp { z-index: 1001 }
+#VBc { z-index: 2001 }
+#VBl { z-index: 3001 }
+#VFt, #VFp { z-index: 1002; animation: pop .3s }
+#VFc { z-index: 2002; animation: pop .3s }
+#VFi { z-index: 3002; animation: sha .3s }
+#VFl { z-index: 3002 }
+#VFi .ir { border-right-color: lightcoral }
+#VFi .iy { border-right-color: cornsilk }
+#VFi i {
   position:absolute;
-  top: 1rem;
+  display:block;
   left: -1rem;
+  top: 1rem;
   border: .5rem dashed transparent
 }
-._V_e { display: block; padding: 0 0 0 1rem; cursor: pointer }
-._V_e:hover, ._V_s { color: crimson }
-._V_p { position: absolute }
-._V_b { height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; background: rgba(99, 99, 99, .3) }
-._V_f { box-shadow: 1px 1px 1rem rgba(99, 99, 99, .3) }
-._V_r { animation: rot .8s infinite }
+.Ve { display: block; padding: 0 0 0 1rem; cursor: pointer }
+.Ve:hover, .Vs { color: crimson }
+.Vb { left: 0; top: 0; width: 100vw; height: 100vh; margin: 0; background: rgba(99, 99, 99, .3) }
+.Vf { box-shadow: 1px 1px 1rem rgba(99, 99, 99, .3) }
+.Vr { animation: rot .8s infinite }
 
 @keyframes pop {
   0% { opacity: 0; transform: scale(.5); top: 0 }

@@ -3,7 +3,6 @@ const wq = {
 	t: () => {
 		v.t({
 			t: "标题",
-			s: "副标题",
 			h: "HTML文本",
 			m: 2
 		});
@@ -38,15 +37,14 @@ const wq = {
 
 	},
 
-
 	lg: e => {
 		let h = [];
 		h.p(`<div class="in">`);
-		h.p(`<b class="if cg">&#xe7ae;</b>`);
+		h.p(`<b class="if">&#xe7ae;</b>`);
 		h.p(`<input placeholder="用户">`);
 		h.p(`</div><br>`);
 		h.p(`<div class="in m50">`);
-		h.p(`<b class="if cg">&#xe7c9;</b>`);
+		h.p(`<b class="if">&#xe7c9;</b>`);
 		h.p(`<input type="password" placeholder="密码">`);
 		h.p(`</div>`);
 		h.p(`<div class="tr"><input class="ga" type="button" value="登录">`)
@@ -57,7 +55,45 @@ const wq = {
 		v.p({ e: e, t: "消息通知：", h: "消息通知" });
 	},
 
-	box: () => {
+	pl: () => {
+		let ep = () => {
+			let o = q("Mp_wPoll");
+			o = q("@LABEL", o);
+			h = q("Mpn").h;
+			o[h].click();
+			h = parseInt(h) + 1;
+			h = h > 3 ? 0 : h;
+			q("Mpn").h = h;
+		}, et = () => { clearInterval(sp) }, el = () => {
+			sp = setInterval(ep, 2000)
+		}, h = [], sp = 0;
+
+		h.p(`<div id="Mp_wPoll" class="pr df Mp">`);
+		for (let i = 1; i < 5; i++) {
+			h.p(`<input id="Mps_${i}" name="Mpi" n="${i}" type="radio"${i === 1 ? " checked" : ""}>`);
+			h.p(`<label for="Mps_${i}"></label>`);
+		}
+		h.p(`<div class="pa df wh Mpg">`);
+		for (let i = 1; i < 5; i++)h.p(`<div><span></span><span></span><span></span><span></span></div>`);
+		h.p(`</div>`);
+		h.p(`<div class="pa df wh Mpt">`);
+		h.p(`<h3><div>用心·执着</div>`);
+		h.p(`<div>精益追求更好</div></h3>`);
+		h.p(`<h3><div>原创·原生</div>`);
+		h.p(`<div>没有框架约束</div></h3>`);
+		h.p(`<h3><div>CSS·JavaScript</div>`);
+		h.p(`<div>No code sink</div></h3>`);
+		h.p(`<h3><div>Hello·World</div>`);
+		h.p(`<div>Welcome to wqMV</div></h3>`);
+		h.p(`</div></div>`);
+		h.p(`<div id="Mpn" class="dh">1</div>`);
+		q("Rmode3").h = h.j("");
+		q("Mp_wPoll").onmouseenter = et;
+		q("Mp_wPoll").onmouseleave = el;
+		sp = setInterval(ep, 2000);
+	},
+
+	to: () => {
 		/*
 		q("wHome", {
 			b: {
@@ -160,6 +196,7 @@ const wq = {
 		m.m({ e: q("wMain"), id: "Rmode2", t: "模块二", c: "wt", w: "20rem", m: 1 });
 
 		q("_w_M").h = "HTML文本";
+		wq.pl();
 		//ed(document.getElementById("_w_Edr"));
 
 		/*
@@ -180,8 +217,8 @@ const wq = {
 			q("wLink").c = "bt m10";
 		} else {
 			h.g("dh", "dh");
-			q("wMenu").c = "_M_dh";
-			q("wLink").c = "_M_dh bt m10";
+			q("wMenu").c = "Mdh";
+			q("wLink").c = "Mdh bt m10";
 		};
 	},
 
@@ -189,7 +226,7 @@ const wq = {
 		const ut = m.ut();
 		q("wTime").h = ut.cn;
 		q("wIcon").onclick = wq.mu;
-		setTimeout(wq.box, 127);
+		setTimeout(wq.to, 127);
 	}
 };
 try { window.onload = wq.go } catch (e) { }
