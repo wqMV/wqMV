@@ -1,41 +1,44 @@
 body {
   overflow: hidden;
+  width: 100vw;
+  height: 100vh;
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
   font-size: medium;
+  line-height: 1;
   word-break: break-all;
   text-overflow: ellipsis
 }
 body, input, textarea, select {
-  background: white;
   font-family: Tahoma, 'Microsoft YaHei', sans-serif;
   -webkit-font-smoothing: antialiased;
-  color: rgba(0, 0, 0, .8);
-  box-sizing: border-box
+  background: white;
+  color: rgba(0, 0, 0, .8)
 }
 input, select, textarea {
   border: 1px solid rgba(99, 99, 99, .3);
+  border-radius: 3px;
   text-align: left;
-  border-radius: 3px
 }
 input:hover, select:hover, textarea:hover { border-color: #08e; background: azure; color: #08e }
 input, textarea { padding: 7px 1rem }
 select { padding: 6px 1rem }
 input, select { margin: 0 .5rem }
-textarea { width: 100%; height: 6rem; margin: .5rem }
+textarea { width: calc(100% - 3rem) ; height: 6rem; margin: .5rem }
 [disabled] { background: whitesmoke; color: rgba(99, 99, 99, .6); pointer-events: none }
 [type="color"] { padding-top: 3px; padding-bottom: 4px; box-sizing: content-box }
 [type*='date'] { padding-top: 5px; padding-bottom: 5px }
 [type='file'] { padding-top: 1px; padding-bottom: 1px }
-::-webkit-file-upload-button { border: 1px solid rgba(99, 99, 99, .3); width: 5rem; height: 28px; background: white; border-radius: 3px }
+::-webkit-file-upload-button { width: 5rem; height: 28px; border: 1px solid rgba(99, 99, 99, .3); border-radius: 3px; background: white }
 
-a, a:visited { color: rgba(0, 0, 0, .8); text-decoration: none }
+a, a:visited { color: rgba(0, 0, 0, .8) }
 a:hover, a:active { color: #08e }
 ol, ul, li { margin: .5rem 0; text-align: left }
 table { width: 100%; border-collapse: collapse; border-spacing: .5rem }
 
 ::-webkit-details-marker { margin-left: 1rem; direction: ltr }
-summary { padding: 5px 5px 5px 1rem; outline: none; direction: rtl }
+summary { padding: .5rem .5rem .5rem 1rem; outline: none; direction: rtl }
 summary, .cp { cursor: pointer }
 .cp:hover { color: rgba(0, 0, 0, .6) }
 
@@ -49,6 +52,7 @@ summary, .cp { cursor: pointer }
 .tp:hover::after { left: 0 !important; width: 100% !important }
 .mu::before { content: ""; padding-right: .5rem; border-left: 1px dotted rgba(99, 99, 99, .3) }
 
+.pf { position: fixed }
 .pa { position: absolute }
 .pr { position: relative }
 
@@ -61,9 +65,9 @@ summary, .cp { cursor: pointer }
 .dc { flex-direction: column }
 .dw { flex-wrap: wrap }
 
-.z11 { z-index: 11 }
-.z12 { z-index: 12 }
-.z13 { z-index: 13 }
+.z1 { z-index: 11 }
+.z2 { z-index: 12 }
+.z3 { z-index: 13 }
 
 .wt { width: 100% }
 .wh { width: 100%; height: 100%; object-fit: fill }
@@ -74,24 +78,17 @@ summary, .cp { cursor: pointer }
 .p51 { padding: .5rem 1rem }
 .p5t { padding-top: .5rem }
 
-.bt { border-top: 1px dotted rgba(99, 99, 99, .3) }
-.bb { border-bottom: 1px dotted rgba(99, 99, 99, .3) }
-.bl { border-left: 1px dotted rgba(99, 99, 99, .3) }
-.br { border-right: 1px dotted rgba(99, 99, 99, .3) }
-.bd { border: 1px solid rgba(99, 99, 99, .3); border-radius: 3px }
-
 .ma { margin: auto }
 .m5 { margin: .5rem }
 .m05 { margin: 0 .5rem }
 .m10 { margin: 1rem 0 }
 .m50 { margin: .5rem 0 }
 
-.g0 { background: rgba(0, 0, 0, .8) }
-.gb { background: #08e }
-.gw { background: ivory }
-.gy { background: cornsilk }
-.gr { background: lightcoral }
-.ga { background: azure }
+.bt { border-top: 1px dotted rgba(99, 99, 99, .3) }
+.bb { border-bottom: 1px dotted rgba(99, 99, 99, .3) }
+.bl { border-left: 1px dotted rgba(99, 99, 99, .3) }
+.br { border-right: 1px dotted rgba(99, 99, 99, .3) }
+.bd { border: 1px solid rgba(99, 99, 99, .3); border-radius: 3px }
 
 .fxs { font-weight: 100; font-size: x-small }
 .fs { font-weight: 100; font-size: small }
@@ -100,13 +97,6 @@ summary, .cp { cursor: pointer }
 .fxxl { font-weight: 500; font-size: xx-large }
 @font-face { font-family: "ifont"; src: url("ifont.ttf") }
 .if { font-family: "ifont" !important; -webkit-font-smoothing: antialiased }
-
-.ce { color: rgba(255, 255, 255, .5) }
-.cw { color: rgba(255, 255, 255, .8) }
-.cg { color: rgba(99, 99, 99, .6) }
-.ch { color: rgba(99, 99, 99, .3) }
-.cs { color: seagreen }
-.cr { color: crimson }
 
 .tl { text-align: left }
 .tr { text-align: right }
@@ -117,18 +107,32 @@ summary, .cp { cursor: pointer }
 .vc { align-items: center }
 .vm { vertical-align: middle }
 
+.g0 { background: rgba(0, 0, 0, .8) }
+.gb { background: #08e }
+.gw { background: ivory }
+.gy { background: cornsilk }
+.gr { background: lightcoral }
+.ga { background: azure }
+
+.ce { color: rgba(255, 255, 255, .5) }
+.cw { color: rgba(255, 255, 255, .8) }
+.cg { color: rgba(99, 99, 99, .6) }
+.ch { color: rgba(99, 99, 99, .3) }
+.cs { color: seagreen }
+.cr { color: crimson }
+
 /* M */
 .Md li, .Mmr li, .Mr li, .Ml li { display: inline-block; margin: 0; list-style: none; cursor: pointer; transition: .3s }
 .Md summary>b { padding-right: 1rem }
 .Md details:hover, .Mdu { background: rgba(99, 99, 99, .3) }
-.Md li { display: block; padding: 5px; border-radius: 0 3px 3px 0 }
+.Md li { display: block; padding: .5rem; border-radius: 0 3px 3px 0 }
 .Md li:hover, .Md input:checked+li { background: #08e }
 .Mdh summary::-webkit-details-marker, .Mdh li, .Mdh span, .Mdh a { display: none }
-.Mm { background: white; box-shadow: 0 0 1px rgba(99, 99, 99, .3); border-radius: 3px }
+.Mm { border-radius: 3px; box-shadow: 0 0 1px rgba(99, 99, 99, .3); background: white }
 .Mmr li { padding-top: 4px }
 .Mr li { margin: -1px 0 }
 .Mmr li:hover, .Mmr input:checked+li, .Mr li:hover, .Mr input:checked+li { color: #08e }
-.Ml li { padding: 3px 1rem; border: 1px dotted rgba(99, 99, 99, .3); border-bottom: none; margin: 0 5px; border-radius: 3px 1rem 0 0 }
+.Ml li { padding: 5px 1rem; margin: 0 5px; border: 1px dotted rgba(99, 99, 99, .3); border-bottom: none; border-radius: 3px 1rem 0 0 }
 .Ml li:hover, .Ml input:checked+li { border-color: #08e; background: azure; color: #08e }
 
 /* V */
