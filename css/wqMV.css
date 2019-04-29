@@ -12,9 +12,11 @@ body {
 }
 body, input, textarea, select {
   font-family: Tahoma, 'Microsoft YaHei', sans-serif;
-  -webkit-font-smoothing: antialiased;
   background: white;
-  color: rgba(0, 0, 0, .8)
+  color: rgba(0, 0, 0, .8);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
 }
 input, select, textarea {
   border: 1px solid rgba(99, 99, 99, .3);
@@ -96,7 +98,7 @@ summary, .cp { cursor: pointer }
 .fxl { font-weight: 500; font-size: x-large }
 .fxxl { font-weight: 500; font-size: xx-large }
 @font-face { font-family: "ifont"; src: url("ifont.ttf") }
-.if { font-family: "ifont" !important; -webkit-font-smoothing: antialiased }
+.if { font-family: "ifont" !important }
 
 .tl { text-align: left }
 .tr { text-align: right }
