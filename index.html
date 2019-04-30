@@ -2,98 +2,97 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta name="renderer" content="webkit">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<meta name="robots" content="all">
-	<meta name="keywords" content="wqMV, wangqiang">
-	<meta name="author" content="WangQiang">
-	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-	<link rel="stylesheet" type="text/css" href="css/wqMV.css">
-	<link rel="stylesheet" type="text/css" href="css/css.css">
-	<link rel="stylesheet" type="text/css" href="css/poll.css">
-	<title>wqMV</title>
+  <meta charset="utf-8">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="robots" content="all">
+  <meta name="keywords" content="wqMV, wangqiang">
+  <meta name="author" content="WangQiang">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="css/wqMV.css">
+  <link rel="stylesheet" type="text/css" href="css/css.css">
+  <link rel="stylesheet" type="text/css" href="css/poll.css">
+  <title>wqMV</title>
 </head>
 
 <body>
-	<div class="nav d0 dc tc g0 ce">
-		<div class="logo tp tj vc bb"><b id="wLogo" class="if fxxl" style="color: #08e">&#xe605;</b></div>
-		<aside>
-			<div id="wMenu"></div>
-			<div id="wLink" class="bt m10"></div>
-		</aside>
-	</div>
-	<div class="main dc d1">
-		<header class="gb cw">
-			<div class="p5 vc tp"><b id="wIcon" class="cp if fxl">&#xe7f4;</b></div>
-			<div class="title tp tj vc fxl">叶柏寿站运营管理平台</div>
-			<div class="note d1 tp tj vc bl br p01">
-				<div id="wNote">Note</div>
-			</div>
-			<div class="user tp tj vc">
-				<div class="cp" onclick="wq.rm(this)">
-					<b class="vm if fxl">&#xe712;</b>
-					<b class="fs bd gr">99</b>
-				</div>
-			</div>
-			<div class="user tp tj vc">
-				<div id="wUser" class="p05">
-					<details onclick="wq.lg(this)">
-						<summary class="cp"><b class="vm if fl p05">&#xe65f;</b>用户</summary>
-					</details>
-				</div>
-			</div>
-		</header>
-		<nav class="vc bt bb p01">
-			<div id="wTime" class="fs"></div>
-			<div id="wNav" class="d1 p01"></div>
-		</nav>
-		<section class="p5">
-			<main id="wMain">
-				<div class="Mm d1 m5 p51" style="max-width: 52rem">
-					wMain
-					<div id="oD">oD${ta}oD</div>
-					<a href="javascript:;">链接链接</a>
-					<input id="oI" type="text" :v="ta">
-					<select id="oS" name="oN">
-						<option value=""></option>
-						<option value="a">oS${ta}oS</option>
-						<option value="b">b</option>
-					</select>
-					<input id="oQ" type="button" on:click="to" value="on:click">
-					<li :for="tf" on:click="fo"></li>
-					<div class="in">
-						<b class="if cg">&#xe65f;</b>
-						<input placeholder="Please input">
-					</div>
-					<input type="color">
-					<input type="datetime-local">
-					<br><br>
-					<input type="file">
-					<input type="number">
-					<br><br>
+  <div class="nav d0 dc tc g0 ce">
+    <div class="logo tp tj vc bb"><b id="wLogo" class="if fxxl" style="color: #08e">&#xe605;</b></div>
+    <aside>
+      <div id="wMenu"></div>
+      <div id="wLink" class="bt m10"></div>
+    </aside>
+  </div>
+  <div class="main dc d1">
+    <header class="gb cw">
+      <div class="p5 vc tp"><b id="wIcon" class="cp if fxl">&#xe7f4;</b></div>
+      <div class="title tp tj vc fxl">叶柏寿站运营管理平台</div>
+      <div class="note d1 tp tj vc bl br p01">
+        <div id="wNote">Note</div>
+      </div>
+      <div class="user tp tj vc">
+        <div class="cp" onclick="wq.rm(this)">
+          <b class="vm if fxl">&#xe712;</b>
+          <b class="fs bd gr">99</b>
+        </div>
+      </div>
+      <div class="user tp tj vc">
+        <div id="wUser" class="p05">
+          <details onclick="wq.lg(this)">
+            <summary class="cp"><b class="vm if fl p05">&#xe65f;</b>用户</summary>
+          </details>
+        </div>
+      </div>
+    </header>
+    <nav class="vc bt bb p01">
+      <div id="wTime" class="fs"></div>
+      <div id="wNav" class="d1 p01"></div>
+    </nav>
+    <section class="p5">
+      <main id="wMain">
+        <div class="Mm d1 m5 p51" style="max-width: 52rem">
+          wMain
+          <div id="oD">oD${ta}oD</div>
+          <a href="javascript:;">链接链接</a>
+          <input id="oI" type="text" :v="ta">
+          <select id="oS" name="oN">
+            <option value=""></option>
+            <option value="a">oS${ta}oS</option>
+            <option value="b">b</option>
+          </select>
+          <input id="oQ" type="button" on:click="to" value="on:click">
+          <li :for="tf" on:click="fo"></li>
+          <div class="in">
+            <b class="if cg">&#xe65f;</b>
+            <input placeholder="Please input">
+          </div>
+          <input type="color">
+          <input type="datetime-local">
+          <br><br>
+          <input type="file">
+          <input type="number">
+          <br><br>
 
-					<form id="oF">
-						<input type="button" value="弹窗" onclick="wq.t()">
-						<input type="button" value="提示" onclick="wq.c()">
-						<input type="button" value="警告" onclick="wq.i()">
-						<input type="button" value="tips" onclick="wq.it()">
-						<input type="button" value="加载" onclick="wq.l()">
-						<input type="button" value="上传文件" onclick="wq.f()">
-						<input type="button" value="失效" disabled>
-					</form><br>
-					<textarea></textarea>
-					<div id="_w_Mb"></div>
-					<div id="_w_Edr"></div>
-				</div>
-			</main>
-		</section>
-	</div>
+          <form id="oF">
+            <input type="button" value="弹窗" onclick="wq.t()">
+            <input type="button" value="提示" onclick="wq.c()">
+            <input type="button" value="警告" onclick="wq.i()">
+            <input type="button" value="tips" onclick="wq.it()">
+            <input type="button" value="加载" onclick="wq.l()">
+            <input type="button" value="上传文件" onclick="wq.f()">
+            <input type="button" value="失效" disabled>
+          </form><br>
+          <textarea></textarea>
+          <div id="_w_Mb"></div>
+          <div id="_w_Edr"></div>
+        </div>
+      </main>
+    </section>
+  </div>
 
-	<div id="wTemp" class="dh"></div>
-	<script type="text/JavaScript" src="js/wqMV.js"></script>
-	<script type="text/JavaScript" src="js/wqEDR.js"></script>
-	<script type="text/JavaScript" src="js/js.js"></script>
+  <div id="wTemp" class="dh"></div>
+  <script type="text/JavaScript" src="js/wqMV.js"></script>
+  <script type="text/JavaScript" src="js/js.js" defer></script>
 </body>
 
 </html>
