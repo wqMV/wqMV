@@ -308,20 +308,6 @@
 		k.onmessage = J => { if (typeof C === "function") C(J) }
 	};
 
-	// H Html
-	q.he = H => {
-		let k = document.createElement("div");
-		k.textContent = H;
-		return k.innerHTML;
-	};
-
-	// T Text
-	q.hd = T => {
-		let k = document.createElement("div");
-		k.innerHTML = T;
-		return k.textContent;
-	};
-
 	// get sessionStorage
 	q.sg = () => {
 		if (!sessionStorage.length) localStorage.setItem('w_sg', Date.now());
