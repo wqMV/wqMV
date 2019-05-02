@@ -550,7 +550,7 @@
 			k.p(`<div id="VFc" class="pa Vf db p5 gw bd"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`>`);
-			k.p(`<b class="vt p05 if fxl">&#xe782;</b><div class="di">${J.h}</div>`);
+			k.p(`<b class="vt p05 if fxl">&#xed19;</b><div class="di">${J.h}</div>`);
 			k.p(`<div class="p5t tr">`)
 			k.p(`<input id ="_w_OK" type="button" value="确定">`);
 			k.p(`<input type="button" onclick="v.del('c')" value="取消">`);
@@ -569,8 +569,8 @@
 			if (k) v.del("i");
 			k = [];
 			k.p(`<div id="VFi" class="pa Vf db bd p5 `);
-			if (J.m == 1) k.p(`gr"><i class="ir"></i><b class="vm p5 if fxl">&#xe785;`);
-			else k.p(`gy"><i class="iy"></i><b class="vm p5 if fxl">&#xe77e;`);
+			if (J.m == 1) k.p(`gr"><i class="ir"></i><b class="vm p5 if fxl">&#xed1c;`);
+			else k.p(`gy"><i class="iy"></i><b class="vm p5 if fxl">&#xed1b;`);
 			k.p(`</b><div class="di p5 fs">${J.t}</div></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 			v.adi("i");

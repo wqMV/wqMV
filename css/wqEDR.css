@@ -1,16 +1,22 @@
 #wqEDb { position: absolute; z-index: 4001; height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; opacity: 0.5; background: gray }
 #wqEDc { position: absolute; z-index: 4002; padding: 5px 1rem; text-align: center; background: ivory; border: 1px solid silver; border-radius: 5px; box-shadow: 2px 5px 1rem gray }
-#wqEDt { padding: 5px 10px; border-top: 1px solid silver; border-left: 1px solid silver; border-right: 1px solid silver; border-radius: 5px 5px 0 0; box-shadow: 2px 2px 2px gray }
-#wqEDR { padding: 10px; height: 12rem; overflow-y: scroll; outline: none; border: 1px solid silver; box-shadow: 2px 2px 2px gray }
+
+#wqEDt, #wqEDR { padding: .5rem; border-radius: 3px; box-shadow: 0 0 1px rgba(99, 99, 99, .8) }
+#wqEDR { overflow-y: scroll; height: 12rem; outline: none }
 #wqEDt select { margin: 0 5px; padding: 2px; border-radius: 3px }
-#wqEDt > div { display:inline-block }
+#wqEDt>div { display: inline-block }
 .wqEDful { position: absolute; top: 0; left: 0; background: #000 }
 .wqEDful > div { background: snow }
 .wqEDbtn { display:inline-block; margin: 0 1px; padding: 1px; vertical-align: middle }
+
+@font-face { font-family: "efont"; src: url("../font/wqEDR.ttf") }
+.ef { font-family: "efont" !important }
+
+
 .sept { width: 2px; height: 20px; background: url('../img/ed.png') -360px 0 }
 .icon { width: 20px; height: 20px; border: 1px solid transparent; background-repeat: no-repeat; background:url("../img/ed.png") }
-.icon:hover, .icon:active { border: 1px solid #28d; background-color: #cff }
-.sour { background-position: -0px 0 }
+.icon:hover, .icon:active { border: 1px solid #08e; background-color: #cff }
+.sour { background-position: 0 0 }
 .draf { background-position: -20px 0 }
 .clea { background-position: -40px 0 }
 .move { background-position: -60px 0 }

@@ -41,7 +41,7 @@
             s = () => `<div class="wqEDbtn sept"></div>`;
         let h = [];
 
-        h.push(`<div id="wqEDt" unselectable="on" ><div>`);
+        h.push(`<div id="wqEDt" unselectable="on"><div>`);
         for (var i = 0; i < 2; i++) h.push(p(i));
         h.push(s());
         for (var i = 2; i < 4; i++) h.push(p(i));
