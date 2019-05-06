@@ -490,8 +490,8 @@
 			let k = q("VBt");
 			if (k) v.del();
 			k = [];
-			k.p(`<div id="VBt" class="pa Vb db"></div>`);
-			k.p(`<div id="VFt" class="pa Vf db gw bd"`);
+			k.p(`<div id="VBt" class="pf Vb db"></div>`);
+			k.p(`<div id="VFt" class="pf Vf db gw bd"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`><div id="VHt" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
 			k.p(`<div class="p51 df vc ts"><span>${J.t} </span>`);
@@ -546,8 +546,8 @@
 			let k = q("VBc");
 			if (k) v.del("c");
 			k = [];
-			k.p(`<div id="VBc" class="pa Vb db"></div>`);
-			k.p(`<div id="VFc" class="pa Vf db p5 gw bd"`);
+			k.p(`<div id="VBc" class="pf Vb db"></div>`);
+			k.p(`<div id="VFc" class="pf Vf db p5 gw bd"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`>`);
 			k.p(`<b class="vt p05 if fxl">&#xed19;</b><div class="di">${J.h}</div>`);
@@ -568,7 +568,7 @@
 			let k = q("VFi");
 			if (k) v.del("i");
 			k = [];
-			k.p(`<div id="VFi" class="pa Vf db bd p5 `);
+			k.p(`<div id="VFi" class="pf Vf db bd p5 `);
 			if (J.m == 1) k.p(`gr"><i class="ir"></i><b class="vm p5 if fxl">&#xed1c;`);
 			else k.p(`gy"><i class="iy"></i><b class="vm p5 if fxl">&#xed1b;`);
 			k.p(`</b><div class="di p5 fs">${J.t}</div></div>`);
@@ -581,8 +581,8 @@
 			let k = q("VBl");
 			if (k) v.del("l");
 			k = [];
-			k.p(`<div id="VBl" class="pa Vb db"></div>`);
-			k.p(`<div id="VFl" class="pa Vf db p5 gw bd">`);
+			k.p(`<div id="VBl" class="pf Vb db"></div>`);
+			k.p(`<div id="VFl" class="pf Vf db p5 gw bd">`);
 			k.p(`<b class="Vr di p5 if fxl vm">&#xe6c6;</b>`);
 			k.p(`<span class="fs p01">正在加载…</span></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));

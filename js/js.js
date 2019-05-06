@@ -192,10 +192,12 @@ const wq = {
             }
         });
 
+        m.m({ e: q("wMain"), id: "Rmode2", t: "模块二", c: "wt", m: 1 });
         m.m({ e: q("wMain"), id: "Rmode3", c: "wt", m: 1 });
-        m.m({ e: q("wMain"), id: "Rmode2", t: "模块二", c: "wt", w: "20rem", m: 1 });
+        m.m({ e: q("wMain"), id: "Rmode4", t: "模块四", c: "wt", w: "20rem", m: 1 });
 
         q("_w_M").h = "HTML文本";
+        q("Rmode2").h = `<div class="p5" style="height: 12rem" contenteditable></div>`;
         wq.pl();
 		/*
 		w({

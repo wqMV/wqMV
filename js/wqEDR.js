@@ -1,97 +1,166 @@
 "use strict";
 (() => {
     const ed = O => {
-        const be = ["sour", "draf",
-            "clea", "move",
-            "bold", "ital", "unde", "stri", "supe", "subs",
-            "unor", "orde",
-            "left", "cent", "righ",
-            "link", "imag",
-            "full",
-        ], bc = ["视图/源码", "读/写草稿",
-            "清空文档", "清除格式",
-            "粗体", "斜体", "下划线", "删除线", "上标", "下标",
-            "无序列表", "有序列表",
-            "左对齐", "居中对齐", "右对齐",
-            "增/删链接", "图片",
-            "全屏"
-        ], bx = ["_sour", "_draf",
-            "_clea", "removeformat",
-            "bold", "italic", "underline", "strikethrough", "superscript", "subscript",
-            "insertunorderedlist", "insertorderedlist",
-            "justifyleft", "justifycenter", "justifyright",
-            "_link", "_imag",
-            "_full"
-        ], cl = {
-            "crimson": "红色",
-            "seagreen": "绿色",
-            "#28d": "蓝色",
-            "#aee": "青色",
-            "#eae": "粉色",
-            "#eea": "黄色"
-        }, c = (e, n, j) => {
-            let k = [];
-            k.push(`<select id="wqED${e}" onchange="ed.s('${e}')">`);
-            k.push(`<option value="" selected>${n}</option>`);
-            for (const i in j) k.push(`<option value="${i}">${j[i]}</option>`);
-            k.push(`</select>`);
-            return k.join("");
-        },
-            p = n => `<div class="wqEDbtn ${be[n]}" onmousedown="return false" title="${bc[n]}"><div class="${be[n]} icon" onclick="ed.e('${bx[n]}')"></div></div>`,
-            s = () => `<div class="wqEDbtn sept"></div>`;
-        let h = [];
+        const h = [];
+        h.push(`<div id="wqEDR" class="wqEDc"><div class="wqEDt" unselectable="on" onmousedown="return false">`);
+        for (let i = 0, ct = ed.bt.length; i < ct; i++) {
+            for (let j = 0; j < ed.bt[i].length; j++) {
+                h.p(`<div class="wqEDi ef" title="${ed.bt[i][j].cn}"`);
+                if (ed.bt[i][j].t === 1) h.p(` onclick="ed.e('${ed.bt[i][j].en}')"`);
+                else if (ed.bt[i][j].t === 4) h.p(` onclick="ed.${ed.bt[i][j].en}()"`);
+                else h.p(` onmouseover="ed.ov(${i},${j},${ed.bt[i][j].t})"`);
+                h.p(`>${ed.bt[i][j].im}</div >`);
+            }
+            if (i < ct - 1) h.p(`<div class="wqEDs ef">&#xe606;</div>`);
+        }
+        h.push(`</div>`);
+        h.push(`<div id="wqEDe" style="height: 12rem" tabindex="0" contenteditable></div></div>`);
 
-        h.push(`<div id="wqEDt" unselectable="on"><div>`);
-        for (var i = 0; i < 2; i++) h.push(p(i));
-        h.push(s());
-        for (var i = 2; i < 4; i++) h.push(p(i));
-        h.push(s());
-        h.push(c("forecolor", "前景", cl));
-        h.push(c("backcolor", "背景", cl));
-        h.push(s());
-        h.push(c("formatblock", "段落", {
-            div: "正文",
-            p: "段落",
-            h1: "标题1",
-            h2: "标题2",
-            h3: "标题3"
-        }));
-        h.push(c("fontsize", "大小", {
-            "1": "很小",
-            "2": "小",
-            "3": "正常",
-            "4": "大",
-            "5": "很大",
-            "6": "特大",
-            "7": "最大"
-        }));
-        h.push(s());
-        h.push(`</div><div onmousedown="return false">`);
-        for (var i = 4; i < 10; i++) h.push(p(i));
-        h.push(s());
-        for (var i = 10; i < 12; i++) h.push(p(i));
-        h.push(s());
-        for (var i = 12; i < 15; i++) h.push(p(i));
-        h.push(s());
-        for (var i = 15; i < 17; i++) h.push(p(i));
-        h.push(s());
-        h.push(p(17));
-        h.push(`</div></div>`);
-        h.push(`<div id="wqEDR" contenteditable="true" tabindex="0"></div>`);
-        O.style["text-align"] = "left";
-        O.style["padding"] = "5px";
         O.innerHTML = h.join("");
-        ed.o = O;
-        ed.g = document.getElementById("wqEDR");
+        ed.o = document.getElementById("wqEDR");;
+        ed.g = document.getElementById("wqEDe");
         ed.g.onpaste = e => {
             document.execCommand('insertText', false, e.clipboardData.getData("Text"));
             return false;
         };
     };
 
-    ed.o = 0;
-    ed.g = 0;
+    ed.cl = {
+        "crimson": "红色",
+        "seagreen": "绿色",
+        "#28d": "蓝色",
+        "#aee": "青色",
+        "#eae": "粉色",
+        "#eea": "黄色"
+    };
+    ed.bt = [
+        [
+            {
+                en: "clear",
+                cn: "清空文档",
+                im: "&#xe7bb;",
+                t: 4
+            },
+            {
+                en: "removeformat",
+                cn: "清除格式",
+                im: "&#xe61a;",
+                t: 1
+            }
+        ],
+        [
+            {
+                en: "forecolor",
+                cn: "前景色",
+                im: "&#xe7fc;",
+                t: 2,
+                l: ed.cl
+            },
+            {
+                en: "backcolor",
+                cn: "背景色",
+                im: "&#xe802;",
+                t: 2,
+                l: ed.cl
+            },
+            {
+                en: "fontsize",
+                cn: "大小",
+                im: "&#xe7fe;",
+                t: 2,
+                l: {
+                    "1": "很小",
+                    "2": "小",
+                    "3": "正常",
+                    "4": "大",
+                    "5": "很大",
+                    "6": "特大",
+                    "7": "最大"
+                }
+            },
+            {
+                en: "style",
+                cn: "样式",
+                im: "&#xe7ff;",
+                t: 3,
+                l: {
+                    bold: ["&#xe7fb;", "粗体"],
+                    italic: ["&#xe801;", "斜体"],
+                    underline: ["&#xe800;", "下划线"],
+                    strikethrough: ["&#xe7ff;", "删除线"]
+                }
+            }
+        ],
+        [
+            {
+                en: "formatblock",
+                cn: "排版",
+                im: "&#xe7fa;",
+                t: 3,
+                l: {
+                    div: "正文",
+                    p: "段落",
+                    h1: "标题1",
+                    h2: "标题2",
+                    h3: "标题3"
+                }
+            },
+            {
+                en: "list",
+                cn: "列表",
+                im: "&#xe7f5;",
+                t: 3,
+                l: {
+                    insertunorderedlist: ["&#xe7f5;", "无序列表"],
+                    insertorderedlist2: ["&#xe7f6;", "有序列表"]
+                }
+            },
+            {
+                en: "just",
+                cn: "对齐",
+                im: "&#xe7f8;",
+                t: 3,
+                l: {
+                    justifyleft: ["&#xe7f9;", "左对齐"],
+                    justifycenter: ["&#xe7f8;", "居中对齐"],
+                    justifyright: ["&#xe7f7;", "右对齐"]
+                }
+            }
+        ],
+        [
+            {
+                en: "look",
+                cn: "表情",
+                im: "&#xe603;",
+                t: 4
+            },
+            {
+                en: "link",
+                cn: "增/删链接",
+                im: "&#xe7e2;",
+                t: 4
+            },
+            {
+                en: "image",
+                cn: "图片",
+                im: "&#xe7de;",
+                t: 4
+            }
+        ],
+        [
+            {
+                en: "full",
+                cn: "全屏",
+                im: "&#xe7ec;",
+                t: 4
+            }
+        ]
+    ];
 
+    ed.ov = (S, N, T) => {
+        let o = ed.bt[S][N].l;
+        console.log();
+    };
     // H Html
     ed.ht = H => {
         let k = document.createElement("div");
@@ -105,32 +174,32 @@
         return k.textContent;
     };
 
-    ed.d = () => {
+    ed.dl = () => {
         let k = document.getElementById("wqEDb");
         if (k) k.parentElement.removeChild(k);
-        k = document.getElementById("wqEDc");
+        k = document.getElementById("wqEDf");
         if (k) k.parentElement.removeChild(k);
     };
-    ed.c = (H, C) => {
+    ed.fr = (H, C) => {
         let x = 0, y = 0, k = document.getElementById("wqEDb");
-        if (k) ed.d();
+        if (k) ed.dl();
         else {
             k = [];
             k.push(`<div id="wqEDb"></div>`);
-            k.push(`<div id="wqEDc">`);
-            k.push(`<div id="wqEDf">${H}</div>`);
+            k.push(`<div id="wqEDf">`);
+            k.push(`<div id="wqEDti">${H}</div>`);
             k.push(`<div style="padding: 5px 1rem 0 1rem">`);
             k.push(`<input id ="wqEDok" type="button" value="确定">`);
-            k.push(`<input type="button" onclick="ed.d()" value="关闭">`);
+            k.push(`<input type="button" onclick="ed.dl()" value="关闭">`);
             k.push(`</div></div>`);
             document.body.insertAdjacentHTML("beforeEnd", k.join(""));
             document.getElementById("wqEDok").onclick = () => { if (typeof C == "function") C() };
-            k = document.getElementById("wqEDf").children[0];
+            k = document.getElementById("wqEDti").children[0];
             if (k.tagName === "INPUT") {
                 k.focus();
                 k.select();
             }
-            k = document.getElementById("wqEDc");
+            k = document.getElementById("wqEDf");
             if (k) {
                 x = (window.innerWidth - k.offsetWidth) / 2;
                 y = (window.innerHeight - k.offsetHeight) / 2 - 20;
@@ -141,22 +210,22 @@
             }
         }
     };
-    ed.m = C => {
+    ed.im = C => {
         const imch = e => {
             let k = document.getElementById("Ecanv"),
                 f = e.target,
                 x = f.width, y = f.height;
             e = x / y;
-            if (x > 576) x = 576, y = parseInt(576 / e);
+            if (x > 400) x = 400, y = parseInt(400 / e);
             k.width = x;
             k.height = y;
             k = k.getContext("2d");
             k.fillStyle = "#fff";
             k.fillRect(0, 0, x, y);
             k.drawImage(f, 0, 0, x, y);
-            k.font = "20px Tahoma";
-            k.fillStyle = "rgba(255,255,255,0.5)";
-            k.fillText(`@${location.host}`, x - 200, y - 50);
+            k.font = "14px Tahoma";
+            k.fillStyle = "rgba(255, 255, 255, .6)";
+            k.fillText(`@${location.host}`, x - 200, y - 20);
         }, fsch = () => {
             let f = document.getElementById("Eimag").files[0];
             if (f) {
@@ -174,8 +243,21 @@
                 fr.readAsDataURL(f);
             }
         };
-        ed.c(`上传图片：<input id="Eimag" type="file" accept="image/*"><div style="padding: .5rem"><canvas id="Ecanv" style="width: 576px; height: 324px"></canvas></div>`, C);
+        ed.fr(`上传图片：<input id="Eimag" type="file" accept="image/*"><div style="padding: .5rem"><canvas id="Ecanv" style="width: 400px; height: 225px"></canvas></div>`, C);
         document.getElementById("Eimag").onchange = fsch;
+    };
+
+    ed.o = 0;
+    ed.g = 0;
+
+    ed.r = () => {
+        let k = window.getSelection(), r = 0;
+        if (k.type === "None") return 1;
+        r = k.focusNode;
+        for (; r; r = r.parentNode) if (r.id === "wqEDe") break;
+        if (!r) return 1;
+        r = k.getRangeAt(0);
+        return { k: k, r: r, c: r.collapsed };
     };
     ed.e = c => {
         if (c.startsWith("_")) ed[c.replace("_", "")]();
@@ -188,94 +270,39 @@
         s.value = "";
     };
 
-    ed.sour = () => {
-        let o = document.getElementById("wqEDx"),
-            x = ed.g.clientWidth - 80, y = ed.g.clientHeight - 60, i = ed.g.innerHTML;
-        if (o) {
-            i = o.value;
-            ed.g.innerHTML = i;
-            ed.g.focus();
-        } else {
-            ed.g.innerHTML = `<textarea id="wqEDx" style="width: ${x}px; height: ${y}px">${i}</textarea>`;
-            document.getElementById("wqEDx").focus();
-        }
-    };
-    ed.draf = () => {
-        let l = function () {
-            let k = this.id, r = k.startsWith("_wqDr") ? 0 : 1, n = k.replace(/_wqDr|_wqDw/g, "");
-            k = localStorage;
-            if (r) {
-                k.setItem("wqEDDn" + n, document.getElementById("_wqDn" + n).value);
-                k.setItem("wqEDDt" + n, document.getElementById("wqEDR").innerHTML);
-            } else {
-                document.getElementById("wqEDR").innerHTML = k.getItem("wqEDDt" + n);
-                document.getElementById("wqEDR").focus();
-            }
-            ed.d();
-        }, h = [];
-        h.push(`<div style="font-size: small; color: crimson">提示：草稿为客户端存储，不能保证数据的完整性，请您提前做好相关文档的备份。</div>`);
-        for (let i = 1; i < 3; i++) {
-            let s = localStorage.getItem("wqEDDn" + i);
-            h.push(`<li>草稿${i}，文章名：`);
-            h.push(`<input id="_wqDn${i}" style="width:12rem" type="text" value="${s ? s : ''}">`);
-            h.push(`<input id="_wqDr${i}" type="button" value="读取">`);
-            h.push(`<input id="_wqDw${i}" type="button" value="保存">`);
-            h.push(`</li>`);
-        }
-        ed.c(h.join(""), () => { ed.d() });
-        for (let i = 1; i < 3; i++) {
-            document.getElementById("_wqDr" + i).onclick = l;
-            document.getElementById("_wqDw" + i).onclick = l;
-        }
-        document.getElementById("_wqDn1").select();
-    };
+    ed.clear = () => { ed.g.innerHTML = "" };
     ed.link = () => {
-        let k = window.getSelection(), r = 0;
-        if (k.type === "None") return;
-        r = k.focusNode.parentNode;
-        for (; r; r = r.parentNode) if (r.id === "wqEDR") break;
-        if (!r) return;
-        r = k.getRangeAt(0);
-        if (r.collapsed) return;
-        ed.c(`链接地址：<input id="wqElink" type="text">`, () => {
+        let k = ed.r();
+        if (k == 1 || k.c) return;
+        ed.fr(`链接地址：<input id="wqElink" type="text">`, () => {
             let s = document.getElementById("wqElink").value;
-            ed.d();
-            k.removeAllRanges();
-            k.addRange(r);
-            r = k.toString();
-            if (s) document.execCommand("insertHTML", false, `<a href="${s}" target="_blank">${r}</a>`);
+            ed.dl();
+            k.k.removeAllRanges();
+            k.k.addRange(k.r);
+            k = k.k.toString();
+            if (s) document.execCommand("insertHTML", false, `<a href="${s}" target="_blank">${k}</a>`);
             else document.execCommand("unlink", false, null);
         });
     };
-    ed.imag = () => {
-        let k = document.getSelection(), x = 0, y = 0;
-        if (k.type === "None") return;
-        k = k.getRangeAt(0);
-        x = k.startOffset;
-        y = k.endOffset;
-        x = x > y ? x : y;
-        ed.m(() => {
-            let s = document.getElementById("Ecanv"),
-                r = document.createRange();
+    ed.image = () => {
+        let k = ed.r();
+        if (k == 1) return;
+        ed.im(() => {
+            let s = document.getElementById("Ecanv");
             s = s.toDataURL('image/jpeg', 0.9);
-            ed.d();
-            k = k.commonAncestorContainer;
-            r.selectNode(k);
-            r.setEnd(k, x);
-            k = document.getSelection();
-            if (s) document.execCommand("insertHTML", false, `<div><img src="${s}"></div>`);
+            ed.dl();
+            k.k.removeAllRanges();
+            k.k.addRange(k.r);
+            if (s) document.execCommand("insertHTML", false, `<img src="${s}">`);
         });
     };
-    ed.clea = () => { ed.e("selectall"); ed.e("delete"); };
     ed.full = () => {
-        if (ed.o.className) {
-            ed.o.className = "";
-            ed.o.style.width = "";
+        if (ed.o.className === "wqEDw") {
+            ed.o.className = "wqEDc";
             ed.g.style.height = "12rem";
         } else {
-            ed.o.className = "wqEDful";
-            ed.o.style.width = "calc(100vw - 10px)";
-            ed.g.style.height = "calc(100vh - 72px)";
+            ed.o.className = "wqEDw";
+            ed.g.style.height = "";
         }
     };
 

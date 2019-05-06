@@ -1,36 +1,21 @@
-#wqEDb { position: absolute; z-index: 4001; height: 100vh; width: 100vw; top: 0; left: 0; margin: 0; opacity: 0.5; background: gray }
-#wqEDc { position: absolute; z-index: 4002; padding: 5px 1rem; text-align: center; background: ivory; border: 1px solid silver; border-radius: 5px; box-shadow: 2px 5px 1rem gray }
-
-#wqEDt, #wqEDR { padding: .5rem; border-radius: 3px; box-shadow: 0 0 1px rgba(99, 99, 99, .8) }
-#wqEDR { overflow-y: scroll; height: 12rem; outline: none }
-#wqEDt select { margin: 0 5px; padding: 2px; border-radius: 3px }
-#wqEDt>div { display: inline-block }
-.wqEDful { position: absolute; top: 0; left: 0; background: #000 }
-.wqEDful > div { background: snow }
-.wqEDbtn { display:inline-block; margin: 0 1px; padding: 1px; vertical-align: middle }
-
+#wqEDb { position: fixed; z-index: 202; left: 0; top: 0; width: 100vw; height: 100vh }
+#wqEDf {
+  position: fixed;
+  z-index: 203;
+  padding: .5rem;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1rem rgba(99, 99, 99, .3);
+  text-align: center;
+  background: ivory
+}
+#wqEDR { z-index: 201; display: flex; flex-direction: column; left: 0; top: 0 }
+#wqEDe { flex: auto; overflow-y: scroll; outline: none; table-layout: fixed }
+.wqEDt, #wqEDe { padding: .5rem; box-shadow: 0 0 1px rgba(99, 99, 99, .3) }
+.wqEDt div { display: inline-block }
 @font-face { font-family: "efont"; src: url("../font/wqEDR.ttf") }
-.ef { font-family: "efont" !important }
-
-
-.sept { width: 2px; height: 20px; background: url('../img/ed.png') -360px 0 }
-.icon { width: 20px; height: 20px; border: 1px solid transparent; background-repeat: no-repeat; background:url("../img/ed.png") }
-.icon:hover, .icon:active { border: 1px solid #08e; background-color: #cff }
-.sour { background-position: 0 0 }
-.draf { background-position: -20px 0 }
-.clea { background-position: -40px 0 }
-.move { background-position: -60px 0 }
-.bold { background-position: -80px 0 }
-.ital { background-position: -100px 0 }
-.unde { background-position: -120px 0 }
-.stri { background-position: -140px 0 }
-.supe { background-position: -160px 0 }
-.subs { background-position: -180px 0 }
-.unor { background-position: -200px 0 }
-.orde { background-position: -220px 0 }
-.left { background-position: -240px 0 }
-.cent { background-position: -260px 0 }
-.righ { background-position: -280px 0 }
-.link { background-position: -300px 0 }
-.imag { background-position: -320px 0 }
-.full { background-position: -340px 0 }
+.ef { font-family: "efont" !important; font-size: x-large }
+.wqEDi, .wqEDs { padding: 1px 3px; border: 1px solid transparent; cursor: default }
+.wqEDs { padding: 0; margin: 0 -.5rem; color: rgba(99, 99, 99, .3) }
+.wqEDi:hover { border: 1px solid #08e; background-color: #cff }
+.wqEDc { position: relative }
+.wqEDw { position: fixed; width: 100vw; height: 100vh; background: snow }

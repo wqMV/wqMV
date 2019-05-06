@@ -67,6 +67,7 @@ summary, .cp { cursor: pointer }
 .d1 { flex: auto }
 .dc { flex-direction: column }
 .dw { flex-wrap: wrap }
+.dy { overflow-y: scroll }
 
 .z1 { z-index: 11 }
 .z2 { z-index: 12 }
