@@ -2,10 +2,9 @@
 const edit = {
     to: () => {
         ed(document.getElementById("Med"));
+        ed.p(`测试文本&lt;div&gt;&amp;lt;div&amp;gt;测试文本&amp;lt;/div&amp;gt;&lt;/div&gt;`);
         q("wTJ").onclick = () => {
-            let h = ed.ht(q("wqEDR").h);
-            console.log(h);
-            console.log(ed.hh(h));
+            console.log(ed.v());
         };
     },
 

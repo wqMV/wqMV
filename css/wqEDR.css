@@ -1,3 +1,4 @@
+#wqEDR { z-index: 201; display: flex; flex-direction: column; left: 0; top: 0 }
 #wqEDb { position: fixed; z-index: 202; left: 0; top: 0; width: 100vw; height: 100vh }
 #wqEDf {
   position: fixed;
@@ -8,14 +9,29 @@
   text-align: center;
   background: ivory
 }
-#wqEDR { z-index: 201; display: flex; flex-direction: column; left: 0; top: 0 }
+#wqEDf li, #wqEDf div { padding: 5px; margin: 0; text-align: left; list-style: none; cursor: default }
+#wqEDf span { vertical-align: middle; cursor: default }
+#wqEDf li:hover, #wqEDf div span:hover { background: rgba(99, 99, 99, .3) !important }
+#wqEDf input {
+  padding: 7px 1rem;
+  margin: 0 .5rem;
+  border: 1px solid rgba(99, 99, 99, .3);
+  border-radius: 3px;
+  box-shadow: inset 0 0 1px rgba(99, 99, 99, .6);
+  text-align: left
+}
+#wqEDf input:hover { border-color: #08e; background: azure; color: #08e }
+#wqEDf [type='file'] { padding-top: 1px; padding-bottom: 1px }
+#wqEDf ::-webkit-file-upload-button { width: 5rem; height: 28px; border: 1px solid rgba(99, 99, 99, .3); border-radius: 3px; background: white }
 #wqEDe { flex: auto; overflow-y: scroll; outline: none; table-layout: fixed }
-.wqEDt, #wqEDe { padding: .5rem; box-shadow: 0 0 1px rgba(99, 99, 99, .3) }
+.wqEDt, #wqEDe { padding: .5rem; box-shadow: 0 0 1px rgba(99, 99, 99, .6) }
 .wqEDt div { display: inline-block }
-@font-face { font-family: "efont"; src: url("../font/wqEDR.ttf") }
-.ef { font-family: "efont" !important; font-size: x-large }
 .wqEDi, .wqEDs { padding: 1px 3px; border: 1px solid transparent; cursor: default }
+.wqEDi:hover, .wqEDh { padding: 1px 3px; border: 1px solid #08e; background-color: #cff }
 .wqEDs { padding: 0; margin: 0 -.5rem; color: rgba(99, 99, 99, .3) }
-.wqEDi:hover { border: 1px solid #08e; background-color: #cff }
 .wqEDc { position: relative }
 .wqEDw { position: fixed; width: 100vw; height: 100vh; background: snow }
+
+@font-face { font-family: "efont"; src: url("../font/wqEDR.ttf") }
+.ef, .sf { font-family: "efont" !important; font-size: x-large }
+.sf { color: sienna }
