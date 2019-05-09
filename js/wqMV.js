@@ -516,20 +516,18 @@
 				J.e.open = false;
 				v.del("p");
 			}, lf = () => {
-				let tp = { x: J.e.offsetLeft, y: J.e.offsetTop };
+				let tp = { x: J.e.offsetLeft + J.e.offsetWidth - 8, y: J.e.offsetTop + J.e.offsetHeight + 8 };
 				let vl = J.e.offsetParent;
 				while (vl) {
 					tp.x += vl.offsetLeft;
 					tp.y += vl.offsetTop;
 					vl = vl.offsetParent;
 				}
-				tp.x += J.e.offsetWidth - 8;
-				tp.y += J.e.offsetHeight + 8;
 				return tp;
 			}, k = q("VBp"), x = lf();
 			if (k) v.del("p");
 			k = [];
-			k.p(`<div id="VBp" class="pa Vb db" style="background: transparent"></div>`);
+			k.p(`<div id="VBp" class="pf Vb db" style="background: transparent"></div>`);
 			k.p(`<div id="VFp" class="pa Vf db bd gw">`);
 			k.p(`<div class="bb p51">${J.t}</div>`);
 			k.p(`<div class="p51">${J.h}</div></div>`)
@@ -563,15 +561,15 @@
 			v.adi("c");
 		},
 
-		// J Json: t Text, m Mode 1 Red
-		i: J => {
+		// T Text, M Mode 1 Red
+		i: (T, M) => {
 			let k = q("VFi");
 			if (k) v.del("i");
 			k = [];
 			k.p(`<div id="VFi" class="pf Vf db bd p5 `);
-			if (J.m == 1) k.p(`gr"><i class="ir"></i><b class="vm p5 if fxl">&#xed1c;`);
+			if (M == 1) k.p(`gr"><i class="ir"></i><b class="vm p5 if fxl">&#xed1c;`);
 			else k.p(`gy"><i class="iy"></i><b class="vm p5 if fxl">&#xed1b;`);
-			k.p(`</b><div class="di p5 fs">${J.t}</div></div>`);
+			k.p(`</b><div class="di p5 fs">${T}</div></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 			v.adi("i");
 			setTimeout(() => { v.del("i") }, 1200);

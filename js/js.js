@@ -8,8 +8,8 @@ const wq = {
             m: 2
         });
     },
-    i: () => { v.i({ t: "警告警告警告", m: 1 }) },
-    it: () => { v.i({ t: "tipstipstips" }) },
+    i: () => { v.i("警告警告警告", 1) },
+    it: () => { v.i("tipstipstips") },
     c: () => {
         v.c({
             h: "HTML文本<br>您确定吗？",

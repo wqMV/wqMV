@@ -9,7 +9,7 @@
   text-align: center;
   background: ivory
 }
-#wqEDf li, #wqEDf div { padding: 5px; margin: 0; text-align: left; list-style: none; cursor: default }
+#wqEDf li, #wqEDf div { padding: 5px; margin: 0; line-height: 1; text-align: left; list-style: none; cursor: default }
 #wqEDf span { vertical-align: middle; cursor: default }
 #wqEDf li:hover, #wqEDf div span:hover { background: rgba(99, 99, 99, .3) !important }
 #wqEDf input {
