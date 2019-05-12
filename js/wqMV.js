@@ -77,7 +77,7 @@
 		J = typeof J === "object" && J.d ? J : 0;
 		if (typeof E === "object" && E.d) J = E, E = document.body;
 		E = E || document.body;
-		if (S.startsWith(".")) E = E.getElementsByClassName(S.substr(1));
+		if (S.startsWith(".")) E = E.querySelectorAll(S.substr(1));
 		else if (S.startsWith(":")) E = document.getElementsByName(S.substr(1));
 		else if (S.startsWith("@")) E = E.getElementsByTagName(S.substr(1));
 		else if (S) E = document.getElementById(S);
@@ -491,7 +491,7 @@
 			if (k) v.del();
 			k = [];
 			k.p(`<div id="VBt" class="pf Vb db"></div>`);
-			k.p(`<div id="VFt" class="pf Vf db gw bd"`);
+			k.p(`<div id="VFt" class="pf Vf db gy bd"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`><div id="VHt" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
 			k.p(`<div class="p51 df vc ts"><span>${J.t} </span>`);
@@ -515,24 +515,17 @@
 			let o = () => {
 				J.e.open = false;
 				v.del("p");
-			}, lf = () => {
-				let tp = { x: J.e.offsetLeft + J.e.offsetWidth - 8, y: J.e.offsetTop + J.e.offsetHeight + 8 };
-				let vl = J.e.offsetParent;
-				while (vl) {
-					tp.x += vl.offsetLeft;
-					tp.y += vl.offsetTop;
-					vl = vl.offsetParent;
-				}
-				return tp;
-			}, k = q("VBp"), x = lf();
+			}, lf = () => ({ x: J.e.offsetLeft + J.e.offsetWidth, y: J.e.offsetTop + J.e.offsetHeight + 8 }),
+				k = q("VBp"), x = lf();
 			if (k) v.del("p");
 			k = [];
 			k.p(`<div id="VBp" class="pf Vb db" style="background: transparent"></div>`);
-			k.p(`<div id="VFp" class="pa Vf db bd gw">`);
+			k.p(`<div id="VFp" class="pa Vf db bd gy" style="visibility: visible">`);
 			k.p(`<div class="bb p51">${J.t}</div>`);
 			k.p(`<div class="p51">${J.h}</div></div>`)
-			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
+			J.e.offsetParent.insertAdjacentHTML("beforeEnd", k.j(""));
 			k = q("VFp");
+			k.style.left = "-6000px";
 			x.x = x.x - k.offsetWidth;
 			k.style.left = x.x + "px";
 			k.style.top = x.y + "px";
@@ -545,7 +538,7 @@
 			if (k) v.del("c");
 			k = [];
 			k.p(`<div id="VBc" class="pf Vb db"></div>`);
-			k.p(`<div id="VFc" class="pf Vf db p5 gw bd"`);
+			k.p(`<div id="VFc" class="pf Vf db p5 gy bd"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`>`);
 			k.p(`<b class="vt p05 if fxl">&#xed19;</b><div class="di">${J.h}</div>`);
@@ -567,8 +560,8 @@
 			if (k) v.del("i");
 			k = [];
 			k.p(`<div id="VFi" class="pf Vf db bd p5 `);
-			if (M == 1) k.p(`gr"><i class="ir"></i><b class="vm p5 if fxl">&#xed1c;`);
-			else k.p(`gy"><i class="iy"></i><b class="vm p5 if fxl">&#xed1b;`);
+			if (M == 1) k.p(`gr"><b class="vm p5 if fxl">&#xed1c;`);
+			else k.p(`gy"><b class="vm p5 if fxl">&#xed1b;`);
 			k.p(`</b><div class="di p5 fs">${T}</div></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
 			v.adi("i");
@@ -580,7 +573,7 @@
 			if (k) v.del("l");
 			k = [];
 			k.p(`<div id="VBl" class="pf Vb db"></div>`);
-			k.p(`<div id="VFl" class="pf Vf db p5 gw bd">`);
+			k.p(`<div id="VFl" class="pf Vf db p5 gy bd">`);
 			k.p(`<b class="Vr di p5 if fxl vm">&#xe6c6;</b>`);
 			k.p(`<span class="fs p01">正在加载…</span></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));

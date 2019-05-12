@@ -196,6 +196,9 @@ const wq = {
         m.m({ e: q("wMain"), id: "Rmode3", c: "wt", m: 1 });
         m.m({ e: q("wMain"), id: "Rmode4", t: "模块四", c: "wt", w: "20rem", m: 1 });
 
+        ed(q("wEdr"));
+        ed.p(`测试文本&lt;div&gt;&amp;lt;div&amp;gt;测试文本&amp;lt;/div&amp;gt;&lt;/div&gt;`);
+
         q("_w_M").h = "HTML文本";
         q("Rmode2").h = `<div class="p5" style="height: 12rem" contenteditable></div>`;
         wq.pl();
