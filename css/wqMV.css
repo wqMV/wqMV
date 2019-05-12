@@ -88,11 +88,11 @@ summary, .cp { cursor: pointer }
 .db { display: block }
 .di { display: inline-block }
 .dh { display: none }
-.d0 { flex: none }
-.d1 { flex: 1 }
 .dc { flex-direction: column }
 .dw { flex-wrap: wrap }
 .dy { overflow-y: scroll }
+.d0 { flex: none }
+.d1 { flex: auto }
 
 .z1 { z-index: 11 }
 .z2 { z-index: 12 }
