@@ -90,9 +90,9 @@ summary, .cp { cursor: pointer }
 .dh { display: none }
 .dc { flex-direction: column }
 .dw { flex-wrap: wrap }
-.dy { overflow-y: scroll }
+.dy { overflow: hidden; overflow-y: scroll }
 .d0 { flex: none }
-.d1 { flex: auto }
+.d1 { flex: 1 }
 
 .z1 { z-index: 11 }
 .z2 { z-index: 12 }
@@ -127,15 +127,15 @@ summary, .cp { cursor: pointer }
 @font-face { font-family: "ifont"; src: url("../font/wqMV.ttf") }
 .if { font-family: "ifont" !important }
 
+.vt { vertical-align: top }
+.vc { align-items: center }
+.vs { align-items: flex-start }
+.vm { vertical-align: middle }
 .tl { text-align: left }
 .tr { text-align: right }
 .tc { text-align: center }
 .tj { justify-content: center }
 .ts { justify-content: space-between }
-.vt { vertical-align: top }
-.vc { align-items: center }
-.vs { align-items: flex-start }
-.vm { vertical-align: middle }
 
 .gt { background: var(--ct) }
 .gu { background: var(--cu) }
