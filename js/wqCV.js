@@ -19,13 +19,14 @@
         J.d = JSON.parse(sessionStorage.getItem("wqCV_" + J.e));
         J.da = J.d.da || 0;
         J.d = J.d.d;
+        J.t = document.getElementById(J.e).offsetHeight - J.t - 1;
         for (let i = 0; i < J.d.length; i++) {
             let h = [],
                 nl = J.l + parseInt(J.w * (i + 0.5)) - parseInt(J.w / 6),
                 nh = J.h * J.d[i];
             h.push(`<div class="wqCVc" style="`);
             h.push(`left: ${nl}px;`);
-            h.push(` bottom: ${J.b}px;`);
+            h.push(` top: ${J.t - nh}px;`);
             h.push(` width: ${parseInt(J.w / 3)}px;`);
             h.push(` height: ${nh}px;`);
             h.push(` background: ${J.c}`);
@@ -33,7 +34,7 @@
             h.push(`></div>`);
             h.push(`<div class="wqCVn" style="`);
             h.push(`left: ${nl}px;`);
-            h.push(` bottom: ${J.b + nh + 2}px`);
+            h.push(` top: ${J.t - nh - 14}px`);
             h.push(`">${J.d[i]}</div>`);
             setTimeout(() => { l(J.e, h.join('')) }, i * 127);
         }
@@ -117,7 +118,7 @@
             cv.lt({
                 e: J.id,
                 l: J.x,
-                b: J.b,
+                t: J.b,
                 w: J.w,
                 h: J.m,
                 c: d.c || "#08e"
@@ -135,7 +136,7 @@
         }, o = document.querySelectorAll(".wqCV");
 
         if (o.length) {
-            for (const i of o) i.innerHTML = "";
+            for (let i = 0; i < o.length; i++)  o[i].innerHTML = "";
             clearTimeout(cv.rs.t);
             cv.rs.t = setTimeout(f, 383);
         } else window.removeEventListener("resize", cv.rs, true);
