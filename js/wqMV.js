@@ -608,13 +608,9 @@
 				const k = q("Efs").files[0];
 				if (k) {
 					const fr = new FileReader();
-					J.n = J.n ? parseInt(J.n * 1024000 - 1) : 20479999;
 					fr.onload = () => {
 						if (k.size > J.n) {
-							v.i({
-								t: `文件大小不能超过 ${parseInt((J.n + 1) / 1024000)} MB！`,
-								m: 1
-							});
+							v.i(`文件大小不能超过 ${parseInt((J.n + 1) / 1024000)} MB！`, 1);
 							q("Efs").h = "";
 						} else {
 							q("Efl").h = "2";
@@ -626,6 +622,7 @@
 			}, cnch = k => k.replace(/ |　|,|;|\"|\'|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}/g, "");
 
 			let k = q("VBt");
+			J.n = J.n ? parseInt(J.n * 1024000 - 1) : 20479999;
 			if (k) v.del();
 			k = [];
 			k.p(`<input name="id" type="hidden" value="${J.id}">`);

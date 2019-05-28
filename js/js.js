@@ -68,15 +68,15 @@ const wq = {
             sp = setInterval(ep, 2000)
         }, h = [], sp = 0;
 
-        h.p(`<div id="Mp_wPoll" class="pr df Mp">`);
+        h.p(`<div id="Mp_wPoll" class="Mp">`);
         for (let i = 1; i < 5; i++) {
             h.p(`<input id="Mps_${i}" name="Mpi" n="${i}" type="radio"${i === 1 ? " checked" : ""}>`);
             h.p(`<label for="Mps_${i}"></label>`);
         }
-        h.p(`<div class="pa df wh Mpg">`);
+        h.p(`<div class="Mpg">`);
         for (let i = 1; i < 5; i++)h.p(`<div><span></span><span></span><span></span><span></span></div>`);
         h.p(`</div>`);
-        h.p(`<div class="pa df wh Mpt">`);
+        h.p(`<div class="Mpt">`);
         h.p(`<h3><div>用心·执着</div>`);
         h.p(`<div>精益追求更好</div></h3>`);
         h.p(`<h3><div>原创·原生</div>`);
@@ -86,7 +86,7 @@ const wq = {
         h.p(`<h3><div>Hello·World</div>`);
         h.p(`<div>Welcome to wqMV</div></h3>`);
         h.p(`</div></div>`);
-        h.p(`<div id="Mpn" class="dh">1</div>`);
+        h.p(`<div id="Mpn" class="Mpn">1</div>`);
         q("Rmode3").h = h.j("");
         q("Mp_wPoll").onmouseenter = et;
         q("Mp_wPoll").onmouseleave = el;
