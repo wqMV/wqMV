@@ -10,12 +10,13 @@
         window.addEventListener("resize", cv.rs, true);
     };
 
-    // J Json: e Element, l left, b Bottom, w Width, h Height, c Color
+    // J Json: e Element, l left, t Top, w Width, h Height, c Color
     cv.lt = J => {
         let l = (e, h) => {
             e = document.getElementById(e);
             e.insertAdjacentHTML("beforeEnd", h);
         };
+
         J.d = JSON.parse(sessionStorage.getItem("wqCV_" + J.e));
         J.da = J.d.da || 0;
         J.d = J.d.d;
@@ -44,8 +45,8 @@
     cv.dr = J => {
         let h = [], ct = 0,
             d = JSON.parse(sessionStorage.getItem("wqCV_" + J.id));
-        J.e = document.getElementById(J.id);
 
+        J.e = document.getElementById(J.id);
         h.push(`<div id="${J.id}y" style="left: 0; top: 0; padding: .5rem">${d.y}</div>`);
         h.push(`<div id="${J.id}x" style="padding: .5rem">${d.x}</div>`);
         J.e.insertAdjacentHTML("beforeEnd", h.join(''));

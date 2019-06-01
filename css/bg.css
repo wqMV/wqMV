@@ -1,4 +1,4 @@
-.grg { position: absolute; width: 100%; height: 100%; background: radial-gradient(#08e, #fff) }
+.grg { position: absolute; left: 0; right: 0; width: 100%; height: 100%; background: radial-gradient(#08e, #fff) }
 .grg li {
   position: absolute;
   display: block;
@@ -12,6 +12,6 @@
 }
 .grg li:nth-child(1) { left: 12%; width: 30%; height: 30%; animation-duration: 31s }
 .grg li:nth-child(2) { left: 32%; width: 24%; height: 24%; animation-duration: 23s }
-.grg li:nth-child(3) { left: 40%; width: 18%; height: 18%; animation-duration: 13s }
+.grg li:nth-child(3) { left: 48%; width: 18%; height: 18%; animation-duration: 13s }
 .grg li:nth-child(4) { left: 52%; width: 36%; height: 36%; animation-duration: 47s }
 @keyframes squ { 100% { top: -48% } }
