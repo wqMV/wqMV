@@ -334,23 +334,23 @@
 		// Json: e element, id, t title, c classname, w width, l label Json, m mode: 1 add
 		m: J => {
 			let k = [], o = 0;
-			k.p(`<div class="Mm m5 ${J.c ? J.c : ""}"`);
+			k.p(`<div class="df dc m5 Mm ${J.c ? J.c : ""}"`);
 			if (J.w) k.p(` style="max-width: ${J.w}"`);
 			k.p(`>`);
 			if (J.t) {
 				k.p(`<div class="bb p51"><span>${J.t}</span>`);
 				if (J.l) {
-					k.p(`<div class="Mmr di p01 fs">`);
+					k.p(`<div class="di p01 fs Mmr">`);
 					for (const i in J.l) {
 						k.p(`<label><input class="dh" name="Mm_${J.id}" type="radio"${o ? "" : " checked"}>`);
-						k.p(`<li class="mu tp p05" onclick="${J.l[i]}">${i}</li></label>`);
+						k.p(`<li class="tp p05 mu" onclick="${J.l[i]}">${i}</li></label>`);
 						o = 1;
 					}
 					k.p(`</div>`);
 				}
 				k.p(`</div>`);
 			}
-			k.p(`<div id="${J.id}" class="p51"></div></div>`);
+			k.p(`<div id="${J.id}" class="df dc p51"></div></div>`);
 			J.m === 1 ? J.e.add("be", k.j("")) : J.e.h = k.j("");
 		},
 
@@ -360,7 +360,7 @@
 			k.p(`<div class="Mr">`);
 			for (const i in J.l) {
 				k.p(`<label><input class="dh" name="Mr_${J.e.id}" type="radio"${o ? "" : " checked"}>`);
-				k.p(`<li class="mu tp p5" onclick="${J.l[i]}">${i}</li></label>`);
+				k.p(`<li class="tp p5 mu" onclick="${J.l[i]}">${i}</li></label>`);
 				o = 1;
 			}
 			k.p(`</div>`);
@@ -417,7 +417,7 @@
 			k.p(`<div class="Md">`);
 			k.p(`<details class="di lf tc">`);
 			k.p(`<summary><b class="if fl">${J.l.i}</b><span>${J.t}</span></summary>`);
-			for (const i in J.l) if (i !== "i") k.p(`<a class="db" href="${J.l[i]}" target="_blank">${i}</a>`);
+			for (const i in J.l) if (i !== "i") k.p(`<a class="db p5t" href="${J.l[i]}" target="_blank">${i}</a>`);
 			k.p(`</details></div>`);
 			J.e.innerHTML = k.j("");
 		},
@@ -487,13 +487,13 @@
 	const v = {
 		// J Json: t Title, s Subheading, h Html, m Mode 1 del 2 nobutton, b Background
 		t: J => {
-			let k = q("VBt");
+			let k = document.querySelector(".VBt");
 			if (k) v.del();
 			k = [];
-			k.p(`<div id="VBt" class="pf Vb db"></div>`);
-			k.p(`<div id="VFt" class="pf Vf db gy bd"`);
+			k.p(`<div class="pf db Vb VBt"></div>`);
+			k.p(`<div class="pf db gy bd Vf VFt"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
-			k.p(`><div id="VHt" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
+			k.p(`><div class="VHt" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
 			k.p(`<div class="p51 df vc ts"><span>${J.t} </span>`);
 			k.p(`<span id="VHd" class="Ve fxl" onclick="v.del()">×</span></div>`);
 			k.p(`<div class="Vs bb p01 fxs">${J.s ? J.s : ""}</div></div>`);
@@ -516,29 +516,29 @@
 				J.e.open = false;
 				v.del("p");
 			}, lf = () => ({ x: J.e.offsetLeft + J.e.offsetWidth, y: J.e.offsetTop + J.e.offsetHeight + 8 }),
-				k = q("VBp"), x = lf();
+				k = document.querySelector(".VBp"), x = lf();
 			if (k) v.del("p");
 			k = [];
-			k.p(`<div id="VBp" class="pf Vb db" style="background: transparent"></div>`);
-			k.p(`<div id="VFp" class="pa Vf db bd gy" style="visibility: visible">`);
+			k.p(`<div class="pf db Vb VBp" style="background: transparent"></div>`);
+			k.p(`<div class="pa Vf db bd gy VFp" style="visibility: visible">`);
 			k.p(`<div class="bb p51">${J.t}</div>`);
 			k.p(`<div class="p51">${J.h}</div></div>`)
 			J.e.offsetParent.insertAdjacentHTML("beforeEnd", k.j(""));
-			k = q("VFp");
+			k = document.querySelector(".VFp");
 			k.style.left = "-6000px";
 			x.x = x.x - k.offsetWidth;
 			k.style.left = x.x + "px";
 			k.style.top = x.y + "px";
-			q("VBp").onclick = o;
+			document.querySelector(".VBp").onclick = o;
 		},
 
 		// J Json: h Html, c Callback, b Background
 		c: J => {
-			let k = q("VBc");
+			let k = document.querySelector(".VBc");
 			if (k) v.del("c");
 			k = [];
-			k.p(`<div id="VBc" class="pf Vb db"></div>`);
-			k.p(`<div id="VFc" class="pf Vf db p5 gy bd"`);
+			k.p(`<div class="pf db Vb VBc"></div>`);
+			k.p(`<div class="pf db p5 gy bd Vf VFc"`);
 			if (J.b) k.p(` style="background: ${J.b}"`);
 			k.p(`>`);
 			k.p(`<b class="vt p05 if fxl">&#xed19;</b><div class="di">${J.h}</div>`);
@@ -556,10 +556,10 @@
 
 		// T Text, M Mode 1 Red
 		i: (T, M) => {
-			let k = q("VFi");
+			let k = document.querySelector(".VFi");
 			if (k) v.del("i");
 			k = [];
-			k.p(`<div id="VFi" class="pf Vf db bd p5 `);
+			k.p(`<div class="pf db bd p5 Vf VFi `);
 			if (M == 1) k.p(`gr"><b class="vm p5 if fxl">&#xed1c;`);
 			else k.p(`gy"><b class="vm p5 if fxl">&#xed1b;`);
 			k.p(`</b><div class="di p5 fs">${T}</div></div>`);
@@ -569,11 +569,11 @@
 		},
 
 		l: () => {
-			let k = q("VBl");
+			let k = document.querySelector(".VBl");
 			if (k) v.del("l");
 			k = [];
-			k.p(`<div id="VBl" class="pf Vb db"></div>`);
-			k.p(`<div id="VFl" class="pf Vf db p5 gy bd">`);
+			k.p(`<div class="pf db Vb VBl"></div>`);
+			k.p(`<div class="pf db p5 gy bd Vf VFl">`);
 			k.p(`<b class="Vr di p5 if fxl vm">&#xe6c6;</b>`);
 			k.p(`<span class="fs p01">正在加载…</span></div>`);
 			document.body.insertAdjacentHTML("beforeEnd", k.j(""));
@@ -621,7 +621,7 @@
 				}
 			}, cnch = k => k.replace(/ |　|,|;|\"|\'|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}/g, "");
 
-			let k = q("VBt");
+			let k = document.querySelector(".VBt");
 			J.n = J.n ? parseInt(J.n * 1024000 - 1) : 20479999;
 			if (k) v.del();
 			k = [];
@@ -647,14 +647,14 @@
 		del: S => {
 			let k = 0;
 			S = !S ? "t" : S;
-			k = q("VB" + S);
-			if (k) k.del();
-			k = q("VF" + S);
-			if (k) k.del();
+			k = document.querySelector(".VB" + S);
+			if (k) k.parentNode.removeChild(k);
+			k = document.querySelector(".VF" + S);
+			if (k) k.parentNode.removeChild(k);
 		},
 
 		adi: S => {
-			let x = 0, y = 0, s = q("VF" + S);
+			let x = 0, y = 0, s = document.querySelector(".VF" + S);
 			if (s) {
 				x = (window.innerWidth - s.offsetWidth) / 2;
 				y = (window.innerHeight - s.offsetHeight) / 2 - 60;
@@ -668,8 +668,8 @@
 		mv: {
 			o: 0, b: 0, tx: 0, ty: 0, mx: 0, my: 0, f: 0,
 			m: function (e) {
-				this.o = document.getElementById("VFt");
-				this.b = document.getElementById("VBt");
+				this.o = document.querySelector(".VFt");
+				this.b = document.querySelector(".VBt");
 				this.b.onmousemove = this.o.onmousemove = () => { v.mv.v(event) };
 				this.b.onmouseup = this.o.onmouseup = () => { v.mv.u(event) };
 				this.tx = this.o.offsetLeft;
