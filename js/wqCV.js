@@ -20,7 +20,7 @@
         J.d = JSON.parse(sessionStorage.getItem("wqCV_" + J.e));
         J.da = J.d.da || 0;
         J.d = J.d.d;
-        J.t = document.getElementById(J.e).offsetHeight - J.t;
+        J.t = document.getElementById(J.e).offsetHeight - J.t - 1;
         for (let i = 0; i < J.d.length; i++) {
             let h = [],
                 nl = J.l + parseInt(J.w * (i + 0.5)) - parseInt(J.w / 6),
