@@ -93,6 +93,21 @@ const wq = {
         sp = setInterval(ep, 2000);
     },
 
+    cv: () => {
+        cv({
+            e: q("Rmode1"),
+            id: "wqCV1",
+            d: {
+                c: "#08e",
+                y: "次",
+                x: "月",
+                nx: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                d: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                da: [12, 2, 11, 4, 10, 6, 9, 7, 8, 3, 5, 1]
+            }
+        });
+    },
+
     to: () => {
 		/*
 		q("wHome", {
@@ -202,6 +217,7 @@ const wq = {
         q("_w_M").h = "HTML文本";
         q("Rmode2").h = `<div class="p5" style="height: 12rem" contenteditable></div>`;
         wq.pl();
+        wq.cv();
 		/*
 		w({
 			d: { typ: "test" },

@@ -20,7 +20,7 @@
         J.d = JSON.parse(sessionStorage.getItem("wqCV_" + J.e));
         J.da = J.d.da || 0;
         J.d = J.d.d;
-        J.t = document.getElementById(J.e).offsetHeight - J.t - 1;
+        J.t = document.getElementById(J.e).offsetHeight - J.t;
         for (let i = 0; i < J.d.length; i++) {
             let h = [],
                 nl = J.l + parseInt(J.w * (i + 0.5)) - parseInt(J.w / 6),
@@ -131,7 +131,9 @@
         let f = () => {
             let e = document.querySelectorAll(".wqCV")
             for (let i = 0; i < e.length; i++) {
-                let k = getComputedStyle(e[i].parentNode);
+                let k = e[i].parentNode;
+                k.style.display = "flex";
+                k = getComputedStyle(k);
                 setTimeout(() => { cv.dr({ id: e[i].id, w: parseInt(k.width), h: parseInt(k.height) }) }, (i + 1) * 521);
             }
         }, o = document.querySelectorAll(".wqCV");

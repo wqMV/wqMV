@@ -350,7 +350,7 @@
 				}
 				k.p(`</div>`);
 			}
-			k.p(`<div id="${J.id}" class="df dc p51"></div></div>`);
+			k.p(`<div id="${J.id}" class="d1 p51"></div></div>`);
 			J.m === 1 ? J.e.add("be", k.j("")) : J.e.h = k.j("");
 		},
 
@@ -417,7 +417,7 @@
 			k.p(`<div class="Md">`);
 			k.p(`<details class="di lf tc">`);
 			k.p(`<summary><b class="if fl">${J.l.i}</b><span>${J.t}</span></summary>`);
-			for (const i in J.l) if (i !== "i") k.p(`<a class="db p5t" href="${J.l[i]}" target="_blank">${i}</a>`);
+			for (const i in J.l) if (i !== "i") k.p(`<a class="db" href="${J.l[i]}" target="_blank">${i}</a>`);
 			k.p(`</details></div>`);
 			J.e.innerHTML = k.j("");
 		},
