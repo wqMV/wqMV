@@ -150,6 +150,7 @@ summary, .cp { cursor: pointer }
 .cr { color: var(--cr) }
 
 /* M */
+.Md a { padding: .2rem 0 }
 .Md li, .Mmr li, .Mr li, .Ml li { display: inline-block; margin: 0; list-style: none; cursor: pointer; transition: .3s }
 .Md summary>b { padding-right: 1rem }
 .Md details:hover, .Mdu { background: var(--bdc) }
