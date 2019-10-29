@@ -334,11 +334,12 @@
 		// Json: e element, id, t title, c classname, w width, l label Json, m mode: 1 add
 		m: J => {
 			let k = [], o = 0;
+
 			k.p(`<div class="df dc m5 Mm ${J.c ? J.c : ""}"`);
 			if (J.w) k.p(` style="max-width: ${J.w}"`);
 			k.p(`>`);
 			if (J.t) {
-				k.p(`<div class="bb p51"><span>${J.t}</span>`);
+				k.p(`<div id="${J.id}_t" class="bb p51"><span>${J.t}</span>`);
 				if (J.l) {
 					k.p(`<div class="di p01 fs Mmr">`);
 					for (const i in J.l) {
@@ -357,6 +358,7 @@
 		// Json: e element, l label Json
 		r: J => {
 			let k = [], o = 0;
+
 			k.p(`<div class="Mr">`);
 			for (const i in J.l) {
 				k.p(`<label><input class="dh" name="Mr_${J.e.id}" type="radio"${o ? "" : " checked"}>`);
@@ -370,6 +372,7 @@
 		// Json: e element, id, l label Json
 		l: J => {
 			let k = [], o = 0;
+
 			k.p(`<div class="Ml p01 bb g">`);
 			for (const i in J.l) {
 				k.p(`<label><input class="dh" name="Ml_${J.id}" type="radio"${o ? "" : " checked"}>`);
@@ -382,7 +385,7 @@
 
 		// Json: e element, l label Json: i icon
 		d: J => {
-			let k = [], o = 0, s = E => {
+			const s = E => {
 				o = E.parentNode.parentNode;
 				q("@DETAILS", o).for(e => {
 					if (e === E.parentNode) o = null;
@@ -393,6 +396,8 @@
 				});
 				E.parentNode.c = "Mdu m50 lfn";
 			};
+			let k = [], o = 0;
+
 			k.p(`<div class="Md">`);
 			for (const i in J.l) {
 				k.p(`<details class="m50 lf"${o ? "" : " open"}>`);
@@ -414,6 +419,7 @@
 		// Json: e element, t title, l label Json: i icon
 		u: J => {
 			let k = [];
+
 			k.p(`<div class="Md">`);
 			k.p(`<details class="di lf tc">`);
 			k.p(`<summary><b class="if fl">${J.l.i}</b><span>${J.t}</span></summary>`);
@@ -425,6 +431,7 @@
 		// T daTe
 		ut: function (T) {
 			let k = {}, s = new Date();
+
 			if (T) s = new Date(T);
 			k.y = s.getFullYear();
 			k.n = s.getMonth() + 1;
@@ -488,6 +495,7 @@
 		// J Json: t Title, s Subheading, h Html, m Mode 1 del 2 nobutton, b Background
 		t: J => {
 			let k = document.querySelector(".VBt");
+
 			if (k) v.del();
 			k = [];
 			k.p(`<div class="pf db Vb VBt"></div>`);
@@ -512,11 +520,13 @@
 
 		// J Json: e element, t Title, h Html, b Background
 		p: J => {
-			let o = () => {
+			const o = () => {
 				J.e.open = false;
 				v.del("p");
-			}, lf = () => ({ x: J.e.offsetLeft + J.e.offsetWidth, y: J.e.offsetTop + J.e.offsetHeight + 8 }),
-				k = document.querySelector(".VBp"), x = lf();
+			};
+			const lf = () => ({ x: J.e.offsetLeft + J.e.offsetWidth, y: J.e.offsetTop + J.e.offsetHeight + 8 });
+			let k = document.querySelector(".VBp"), x = lf();
+
 			if (k) v.del("p");
 			k = [];
 			k.p(`<div class="pf db Vb VBp" style="background: transparent"></div>`);
@@ -535,6 +545,7 @@
 		// J Json: h Html, c Callback, b Background
 		c: J => {
 			let k = document.querySelector(".VBc");
+
 			if (k) v.del("c");
 			k = [];
 			k.p(`<div class="pf db Vb VBc"></div>`);
@@ -557,6 +568,7 @@
 		// T Text, M Mode 1 Red
 		i: (T, M) => {
 			let k = document.querySelector(".VFi");
+
 			if (k) v.del("i");
 			k = [];
 			k.p(`<div style="left: -6000px" class="pf db bd p5 Vf VFi `);
@@ -570,6 +582,7 @@
 
 		l: () => {
 			let k = document.querySelector(".VBl");
+
 			if (k) v.del("l");
 			k = [];
 			k.p(`<div class="pf db Vb VBl"></div>`);
@@ -587,7 +600,8 @@
 					h: "您确定删除这个文件吗？",
 					c: () => { J.dc() }
 				});
-			}, up = () => {
+			};
+			const up = () => {
 				if (q("Efs").h) {
 					v.c({
 						h: "上传的新文件将覆盖原文件，<br>您确定继续吗？",
@@ -604,8 +618,10 @@
 					return false;
 				}
 				return false;
-			}, fsch = () => {
+			};
+			const fsch = () => {
 				const k = q("Efs").files[0];
+
 				if (k) {
 					const fr = new FileReader();
 					fr.onload = () => {
@@ -619,9 +635,10 @@
 					};
 					fr.readAsDataURL(k);
 				}
-			}, cnch = k => k.replace(/ |　|,|;|\"|\'|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}/g, "");
-
+			};
+			const cnch = k => k.replace(/ |　|,|;|\"|\'|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}/g, "");
 			let k = document.querySelector(".VBt");
+
 			J.n = J.n ? parseInt(J.n * 1024000 - 1) : 20479999;
 			if (k) v.del();
 			k = [];
@@ -646,6 +663,7 @@
 
 		del: S => {
 			let k = 0;
+
 			S = !S ? "t" : S;
 			k = document.querySelector(".VB" + S);
 			if (k) k.parentNode.removeChild(k);
@@ -655,6 +673,7 @@
 
 		adi: S => {
 			let x = 0, y = 0, s = document.querySelector(".VF" + S);
+
 			if (s) {
 				x = (window.innerWidth - s.offsetWidth) / 2;
 				y = (window.innerHeight - s.offsetHeight) / 2 - 60;
