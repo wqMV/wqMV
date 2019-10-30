@@ -628,10 +628,7 @@
 						if (k.size > J.n) {
 							v.i(`文件大小不能超过 ${parseInt((J.n + 1) / 1024000)} MB！`, 1);
 							q("Efs").h = "";
-						} else {
-							q("Efl").h = "2";
-							q("Ecn").h = cnch(k.name);
-						}
+						} else q("Ecn").h = cnch(k.name);
 					};
 					fr.readAsDataURL(k);
 				}
@@ -644,7 +641,6 @@
 			k = [];
 			k.p(`<input name="id" type="hidden" value="${J.id}">`);
 			k.p(`<input name="old" type="hidden" value="${J.ph}">`);
-			k.p(`<input id="Efl" name="fl" type="hidden" value="1">`);
 			if (J.h) k.p(`<div>${J.h}</div>`);
 			k.p(`<div class="m50"><label>标题：<input id="Ecn" name="cn" type="text" style="width:24rem" required value="${J.cn}"></label></div>`);
 			k.p(`<label>文件：<input id="Efs" name="fs" type="file" style="width:24rem"></label>`);
