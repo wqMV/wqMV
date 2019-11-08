@@ -433,6 +433,9 @@
         ut: T => {
             let k = {}, s = T ? new Date(T) : new Date();
 
+            // 数字
+            k.nt = +s;
+
             // 今天
             k.y = s.getFullYear();
             k.n = s.getMonth() + 1;
@@ -471,6 +474,11 @@
             k.tny = s.getFullYear();
             k.tnn = s.getMonth() + 1;
 
+            // 本月合计天数
+            s = new Date(k.tny + "-" + k.tnn + "-1");
+            s.setDate(s.getDate() - 1);
+            k.dc = s.getDate();
+
             // 上年
             k.yyy = k.y - 1;
 
@@ -490,7 +498,7 @@
         ss: S => S.replace(/,/g, "，").replace(/;/g, "；").replace(/\"/g, "＂").replace(/\'/g, "＇").replace(/(^\s*)|(\s*$)/g, "").replace(/\s+/g, " "),
         sn: S => S.replace(/[^0-9]/g, ""),
         sc: S => S.replace(/[^(a-z|A-Z|0-9)]/g, ""),
-        su: S => S.replace(/[^\u4E00-\u9FA5]/g, ""),
+        su: S => S.replace(/[^(\u3000-\u303F|\u4E00-\u9FA5|\uFF00-\uFFEF)]/g, ""),
         sp: S => m.ss(S).replace(/ |　|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}/g, ""),
         ts: function () { this.value = m.ss(this.value) },
         tn: function () { this.value = m.sn(this.value) },
