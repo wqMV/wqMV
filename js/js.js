@@ -43,7 +43,7 @@ const wq = {
         h.p(`<b class="if">&#xe65f;</b>`);
         h.p(`<input placeholder="用户">`);
         h.p(`</div><br>`);
-        h.p(`<div class="in m50">`);
+        h.p(`<div class="in">`);
         h.p(`<b class="if">&#xe602;</b>`);
         h.p(`<input type="password" placeholder="密码">`);
         h.p(`</div>`);

@@ -527,9 +527,9 @@
             k.p(`<span id="VHd" class="Ve fxl" onclick="v.del()">×</span></div>`);
             k.p(`<div class="Vs bb p01 fxs">${J.s ? J.s : ""}</div></div>`);
             k.p(`<form id="_w_F" class="p5">`);
-            k.p(`<div class="p05">${J.h}</div>`);
+            k.p(`<div class="mf">${J.h}</div>`);
             if (J.m !== 2) {
-                k.p(`<div class="p05 p5t tr">`);
+                k.p(`<div class="p5 tr">`);
                 k.p(`<input class="ga" type="submit" value="确定">`);
                 if (J.m === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
                 k.p(`<input type="reset" value="重置"></div>`);
@@ -553,7 +553,7 @@
             k.p(`<div class="pf db Vb VBp" style="background: transparent"></div>`);
             k.p(`<div class="pa Vf db bd gy VFp" style="visibility: visible">`);
             k.p(`<div class="bb p51">${J.t}</div>`);
-            k.p(`<div class="p51">${J.h}</div></div>`)
+            k.p(`<div class="p5 mf">${J.h}</div></div>`)
             J.e.offsetParent.insertAdjacentHTML("beforeEnd", k.j(""));
             k = document.querySelector(".VFp");
             k.style.left = "-6000px";
@@ -660,8 +660,8 @@
             k.p(`<input name="id" type="hidden" value="${J.id}">`);
             k.p(`<input name="old" type="hidden" value="${J.ph}">`);
             if (J.h) k.p(`<div>${J.h}</div>`);
-            k.p(`<div class="m50"><label>标题：<input id="Ecn" name="cn" type="text" style="width:24rem" required value="${J.cn}"></label></div>`);
-            k.p(`<label>文件：<input id="Efs" name="fs" type="file" style="width:24rem"></label>`);
+            k.p(`<div><label>标题：<input id="Ecn" name="cn" type="text" style="width:24rem" required value="${J.cn}"></label></div>`);
+            k.p(`<div><label>文件：<input id="Efs" name="fs" type="file" style="width:24rem"></label></div>`);
             v.t({
                 t: J.t,
                 s: J.s,
