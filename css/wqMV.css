@@ -165,6 +165,10 @@ summary, .cp { cursor: pointer }
 .Ml li:hover, .Ml input:checked+li { border-color: var(--cu); background: var(--gh); color: var(--cu) }
 
 /* V */
+.Vd details:hover { background: var(--t1) }
+.Vd summary { padding: .5rem 0; direction: ltr }
+.Vd li { margin: 0; padding: .3rem 0 .3rem 3rem; list-style: none }
+.Vd li:hover, .Vd input:checked+li { background: var(--cu) }
 .VHt { border-radius: var(--br) var(--br) 0 0; background: var(--t1); cursor: move }
 .VBt, .VBp { z-index: 1001 }
 .VBc { z-index: 2001 }

@@ -8,17 +8,36 @@ const wq = {
             m: 2
         });
     },
+
     i: () => { v.i("警告警告警告", 1) },
-    it: () => { v.i("tipstipstips") },
+    it: () => { v.i("tips tips tips") },
+
     c: () => {
         v.c({
             h: "HTML文本<br>您确定吗？",
             c: () => { alert('提示') }
         });
     },
+
+    s: () => {
+        v.s({
+            t: "标题",
+            s: "提示",
+            db: {
+                "班组一": ["赵大", "孙二"],
+                "班组二": ["李三", "周四"]
+            },
+            de: ["钱五", "冯六"],
+            c: e => {
+                console.log(e);
+            }
+        });
+    },
+
     l: () => {
         v.l();
     },
+
     f: () => {
         v.f({
             id: 1,
@@ -51,6 +70,7 @@ const wq = {
         h.p(`<input type="button" value="注册新用户"></div>`)
         v.p({ e: e, t: "用户登录：", h: h.j("") });
     },
+
     rm: e => {
         v.p({ e: e, t: "消息通知：", h: "消息通知" });
     },
@@ -109,25 +129,25 @@ const wq = {
     },
 
     to: () => {
-		/*
-		q("wHome", {
-			b: {
-				tf: ["crimson", "seagreen", "#28d"]
-			},
-			d: {
-				ta: "a",
-				tf: ["fa", "fb", "fc"]
-			},
-			m: {
-				to: (d, e) => { alert(d.tf) },
-				fo: (d, e) => { console.log(e) }
-			},
-			c: d => {
-				d.ta = "ta";
-				d.tf = ["fa", "fb", "fc", "fd"];
-			}
-		});
-		*/
+        let vue = q("wJ", {
+            b: {
+                tf: ["crimson", "seagreen", "#28d"]
+            },
+            d: {
+                ta: "a",
+                tf: ["fa", "fb", "fc"]
+            },
+            m: {
+                to: (d, e) => { alert(d.tf) },
+                fo: (d, e) => { console.log(e) }
+            },
+            c: d => {
+                d.ta = "ta";
+                d.tf = ["fa", "fb", "fc", "fd"];
+            }
+        });
+        console.log(vue);
+        vue.ta = "vueta";
 
         m.u({
             e: q("wLink"),
@@ -218,6 +238,7 @@ const wq = {
         q("Rmode2").h = `<div class="p5" style="height: 12rem" contenteditable></div>`;
         wq.pl();
         wq.cv();
+
 		/*
 		w({
 			d: { typ: "test" },

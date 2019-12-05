@@ -184,6 +184,7 @@
             if (l) for (const i of E) to(i);
             else to(E);
             if (typeof J.c === "function") J.c(J.d);
+            return J.d;
         }
 
         // S String, A Any
@@ -307,6 +308,18 @@
         const k = new Worker("src/" + N + ".js");
         k.postMessage(J);
         k.onmessage = J => { if (typeof C === "function") C(J) }
+    };
+
+    // Text Encode: S String
+    q.ec = S => {
+        let s = [];
+        for (let i = 0; i < S.length; i++) {
+            let k = S[i].charCodeAt();
+            if (i > 2) k = k * 2 + 1;
+            else k = k * 2 - (i + 1);
+            s.push(k.toString(32));
+        }
+        return s.join("");
     };
 
     // get sessionStorage
@@ -530,7 +543,7 @@
             k.p(`<div class="mf">${J.h}</div>`);
             if (J.m !== 2) {
                 k.p(`<div class="p5 tr">`);
-                k.p(`<input class="ga" type="submit" value="确定">`);
+                k.p(`<input class="gu" type="submit" value="确定">`);
                 if (J.m === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
                 k.p(`<input type="reset" value="重置"></div>`);
             }
@@ -629,13 +642,9 @@
                         c: () => {
                             v.l();
                             J.uc();
-                            return false;
                         }
                     });
-                } else {
-                    J.uc();
-                    return false;
-                }
+                } else J.uc();
                 return false;
             };
             const fsch = () => {
@@ -672,7 +681,125 @@
             q("Efs").onchange = fsch;
             k = q("_w_D");
             if (k) k.onclick = del;
-            q("_w_F").onsubmit = () => up();
+            q("_w_F").onsubmit = () => { return up() };
+        },
+
+        // J Json: t Title, s Subheading, db before data, de select data, c callback, b Background
+        s: J => {
+            const up = () => {
+                let k = [], o = q("_w_Vde");
+                q("@LI", o).for(e => { k.p(e.h) });
+                v.del();
+                J.c(k);
+                return false;
+            };
+
+            const re = () => {
+                q("_w_Vde").h = q("_w_Vdo").h;
+            };
+
+            const ad = o => {
+                const ok = k => {
+                    let o = q("@LI", oe), n = 1;
+                    if (o.length) for (let i of o) {
+                        if (i.h == k) {
+                            n = 0;
+                            break;
+                        }
+                    }
+                    if (n) {
+                        o = [];
+                        o.p(`<label><input class="dh" name="_w_Vd" type="radio">`);
+                        o.p(`<li n="2">${k}</li></label>`);
+                        oe.add("be", o.j(""));
+                        q("@LI", oe).for(e => { e.ondblclick = function () { ad(this) } });
+                    }
+                };
+
+                let k = o.g("n"), ob = q("_w_Vdb"), oe = q("_w_Vde");
+
+                if (k === "1") ok(o.h);
+                else if (k === "2") {
+                    o = o.parentNode;
+                    o.parentNode.removeChild(o);
+                } else if (k === "3") {
+                    o = q("@INPUT", ob);
+                    if (o.length) for (let i of o) {
+                        if (i.checked) {
+                            ok(i.nextElementSibling.h);
+                            break;
+                        }
+                    }
+                } else if (k === "4") {
+                    o = q("@INPUT", oe);
+                    if (o.length) for (let i of o) {
+                        if (i.checked) {
+                            i = i.parentNode;
+                            i.parentNode.removeChild(i);
+                            break;
+                        }
+                    }
+                } else if (k === "5") q("@LI", ob).for(e => { ok(e.h) });
+                else if (k === "6") oe.h = "";
+            };
+
+            let k = [];
+            k.p(`<div id="_w_Vdo" class="dh">`)
+            for (const i of J.de) {
+                k.p(`<label><input class="dh" name="_w_Vd" type="radio">`);
+                k.p(`<li n="2">${i}</li></label>`);
+            }
+            k.p(`</div>`);
+
+            k.p(`<div class="df">`);
+            k.p(`<div id="_w_Vdb" class="p5 dy bd Vd" style="width: 16rem; height: 24rem">`);
+            for (const i in J.db) {
+                k.p(`<details class="m50" open>`);
+                k.p(`<summary>${i}</summary>`);
+                for (const j of J.db[i]) {
+                    k.p(`<label><input class="dh" name="_w_Vd" type="radio">`);
+                    k.p(`<li n="1">${j}</li></label>`);
+                }
+                k.p(`</details>`);
+            }
+            k.p(`</div>`);
+
+            k.p(`<div id="_w_Vad" class="df dc mf tj">`);
+            k.p(`<div><input type="button" n="3" value="添加->"></div>`);
+            k.p(`<div><input type="button" n="5" value="全添->"></div>`);
+            k.p(`<div><input type="button" n="6" value="<-全删"></div>`);
+            k.p(`<div><input type="button" n="4" value="<-不选"></div>`);
+            k.p(`</div>`);
+
+            k.p(`<div id="_w_Vde" class="p5 dy bd Vd" style="width: 16rem">`);
+            for (const i of J.de) {
+                k.p(`<label><input class="dh" name="_w_Vd" type="radio">`);
+                k.p(`<li n="2">${i}</li></label>`);
+            }
+            k.p(`</div>`);
+            k.p(`</div>`);
+
+            k.p(`<div class="p5 tr">`);
+            k.p(`<input class="gu" type="submit" value="确定">`);
+            k.p(`<input id="_w_Vbt" type="button" value="重置">`);
+            k.p(`</div>`);
+
+            v.t({
+                t: J.t,
+                s: J.s,
+                b: J.b,
+                m: 2,
+                h: k.j("")
+            });
+
+            k = q("_w_Vdb");
+            q("@LI", k).for(e => { e.ondblclick = function () { ad(this) } });
+            k = q("_w_Vde");
+            q("@LI", k).for(e => { e.ondblclick = function () { ad(this) } });
+            k = q("_w_Vad");
+            q("@INPUT", k).for(e => { e.onclick = function () { ad(this) } });
+            q("_w_Vbt").onclick = re;
+            q("_w_F").onsubmit = () => { return up() };
         },
 
         del: S => {
