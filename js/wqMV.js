@@ -14,9 +14,10 @@
         let wI = 0, wT = 0;
         const wPT = () => {
             const k = new XMLHttpRequest();
+            k.timeout = J.o;
             k.onreadystatechange = () => { if (k.readyState === 4) wT = k.responseText };
             k.open(J.m, J.u, true);
-            if (J.m === "GET") k.send();
+            if (J.m === 'GET') k.send();
             else k.send(J.d);
         }, wOK = () => {
             // wT is true
@@ -31,19 +32,20 @@
         }, wED = () => {
             if (wT !== 1) {
                 clearInterval(wI);
-                if (J.c) J.c("0");
+                if (J.c) J.c('0');
             }
         }, wRD = K => Math.floor(Math.random() * K * 89) + (K + 1) * 127;
 
-        J.m = J.m === "GET" ? "GET" : "POST";
-        J.u = window.location.origin + "/" + (J.u ? J.u : "ajax.aspx");
+        J.m = J.m === 'GET' ? 'GET' : 'POST';
+        J.u = window.location.origin + '/' + (J.u ? J.u : 'ajax.aspx');
+        J.o = J.o ? J.o * 1000 : 10000;
         if (!J.d.append) {
             let k = new FormData();
             for (const i in J.d) k.append(i, J.d[i]);
             J.d = k;
         }
         setTimeout(wON, wRD(J.t ? J.t : 0));
-        setTimeout(wED, (J.o ? J.o * 1000 : 120000));
+        setTimeout(wED, J.o);
     };
 
     window.w = w;
