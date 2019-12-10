@@ -511,10 +511,10 @@
 
         // S String
         ss: S => S.replace(/,/g, "，").replace(/;/g, "；").replace(/\"/g, "＂").replace(/\'/g, "＇").replace(/(^\s*)|(\s*$)/g, "").replace(/\s+/g, " "),
-        sn: S => S.replace(/[^0-9]/g, ""),
-        sc: S => S.replace(/[^(a-z|A-Z|0-9)]/g, ""),
-        su: S => S.replace(/[^(\u3000-\u303F|\u4E00-\u9FA5|\uFF00-\uFFEF)]/g, ""),
-        sp: S => m.ss(S).replace(/ |　|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}/g, ""),
+        sn: S => S.replace(/\D+/g, ""),
+        sc: S => S.replace(/\W+/g, ""),
+        su: S => S.replace(/[^(\u3000-\u303F|\u4E00-\u9FA5|\uFF00-\uFFEF)]+/g, ""),
+        sp: S => m.ss(S).replace(/[ |　|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}]+/g, ""),
         ts: function () { this.value = m.ss(this.value) },
         tn: function () { this.value = m.sn(this.value) },
         tc: function () { this.value = m.sc(this.value) },
