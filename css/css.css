@@ -1,6 +1,4 @@
 .top, .lgo { height: 50px }
-aside::-webkit-scrollbar { width: 5px }
-aside::-webkit-scrollbar-thumb { background: var(--bdc) }
 .tit { padding: 0 2em; transition: .3s }
 .tit:hover { flex: auto }
 
