@@ -81,7 +81,12 @@
         E = E || document.body;
         if (S.startsWith(".")) E = E.querySelectorAll(S.substr(1));
         else if (S.startsWith(":")) E = document.getElementsByName(S.substr(1));
-        else if (S.startsWith("@")) E = E.getElementsByTagName(S.substr(1));
+        else if (S.startsWith("@")) {
+            let k = E.childNodes;
+            E = [];
+            for (let i = 0; i < k.length; i++) k[i].tagName === S.substr(1) && E.push(k[i]);
+            if (0 === E.length) return;
+        }
         else if (S) E = document.getElementById(S);
         if (E) {
             l = E.nodeType === 1 ? 0 : E.length;
@@ -458,7 +463,9 @@
             k.h = s.getHours();
             k.m = s.getMinutes();
             k.s = s.getSeconds();
+            k.i = s.getMilliseconds();
             for (const i in k) if (k[i] < 10) k[i] = "0" + k[i];
+            for (let i = 0; i < 3 - String(k.i).length; i++) k.i = "0" + k.i;
             k.w = s.getDay();
             k.dt = k.y + "-" + k.n + "-" + k.d;
             k.dn = k.y + "-" + k.n;
