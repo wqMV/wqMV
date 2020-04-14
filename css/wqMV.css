@@ -1,8 +1,8 @@
 :root {
-    --ct: rgba(0, 0, 0, .8);  /* Color Text */
+    --ct: rgba(0, 0, 17, .8);  /* Color Text */
     --cw: rgba(255, 255, 255, .618);   /* Color White */
     --cb: rgba(0, 0, 0, .618);   /* Color Black */
-    --cu: #08e;  /* Color blUe */
+    --cu: #28d;  /* Color blUe */
     --gw: #fff;  /* backGround White */
     --gh: azure;  /* backGround Hover */
     --gd: whitesmoke;   /* backGround Disabled */
@@ -177,12 +177,14 @@ summary, .cp { cursor: pointer }
 .Vd li:hover, .Vd input:checked+li { background: var(--cu) }
 .VHt { border-radius: var(--br) var(--br) 0 0; background: var(--t1); cursor: move }
 .VBt, .VBp { z-index: 1001 }
-.VBc { z-index: 2001 }
-.VBl { z-index: 3001 }
+.VBs { z-index: 2001 }
+.VBc { z-index: 3001 }
+.VBl { z-index: 4001 }
 .VFt, .VFp { z-index: 1002; animation: pop .3s }
-.VFc { z-index: 2002; animation: pop .3s }
-.VFi { z-index: 3002; animation: sha .3s }
-.VFl { z-index: 3002 }
+.VFs { z-index: 2002; animation: pop .3s }
+.VFc { z-index: 3002; animation: pop .3s }
+.VFi { z-index: 4002; animation: sha .3s }
+.VFl { z-index: 4002 }
 .Vb { left: 0; top: 0; width: 100vw; height: 100vh; margin: 0; background: var(--bdc) }
 .Vf { box-shadow: 1px 1px 1rem rgba(99, 99, 99, .618); color: var(--ct) }
 .Ve { display: block; padding: 0 0 0 1rem; cursor: pointer }

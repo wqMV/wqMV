@@ -15,9 +15,9 @@
         const wPT = () => {
             const k = new XMLHttpRequest();
             k.timeout = J.o;
-            k.onreadystatechange = () => { if (k.readyState === 4) wT = k.responseText };
+            k.onreadystatechange = () => { if (k.readyState == 4) wT = k.responseText };
             k.open(J.m, J.u, true);
-            if (J.m === 'GET') k.send();
+            if (J.m == 'GET') k.send();
             else k.send(J.d);
         }, wOK = () => {
             // wT is true
@@ -36,7 +36,7 @@
             }
         }, wRD = K => Math.floor(Math.random() * K * 89) + (K + 1) * 127;
 
-        J.m = J.m === 'GET' ? 'GET' : 'POST';
+        J.m = J.m == 'GET' ? 'GET' : 'POST';
         J.u = window.location.origin + '/' + (J.u ? J.u : 'ajax.aspx');
         J.o = J.o ? J.o * 1000 : 10000;
         if (!J.d.append) {
@@ -59,7 +59,7 @@
         const s = E => {
             if (!E.g) {
                 E.g = (S, V) => {
-                    if (S && (V || V === "")) E.setAttribute(S, V);
+                    if (S && (V || V == "")) E.setAttribute(S, V);
                     return E.getAttribute(S) || "";
                 };
                 E.t = E.textContent || "";
@@ -76,20 +76,19 @@
             }
         };
 
-        J = typeof J === "object" && J.d ? J : 0;
-        if (typeof E === "object" && E.d) J = E, E = document.body;
+        J = typeof J == "object" && J.d ? J : 0;
+        if (typeof E == "object" && E.d) J = E, E = document.body;
         E = E || document.body;
         if (S.startsWith(".")) E = E.querySelectorAll(S.substr(1));
         else if (S.startsWith(":")) E = document.getElementsByName(S.substr(1));
         else if (S.startsWith("@")) {
-            let k = E.childNodes;
+            let k = E.getElementsByTagName(S.substr(1));
             E = [];
-            for (let i = 0; i < k.length; i++) k[i].tagName === S.substr(1) && E.push(k[i]);
-            if (0 === E.length) return;
+            for (let i = 0; i < k.length; i++) k[i].tagName == S.substr(1) && E.push(k[i]);
         }
         else if (S) E = document.getElementById(S);
         if (E) {
-            l = E.nodeType === 1 ? 0 : E.length;
+            l = E.nodeType == 1 ? 0 : E.length;
             if (l) {
                 E = [].slice.call(E);
                 for (const i of E) s(i);
@@ -99,14 +98,14 @@
         // J Json: b background for :for, d data, m on mode, c callback
         if (J) {
             const up = (N, O, S, V) => {
-                if (V === 3) O.textContent = S.replace(/\$\{(.*)\}/g, J.d[N]);
-                else if (V === 1) O.innerHTML = S.replace(/\$\{(.*)\}/g, J.d[N]);
-                else if (V === 11) O.value = J.d[N];
-                else if (V === 12) {
+                if (V == 3) O.textContent = S.replace(/\$\{(.*)\}/g, J.d[N]);
+                else if (V == 1) O.innerHTML = S.replace(/\$\{(.*)\}/g, J.d[N]);
+                else if (V == 11) O.value = J.d[N];
+                else if (V == 12) {
                     let r = O.nextElementSibling, k = 0;
-                    if (O.value || O.value === "") O.value = J.d[N][0];
+                    if (O.value || O.value == "") O.value = J.d[N][0];
                     else O.innerHTML = J.d[N][0];
-                    while (r && r.getAttribute("_q") === N) {
+                    while (r && r.getAttribute("_q") == N) {
                         r.parentNode.removeChild(r);
                         r = O.nextElementSibling;
                     }
@@ -118,45 +117,45 @@
                         let n = O.cloneNode(true);
                         if (r) n = O.parentNode.insertBefore(n, r);
                         else n = O.parentNode.appendChild(n);
-                        if (n.value || n.value === "") n.value = J.d[N][i];
+                        if (n.value || n.value == "") n.value = J.d[N][i];
                         else n.innerHTML = J.d[N][i];
                         if (k) n.style.background = J.b[N][(i < k ? i : i % k)];
                     }
                 }
             }, pt = (N, O, S, V) => {
                 // N Name, O Object, S String, V tag 1 push
-                if (V === 1 && J.q[N].indexOf(O) === -1) {
+                if (V == 1 && J.q[N].indexOf(O) == -1) {
                     J.q[N].push(O);
                     J.q[N + "_v"].push(S);
                 }
             }, go = (O, S, V) => {
                 let r = /\$\{(.*)\}/,
                     n = r.test(S) ? r.exec(S)[1] : (r = /\:v(.*)/).test(S) ? r.exec(S)[1] : (r = /\:for(.*)/).test(S) ? r.exec(S)[1] : "";
-                if (O.nodeType == 3 && (J.d[n] || J.d[n] === "")) {
+                if (O.nodeType == 3 && (J.d[n] || J.d[n] == "")) {
                     pt(n, O, S, V);
                     up(n, O, S, 3);
-                } else if (O.nodeType === 1) {
-                    if (J.d[n] || J.d[n] === "") {
+                } else if (O.nodeType == 1) {
+                    if (J.d[n] || J.d[n] == "") {
                         pt(n, O, S, V);
-                        if (S.indexOf(":v") === 0) up(n, O, "", 11);
-                        else if (S.indexOf(":for") === 0) up(n, O, "", 12);
+                        if (S.indexOf(":v") == 0) up(n, O, "", 11);
+                        else if (S.indexOf(":for") == 0) up(n, O, "", 12);
                         else up(n, O, S, 1);
                     }
                     for (const i of [].slice.call(O.attributes)) {
                         r = i.name.split(':');
                         n = i.value;
-                        if ((O.value || O.value === "") && r[1] === "v" && J.d[n]) {
+                        if ((O.value || O.value == "") && r[1] == "v" && J.d[n]) {
                             // :v value
                             pt(n, O, ":v" + n, V);
                             up(n, O, "", 11);
                             O.addEventListener('input', S => { J.d[i.value] = S.target.value }, false);
                             O.removeAttribute(i.name);
-                        } else if (r[0] === "on" && J.m[n]) {
+                        } else if (r[0] == "on" && J.m[n]) {
                             // on:click onclick
                             if (O.getAttribute(":for") || O.getAttribute("_q")) O.parentNode.addEventListener(r[1], S => { if (S.target.getAttribute("_q")) J.m[i.value](J.d, S.target) }, false);
                             else O.addEventListener(r[1], S => { J.m[i.value](J.d, S.target) }, false);
                             O.removeAttribute(i.name);
-                        } else if (r[1] === "for" && Array.isArray(J.d[n])) {
+                        } else if (r[1] == "for" && Array.isArray(J.d[n])) {
                             // :for for
                             O.removeAttribute(i.name);
                             O.setAttribute("_q", n);
@@ -166,7 +165,7 @@
                     }
                 }
             }, to = O => {
-                if (O.childNodes.length === 0) go(O, O.textContent, 1);
+                if (O.childNodes.length == 0) go(O, O.textContent, 1);
                 else for (const i of [].slice.call(O.childNodes)) {
                     if (i.children && i.children.length) to(i);
                     else go(i, i.textContent, 1);
@@ -175,7 +174,7 @@
                 Object.defineProperty(O, K, {
                     get: () => V,
                     set: S => {
-                        if (S === V) return;
+                        if (S == V) return;
                         V = S;
                         for (let i = 0; i < J.q[K].length; i++) go(J.q[K][i], J.q[K + "_v"][i]);
                     }
@@ -190,7 +189,7 @@
             }
             if (l) for (const i of E) to(i);
             else to(E);
-            if (typeof J.c === "function") J.c(J.d);
+            if (typeof J.c == "function") J.c(J.d);
             return J.d;
         }
 
@@ -200,14 +199,14 @@
                 if (l) for (const i of E) i.insertAdjacentHTML(S, A);
                 else E.insertAdjacentHTML(S, A)
             };
-            if (S && typeof A === "function") {
+            if (S && typeof A == "function") {
                 if (l) for (const i of E) i.addEventListener(S, A, false);
                 else E.addEventListener(S, A, false);
             } else {
-                if (S === "be") S = "beforeEnd";
-                else if (S === "ab") S = "afterBegin";
-                else if (S === "bb") S = "beforeBegin";
-                else if (S === "ae") S = "afterEnd";
+                if (S == "be") S = "beforeEnd";
+                else if (S == "ab") S = "afterBegin";
+                else if (S == "bb") S = "beforeBegin";
+                else if (S == "ae") S = "afterEnd";
                 k();
             }
             return E;
@@ -215,7 +214,7 @@
 
         // J Json or String
         E.css = J => {
-            if (typeof J === "object") {
+            if (typeof J == "object") {
                 if (l) for (const i of E) for (const j in J) i.style[j] = J[j];
                 else for (const j in J) E.style[j] = J[j];
             } else E.className = J;
@@ -238,9 +237,9 @@
         E.key = (C, N) => {
             const k = () => {
                 N = N || 13;
-                if (event.keyCode === N) {
+                if (event.keyCode == N) {
                     event.returnValue = false;
-                    if (typeof C === "function") C(event.target);
+                    if (typeof C == "function") C(event.target);
                 }
             };
             if (l) for (const i of E) i.onkeydown = k;
@@ -253,7 +252,7 @@
     // S String
     q.a = S => {
         let k = [];
-        if (typeof S === "string" && S && S != 0) {
+        if (typeof S == "string" && S && S != 0) {
             S = S.split(";");
             for (let i = 0; i < S.length; i++) {
                 const s = S[i].split(",");
@@ -276,17 +275,17 @@
             if (k = k.match(r)) V = k[2];
             else V = "";
         }
-        return (K === 0 ? "" : V);
+        return (K == 0 ? "" : V);
     };
 
     // S String
-    q.j = S => typeof S === "string" ? JSON.parse(S) : JSON.stringify(S);
+    q.j = S => typeof S == "string" ? JSON.parse(S) : JSON.stringify(S);
 
     // N Name, C Callback, T Time
     q.m = (N, C, T) => {
-        let k, s = () => { if (typeof C === "function") setTimeout(C, T) };
+        let k, s = () => { if (typeof C == "function") setTimeout(C, T) };
         if (!N) return;
-        T = typeof C === "number" ? C : (T ? T : 127);
+        T = typeof C == "number" ? C : (T ? T : 127);
         k = document.getElementById("_w_" + N);
         if (!k) {
             let u = new Date();
@@ -304,9 +303,9 @@
     // N Name 0 clear, V Value 0 delete
     q.s = (N, V) => {
         const k = sessionStorage;
-        if (V === 0) k.removeItem(N);
+        if (V == 0) k.removeItem(N);
         else if (V) k.setItem(N, V);
-        else if (N === 0) k.clear();
+        else if (N == 0) k.clear();
         return k.getItem(N) || "";
     };
 
@@ -314,7 +313,7 @@
     q.w = (N, J, C) => {
         const k = new Worker("src/" + N + ".js");
         k.postMessage(J);
-        k.onmessage = J => { if (typeof C === "function") C(J) }
+        k.onmessage = J => { if (typeof C == "function") C(J) }
     };
 
     // Text Encode: S String
@@ -373,7 +372,7 @@
                 k.p(`</div>`);
             }
             k.p(`<div id="${J.id}" class="d1 p51"></div></div>`);
-            J.m === 1 ? J.e.add("be", k.j("")) : J.e.h = k.j("");
+            J.m == 1 ? J.e.add("be", k.j("")) : J.e.h = k.j("");
         },
 
         // Json: e element, l label Json
@@ -409,7 +408,7 @@
             const s = E => {
                 o = E.parentNode.parentNode;
                 q("@DETAILS", o).for(e => {
-                    if (e === E.parentNode) o = null;
+                    if (e == E.parentNode) o = null;
                     else {
                         e.open = false;
                         e.c = "m50 lf";
@@ -425,7 +424,7 @@
                 k.p(`<summary><b class="if fl">${J.l[i].i}</b><span>${i}</span></summary>`);
                 o = o ? o : 1;
                 for (const j in J.l[i]) if (j !== "i") {
-                    k.p(`<label><input class="dh" name="Md_${J.e.id}" type="radio"${o === 1 ? " checked" : ""}>`);
+                    k.p(`<label><input class="dh" name="Md_${J.e.id}" type="radio"${o == 1 ? " checked" : ""}>`);
                     k.p(`<li class="tc" onclick="${J.l[i][j]}">${j}</li></label>`);
                     o = 2;
                 }
@@ -433,8 +432,11 @@
             }
             k.p(`</div>`)
             J.e.innerHTML = k.j("");
-            k = q("@LABEL", J.e).for(e => { e.onclick = () => { s(e) } });
-            if (k) k[0].parentNode.className = "Mdu m50 lfn";
+            k = q("@LABEL", J.e);
+            if (k) {
+                k.for(e => { e.onclick = () => { s(e) } });
+                k[0].parentNode.className = "Mdu m50 lfn";
+            }
         },
 
         // Json: e element, t title, l label Json: i icon
@@ -467,9 +469,11 @@
             for (const i in k) if (k[i] < 10) k[i] = "0" + k[i];
             for (let i = 0; i < 3 - String(k.i).length; i++) k.i = "0" + k.i;
             k.w = s.getDay();
-            k.dt = k.y + "-" + k.n + "-" + k.d;
+            k.dd = k.y + "-" + k.n + "-" + k.d;
             k.dn = k.y + "-" + k.n;
-            k.ut = k.dt + "T" + k.h + ":" + k.m;
+            k.dh = k.h + ":" + k.m;
+            k.dt = k.dd + " " + k.h + ":" + k.m;
+            k.ut = k.dd + "T" + k.h + ":" + k.m;
 
             // 昨天
             s.setDate(k.d - 1);
@@ -478,20 +482,20 @@
             k.yd = s.getDate();
 
             // 明天
-            s = new Date(k.dt);
+            s = new Date(k.dd);
             s.setDate(k.d + 1);
             k.ty = s.getFullYear();
             k.tn = s.getMonth() + 1;
             k.td = s.getDate();
 
             // 上月
-            s = new Date(k.dt);
+            s = new Date(k.dd);
             s.setDate(0);
             k.yny = s.getFullYear();
             k.ynn = s.getMonth() + 1;
 
             // 下月
-            s = new Date(k.dt);
+            s = new Date(k.dd);
             s.setDate(32);
             k.tny = s.getFullYear();
             k.tnn = s.getMonth() + 1;
@@ -507,9 +511,9 @@
             // 下年
             k.tyy = parseInt(k.y) + 1;
 
-            for (const i in k) if (String(k[i]).length === 1) k[i] = "0" + k[i];
-            k.ydt = k.yy + "-" + k.yn + "-" + k.yd;
-            k.tdt = k.ty + "-" + k.tn + "-" + k.td;
+            for (const i in k) if (String(k[i]).length == 1) k[i] = "0" + k[i];
+            k.ydd = k.yy + "-" + k.yn + "-" + k.yd;
+            k.tdd = k.ty + "-" + k.tn + "-" + k.td;
 
             k.w = 1 == k.w ? "一" : 2 == k.w ? "二" : 3 == k.w ? "三" : 4 == k.w ? "四" : 5 == k.w ? "五" : 6 == k.w ? "六" : "日";
             k.cn = k.y + "年" + k.n + "月" + k.d + "日 星期" + k.w;
@@ -535,30 +539,31 @@
 // v
 (() => {
     const v = {
-        // J Json: t Title, s Subheading, h Html, m Mode 1 del 2 nobutton, b Background
+        // J Json: id, t Title, s Subheading, h Html, m Mode 1 del 2 nobutton, b Background
         t: J => {
             let k = document.querySelector(".VBt");
 
-            if (k) v.del();
+            k && !J.id && v.del();
+            document.getElementById(`_wf_${J.id}`) && v.del('s');
             k = [];
-            k.p(`<div class="pf db Vb VBt"></div>`);
-            k.p(`<div class="pf db gy bd Vf VFt" style="left: -6000px"`);
+            k.p(`<div${J.id ? ' id="_wb_' + J.id + '"' : ''} class="pf db Vb ${J.id ? 'VBs' : 'VBt'}"></div>`);
+            k.p(`<div${J.id ? ' id="_wf_' + J.id + '"' : ''} class="pf db gy bd Vf ${J.id ? 'VFs' : 'VFt'}" style="left: -6000px"`);
             if (J.b) k.p(` style="background: ${J.b}"`);
             k.p(`><div class="VHt" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
             k.p(`<div class="p51 df vc ts"><span>${J.t} </span>`);
-            k.p(`<span id="VHd" class="Ve fxl" onclick="v.del()">×</span></div>`);
+            k.p(`<span id="VHd" class="Ve fxl" onclick="v.del(${J.id ? '\'s\'' : ''})">×</span></div>`);
             k.p(`<div class="Vs bb p01 fxs">${J.s ? J.s : ""}</div></div>`);
-            k.p(`<form id="_w_F" class="p5">`);
+            k.p(`<form id="_w_F${J.id ? '_' + J.id : ''}" class="p5">`);
             k.p(`<div class="mf">${J.h}</div>`);
             if (J.m !== 2) {
                 k.p(`<div class="p5 tr">`);
                 k.p(`<input class="gu" type="submit" value="确定">`);
-                if (J.m === 1) k.p(`<input id="_w_D" type="button" value="删除">`);
+                if (J.m == 1) k.p(`<input id="_w_D" type="button" value="删除">`);
                 k.p(`<input type="reset" value="重置"></div>`);
             }
             k.p(`</form></div>`);
             document.body.insertAdjacentHTML("beforeEnd", k.j(""));
-            v.adi("t");
+            v.adi("t", J.id);
         },
 
         // J Json: e element, t Title, h Html, b Background
@@ -602,7 +607,7 @@
             k.p(`</div></div>`);
             document.body.insertAdjacentHTML("beforeEnd", k.j(""));
             q("_w_OK").onclick = () => {
-                if (J.h.indexOf("input") === -1) v.del("c");
+                if (J.h.indexOf("input") == -1) v.del("c");
                 if (typeof J.c == "function") J.c();
             };
             v.adi("c");
@@ -684,7 +689,7 @@
                 t: J.t,
                 s: J.s,
                 h: k.j(""),
-                m: J.id === 0 ? 0 : 1
+                m: J.id == 0 ? 0 : 1
             });
             q("Ecn").onchange = function () { this.h = cnch(this.h) };
             q("Efs").onchange = fsch;
@@ -693,12 +698,12 @@
             q("_w_F").onsubmit = () => { return up() };
         },
 
-        // J Json: t Title, s Subheading, db before data, de select data, c callback, b Background
+        // J Json: id, t Title, s Subheading, db before data, de select data, c callback, b Background
         s: J => {
             const up = () => {
                 let k = [], o = q("_w_Vde");
                 q("@LI", o).for(e => { k.p(e.h) });
-                v.del();
+                v.del('s');
                 J.c(k);
                 return false;
             };
@@ -727,11 +732,11 @@
 
                 let k = o.g("n"), ob = q("_w_Vdb"), oe = q("_w_Vde");
 
-                if (k === "1") ok(o.h);
-                else if (k === "2") {
+                if (k == "1") ok(o.h);
+                else if (k == "2") {
                     o = o.parentNode;
                     o.parentNode.removeChild(o);
-                } else if (k === "3") {
+                } else if (k == "3") {
                     o = q("@INPUT", ob);
                     if (o.length) for (let i of o) {
                         if (i.checked) {
@@ -739,7 +744,7 @@
                             break;
                         }
                     }
-                } else if (k === "4") {
+                } else if (k == "4") {
                     o = q("@INPUT", oe);
                     if (o.length) for (let i of o) {
                         if (i.checked) {
@@ -748,8 +753,8 @@
                             break;
                         }
                     }
-                } else if (k === "5") q("@LI", ob).for(e => { ok(e.h) });
-                else if (k === "6") oe.h = "";
+                } else if (k == "5") q("@LI", ob).for(e => { ok(e.h) });
+                else if (k == "6") oe.h = "";
             };
 
             let k = [];
@@ -780,7 +785,7 @@
             k.p(`<div><input type="button" n="4" value="<-不选"></div>`);
             k.p(`</div>`);
 
-            k.p(`<div id="_w_Vde" class="p5 dy bd Vd" style="width: 16rem">`);
+            k.p(`<div id="_w_Vde" class="p5 dy bd Vd" style="width: 16rem; height: 24rem">`);
             for (const i of J.de) {
                 k.p(`<label><input class="dh" name="_w_Vd" type="radio">`);
                 k.p(`<li n="2">${i}</li></label>`);
@@ -794,6 +799,7 @@
             k.p(`</div>`);
 
             v.t({
+                id: J.id,
                 t: J.t,
                 s: J.s,
                 b: J.b,
@@ -808,7 +814,7 @@
             k = q("_w_Vad");
             q("@INPUT", k).for(e => { e.onclick = function () { ad(this) } });
             q("_w_Vbt").onclick = re;
-            q("_w_F").onsubmit = () => { return up() };
+            q(`_w_F${J.id ? '_' + J.id : ''}`).onsubmit = () => { return up() };
         },
 
         del: S => {
@@ -821,9 +827,10 @@
             if (k) k.parentNode.removeChild(k);
         },
 
-        adi: S => {
+        adi: (S, I) => {
             let x = 0, y = 0, s = document.querySelector(".VF" + S);
 
+            I && (s = document.getElementById('_wf_' + I));
             if (s) {
                 x = (window.innerWidth - s.offsetWidth) / 2;
                 y = (window.innerHeight - s.offsetHeight) / 2 - 40;
@@ -837,8 +844,10 @@
         mv: {
             o: 0, b: 0, tx: 0, ty: 0, mx: 0, my: 0, f: 0,
             m: function (e) {
-                this.o = document.querySelector(".VFt");
-                this.b = document.querySelector(".VBt");
+                this.o = e.target.parentNode.parentNode;
+                if (this.o.id) this.b = document.getElementById(this.o.id.replace('_wf_', '_wb_'));
+                else this.b = document.querySelector(".VBt");
+
                 this.b.onmousemove = this.o.onmousemove = () => { v.mv.v(event) };
                 this.b.onmouseup = this.o.onmouseup = () => { v.mv.u(event) };
                 this.tx = this.o.offsetLeft;
