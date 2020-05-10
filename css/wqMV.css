@@ -147,6 +147,7 @@ summary, .cp { cursor: pointer }
 .gu { background: var(--cu) }
 .gd { background: var(--gd) }
 .gy { background: var(--gy) }
+.gg { background: #ffc }
 .gr { background: var(--gr) }
 
 .ct { color: var(--ct) }

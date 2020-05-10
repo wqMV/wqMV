@@ -11,44 +11,44 @@
 (() => {
     //J Json: c Callback, d formData, u Url, t waitTime, m Mode, o timeOut
     const w = J => {
-        let wI = 0, wT = 0;
         const wPT = () => {
             const k = new XMLHttpRequest();
             k.timeout = J.o;
-            k.onreadystatechange = () => { if (k.readyState == 4) wT = k.responseText };
+            k.onreadystatechange = () => {
+                if (4 == k.readyState) {
+                    200 == k.status ? wT = k.responseText : (clearInterval(wI), J.c && J.c(0))
+                }
+            };
             k.open(J.m, J.u, true);
-            if (J.m == 'GET') k.send();
-            else k.send(J.d);
-        }, wOK = () => {
-            // wT is true
-            if (wT) {
-                clearInterval(wI);
-                if (J.c) J.c(wT);
-                wT = 1;
-            }
-        }, wON = () => {
-            wPT();
-            wI = setInterval(wOK, 127);
-        }, wED = () => {
-            if (wT !== 1) {
-                clearInterval(wI);
-                if (J.c) J.c('0');
-            }
-        }, wRD = K => Math.floor(Math.random() * K * 89) + (K + 1) * 127;
+            'GET' == J.m ? k.send() : k.send(J.d)
+        };
 
-        J.m = J.m == 'GET' ? 'GET' : 'POST';
+        const wOK = () => {
+            // wT is true
+            wT && (clearInterval(wI), J.c && J.c(wT), wT = 1)
+        };
+
+        const wON = () => { wPT(), wI = setInterval(wOK, 127) };
+
+        const wED = () => { 1 == wT || (clearInterval(wI), J.c && J.c(0)) };
+
+        const wRD = K => Math.floor(89 * Math.random() * K) + 127 * (1 + K);
+
+        let wI = 0, wT = 0;
+
+        J.m = 'GET' == J.m ? 'GET' : 'POST';
         J.u = window.location.origin + '/' + (J.u ? J.u : 'ajax.aspx');
-        J.o = J.o ? J.o * 1000 : 10000;
+        J.o = J.o ? 1000 * J.o : 10000;
         if (!J.d.append) {
             let k = new FormData();
             for (const i in J.d) k.append(i, J.d[i]);
-            J.d = k;
+            J.d = k
         }
         setTimeout(wON, wRD(J.t ? J.t : 0));
-        setTimeout(wED, J.o);
+        setTimeout(wED, J.o)
     };
 
-    window.w = w;
+    window.w = w
 })();
 
 // q
@@ -653,13 +653,10 @@
                 if (q("Efs").h) {
                     v.c({
                         h: "上传的新文件将覆盖原文件，<br>您确定继续吗？",
-                        c: () => {
-                            v.l();
-                            J.uc();
-                        }
+                        c: J.uc
                     });
                 } else J.uc();
-                return false;
+                return false
             };
             const fsch = () => {
                 const k = q("Efs").files[0];
@@ -671,7 +668,7 @@
                             q("Efs").h = "";
                         } else q("Ecn").h = cnch(k.name);
                     };
-                    fr.readAsDataURL(k);
+                    fr.readAsArrayBuffer(k);
                 }
             };
             const cnch = k => k.replace(/ |　|,|;|\"|\'|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}/g, "");
@@ -845,6 +842,7 @@
             o: 0, b: 0, tx: 0, ty: 0, mx: 0, my: 0, f: 0,
             m: function (e) {
                 this.o = e.target.parentNode.parentNode;
+                'VHt' == this.o.className && (this.o = this.o.parentNode);
                 if (this.o.id) this.b = document.getElementById(this.o.id.replace('_wf_', '_wb_'));
                 else this.b = document.querySelector(".VBt");
 
