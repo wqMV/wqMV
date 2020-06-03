@@ -148,6 +148,7 @@ summary, .cp { cursor: pointer }
 .gd { background: var(--gd) }
 .gy { background: var(--gy) }
 .gg { background: #ffc }
+.gs { background: #f2f2f2 }
 .gr { background: var(--gr) }
 
 .ct { color: var(--ct) }
@@ -155,6 +156,10 @@ summary, .cp { cursor: pointer }
 .cu { color: var(--cu) }
 .cg { color: var(--cg) }
 .cr { color: var(--cr) }
+
+/* counter */
+.cter { counter-reset: list }
+.cter span::before { counter-increment: list; content: counter(list) }
 
 /* M */
 .Md a { padding: .2rem 0 }

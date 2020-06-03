@@ -16,7 +16,12 @@
             k.timeout = J.o;
             k.onreadystatechange = () => {
                 if (4 == k.readyState) {
-                    200 == k.status ? wT = k.responseText : (clearInterval(wI), J.c && J.c(0))
+                    if (200 == k.status) wT = k.responseText
+                    else {
+                        k.abort();
+                        clearInterval(wI);
+                        J.c && J.c(0)
+                    }
                 }
             };
             k.open(J.m, J.u, true);
@@ -59,13 +64,13 @@
         const s = E => {
             if (!E.g) {
                 E.g = (S, V) => {
-                    if (S && (V || V == "")) E.setAttribute(S, V);
-                    return E.getAttribute(S) || "";
+                    if (S && (V || V == '')) E.setAttribute(S, V);
+                    return E.getAttribute(S) || '';
                 };
-                E.t = E.textContent || "";
+                E.t = E.textContent || '';
                 Object.defineProperties(E, {
                     c: {
-                        get: () => E.className || "",
+                        get: () => E.className || '',
                         set: S => { E.className = S }
                     },
                     h: {
@@ -76,12 +81,12 @@
             }
         };
 
-        J = typeof J == "object" && J.d ? J : 0;
-        if (typeof E == "object" && E.d) J = E, E = document.body;
+        J = typeof J == 'object' && J.d ? J : 0;
+        if (typeof E == 'object' && E.d) J = E, E = document.body;
         E = E || document.body;
-        if (S.startsWith(".")) E = E.querySelectorAll(S.substr(1));
-        else if (S.startsWith(":")) E = document.getElementsByName(S.substr(1));
-        else if (S.startsWith("@")) {
+        if (S.startsWith('.')) E = E.querySelectorAll(S.substr(1));
+        else if (S.startsWith(':')) E = document.getElementsByName(S.substr(1));
+        else if (S.startsWith('@')) {
             let k = E.getElementsByTagName(S.substr(1));
             E = [];
             for (let i = 0; i < k.length; i++) k[i].tagName == S.substr(1) && E.push(k[i]);
@@ -103,9 +108,9 @@
                 else if (V == 11) O.value = J.d[N];
                 else if (V == 12) {
                     let r = O.nextElementSibling, k = 0;
-                    if (O.value || O.value == "") O.value = J.d[N][0];
+                    if (O.value || O.value == '') O.value = J.d[N][0];
                     else O.innerHTML = J.d[N][0];
-                    while (r && r.getAttribute("_q") == N) {
+                    while (r && r.getAttribute('_q') == N) {
                         r.parentNode.removeChild(r);
                         r = O.nextElementSibling;
                     }
@@ -117,7 +122,7 @@
                         let n = O.cloneNode(true);
                         if (r) n = O.parentNode.insertBefore(n, r);
                         else n = O.parentNode.appendChild(n);
-                        if (n.value || n.value == "") n.value = J.d[N][i];
+                        if (n.value || n.value == '') n.value = J.d[N][i];
                         else n.innerHTML = J.d[N][i];
                         if (k) n.style.background = J.b[N][(i < k ? i : i % k)];
                     }
@@ -126,41 +131,41 @@
                 // N Name, O Object, S String, V tag 1 push
                 if (V == 1 && J.q[N].indexOf(O) == -1) {
                     J.q[N].push(O);
-                    J.q[N + "_v"].push(S);
+                    J.q[N + '_v'].push(S);
                 }
             }, go = (O, S, V) => {
                 let r = /\$\{(.*)\}/,
-                    n = r.test(S) ? r.exec(S)[1] : (r = /\:v(.*)/).test(S) ? r.exec(S)[1] : (r = /\:for(.*)/).test(S) ? r.exec(S)[1] : "";
-                if (O.nodeType == 3 && (J.d[n] || J.d[n] == "")) {
+                    n = r.test(S) ? r.exec(S)[1] : (r = /\:v(.*)/).test(S) ? r.exec(S)[1] : (r = /\:for(.*)/).test(S) ? r.exec(S)[1] : '';
+                if (O.nodeType == 3 && (J.d[n] || J.d[n] == '')) {
                     pt(n, O, S, V);
                     up(n, O, S, 3);
                 } else if (O.nodeType == 1) {
-                    if (J.d[n] || J.d[n] == "") {
+                    if (J.d[n] || J.d[n] == '') {
                         pt(n, O, S, V);
-                        if (S.indexOf(":v") == 0) up(n, O, "", 11);
-                        else if (S.indexOf(":for") == 0) up(n, O, "", 12);
+                        if (S.indexOf(':v') == 0) up(n, O, '', 11);
+                        else if (S.indexOf(':for') == 0) up(n, O, '', 12);
                         else up(n, O, S, 1);
                     }
                     for (const i of [].slice.call(O.attributes)) {
                         r = i.name.split(':');
                         n = i.value;
-                        if ((O.value || O.value == "") && r[1] == "v" && J.d[n]) {
+                        if ((O.value || O.value == '') && r[1] == 'v' && J.d[n]) {
                             // :v value
-                            pt(n, O, ":v" + n, V);
-                            up(n, O, "", 11);
+                            pt(n, O, ':v' + n, V);
+                            up(n, O, '', 11);
                             O.addEventListener('input', S => { J.d[i.value] = S.target.value }, false);
                             O.removeAttribute(i.name);
-                        } else if (r[0] == "on" && J.m[n]) {
+                        } else if (r[0] == 'on' && J.m[n]) {
                             // on:click onclick
-                            if (O.getAttribute(":for") || O.getAttribute("_q")) O.parentNode.addEventListener(r[1], S => { if (S.target.getAttribute("_q")) J.m[i.value](J.d, S.target) }, false);
+                            if (O.getAttribute(':for') || O.getAttribute('_q')) O.parentNode.addEventListener(r[1], S => { if (S.target.getAttribute('_q')) J.m[i.value](J.d, S.target) }, false);
                             else O.addEventListener(r[1], S => { J.m[i.value](J.d, S.target) }, false);
                             O.removeAttribute(i.name);
-                        } else if (r[1] == "for" && Array.isArray(J.d[n])) {
+                        } else if (r[1] == 'for' && Array.isArray(J.d[n])) {
                             // :for for
                             O.removeAttribute(i.name);
-                            O.setAttribute("_q", n);
-                            pt(n, O, ":for" + n, V);
-                            up(n, O, "", 12);
+                            O.setAttribute('_q', n);
+                            pt(n, O, ':for' + n, V);
+                            up(n, O, '', 12);
                         }
                     }
                 }
@@ -176,7 +181,7 @@
                     set: S => {
                         if (S == V) return;
                         V = S;
-                        for (let i = 0; i < J.q[K].length; i++) go(J.q[K][i], J.q[K + "_v"][i]);
+                        for (let i = 0; i < J.q[K].length; i++) go(J.q[K][i], J.q[K + '_v'][i]);
                     }
                 });
             };
@@ -184,12 +189,12 @@
             J.q = J.q ? J.q : {};
             for (const i in J.d) {
                 J.q[i] = J.q[i] ? J.q[i] : [];
-                J.q[i + "_v"] = J.q[i + "_v"] ? J.q[i + "_v"] : [];
+                J.q[i + '_v'] = J.q[i + '_v'] ? J.q[i + '_v'] : [];
                 df(J.d, i, J.d[i]);
             }
             if (l) for (const i of E) to(i);
             else to(E);
-            if (typeof J.c == "function") J.c(J.d);
+            if (typeof J.c == 'function') J.c(J.d);
             return J.d;
         }
 
@@ -199,14 +204,14 @@
                 if (l) for (const i of E) i.insertAdjacentHTML(S, A);
                 else E.insertAdjacentHTML(S, A)
             };
-            if (S && typeof A == "function") {
+            if (S && typeof A == 'function') {
                 if (l) for (const i of E) i.addEventListener(S, A, false);
                 else E.addEventListener(S, A, false);
             } else {
-                if (S == "be") S = "beforeEnd";
-                else if (S == "ab") S = "afterBegin";
-                else if (S == "bb") S = "beforeBegin";
-                else if (S == "ae") S = "afterEnd";
+                if (S == 'be') S = 'beforeEnd';
+                else if (S == 'ab') S = 'afterBegin';
+                else if (S == 'bb') S = 'beforeBegin';
+                else if (S == 'ae') S = 'afterEnd';
                 k();
             }
             return E;
@@ -214,7 +219,7 @@
 
         // J Json or String
         E.css = J => {
-            if (typeof J == "object") {
+            if (typeof J == 'object') {
                 if (l) for (const i of E) for (const j in J) i.style[j] = J[j];
                 else for (const j in J) E.style[j] = J[j];
             } else E.className = J;
@@ -224,7 +229,7 @@
         E.del = () => {
             if (l) for (let i = 0; i < l; i++) E[0].parentNode.removeChild(E[0]);
             else E.parentNode.removeChild(E);
-            return "";
+            return '';
         };
 
         // C Callback
@@ -239,7 +244,7 @@
                 N = N || 13;
                 if (event.keyCode == N) {
                     event.returnValue = false;
-                    if (typeof C == "function") C(event.target);
+                    if (typeof C == 'function') C(event.target);
                 }
             };
             if (l) for (const i of E) i.onkeydown = k;
@@ -252,10 +257,10 @@
     // S String
     q.a = S => {
         let k = [];
-        if (typeof S == "string" && S && S != 0) {
-            S = S.split(";");
+        if (typeof S == 'string' && S && S != 0) {
+            S = S.split(';');
             for (let i = 0; i < S.length; i++) {
-                const s = S[i].split(",");
+                const s = S[i].split(',');
                 k[i] = [];
                 for (let j = 0; j < s.length; j++) k[i].push(s[j]);
             }
@@ -269,34 +274,34 @@
         if (N && V) {
             let d = new Date();
             d.setDate(d.getDate() + K);
-            document.cookie = escape(N) + "=" + escape(V) + (typeof K !== "number" ? "" : "; expires=" + d.toGMTString());
+            document.cookie = escape(N) + '=' + escape(V) + (typeof K !== 'number' ? '' : '; expires=' + d.toGMTString());
         } else if (N) {
-            const r = new RegExp("(^| )" + N + "=([^;]*)(;|$)");
+            const r = new RegExp('(^| )' + N + '=([^;]*)(;|$)');
             if (k = k.match(r)) V = k[2];
-            else V = "";
+            else V = '';
         }
-        return (K == 0 ? "" : V);
+        return (K == 0 ? '' : V);
     };
 
     // S String
-    q.j = S => typeof S == "string" ? JSON.parse(S) : JSON.stringify(S);
+    q.j = S => typeof S == 'string' ? JSON.parse(S) : JSON.stringify(S);
 
     // N Name, C Callback, T Time
     q.m = (N, C, T) => {
-        let k, s = () => { if (typeof C == "function") setTimeout(C, T) };
+        let k, s = () => { if (typeof C == 'function') setTimeout(C, T) };
         if (!N) return;
-        T = typeof C == "number" ? C : (T ? T : 127);
-        k = document.getElementById("_w_" + N);
+        T = typeof C == 'number' ? C : (T ? T : 127);
+        k = document.getElementById('_w_' + N);
         if (!k) {
             let u = new Date();
-            u = u.getFullYear() + "" + (u.getMonth() + 1) + "" + u.getDate();
-            k = document.createElement("script");
-            k.type = "text/JavaScript";
-            k.id = "_w_" + N;
-            if ("onload" in k) k.onload = () => { s() }
+            u = u.getFullYear() + '' + (u.getMonth() + 1) + '' + u.getDate();
+            k = document.createElement('script');
+            k.type = 'text/JavaScript';
+            k.id = '_w_' + N;
+            if ('onload' in k) k.onload = () => { s() }
             else k.onreadystatechange = () => { if (/loaded|complete/.test(k.readyState)) s() }
-            k.src = "js/" + N + ".js?" + u;
-            document.body.insertAdjacentElement("beforeEnd", k);
+            k.src = 'js/' + N + '.js?' + u;
+            document.body.insertAdjacentElement('beforeEnd', k);
         } else s();
     };
 
@@ -306,14 +311,14 @@
         if (V == 0) k.removeItem(N);
         else if (V) k.setItem(N, V);
         else if (N == 0) k.clear();
-        return k.getItem(N) || "";
+        return k.getItem(N) || '';
     };
 
     // N Name, J Json, C Callback
     q.w = (N, J, C) => {
-        const k = new Worker("src/" + N + ".js");
+        const k = new Worker('src/' + N + '.js');
         k.postMessage(J);
-        k.onmessage = J => { if (typeof C == "function") C(J) }
+        k.onmessage = J => { if (typeof C == 'function') C(J) }
     };
 
     // Text Encode: S String
@@ -325,7 +330,7 @@
             else k = k * 2 - (i + 1);
             s.push(k.toString(32));
         }
-        return s.join("");
+        return s.join('');
     };
 
     // get sessionStorage
@@ -355,7 +360,7 @@
         m: J => {
             let k = [], o = 0;
 
-            k.p(`<div class="df dc m5 Mm ${J.c ? J.c : ""}"`);
+            k.p(`<div class="df dc m5 Mm ${J.c ? J.c : ''}"`);
             if (J.w) k.p(` style="max-width: ${J.w}"`);
             k.p(`>`);
             if (J.t) {
@@ -363,7 +368,7 @@
                 if (J.l) {
                     k.p(`<div class="di p01 fs Mmr">`);
                     for (const i in J.l) {
-                        k.p(`<label><input class="dh" name="Mm_${J.id}" type="radio"${o ? "" : " checked"}>`);
+                        k.p(`<label><input class="dh" name="Mm_${J.id}" type="radio"${o ? '' : ' checked'}>`);
                         k.p(`<li class="tp p05 mu" onclick="${J.l[i]}">${i}</li></label>`);
                         o = 1;
                     }
@@ -372,7 +377,7 @@
                 k.p(`</div>`);
             }
             k.p(`<div id="${J.id}" class="d1 p51"></div></div>`);
-            J.m == 1 ? J.e.add("be", k.j("")) : J.e.h = k.j("");
+            J.m == 1 ? J.e.add('be', k.j('')) : J.e.h = k.j('');
         },
 
         // Json: e element, l label Json
@@ -381,12 +386,12 @@
 
             k.p(`<div class="Mr">`);
             for (const i in J.l) {
-                k.p(`<label><input class="dh" name="Mr_${J.e.id}" type="radio"${o ? "" : " checked"}>`);
+                k.p(`<label><input class="dh" name="Mr_${J.e.id}" type="radio"${o ? '' : ' checked'}>`);
                 k.p(`<li class="tp p5 mu" onclick="${J.l[i]}">${i}</li></label>`);
                 o = 1;
             }
             k.p(`</div>`);
-            J.e.innerHTML = k.j("");
+            J.e.innerHTML = k.j('');
         },
 
         // Json: e element, id, l label Json
@@ -395,47 +400,47 @@
 
             k.p(`<div class="Ml p01 bb g">`);
             for (const i in J.l) {
-                k.p(`<label><input class="dh" name="Ml_${J.id}" type="radio"${o ? "" : " checked"}>`);
+                k.p(`<label><input class="dh" name="Ml_${J.id}" type="radio"${o ? '' : ' checked'}>`);
                 k.p(`<li onclick="${J.l[i]}">${i}</li></label>`);
                 o = 1;
             }
             k.p(`</div><div id="${J.id}" class="p51"></div>`);
-            J.e.innerHTML = k.j("");
+            J.e.innerHTML = k.j('');
         },
 
         // Json: e element, l label Json: i icon
         d: J => {
             const s = E => {
                 o = E.parentNode.parentNode;
-                q("@DETAILS", o).for(e => {
+                q('@DETAILS', o).for(e => {
                     if (e == E.parentNode) o = null;
                     else {
                         e.open = false;
-                        e.c = "m50 lf";
+                        e.c = 'm50 lf';
                     }
                 });
-                E.parentNode.c = "Mdu m50 lfn";
+                E.parentNode.c = 'Mdu m50 lfn';
             };
             let k = [], o = 0;
 
             k.p(`<div class="Md">`);
             for (const i in J.l) {
-                k.p(`<details class="m50 lf"${o ? "" : " open"}>`);
+                k.p(`<details class="m50 lf"${o ? '' : ' open'}>`);
                 k.p(`<summary><b class="if fl">${J.l[i].i}</b><span>${i}</span></summary>`);
                 o = o ? o : 1;
-                for (const j in J.l[i]) if (j !== "i") {
-                    k.p(`<label><input class="dh" name="Md_${J.e.id}" type="radio"${o == 1 ? " checked" : ""}>`);
+                for (const j in J.l[i]) if (j !== 'i') {
+                    k.p(`<label><input class="dh" name="Md_${J.e.id}" type="radio"${o == 1 ? ' checked' : ''}>`);
                     k.p(`<li class="tc" onclick="${J.l[i][j]}">${j}</li></label>`);
                     o = 2;
                 }
                 k.p(`</details>`);
             }
             k.p(`</div>`)
-            J.e.innerHTML = k.j("");
-            k = q("@LABEL", J.e);
+            J.e.innerHTML = k.j('');
+            k = q('@LABEL', J.e);
             if (k) {
                 k.for(e => { e.onclick = () => { s(e) } });
-                k[0].parentNode.className = "Mdu m50 lfn";
+                k[0].parentNode.className = 'Mdu m50 lfn';
             }
         },
 
@@ -446,9 +451,9 @@
             k.p(`<div class="Md">`);
             k.p(`<details class="di lf tc">`);
             k.p(`<summary><b class="if fl">${J.l.i}</b><span>${J.t}</span></summary>`);
-            for (const i in J.l) if (i !== "i") k.p(`<a class="db" href="${J.l[i]}" target="_blank">${i}</a>`);
+            for (const i in J.l) if (i !== 'i') k.p(`<a class="db" href="${J.l[i]}" target="_blank">${i}</a>`);
             k.p(`</details></div>`);
-            J.e.innerHTML = k.j("");
+            J.e.innerHTML = k.j('');
         },
 
         // T daTe
@@ -466,14 +471,14 @@
             k.m = s.getMinutes();
             k.s = s.getSeconds();
             k.i = s.getMilliseconds();
-            for (const i in k) if (k[i] < 10) k[i] = "0" + k[i];
-            for (let i = 0; i < 3 - String(k.i).length; i++) k.i = "0" + k.i;
+            for (const i in k) if (k[i] < 10) k[i] = '0' + k[i];
+            for (let i = 0; i < 3 - String(k.i).length; i++) k.i = '0' + k.i;
             k.w = s.getDay();
-            k.dd = k.y + "-" + k.n + "-" + k.d;
-            k.dn = k.y + "-" + k.n;
-            k.dh = k.h + ":" + k.m;
-            k.dt = k.dd + " " + k.h + ":" + k.m;
-            k.ut = k.dd + "T" + k.h + ":" + k.m;
+            k.dd = k.y + '-' + k.n + '-' + k.d;
+            k.dn = k.y + '-' + k.n;
+            k.dh = k.h + ':' + k.m;
+            k.dt = k.dd + ' ' + k.h + ':' + k.m;
+            k.ut = k.dd + 'T' + k.h + ':' + k.m;
 
             // 昨天
             s.setDate(k.d - 1);
@@ -501,7 +506,7 @@
             k.tnn = s.getMonth() + 1;
 
             // 本月合计天数
-            s = new Date(k.tny + "-" + k.tnn + "-1");
+            s = new Date(k.tny + '-' + k.tnn + '-1');
             s.setDate(s.getDate() - 1);
             k.dc = s.getDate();
 
@@ -511,21 +516,21 @@
             // 下年
             k.tyy = parseInt(k.y) + 1;
 
-            for (const i in k) if (String(k[i]).length == 1) k[i] = "0" + k[i];
-            k.ydd = k.yy + "-" + k.yn + "-" + k.yd;
-            k.tdd = k.ty + "-" + k.tn + "-" + k.td;
+            for (const i in k) if (String(k[i]).length == 1) k[i] = '0' + k[i];
+            k.ydd = k.yy + '-' + k.yn + '-' + k.yd;
+            k.tdd = k.ty + '-' + k.tn + '-' + k.td;
 
-            k.w = 1 == k.w ? "一" : 2 == k.w ? "二" : 3 == k.w ? "三" : 4 == k.w ? "四" : 5 == k.w ? "五" : 6 == k.w ? "六" : "日";
-            k.cn = k.y + "年" + k.n + "月" + k.d + "日 星期" + k.w;
+            k.w = 1 == k.w ? '一' : 2 == k.w ? '二' : 3 == k.w ? '三' : 4 == k.w ? '四' : 5 == k.w ? '五' : 6 == k.w ? '六' : '日';
+            k.cn = k.y + '年' + k.n + '月' + k.d + '日 星期' + k.w;
             return k;
         },
 
         // S String
-        ss: S => S.replace(/,/g, "，").replace(/;/g, "；").replace(/\"/g, "＂").replace(/\'/g, "＇").replace(/(^\s*)|(\s*$)/g, "").replace(/\s+/g, " "),
-        sn: S => S.replace(/\D+/g, ""),
-        sc: S => S.replace(/\W+/g, ""),
-        su: S => S.replace(/[^(\u3000-\u303F|\u4E00-\u9FA5|\uFF00-\uFFEF)]+/g, ""),
-        sp: S => m.ss(S).replace(/[ |　|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}]+/g, ""),
+        ss: S => ('' + S).replace(/,/g, '，').replace(/;/g, '；').replace(/\"/g, '＂').replace(/\'/g, '＇').replace(/(^\s*)|(\s*$)/g, '').replace(/\s+/g, ' '),
+        sn: S => ('' + S).replace(/\D+/g, ''),
+        sc: S => ('' + S).replace(/\W+/g, ''),
+        su: S => ('' + S).replace(/[^(\u3000-\u303F|\u4E00-\u9FA5|\uFF00-\uFFEF)]+/g, ''),
+        sp: S => m.ss(S).replace(/[ |　|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}]+/g, ''),
         ts: function () { this.value = m.ss(this.value) },
         tn: function () { this.value = m.sn(this.value) },
         tc: function () { this.value = m.sc(this.value) },
@@ -541,7 +546,7 @@
     const v = {
         // J Json: id, t Title, s Subheading, h Html, m Mode 1 del 2 nobutton, b Background
         t: J => {
-            let k = document.querySelector(".VBt");
+            let k = document.querySelector('.VBt');
 
             k && !J.id && v.del();
             document.getElementById(`_wf_${J.id}`) && v.del('s');
@@ -552,7 +557,7 @@
             k.p(`><div class="VHt" onmousedown="v.mv.d(event)" onmousemove="v.mv.v(event)" onmouseup="v.mv.u(event)">`);
             k.p(`<div class="p51 df vc ts"><span>${J.t} </span>`);
             k.p(`<span id="VHd" class="Ve fxl" onclick="v.del(${J.id ? '\'s\'' : ''})">×</span></div>`);
-            k.p(`<div class="Vs bb p01 fxs">${J.s ? J.s : ""}</div></div>`);
+            k.p(`<div class="Vs bb p01 fxs">${J.s ? J.s : ''}</div></div>`);
             k.p(`<form id="_w_F${J.id ? '_' + J.id : ''}" class="p5">`);
             k.p(`<div class="mf">${J.h}</div>`);
             if (J.m !== 2) {
@@ -562,8 +567,8 @@
                 k.p(`<input type="reset" value="重置"></div>`);
             }
             k.p(`</form></div>`);
-            document.body.insertAdjacentHTML("beforeEnd", k.j(""));
-            v.adi("t", J.id);
+            document.body.insertAdjacentHTML('beforeEnd', k.j(''));
+            v.adi('t', J.id);
         },
 
         // J Json: e element, t Title, h Html, b Background
@@ -571,30 +576,30 @@
             const lf = () => ({ x: J.e.offsetLeft + J.e.offsetWidth, y: J.e.offsetTop + J.e.offsetHeight + 8 });
             const o = () => {
                 J.e.open = false;
-                v.del("p");
+                v.del('p');
             };
-            let k = document.querySelector(".VBp"), x = lf();
+            let k = document.querySelector('.VBp'), x = lf();
 
-            if (k) v.del("p");
+            if (k) v.del('p');
             k = [];
             k.p(`<div class="pf db Vb VBp" style="background: transparent"></div>`);
             k.p(`<div class="pa Vf db bd gy VFp" style="visibility: visible">`);
             k.p(`<div class="bb p51">${J.t}</div>`);
             k.p(`<div class="p5 mf">${J.h}</div></div>`)
-            J.e.offsetParent.insertAdjacentHTML("beforeEnd", k.j(""));
-            k = document.querySelector(".VFp");
-            k.style.left = "-6000px";
+            J.e.offsetParent.insertAdjacentHTML('beforeEnd', k.j(''));
+            k = document.querySelector('.VFp');
+            k.style.left = '-6000px';
             x.x = x.x - k.offsetWidth;
-            k.style.left = x.x + "px";
-            k.style.top = x.y + "px";
-            document.querySelector(".VBp").onclick = o;
+            k.style.left = x.x + 'px';
+            k.style.top = x.y + 'px';
+            document.querySelector('.VBp').onclick = o;
         },
 
         // J Json: h Html, c Callback, b Background
         c: J => {
-            let k = document.querySelector(".VBc");
+            let k = document.querySelector('.VBc');
 
-            if (k) v.del("c");
+            if (k) v.del('c');
             k = [];
             k.p(`<div class="pf db Vb VBc"></div>`);
             k.p(`<div class="pf db p5 gy bd Vf VFc" style="left: -6000px"`);
@@ -605,74 +610,74 @@
             k.p(`<input id ="_w_OK" type="button" value="确定">`);
             k.p(`<input type="button" onclick="v.del('c')" value="取消">`);
             k.p(`</div></div>`);
-            document.body.insertAdjacentHTML("beforeEnd", k.j(""));
-            q("_w_OK").onclick = () => {
-                if (J.h.indexOf("input") == -1) v.del("c");
-                if (typeof J.c == "function") J.c();
+            document.body.insertAdjacentHTML('beforeEnd', k.j(''));
+            q('_w_OK').onclick = () => {
+                if (J.h.indexOf('input') == -1) v.del('c');
+                if (typeof J.c == 'function') J.c();
             };
-            v.adi("c");
+            v.adi('c');
         },
 
         // T Text, M Mode 1 Red
         i: (T, M) => {
-            let k = document.querySelector(".VFi");
+            let k = document.querySelector('.VFi');
 
-            if (k) v.del("i");
+            if (k) v.del('i');
             k = [];
             k.p(`<div style="left: -6000px" class="pf db bd p5 Vf VFi `);
             if (M == 1) k.p(`gr"><b class="vm p5 if fxl">&#xed1c;`);
             else k.p(`gy"><b class="vm p5 if fxl">&#xed1b;`);
             k.p(`</b><div class="di p5 fs">${T}</div></div>`);
-            document.body.insertAdjacentHTML("beforeEnd", k.j(""));
-            v.adi("i");
-            setTimeout(() => { v.del("i") }, 1200);
+            document.body.insertAdjacentHTML('beforeEnd', k.j(''));
+            v.adi('i');
+            setTimeout(() => { v.del('i') }, 1200);
         },
 
         l: () => {
-            let k = document.querySelector(".VBl");
+            let k = document.querySelector('.VBl');
 
-            if (k) v.del("l");
+            if (k) v.del('l');
             k = [];
             k.p(`<div class="pf db Vb VBl"></div>`);
             k.p(`<div class="pf db p5 gy bd Vf VFl" style="left: -6000px">`);
             k.p(`<b class="Vr di p5 if fxl vm">&#xe6c6;</b>`);
             k.p(`<span class="fs p01">正在加载…</span></div>`);
-            document.body.insertAdjacentHTML("beforeEnd", k.j(""));
-            v.adi("l");
+            document.body.insertAdjacentHTML('beforeEnd', k.j(''));
+            v.adi('l');
         },
 
         // J Json: id, cn, ph path, t title, s subheading, h html, n number, uc up callback, dc del callback
         f: J => {
             const del = () => {
                 v.c({
-                    h: "您确定删除这个文件吗？",
+                    h: '您确定删除这个文件吗？',
                     c: () => { J.dc() }
                 });
             };
             const up = () => {
-                if (q("Efs").h) {
+                if (q('Efs').h) {
                     v.c({
-                        h: "上传的新文件将覆盖原文件，<br>您确定继续吗？",
+                        h: '上传的新文件将覆盖原文件，<br>您确定继续吗？',
                         c: J.uc
                     });
                 } else J.uc();
                 return false
             };
             const fsch = () => {
-                const k = q("Efs").files[0];
+                const k = q('Efs').files[0];
                 if (k) {
                     const fr = new FileReader();
                     fr.onload = () => {
                         if (k.size > J.n) {
                             v.i(`文件大小不能超过 ${parseInt((J.n + 1) / 1024000)} MB！`, 1);
-                            q("Efs").h = "";
-                        } else q("Ecn").h = cnch(k.name);
+                            q('Efs').h = '';
+                        } else q('Ecn').h = cnch(k.name);
                     };
                     fr.readAsArrayBuffer(k);
                 }
             };
-            const cnch = k => k.replace(/ |　|,|;|\"|\'|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}/g, "");
-            let k = document.querySelector(".VBt");
+            const cnch = k => k.replace(/ |　|,|;|\"|\'|\?|\:|\%|\=|\+|\-|\*|\/|\||\\|\<|\>|\{|\}/g, '');
+            let k = document.querySelector('.VBt');
 
             J.n = J.n ? parseInt(J.n * 1024000 - 1) : 20479999;
             if (k) v.del();
@@ -685,33 +690,33 @@
             v.t({
                 t: J.t,
                 s: J.s,
-                h: k.j(""),
+                h: k.j(''),
                 m: J.id == 0 ? 0 : 1
             });
-            q("Ecn").onchange = function () { this.h = cnch(this.h) };
-            q("Efs").onchange = fsch;
-            k = q("_w_D");
+            q('Ecn').onchange = function () { this.h = cnch(this.h) };
+            q('Efs').onchange = fsch;
+            k = q('_w_D');
             if (k) k.onclick = del;
-            q("_w_F").onsubmit = () => { return up() };
+            q('_w_F').onsubmit = () => { return up() };
         },
 
         // J Json: id, t Title, s Subheading, db before data, de select data, c callback, b Background
         s: J => {
             const up = () => {
-                let k = [], o = q("_w_Vde");
-                q("@LI", o).for(e => { k.p(e.h) });
+                let k = [], o = q('_w_Vde');
+                q('@LI', o).for(e => { k.p(e.h) });
                 v.del('s');
                 J.c(k);
                 return false;
             };
 
             const re = () => {
-                q("_w_Vde").h = q("_w_Vdo").h;
+                q('_w_Vde').h = q('_w_Vdo').h;
             };
 
             const ad = o => {
                 const ok = k => {
-                    let o = q("@LI", oe), n = 1;
+                    let o = q('@LI', oe), n = 1;
                     if (o.length) for (let i of o) {
                         if (i.h == k) {
                             n = 0;
@@ -722,27 +727,27 @@
                         o = [];
                         o.p(`<label><input class="dh" name="_w_Vd" type="radio">`);
                         o.p(`<li n="2">${k}</li></label>`);
-                        oe.add("be", o.j(""));
-                        q("@LI", oe).for(e => { e.ondblclick = function () { ad(this) } });
+                        oe.add('be', o.j(''));
+                        q('@LI', oe).for(e => { e.ondblclick = function () { ad(this) } });
                     }
                 };
 
-                let k = o.g("n"), ob = q("_w_Vdb"), oe = q("_w_Vde");
+                let k = o.g('n'), ob = q('_w_Vdb'), oe = q('_w_Vde');
 
-                if (k == "1") ok(o.h);
-                else if (k == "2") {
+                if (k == '1') ok(o.h);
+                else if (k == '2') {
                     o = o.parentNode;
                     o.parentNode.removeChild(o);
-                } else if (k == "3") {
-                    o = q("@INPUT", ob);
+                } else if (k == '3') {
+                    o = q('@INPUT', ob);
                     if (o.length) for (let i of o) {
                         if (i.checked) {
                             ok(i.nextElementSibling.h);
                             break;
                         }
                     }
-                } else if (k == "4") {
-                    o = q("@INPUT", oe);
+                } else if (k == '4') {
+                    o = q('@INPUT', oe);
                     if (o.length) for (let i of o) {
                         if (i.checked) {
                             i = i.parentNode;
@@ -750,8 +755,8 @@
                             break;
                         }
                     }
-                } else if (k == "5") q("@LI", ob).for(e => { ok(e.h) });
-                else if (k == "6") oe.h = "";
+                } else if (k == '5') q('@LI', ob).for(e => { ok(e.h) });
+                else if (k == '6') oe.h = '';
             };
 
             let k = [];
@@ -801,31 +806,31 @@
                 s: J.s,
                 b: J.b,
                 m: 2,
-                h: k.j("")
+                h: k.j('')
             });
 
-            k = q("_w_Vdb");
-            q("@LI", k).for(e => { e.ondblclick = function () { ad(this) } });
-            k = q("_w_Vde");
-            q("@LI", k).for(e => { e.ondblclick = function () { ad(this) } });
-            k = q("_w_Vad");
-            q("@INPUT", k).for(e => { e.onclick = function () { ad(this) } });
-            q("_w_Vbt").onclick = re;
+            k = q('_w_Vdb');
+            q('@LI', k).for(e => { e.ondblclick = function () { ad(this) } });
+            k = q('_w_Vde');
+            q('@LI', k).for(e => { e.ondblclick = function () { ad(this) } });
+            k = q('_w_Vad');
+            q('@INPUT', k).for(e => { e.onclick = function () { ad(this) } });
+            q('_w_Vbt').onclick = re;
             q(`_w_F${J.id ? '_' + J.id : ''}`).onsubmit = () => { return up() };
         },
 
         del: S => {
             let k = 0;
 
-            S = !S ? "t" : S;
-            k = document.querySelector(".VB" + S);
+            S = !S ? 't' : S;
+            k = document.querySelector('.VB' + S);
             if (k) k.parentNode.removeChild(k);
-            k = document.querySelector(".VF" + S);
+            k = document.querySelector('.VF' + S);
             if (k) k.parentNode.removeChild(k);
         },
 
         adi: (S, I) => {
-            let x = 0, y = 0, s = document.querySelector(".VF" + S);
+            let x = 0, y = 0, s = document.querySelector('.VF' + S);
 
             I && (s = document.getElementById('_wf_' + I));
             if (s) {
@@ -833,8 +838,8 @@
                 y = (window.innerHeight - s.offsetHeight) / 2 - 40;
                 if (x < 0) x = 0;
                 if (y < 0) y = 0;
-                s.style.left = x + "px";
-                s.style.top = y + "px";
+                s.style.left = x + 'px';
+                s.style.top = y + 'px';
             }
         },
 
@@ -844,7 +849,7 @@
                 this.o = e.target.parentNode.parentNode;
                 'VHt' == this.o.className && (this.o = this.o.parentNode);
                 if (this.o.id) this.b = document.getElementById(this.o.id.replace('_wf_', '_wb_'));
-                else this.b = document.querySelector(".VBt");
+                else this.b = document.querySelector('.VBt');
 
                 this.b.onmousemove = this.o.onmousemove = () => { v.mv.v(event) };
                 this.b.onmouseup = this.o.onmouseup = () => { v.mv.u(event) };
@@ -862,16 +867,16 @@
                 let x = e.clientX, y = e.clientY;
                 e.preventDefault();
                 if (this.f) {
-                    this.o.style.left = parseInt(this.tx) + parseInt(x) - parseInt(this.mx) + "px";
-                    this.o.style.top = parseInt(this.ty) + parseInt(y) - parseInt(this.my) + "px";
+                    this.o.style.left = parseInt(this.tx) + parseInt(x) - parseInt(this.mx) + 'px';
+                    this.o.style.top = parseInt(this.ty) + parseInt(y) - parseInt(this.my) + 'px';
                 }
             },
             u: function (e) {
                 if (this.f) {
                     let x = e.clientX, y = e.clientY;
-                    this.o.style.left = parseInt(this.tx) + parseInt(x) - parseInt(this.mx) + "px";
-                    this.o.style.top = parseInt(this.ty) + parseInt(y) - parseInt(this.my) + "px";
-                    this.o.style.cursor = "default";
+                    this.o.style.left = parseInt(this.tx) + parseInt(x) - parseInt(this.mx) + 'px';
+                    this.o.style.top = parseInt(this.ty) + parseInt(y) - parseInt(this.my) + 'px';
+                    this.o.style.cursor = 'default';
                     this.b.onmousemove = this.o.onmousemove = null;
                     this.b.onmouseup = this.o.onmouseup = null;
                     this.f = 0;
