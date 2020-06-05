@@ -123,7 +123,7 @@
             // id: [1, 2]
             c: e => {
                 q(`${S}_td`).h = '';
-                0 == e || tb.td(S, J.fn && J.fn.se ? J.fn.se(e) : e);
+                0 == e || tb.td(S, J.fn && J.fn.se ? J.fn.se(e) : q.j(e));
                 J = null, e = null
             }
         })
@@ -133,7 +133,6 @@
         let J = q(`${S}_tb`).J;
         let m = 0, h = [];
 
-        T = q.j(T);
         for (let i in T) {
             h.p(`<tr i="${i}" style="display: table; width: calc( 100% - 2px )"`);
             h.p(`${m % 2 ? ' class="gs"' : ''}>`);
