@@ -52,6 +52,7 @@
 	},
 	fn: {
         se: s => { return q.j(s) },
+        td: a => { return '' },
         ed: {
             cj: s => { return s }
         },
@@ -134,8 +135,10 @@
         let m = 0, h = [];
 
         for (let i in T) {
-            h.p(`<tr i="${i}" style="display: table; width: calc( 100% - 2px )"`);
-            h.p(`${m % 2 ? ' class="gs"' : ''}>`);
+            h.p(`<tr i="${i}"${m % 2 ? ' class="gs"' : ''}`);
+            h.p(` style="display: table; width: calc( 100% - 2px ); `);
+            J.fn && J.fn.td && h.p(J.fn.td(T[i]));
+            h.p(`">`);
             1 == J.th.ch && h.p(`<td style="width: 2rem"><input type="checkbox"></td>`);
             1 == J.th.nu && h.p(`<td style="width: 2rem">${m + 1}</td>`);
             for (let n = 0; n < J.n; n++) {
